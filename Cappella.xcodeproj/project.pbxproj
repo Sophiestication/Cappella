@@ -1,0 +1,581 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ECE27E02289C94E700FEAADD /* CappellaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE27E01289C94E700FEAADD /* CappellaApp.swift */; };
+		ECE27E04289C94E700FEAADD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE27E03289C94E700FEAADD /* ContentView.swift */; };
+		ECE27E06289C94E800FEAADD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECE27E05289C94E800FEAADD /* Assets.xcassets */; };
+		ECE27E09289C94E800FEAADD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECE27E08289C94E800FEAADD /* Preview Assets.xcassets */; };
+		ECE27E14289C94E800FEAADD /* CappellaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE27E13289C94E800FEAADD /* CappellaTests.swift */; };
+		ECE27E1E289C94E800FEAADD /* CappellaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE27E1D289C94E800FEAADD /* CappellaUITests.swift */; };
+		ECE27E20289C94E800FEAADD /* CappellaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE27E1F289C94E800FEAADD /* CappellaUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		ECE27E10289C94E800FEAADD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ECE27DF6289C94E700FEAADD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ECE27DFD289C94E700FEAADD;
+			remoteInfo = Cappella;
+		};
+		ECE27E1A289C94E800FEAADD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ECE27DF6289C94E700FEAADD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ECE27DFD289C94E700FEAADD;
+			remoteInfo = Cappella;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		ECE27DFE289C94E700FEAADD /* Cappella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cappella.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECE27E01289C94E700FEAADD /* CappellaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CappellaApp.swift; sourceTree = "<group>"; };
+		ECE27E03289C94E700FEAADD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		ECE27E05289C94E800FEAADD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ECE27E08289C94E800FEAADD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		ECE27E0A289C94E800FEAADD /* Cappella.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cappella.entitlements; sourceTree = "<group>"; };
+		ECE27E0F289C94E800FEAADD /* CappellaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CappellaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECE27E13289C94E800FEAADD /* CappellaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CappellaTests.swift; sourceTree = "<group>"; };
+		ECE27E19289C94E800FEAADD /* CappellaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CappellaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECE27E1D289C94E800FEAADD /* CappellaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CappellaUITests.swift; sourceTree = "<group>"; };
+		ECE27E1F289C94E800FEAADD /* CappellaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CappellaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ECE27DFB289C94E700FEAADD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECE27E0C289C94E800FEAADD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECE27E16289C94E800FEAADD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ECE27DF5289C94E700FEAADD = {
+			isa = PBXGroup;
+			children = (
+				ECE27E00289C94E700FEAADD /* Cappella */,
+				ECE27E12289C94E800FEAADD /* CappellaTests */,
+				ECE27E1C289C94E800FEAADD /* CappellaUITests */,
+				ECE27DFF289C94E700FEAADD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ECE27DFF289C94E700FEAADD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ECE27DFE289C94E700FEAADD /* Cappella.app */,
+				ECE27E0F289C94E800FEAADD /* CappellaTests.xctest */,
+				ECE27E19289C94E800FEAADD /* CappellaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ECE27E00289C94E700FEAADD /* Cappella */ = {
+			isa = PBXGroup;
+			children = (
+				ECE27E01289C94E700FEAADD /* CappellaApp.swift */,
+				ECE27E03289C94E700FEAADD /* ContentView.swift */,
+				ECE27E05289C94E800FEAADD /* Assets.xcassets */,
+				ECE27E0A289C94E800FEAADD /* Cappella.entitlements */,
+				ECE27E07289C94E800FEAADD /* Preview Content */,
+			);
+			path = Cappella;
+			sourceTree = "<group>";
+		};
+		ECE27E07289C94E800FEAADD /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				ECE27E08289C94E800FEAADD /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		ECE27E12289C94E800FEAADD /* CappellaTests */ = {
+			isa = PBXGroup;
+			children = (
+				ECE27E13289C94E800FEAADD /* CappellaTests.swift */,
+			);
+			path = CappellaTests;
+			sourceTree = "<group>";
+		};
+		ECE27E1C289C94E800FEAADD /* CappellaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				ECE27E1D289C94E800FEAADD /* CappellaUITests.swift */,
+				ECE27E1F289C94E800FEAADD /* CappellaUITestsLaunchTests.swift */,
+			);
+			path = CappellaUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ECE27DFD289C94E700FEAADD /* Cappella */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ECE27E23289C94E800FEAADD /* Build configuration list for PBXNativeTarget "Cappella" */;
+			buildPhases = (
+				ECE27DFA289C94E700FEAADD /* Sources */,
+				ECE27DFB289C94E700FEAADD /* Frameworks */,
+				ECE27DFC289C94E700FEAADD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Cappella;
+			productName = Cappella;
+			productReference = ECE27DFE289C94E700FEAADD /* Cappella.app */;
+			productType = "com.apple.product-type.application";
+		};
+		ECE27E0E289C94E800FEAADD /* CappellaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ECE27E26289C94E800FEAADD /* Build configuration list for PBXNativeTarget "CappellaTests" */;
+			buildPhases = (
+				ECE27E0B289C94E800FEAADD /* Sources */,
+				ECE27E0C289C94E800FEAADD /* Frameworks */,
+				ECE27E0D289C94E800FEAADD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ECE27E11289C94E800FEAADD /* PBXTargetDependency */,
+			);
+			name = CappellaTests;
+			productName = CappellaTests;
+			productReference = ECE27E0F289C94E800FEAADD /* CappellaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		ECE27E18289C94E800FEAADD /* CappellaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ECE27E29289C94E800FEAADD /* Build configuration list for PBXNativeTarget "CappellaUITests" */;
+			buildPhases = (
+				ECE27E15289C94E800FEAADD /* Sources */,
+				ECE27E16289C94E800FEAADD /* Frameworks */,
+				ECE27E17289C94E800FEAADD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ECE27E1B289C94E800FEAADD /* PBXTargetDependency */,
+			);
+			name = CappellaUITests;
+			productName = CappellaUITests;
+			productReference = ECE27E19289C94E800FEAADD /* CappellaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ECE27DF6289C94E700FEAADD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					ECE27DFD289C94E700FEAADD = {
+						CreatedOnToolsVersion = 14.0;
+					};
+					ECE27E0E289C94E800FEAADD = {
+						CreatedOnToolsVersion = 14.0;
+						TestTargetID = ECE27DFD289C94E700FEAADD;
+					};
+					ECE27E18289C94E800FEAADD = {
+						CreatedOnToolsVersion = 14.0;
+						TestTargetID = ECE27DFD289C94E700FEAADD;
+					};
+				};
+			};
+			buildConfigurationList = ECE27DF9289C94E700FEAADD /* Build configuration list for PBXProject "Cappella" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ECE27DF5289C94E700FEAADD;
+			productRefGroup = ECE27DFF289C94E700FEAADD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ECE27DFD289C94E700FEAADD /* Cappella */,
+				ECE27E0E289C94E800FEAADD /* CappellaTests */,
+				ECE27E18289C94E800FEAADD /* CappellaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ECE27DFC289C94E700FEAADD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECE27E09289C94E800FEAADD /* Preview Assets.xcassets in Resources */,
+				ECE27E06289C94E800FEAADD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECE27E0D289C94E800FEAADD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECE27E17289C94E800FEAADD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ECE27DFA289C94E700FEAADD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECE27E04289C94E700FEAADD /* ContentView.swift in Sources */,
+				ECE27E02289C94E700FEAADD /* CappellaApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECE27E0B289C94E800FEAADD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECE27E14289C94E800FEAADD /* CappellaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECE27E15289C94E800FEAADD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECE27E20289C94E800FEAADD /* CappellaUITestsLaunchTests.swift in Sources */,
+				ECE27E1E289C94E800FEAADD /* CappellaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ECE27E11289C94E800FEAADD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ECE27DFD289C94E700FEAADD /* Cappella */;
+			targetProxy = ECE27E10289C94E800FEAADD /* PBXContainerItemProxy */;
+		};
+		ECE27E1B289C94E800FEAADD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ECE27DFD289C94E700FEAADD /* Cappella */;
+			targetProxy = ECE27E1A289C94E800FEAADD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		ECE27E21289C94E800FEAADD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		ECE27E22289C94E800FEAADD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		ECE27E24289C94E800FEAADD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Cappella/Cappella.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Cappella/Preview Content\"";
+				DEVELOPMENT_TEAM = PRM99FV87L;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.Cappella;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		ECE27E25289C94E800FEAADD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Cappella/Cappella.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Cappella/Preview Content\"";
+				DEVELOPMENT_TEAM = PRM99FV87L;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.Cappella;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		ECE27E27289C94E800FEAADD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PRM99FV87L;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.CappellaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cappella.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cappella";
+			};
+			name = Debug;
+		};
+		ECE27E28289C94E800FEAADD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PRM99FV87L;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.CappellaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cappella.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cappella";
+			};
+			name = Release;
+		};
+		ECE27E2A289C94E800FEAADD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PRM99FV87L;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.CappellaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Cappella;
+			};
+			name = Debug;
+		};
+		ECE27E2B289C94E800FEAADD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PRM99FV87L;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.CappellaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Cappella;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ECE27DF9289C94E700FEAADD /* Build configuration list for PBXProject "Cappella" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ECE27E21289C94E800FEAADD /* Debug */,
+				ECE27E22289C94E800FEAADD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ECE27E23289C94E800FEAADD /* Build configuration list for PBXNativeTarget "Cappella" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ECE27E24289C94E800FEAADD /* Debug */,
+				ECE27E25289C94E800FEAADD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ECE27E26289C94E800FEAADD /* Build configuration list for PBXNativeTarget "CappellaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ECE27E27289C94E800FEAADD /* Debug */,
+				ECE27E28289C94E800FEAADD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ECE27E29289C94E800FEAADD /* Build configuration list for PBXNativeTarget "CappellaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ECE27E2A289C94E800FEAADD /* Debug */,
+				ECE27E2B289C94E800FEAADD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ECE27DF6289C94E700FEAADD /* Project object */;
+}
