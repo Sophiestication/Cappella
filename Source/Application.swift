@@ -1,14 +1,11 @@
 //
-//  CappellaApp.swift
-//  Cappella
-//
-//  Created by Sophia Teutschler on 8/4/22.
+// Copyright © 2022 Sophiestication Software. All rights reserved.
 //
 
 import SwiftUI
 
 @main
-struct CappellaApp: App {
+struct Application: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

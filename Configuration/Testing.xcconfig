@@ -1,0 +1,24 @@
+//
+// Copyright © 2022 Sophiestication Software. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "Shared.xcconfig"
+
+
+// Vendor Configuration
+
+SOSO_CONFIGURATION_NAME = Tests
+SOSO_APPLICATION_DISPLAYNAME = $(SOSO_APPLICATION_NAME) Testing
+
+
+// Xcode Configuration
+
+BUNDLE_LOADER = $(TEST_HOST)
+TEST_HOST = $(BUILT_PRODUCTS_DIR)/$(SOSO_APPLICATION_NAME).app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/$(SOSO_APPLICATION_NAME)
+LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/../Frameworks @loader_path/../Frameworks
+
+ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
+SWIFT_EMIT_LOC_STRINGS = NO
