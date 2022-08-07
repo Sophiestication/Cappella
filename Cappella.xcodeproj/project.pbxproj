@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC5C540A289DC4BE00A1BA9E /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5C5409289DC4BE00A1BA9E /* SidebarView.swift */; };
+		EC5C540C289DC4D400A1BA9E /* MusicPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5C540B289DC4D400A1BA9E /* MusicPickerView.swift */; };
+		ECCCF0E628A02C7100EC7E12 /* PlaybackPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCCF0E528A02C7100EC7E12 /* PlaybackPublisher.swift */; };
 		ECE27E02289C94E700FEAADD /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE27E01289C94E700FEAADD /* Application.swift */; };
-		ECE27E04289C94E700FEAADD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE27E03289C94E700FEAADD /* ContentView.swift */; };
 		ECE27E06289C94E800FEAADD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECE27E05289C94E800FEAADD /* Assets.xcassets */; };
 		ECE27E09289C94E800FEAADD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECE27E08289C94E800FEAADD /* Preview Assets.xcassets */; };
 		ECE27E14289C94E800FEAADD /* CappellaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE27E13289C94E800FEAADD /* CappellaTests.swift */; };
@@ -25,9 +27,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EC5C5409289DC4BE00A1BA9E /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		EC5C540B289DC4D400A1BA9E /* MusicPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPickerView.swift; sourceTree = "<group>"; };
+		ECCCF0E528A02C7100EC7E12 /* PlaybackPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackPublisher.swift; sourceTree = "<group>"; };
 		ECE27DFE289C94E700FEAADD /* Cappella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cappella.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECE27E01289C94E700FEAADD /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
-		ECE27E03289C94E700FEAADD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		ECE27E05289C94E800FEAADD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ECE27E08289C94E800FEAADD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ECE27E0A289C94E800FEAADD /* Entitlements.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Entitlements.entitlements; sourceTree = "<group>"; };
@@ -81,7 +85,9 @@
 			isa = PBXGroup;
 			children = (
 				ECE27E01289C94E700FEAADD /* Application.swift */,
-				ECE27E03289C94E700FEAADD /* ContentView.swift */,
+				EC5C540B289DC4D400A1BA9E /* MusicPickerView.swift */,
+				ECCCF0E528A02C7100EC7E12 /* PlaybackPublisher.swift */,
+				EC5C5409289DC4BE00A1BA9E /* SidebarView.swift */,
 				ECE27E05289C94E800FEAADD /* Assets.xcassets */,
 				ECE27E0A289C94E800FEAADD /* Entitlements.entitlements */,
 				ECE27E07289C94E800FEAADD /* Preview Content */,
@@ -218,8 +224,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECE27E04289C94E700FEAADD /* ContentView.swift in Sources */,
 				ECE27E02289C94E700FEAADD /* Application.swift in Sources */,
+				EC5C540C289DC4D400A1BA9E /* MusicPickerView.swift in Sources */,
+				EC5C540A289DC4BE00A1BA9E /* SidebarView.swift in Sources */,
+				ECCCF0E628A02C7100EC7E12 /* PlaybackPublisher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

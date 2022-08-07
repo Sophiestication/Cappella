@@ -4,14 +4,14 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MusicPickerView: View {
     var body: some View {
-        Group {}
+        Color.clear
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct MusicPickerView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MusicPickerView()
     }
 }
