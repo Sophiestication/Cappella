@@ -5,9 +5,9 @@
 import SwiftUI
 
 class PlaybackPublisher: ObservableObject {
-    @Published var repeatMode: RepeatMode = .off
+    @Published var repeatMode: RepeatMode = .all
 
-    @Published var shuffle: Bool = false
+    @Published var shuffle: Bool = true
     @Published var shuffleMode: ShuffleMode = .song
 }
 

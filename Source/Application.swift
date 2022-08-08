@@ -61,7 +61,11 @@ extension Application {
             }
             .pickerStyle(.inline)
         } label: {
-            Image(systemName: "shuffle")
+            if playback.shuffle {
+                Image(systemName: "shuffle")
+            } else {
+                Image("shuffle.off")
+            }
         }
         .menuIndicator(.hidden)
     }
@@ -88,7 +92,7 @@ extension Application {
     fileprivate func label(for repeatMode:  RepeatMode) -> some View {
         Group {
             switch repeatMode {
-            case .off: Image(systemName: "repeat").foregroundColor(.accentColor)
+            case .off: Image("repeat.off").foregroundColor(.accentColor)
             case .all: Image(systemName: "repeat")
             case .one: Image(systemName: "repeat.1")
             }
