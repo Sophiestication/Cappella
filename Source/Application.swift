@@ -19,7 +19,6 @@ struct Application: App {
             } detail: {
                 MusicPickerView()
                     .navigationSplitViewColumnWidth(min: 320.0, ideal: 768.0)
-                    .background(.white)
             }
             .toolbar {
                 ToolbarItemGroup(placement: .navigation) {
