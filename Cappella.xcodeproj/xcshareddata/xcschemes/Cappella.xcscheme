@@ -39,17 +39,6 @@
                ReferencedContainer = "container:Cappella.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ECE27E18289C94E800FEAADD"
-               BuildableName = "CappellaUITests.xctest"
-               BlueprintName = "CappellaUITests"
-               ReferencedContainer = "container:Cappella.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
