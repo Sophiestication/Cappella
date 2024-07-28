@@ -1,14 +1,12 @@
 //
-// Copyright © 2022 Sophiestication Software. All rights reserved.
+//  Copyright © 2024 Sophiestication Software. All rights reserved.
 //
 
-import XCTest
+import Testing
 @testable import Cappella
 
-final class CappellaTests: XCTestCase {
-    override func setUpWithError() throws {
-    }
-
-    override func tearDownWithError() throws {
+struct CappellaTests {
+    @Test func testExample() async throws {
+        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
     }
 }
