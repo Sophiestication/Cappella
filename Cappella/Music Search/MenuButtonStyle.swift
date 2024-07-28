@@ -6,7 +6,6 @@ import SwiftUI
 
 struct MenuButtonStyle: PrimitiveButtonStyle {
     @State private var isHighlighted = false
-    @State private var isLongPressed = false
 
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
@@ -22,16 +21,11 @@ struct MenuButtonStyle: PrimitiveButtonStyle {
                 makeRoundedRectBackground(for: configuration, cornerRadius: 4.0)
             )
             .onTapGesture {
-                configuration.trigger()
-            }
-            .onLongPressGesture {
-                isLongPressed = true
-                configuration.trigger()
-            } onPressingChanged: { isPressed in
-                isLongPressed = false
-
-                withAnimation(.smooth(duration: isPressed ? 0.20 : 0.50)) {
-                    isHighlighted = isPressed
+                withAnimation(.linear(duration: 0.075).repeatCount(4)) {
+                    isHighlighted = false
+                } completion: {
+                    isHighlighted = true
+                    configuration.trigger()
                 }
             }
             .onHover { isHovering in
