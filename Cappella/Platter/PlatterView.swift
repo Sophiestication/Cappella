@@ -5,31 +5,35 @@
 import SwiftUI
 import AppKit
 
-struct PlatterView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct PlatterView<Content>: View where Content: View {
+    private let content: () -> Content
+
+    init(
+        @ViewBuilder _ content: @escaping () -> Content
+    ) {
+        self.content = content
     }
 
-    private func makeBackgroundView() -> NSView {
-        let backgroundView = NSVisualEffectView()
+    var body: some View {
+        makeBackgroundView()
+            .containerRelativeFrame([ .horizontal, .vertical ])
+            .overlay(content())
+    }
 
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundView.autoresizingMask = [ .width, .height ]
-
-        backgroundView.material = .underWindowBackground
-        backgroundView.state = .active
-
-        backgroundView.wantsLayer = true
-
-        if let layer = backgroundView.layer {
-            layer.cornerRadius = 16.0
-            layer.cornerCurve = .continuous
-        }
-
-        return backgroundView
+    @ViewBuilder
+    private func makeBackgroundView() -> some View {
+        VisualEffectView(
+            material: .underWindowBackground,
+            blendingMode: .behindWindow,
+            state: .active,
+            cornerRadius: 16.0
+        )
     }
 }
 
 #Preview {
-    PlatterView()
+    PlatterView {
+        Text("Hello, world!")
+            .padding()
+    }
 }

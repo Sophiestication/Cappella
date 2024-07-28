@@ -16,32 +16,25 @@ class Cappella: NSObject, NSApplicationDelegate {
         let contentHeight = 720.0
 
         // Init application window
-        applicationWindow = PlatterWindow(contentRect: NSRect(
+        let applicationWindowRect = NSRect(
             x: 0.0, y: 0.0,
-            width: contentWidth, height: contentHeight))
-
-        let hostingView = NSHostingView(rootView: ApplicationView())
-        hostingView.frame = applicationWindow.contentView!.bounds
-        hostingView.autoresizingMask = [.width, .height]
-
-        applicationWindow.contentView?.addSubview(hostingView)
+            width: contentWidth, height: contentHeight)
+        applicationWindow = PlatterWindow(contentRect: applicationWindowRect) {
+            ApplicationView()
+        }
 
         // Init now playing window
         let nowPlayingHeight = 44.0
         let horizontalPadding = 10.0
 
-        nowPlayingWindow = PlatterWindow(contentRect: NSRect(
+        let nowPlayingWindowRect = NSRect(
             x: horizontalPadding,
             y: 5.0,
             width: contentWidth - horizontalPadding * 2.0,
             height: nowPlayingHeight)
-        )
-
-        let nowPlayingView = NSHostingView(rootView: NowPlayingView())
-        nowPlayingView.frame = nowPlayingWindow.contentView!.bounds
-        nowPlayingView.autoresizingMask = [.width, .height]
-
-        nowPlayingWindow.contentView?.addSubview(nowPlayingView)
+        nowPlayingWindow = PlatterWindow(contentRect: nowPlayingWindowRect) {
+            NowPlayingView()
+        }
 
         applicationWindow.dockedPlatter = nowPlayingWindow
 

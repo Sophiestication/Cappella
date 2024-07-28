@@ -3,10 +3,12 @@
 //
 
 import Cocoa
+import SwiftUI
 
 class PlatterWindow: NSPanel {
-    convenience init(
-        contentRect: NSRect
+    init(
+        contentRect: NSRect,
+        @ViewBuilder _ content: @escaping () -> some View
     ) {
         let style: NSWindow.StyleMask = [
             .borderless,
@@ -14,7 +16,7 @@ class PlatterWindow: NSPanel {
             .utilityWindow
         ]
 
-        self.init(
+        super.init(
             contentRect: contentRect,
             styleMask: style,
             backing: .buffered,
@@ -29,15 +31,19 @@ class PlatterWindow: NSPanel {
 
         self.isExcludedFromWindowsMenu = true
 
-        let backgroundView = makeBackgroundView()
-
-        if let contentView = self.contentView {
-            backgroundView.frame = contentView.frame
-            contentView.addSubview(backgroundView)
-        }
-
         self.backgroundColor = .clear
         self.hasShadow = true
+
+        let hostingView = NSHostingView(rootView: PlatterView {
+            content()
+        })
+
+        if let contentView = self.contentView {
+            hostingView.frame = contentView.bounds
+            hostingView.autoresizingMask = [.width, .height]
+
+            contentView.addSubview(hostingView)
+        }
 
         NotificationCenter.default.addObserver(
             self,
@@ -73,33 +79,6 @@ class PlatterWindow: NSPanel {
 
     @objc private func windowDidMove(_ notification: Notification) {
 //        layoutDockedPlatter()
-    }
-
-    func application(_ application: NSApplication, willEncodeRestorableState coder: NSCoder) {
-    
-    }
-
-    func application(_ application: NSApplication, didDecodeRestorableState coder: NSCoder) {
-
-    }
-
-    private func makeBackgroundView() -> NSView {
-        let backgroundView = NSVisualEffectView()
-
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundView.autoresizingMask = [ .width, .height ]
-
-        backgroundView.material = .underWindowBackground
-        backgroundView.state = .active
-
-        backgroundView.wantsLayer = true
-
-        if let layer = backgroundView.layer {
-            layer.cornerRadius = 16.0
-            layer.cornerCurve = .continuous
-        }
-
-        return backgroundView
     }
 
     private func layoutDockedPlatter() {
