@@ -11,9 +11,7 @@ class PlatterWindow: NSPanel {
         @ViewBuilder _ content: @escaping () -> some View
     ) {
         let style: NSWindow.StyleMask = [
-            .borderless,
-            .nonactivatingPanel,
-            .utilityWindow
+            .borderless
         ]
 
         super.init(

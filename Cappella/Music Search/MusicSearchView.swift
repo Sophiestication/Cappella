@@ -3,15 +3,23 @@
 //
 
 import SwiftUI
-@preconcurrency import MusicKit
+import MusicKit
 import Combine
 import Variablur
 
 struct MusicSearchView: View {
-    @State private var musicSearch = MusicSearchViewModel()
+    @State private var musicSearch = MusicSearch()
 
     @State private var headerDimension = 60.0
     @State private var footerDimension = 60.0
+
+    @FocusState private var searchfieldFocused: Bool
+
+    private typealias MusicPlayerType = ApplicationMusicPlayer
+
+    private typealias ResultItem = MusicSearch.ResultItem
+    @State private var selectedResultItem: ResultItem? = nil
+    @State private var selectedEntry: ResultItem.Entry? = nil
 
     var body: some View {
         GeometryReader { geometry in
@@ -25,18 +33,18 @@ struct MusicSearchView: View {
                     LazyVStack(
                         spacing: 10.0
                     ) {
-                        ForEach(musicSearch.results, id: \.id) { album in
-                            makeView(for: album, containerWidth: geometry.size.width)
+                        ForEach(musicSearch.results, id: \.collection.id) { resultItem in
+                            makeView(for: resultItem, containerWidth: geometry.size.width)
                         }
                     }
                     .padding(.top, 20.0)
                     .padding(.bottom, footerDimension)
                 }
             }
-//            .overlay(makeFooterView(), alignment: .bottom)
         }
         .onAppear {
-            musicSearch.term = "zombie"
+            musicSearch.term = "love"
+            searchfieldFocused = true
         }
     }
 
@@ -78,6 +86,8 @@ struct MusicSearchView: View {
 
                 .textFieldStyle(.plain)
 
+                .focused($searchfieldFocused)
+
                 .onKeyPress(.downArrow) {
                     .handled
                 }
@@ -93,17 +103,23 @@ struct MusicSearchView: View {
     }
 
     @ViewBuilder
-    private func makeView(for album: Album, containerWidth: CGFloat) -> some View {
+    private func makeView(
+        for resultItem: ResultItem,
+        containerWidth: CGFloat
+    ) -> some View {
         HStack(alignment: .top, spacing: 0.0) {
             Group {
                 VStack(alignment: .trailing) {
-                    makeArtworkView(for: album)
-                    Text(album.title)
+                    makeArtworkView(for: resultItem.collection)
+                    Text(resultItem.collection.title)
                         .font(.headline)
                         .lineLimit(4)
-                    Text(album.artistName)
-                        .font(.subheadline)
-                        .lineLimit(1)
+
+                    if let subtitle = resultItem.collection.subtitle {
+                        Text(subtitle)
+                            .font(.subheadline)
+                            .lineLimit(1)
+                    }
                 }
                 .focusSection()
                 .padding(.trailing, 5.0)
@@ -113,15 +129,8 @@ struct MusicSearchView: View {
 
             Group {
                 VStack(alignment: .leading, spacing: 0.0) {
-                    if let tracks = album.tracks {
-                        ForEach(tracks, id: \.id) { track in
-                            switch track {
-                            case .song(let song):
-                                makeMenuItem(for: song)
-                            default:
-                                EmptyView()
-                            }
-                        }
+                    ForEach(resultItem.entries, id: \.id) { entry in
+                        makeMenuItem(for: entry, in: resultItem)
                     }
                 }
                 .focusSection()
@@ -135,8 +144,8 @@ struct MusicSearchView: View {
     private static let artworkDimension: Int = 64
 
     @ViewBuilder
-    private func makeArtworkView(for album: Album) -> some View {
-        if let artwork = album.artwork {
+    private func makeArtworkView(for entry: ResultItem.Entry) -> some View {
+        if let artwork = entry.artwork {
             ArtworkImage(
                 artwork,
                 width: CGFloat(MusicSearchView.artworkDimension)
@@ -161,13 +170,39 @@ struct MusicSearchView: View {
     }
 
     @ViewBuilder
-    private func makeMenuItem(for song: Song) -> some View {
+    private func makeMenuItem(
+        for entry: ResultItem.Entry,
+        in resultItem: ResultItem
+    ) -> some View {
         Button(action: {
-
+            play(resultItem, startingAt: entry)
         }, label: {
-            Text(song.title)
+            Text(entry.title)
         })
         .buttonStyle(.menu)
+        .onHover { isHovering in
+            if isHovering {
+                selectedResultItem = resultItem
+                selectedEntry = entry
+            } else {
+                selectedResultItem = nil
+                selectedEntry = nil
+            }
+        }
+        .environment(\.isHighlighted, selectedEntry == entry)
+    }
+
+    private func play(_ resultItem: ResultItem, startingAt entry: ResultItem.Entry) {
+        let player = MusicPlayerType.shared
+
+        player.queue = MusicPlayerType.Queue(
+            resultItem.entries,
+            startingAt: entry
+        )
+
+        Task {
+            try await player.play()
+        }
     }
 }
 

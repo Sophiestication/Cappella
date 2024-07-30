@@ -6,18 +6,23 @@ import SwiftUI
 import MusicKit
 
 struct NowPlayingView: View {
-    private let musicPlayer = ApplicationMusicPlayer.shared
+    @State private var authorizationStatus = MusicAuthorization.currentStatus
 
     var body: some View {
-        VStack {
-            if let title = musicPlayer.queue.currentEntry?.title {
-                Text(title)
-            }
+        switch authorizationStatus {
+        case .authorized:
+            makeContentView()
+        default:
+            Color.red
+        }
+    }
 
+    @ViewBuilder
+    private func makeContentView() -> some View {
+        VStack {
             PlaybackView()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-//        .background(.red.opacity(0.75))
     }
 }
 

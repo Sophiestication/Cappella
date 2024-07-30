@@ -13,7 +13,6 @@
 		E60946F62C4B9986009D90BA /* MusicSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60946F52C4B9986009D90BA /* MusicSearchView.swift */; };
 		E6283F9A2C41739400158C13 /* ApplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6283F992C41739400158C13 /* ApplicationView.swift */; };
 		E63C52332C4D29CD00CAEB2F /* Glur in Frameworks */ = {isa = PBXBuildFile; productRef = E63C52322C4D29CD00CAEB2F /* Glur */; };
-		E63C52352C528EE100CAEB2F /* MusicSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63C52342C528EE100CAEB2F /* MusicSearchViewModel.swift */; };
 		E666112B2C2C1782007839E6 /* Cappella.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666112A2C2C1782007839E6 /* Cappella.swift */; };
 		E666112D2C2C1783007839E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E666112C2C2C1783007839E6 /* Assets.xcassets */; };
 		E66611302C2C1783007839E6 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = E666112F2C2C1783007839E6 /* Base */; };
@@ -23,6 +22,7 @@
 		E667CD752C550391000718FC /* ContentScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E667CD742C550391000718FC /* ContentScrollView.swift */; };
 		E667CD792C55FC74000718FC /* Variablur in Frameworks */ = {isa = PBXBuildFile; productRef = E667CD782C55FC74000718FC /* Variablur */; };
 		E667CD7C2C560841000718FC /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E667CD7B2C560841000718FC /* VisualEffectView.swift */; };
+		E684138A2C5899E20019FB15 /* MusicSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68413892C5899E20019FB15 /* MusicSearch.swift */; };
 		E6A81D122C4177C300DAC24B /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A81D112C4177C300DAC24B /* NowPlayingView.swift */; };
 		E6A81D142C4177DF00DAC24B /* PlaybackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A81D132C4177DF00DAC24B /* PlaybackView.swift */; };
 		E6A81D162C417D0F00DAC24B /* ArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A81D152C417D0F00DAC24B /* ArtworkView.swift */; };
@@ -54,7 +54,6 @@
 		E60946F12C4AC2EA009D90BA /* AuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
 		E60946F52C4B9986009D90BA /* MusicSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchView.swift; sourceTree = "<group>"; };
 		E6283F992C41739400158C13 /* ApplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationView.swift; sourceTree = "<group>"; };
-		E63C52342C528EE100CAEB2F /* MusicSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchViewModel.swift; sourceTree = "<group>"; };
 		E66611272C2C1782007839E6 /* Cappella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cappella.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E666112A2C2C1782007839E6 /* Cappella.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cappella.swift; sourceTree = "<group>"; };
 		E666112C2C2C1783007839E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,6 +66,7 @@
 		E66611462C2C1783007839E6 /* CappellaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CappellaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E667CD742C550391000718FC /* ContentScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentScrollView.swift; sourceTree = "<group>"; };
 		E667CD7B2C560841000718FC /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
+		E68413892C5899E20019FB15 /* MusicSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearch.swift; sourceTree = "<group>"; };
 		E6A81D112C4177C300DAC24B /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
 		E6A81D132C4177DF00DAC24B /* PlaybackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackView.swift; sourceTree = "<group>"; };
 		E6A81D152C417D0F00DAC24B /* ArtworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkView.swift; sourceTree = "<group>"; };
@@ -171,8 +171,8 @@
 			isa = PBXGroup;
 			children = (
 				E6030FE92C4D0C770085C9FA /* MenuButtonStyle.swift */,
+				E68413892C5899E20019FB15 /* MusicSearch.swift */,
 				E60946F52C4B9986009D90BA /* MusicSearchView.swift */,
-				E63C52342C528EE100CAEB2F /* MusicSearchViewModel.swift */,
 			);
 			path = "Music Search";
 			sourceTree = "<group>";
@@ -353,10 +353,10 @@
 			files = (
 				E6F11E592C56A9BA00AA45FC /* PlatterView.swift in Sources */,
 				E6030FEC2C4D0D260085C9FA /* TextButtonStyle.swift in Sources */,
+				E684138A2C5899E20019FB15 /* MusicSearch.swift in Sources */,
 				E6ADDBF42C3B0B8F0088D9C8 /* CappellaMenuExtra.swift in Sources */,
 				E6ADDBF22C3532AF0088D9C8 /* PlatterWindow.swift in Sources */,
 				E6A81D162C417D0F00DAC24B /* ArtworkView.swift in Sources */,
-				E63C52352C528EE100CAEB2F /* MusicSearchViewModel.swift in Sources */,
 				E60946F62C4B9986009D90BA /* MusicSearchView.swift in Sources */,
 				E6283F9A2C41739400158C13 /* ApplicationView.swift in Sources */,
 				E6030FEA2C4D0C770085C9FA /* MenuButtonStyle.swift in Sources */,
@@ -545,6 +545,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = CoverSutra;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "CoverSutra helps you to search and play Apple Music content.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -575,6 +576,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = CoverSutra;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "CoverSutra helps you to search and play Apple Music content.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
