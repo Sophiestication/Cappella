@@ -90,9 +90,20 @@ class MusicSearch {
             }
         }
 
+        let songs = tracks.compactMap { track -> Song? in
+            switch track {
+            case .song(let song):
+                return song
+            default:
+                return nil
+            }
+        }
+
         return ResultItem(
-            ResultItem.Entry(album),
-            entries
+            ResultItem.Entry(detailedAlbum),
+            entries,
+            album: detailedAlbum,
+            songs: songs
         )
     }
 
@@ -115,14 +126,20 @@ class MusicSearch {
 
 extension MusicSearch {
     struct ResultItem {
-        typealias Entry = MusicPlayer.Queue.Entry
+        typealias Entry = ApplicationMusicPlayer.Queue.Entry
 
         var collection: Entry
         var entries: [Entry]
 
-        init(_ collection: Entry, _ entries: [Entry]) {
+        var album: Album
+        var songs: [Song]
+
+        init(_ collection: Entry, _ entries: [Entry], album: Album, songs: [Song]) {
             self.collection = collection
             self.entries = entries
+
+            self.album = album
+            self.songs = songs
         }
     }
 }

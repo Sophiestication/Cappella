@@ -30,7 +30,7 @@ struct PlaybackView: View {
             })
 
             Button(action: {
-
+                skipToNextEntry()
             }, label: {
                 Image(systemName: "forward.fill")
             })
@@ -47,6 +47,14 @@ struct PlaybackView: View {
             Task {
                 try await player.play()
             }
+        }
+    }
+
+    private func skipToNextEntry() {
+        let player = MusicPlayerType.shared
+
+        Task {
+            try await player.skipToNextEntry()
         }
     }
 }
