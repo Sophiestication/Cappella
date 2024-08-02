@@ -90,20 +90,9 @@ class MusicSearch {
             }
         }
 
-        let songs = tracks.compactMap { track -> Song? in
-            switch track {
-            case .song(let song):
-                return song
-            default:
-                return nil
-            }
-        }
-
         return ResultItem(
             ResultItem.Entry(detailedAlbum),
-            entries,
-            album: detailedAlbum,
-            songs: songs
+            entries
         )
     }
 
@@ -131,15 +120,9 @@ extension MusicSearch {
         var collection: Entry
         var entries: [Entry]
 
-        var album: Album
-        var songs: [Song]
-
-        init(_ collection: Entry, _ entries: [Entry], album: Album, songs: [Song]) {
+        init(_ collection: Entry, _ entries: [Entry]) {
             self.collection = collection
             self.entries = entries
-
-            self.album = album
-            self.songs = songs
         }
     }
 }

@@ -11,7 +11,7 @@ class PlatterWindow: NSPanel {
         @ViewBuilder _ content: @escaping () -> some View
     ) {
         let style: NSWindow.StyleMask = [
-            .borderless
+            .borderless, .nonactivatingPanel
         ]
 
         super.init(
@@ -31,6 +31,8 @@ class PlatterWindow: NSPanel {
 
         self.backgroundColor = .clear
         self.hasShadow = true
+
+        self.becomesKeyOnlyIfNeeded = true
 
         let hostingView = NSHostingView(rootView: PlatterView {
             content()

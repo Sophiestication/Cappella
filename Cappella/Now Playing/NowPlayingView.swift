@@ -9,7 +9,9 @@ struct NowPlayingView: View {
     private typealias MusicPlayerType = ApplicationMusicPlayer
 
     @State private var authorizationStatus = MusicAuthorization.currentStatus
+
     @ObservedObject private var queue = MusicPlayerType.shared.queue
+    @State private var currentEntry: MusicPlayerType.Queue.Entry? = nil
 
     var body: some View {
         switch authorizationStatus {
@@ -23,7 +25,7 @@ struct NowPlayingView: View {
     @ViewBuilder
     private func makeContentView() -> some View {
         HStack {
-            if let entry = queue.currentEntry {
+            if let entry = currentEntry {
                 makeArtworkView(for: entry)
                 Text("\(entry.title)")
                     .lineLimit(1)
@@ -35,6 +37,16 @@ struct NowPlayingView: View {
                 .disabled(queue.currentEntry == nil)
         }
         .padding(.horizontal)
+        .onChange(of: queue.currentEntry, initial: false) { oldValue, newValue in
+            if let entry = newValue {
+                if entry.isTransient == false {
+                    currentEntry = entry
+                    return
+                }
+            }
+
+            currentEntry = nil
+        }
     }
 
     private static let artworkDimension: Int = 24
