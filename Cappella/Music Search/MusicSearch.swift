@@ -126,3 +126,59 @@ extension MusicSearch {
         }
     }
 }
+
+extension MusicSearch {
+    struct EntrySequence<
+        S: Sequence,
+        T: Sequence
+    >: Sequence, IteratorProtocol where S.Element == ResultItem, T.Element == S.Element.Entry {
+        private var items: S.Iterator
+        private var currentItem: S.Element? = nil
+
+        private var entries: T.Iterator? = nil
+
+        init(sequence: S) {
+            self.items = sequence.makeIterator()
+        }
+
+        typealias Element = (ResultItem, ResultItem.Entry)
+
+        mutating func next() -> Element? {
+            if currentItem == nil {
+                currentItem = self.items.next()
+                entries = nil
+            }
+
+            guard let item = currentItem else { return nil }
+
+            if entries == nil {
+                entries = item.entries.makeIterator() as? T.Iterator
+            }
+
+            guard var entries else { return nil }
+            guard let entry = entries.next() else { return nil }
+
+            return (item, entry)
+        }
+    }
+
+    var allEntries: EntrySequence<[ResultItem], [ResultItem.Entry]> {
+        return EntrySequence(sequence: self.results)
+    }
+}
+
+extension Sequence where Element: Equatable {
+    func first(before: Element) -> Element? {
+        var previous: Element? = nil
+
+        for element in self {
+            if element == before {
+                break
+            }
+
+            previous = element
+        }
+
+        return previous
+    }
+}

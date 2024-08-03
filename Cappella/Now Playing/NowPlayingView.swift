@@ -33,7 +33,7 @@ struct NowPlayingView: View {
             Spacer()
 
             PlaybackView()
-//                .disabled(queue.currentEntry == nil)
+                .disabled(queue.currentEntry == nil)
         }
         .padding(.horizontal)
     }

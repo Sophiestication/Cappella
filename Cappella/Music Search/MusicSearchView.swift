@@ -18,6 +18,8 @@ struct MusicSearchView: View {
     @State private var selectedResultItem: ResultItem? = nil
     @State private var selectedEntry: ResultItem.Entry? = nil
 
+    @State private var currentEventModifier: EventModifiers = []
+
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0.0) {
@@ -38,11 +40,55 @@ struct MusicSearchView: View {
                     .padding(.bottom, footerDimension)
                 }
             }
+            .onModifierKeysChanged({ old, new in
+                self.currentEventModifier = new
+            })
+            .onKeyPress(.upArrow) { onUpArrowPress(.upArrow) }
+            .onKeyPress(.downArrow) { onDownArrowPress(.downArrow) }
+            .onKeyPress(.return) { onReturnPress(.return) }
         }
         .onAppear {
             musicSearch.term = "love"
             searchfieldFocused = true
         }
+    }
+
+    private func onUpArrowPress(_ keyEquivalent: KeyEquivalent) -> KeyPress.Result {
+        return .handled
+    }
+
+    private func onDownArrowPress(_ keyEquivalent: KeyEquivalent) -> KeyPress.Result {
+        let results = musicSearch.results
+
+        var resultItem = self.selectedResultItem
+        if resultItem == nil { resultItem = results.first }
+
+        guard let resultItem else { return .ignored }
+
+        var entry = self.selectedEntry
+
+        guard let entry else {
+            self.selectedResultItem = resultItem
+            self.selectedEntry = resultItem.entries.first
+
+            return .handled
+        }
+
+        guard let entryIndex = resultItem.entries.firstIndex(of: entry) else { return .ignored }
+
+        let nextEntryIndex = resultItem.entries.index(after: entryIndex)
+
+        return .handled
+    }
+
+    private func onReturnPress(_ keyEquivalent: KeyEquivalent) -> KeyPress.Result {
+        if let resultItem = self.selectedResultItem,
+           let entry = self.selectedEntry {
+            play(resultItem, startingAt: entry)
+            return .handled
+        }
+
+        return .ignored
     }
 
     @ViewBuilder
@@ -84,10 +130,6 @@ struct MusicSearchView: View {
                 .textFieldStyle(.plain)
 
                 .focused($searchfieldFocused)
-
-                .onKeyPress(.downArrow) {
-                    .handled
-                }
         }
         .font(.system(size: 15.0, weight: .regular, design: .rounded))
         .padding(.vertical, 4.0)

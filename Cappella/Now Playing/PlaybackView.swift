@@ -12,6 +12,7 @@ struct PlaybackView: View {
     var body: some View {
         HStack {
             Button(action: {
+                skipToPreviousEntry()
             }, label: {
                 Image(systemName: "backward.fill")
             })
@@ -55,6 +56,14 @@ struct PlaybackView: View {
 
         Task {
             try await player.skipToNextEntry()
+        }
+    }
+
+    private func skipToPreviousEntry() {
+        let player = MusicPlayerType.shared
+
+        Task {
+            try await player.skipToPreviousEntry()
         }
     }
 }
