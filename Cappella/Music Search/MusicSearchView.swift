@@ -18,26 +18,10 @@ struct MusicSearchView: View {
     @State private var selectedResultItem: ResultItem? = nil
     @State private var selectedEntry: ResultItem.Entry? = nil
 
-    @State private var musicPlayer = CappellaMusicPlayer()
-
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0.0) {
                 makeHeaderView(for: geometry)
-
-                Divider()
-                    .background(.thinMaterial)
-
-                VStack {
-                    if let entry = musicPlayer.currentEntry {
-                        Text("\(entry.title)")
-                            .font(.title)
-                    }
-
-//                    ForEach(MusicPlayerType.shared.queue.entries) { entry in
-//                        Text("\(entry.title)")
-//                    }
-                }
 
                 Divider()
                     .background(.thinMaterial)
@@ -206,10 +190,12 @@ struct MusicSearchView: View {
     }
 
     private func play(_ resultItem: ResultItem, startingAt currentEntry: ResultItem.Entry) {
-        musicPlayer.schedulePlayback(
-            for: resultItem,
-            startingAt: currentEntry
-        )
+        let newQueue = MusicPlayerType.Queue(resultItem.entries, startingAt: currentEntry)
+        MusicPlayerType.shared.queue = newQueue
+
+        Task {
+            try await MusicPlayerType.shared.play()
+        }
     }
 }
 
