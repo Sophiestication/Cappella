@@ -155,8 +155,12 @@ extension MusicSearch {
                 entries = item.entries.makeIterator() as? T.Iterator
             }
 
-            guard var entries else { return nil }
-            guard let entry = entries.next() else { return nil }
+            if entries == nil { return nil }
+
+            guard let entry = entries!.next() else {
+                self.currentItem = nil
+                return next()
+            }
 
             return (item, entry)
         }
@@ -167,12 +171,12 @@ extension MusicSearch {
     }
 }
 
-extension Sequence where Element: Equatable {
-    func first(before: Element) -> Element? {
+extension Sequence {
+    func firstBefore(where predicate: (Self.Element) -> Bool) -> Element? {
         var previous: Element? = nil
 
         for element in self {
-            if element == before {
+            if predicate(element) {
                 break
             }
 
@@ -180,5 +184,17 @@ extension Sequence where Element: Equatable {
         }
 
         return previous
+    }
+
+    func firstAfter(where predicate: (Self.Element) -> Bool) -> Element? {
+        var iterator = makeIterator()
+
+        while let currentElement = iterator.next() {
+            if predicate(currentElement) {
+                return iterator.next()
+            }
+        }
+
+        return nil
     }
 }

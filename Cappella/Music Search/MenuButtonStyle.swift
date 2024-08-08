@@ -6,10 +6,12 @@ import SwiftUI
 
 extension EnvironmentValues {
     @Entry var isHighlighted: Bool = false
+    @Entry var isTriggered: Bool = false
 }
 
 struct MenuButtonStyle: PrimitiveButtonStyle {
     @Environment(\.isHighlighted) var isHighlighted
+    @Environment(\.isTriggered) var isTriggered
 
     @State private var isTriggeringAction = false
     @State private var isHighlightedForTriggerAnimation = false
@@ -35,6 +37,12 @@ struct MenuButtonStyle: PrimitiveButtonStyle {
                 performTrigger(with: configuration)
                 return .handled
             }
+
+            .onChange(of: isTriggered, initial: false) { oldValue, newValue in
+                if newValue == true {
+                    performTrigger(with: configuration)
+                }
+            }
     }
 
     private func performTrigger(with configuration: Self.Configuration) {
@@ -55,7 +63,7 @@ struct MenuButtonStyle: PrimitiveButtonStyle {
         cornerRadius: CGFloat
     ) -> some View {
         RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-            .fill(.selection)
+            .fill(.blue)
             .opacity((isTriggeringAction ? isHighlightedForTriggerAnimation : isHighlighted) ? 1.0 : 0.0)
     }
 }

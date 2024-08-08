@@ -6,7 +6,7 @@ import Cocoa
 import Combine
 
 @MainActor
-class CappellaMenuExtra: NSObject {
+class MenuBarExtra: NSObject {
     private let statusItem: NSStatusItem
     private let window: PlatterWindow
 

@@ -4,12 +4,14 @@
 
 import Cocoa
 import SwiftUI
+import Combine
+import MusicKit
 
 @main @MainActor
 class Cappella: NSObject, NSApplicationDelegate {
     private var applicationWindow: PlatterWindow!
     private var nowPlayingWindow: PlatterWindow!
-    private var menuExtra: CappellaMenuExtra? = nil
+    private var menuBarExtra: MenuBarExtra? = nil
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         let contentWidth = 400.0
@@ -39,7 +41,7 @@ class Cappella: NSObject, NSApplicationDelegate {
         applicationWindow.dockedPlatter = nowPlayingWindow
 
         // Dock to the menu bar
-        menuExtra = CappellaMenuExtra(with: applicationWindow)
+        menuBarExtra = MenuBarExtra(with: applicationWindow)
     }
 
     func applicationWillTerminate(_ notification: Notification) {

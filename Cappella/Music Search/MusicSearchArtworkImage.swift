@@ -6,38 +6,19 @@ import SwiftUI
 import Combine
 import MusicKit
 
-struct NowPlayingView: View {
-    @State private var authorizationStatus = MusicAuthorization.currentStatus
-    @ObservedObject private var queue = ApplicationMusicPlayer.shared.queue
+struct MusicSearchArtworkImage: View {
+    typealias Entry = ApplicationMusicPlayer.Queue.Entry
+    @State var entry: Entry?
 
     var body: some View {
-        switch authorizationStatus {
-        case .authorized:
-            makeContentView()
-        default:
-            Color.red
+        if let entry {
+            makeArtworkImage(for: entry)
+        } else {
+            makePlaceholderView()
         }
     }
 
-    @ViewBuilder
-    private func makeContentView() -> some View {
-        HStack {
-            if let entry = queue.currentEntry {
-                makeArtworkImage(for: entry)
-
-                Text("\(entry.title)")
-                    .lineLimit(1)
-            }
-
-            Spacer()
-
-            PlaybackView()
-                .disabled(queue.currentEntry == nil)
-        }
-        .padding(.horizontal)
-    }
-
-    private static let artworkDimension: Int = 24
+    private static let artworkDimension: Int = 64
 
     @ViewBuilder
     private func makeArtworkImage(for entry: ApplicationMusicPlayer.Queue.Entry) -> some View {
