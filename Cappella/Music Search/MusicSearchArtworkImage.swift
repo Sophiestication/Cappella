@@ -59,7 +59,7 @@ struct MusicSearchArtworkImage: View {
 
     private func makeContentShape() -> some Shape {
         RoundedRectangle(
-            cornerSize: CGSize(width: 4.0, height: 4.0),
+            cornerSize: CGSize(width: 8.0, height: 8.0),
             style: .continuous
         )
     }

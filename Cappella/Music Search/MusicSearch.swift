@@ -91,8 +91,9 @@ class MusicSearch {
         }
 
         return ResultItem(
-            ResultItem.Entry(detailedAlbum),
-            entries
+            id: detailedAlbum.id,
+            collection: ResultItem.Entry(detailedAlbum),
+            entries: entries
         )
     }
 
@@ -114,13 +115,17 @@ class MusicSearch {
 }
 
 extension MusicSearch {
-    struct ResultItem {
+    struct ResultItem: Identifiable {
         typealias Entry = ApplicationMusicPlayer.Queue.Entry
+
+        var id: MusicItemID
 
         var collection: Entry
         var entries: [Entry]
 
-        init(_ collection: Entry, _ entries: [Entry]) {
+        init(id: MusicItemID, collection: Entry, entries: [Entry]) {
+            self.id = id
+
             self.collection = collection
             self.entries = entries
         }

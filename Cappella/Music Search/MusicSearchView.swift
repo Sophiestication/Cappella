@@ -36,9 +36,8 @@ struct MusicSearchView: View {
                         LazyVStack(
                             spacing: 0.0
                         ) {
-                            ForEach(musicSearch.results, id: \.collection.id) { resultItem in
+                            ForEach(musicSearch.results) { resultItem in
                                 makeView(for: resultItem, containerWidth: geometry.size.width)
-                                    .id(resultItem.collection.id)
                                     .padding(.top, 10.0)
                                     .scrollTargetLayout()
                             }
