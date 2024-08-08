@@ -10,15 +10,18 @@ struct MusicSearchArtworkImage: View {
     typealias Entry = ApplicationMusicPlayer.Queue.Entry
     @State var entry: Entry?
 
-    var body: some View {
-        if let entry {
-            makeArtworkImage(for: entry)
-        } else {
-            makePlaceholderView()
-        }
-    }
+    private let dimension: Int = 64
 
-    private static let artworkDimension: Int = 64
+    var body: some View {
+        Group {
+            if let entry {
+                makeArtworkImage(for: entry)
+            } else {
+                makePlaceholderView()
+            }
+        }
+        .frame(width: CGFloat(dimension), height: CGFloat(dimension))
+    }
 
     @ViewBuilder
     private func makeArtworkImage(for entry: ApplicationMusicPlayer.Queue.Entry) -> some View {
@@ -33,8 +36,7 @@ struct MusicSearchArtworkImage: View {
     @ViewBuilder
     private func makeArtworkImage(
         for artwork: Artwork,
-        _ url: URL,
-        dimension: Int = Self.artworkDimension
+        _ url: URL
     ) -> some View {
         AsyncImage(url: url) { image in
             image
@@ -49,10 +51,9 @@ struct MusicSearchArtworkImage: View {
                 makePlaceholderView()
             }
         }
-        .frame(width: CGFloat(dimension), height: CGFloat(dimension))
     }
 
-    private func makeURL(for artwork: Artwork, dimension: Int = Self.artworkDimension) -> URL? {
+    private func makeURL(for artwork: Artwork) -> URL? {
         artwork.url(width: dimension, height: dimension)
     }
 

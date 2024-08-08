@@ -7,8 +7,10 @@ import Combine
 import MusicKit
 
 struct NowPlayingView: View {
+    typealias MusicPlayerType = ApplicationMusicPlayer
+    @ObservedObject private var queue = MusicPlayerType.shared.queue
+
     @State private var authorizationStatus = MusicAuthorization.currentStatus
-    @ObservedObject private var queue = ApplicationMusicPlayer.shared.queue
 
     var body: some View {
         switch authorizationStatus {
@@ -24,6 +26,10 @@ struct NowPlayingView: View {
         HStack {
             if let entry = queue.currentEntry {
                 makeArtworkImage(for: entry)
+                    .frame(
+                        width: CGFloat(Self.artworkDimension),
+                        height: CGFloat(Self.artworkDimension)
+                    )
 
                 Text("\(entry.title)")
                     .lineLimit(1)
@@ -40,7 +46,7 @@ struct NowPlayingView: View {
     private static let artworkDimension: Int = 24
 
     @ViewBuilder
-    private func makeArtworkImage(for entry: ApplicationMusicPlayer.Queue.Entry) -> some View {
+    private func makeArtworkImage(for entry: MusicPlayerType.Queue.Entry) -> some View {
         if let artwork = entry.artwork,
            let url = makeURL(for: artwork) {
             makeArtworkImage(for: artwork, url)
@@ -68,7 +74,6 @@ struct NowPlayingView: View {
                 makePlaceholderView()
             }
         }
-        .frame(width: CGFloat(dimension), height: CGFloat(dimension))
     }
 
     private func makeURL(for artwork: Artwork, dimension: Int = Self.artworkDimension) -> URL? {
