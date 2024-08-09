@@ -43,18 +43,22 @@ struct MusicSearchView: View {
                             }
                         }
                         .padding(.bottom, footerDimension)
+                        .id("scroll-container")
                     }
                 }
 
                 .onAppear {
-                    musicSearch.term = "hell"
+                    musicSearch.term = "queen dead"
                     searchFieldFocused = true
                 }
 
-                .onChange(of: musicSearch.term, initial: false) {
-                    self.selectedResultItem = nil
-                    self.selectedEntry = nil
+                .onChange(of: musicSearch.scope, initial: false) {
+                    resetForNewSearch(with: scrollProxy)
                 }
+                .onChange(of: musicSearch.term, initial: false) {
+                    resetForNewSearch(with: scrollProxy)
+                }
+
 //                .onChange(of: selectedResultItem?.collection, initial: true) {
 //                    if let anchor = selectedResultItem?.collection.id {
 //                        scrollProxy.scrollTo(anchor)
@@ -69,6 +73,13 @@ struct MusicSearchView: View {
                 .onKeyPress(.return) { onReturnPress(.return) }
             }
         }
+    }
+
+    private func resetForNewSearch(with scrollProxy: ScrollViewProxy) {
+        self.selectedResultItem = nil
+        self.selectedEntry = nil
+
+        scrollProxy.scrollTo("scroll-container")
     }
 
     private func onUpArrowPress(_ keyEquivalent: KeyEquivalent) -> KeyPress.Result {
@@ -141,7 +152,7 @@ struct MusicSearchView: View {
     @ViewBuilder
     private func makeSearchField() -> some View {
         HStack(alignment: .center) {
-            Image(systemName: "magnifyingglass")
+            makeSearchScopeImage(for: musicSearch.scope)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 14.0)
@@ -154,7 +165,7 @@ struct MusicSearchView: View {
                 .focused($searchFieldFocused)
 
                 .onKeyPress(.tab, action: {
-                    print("tab")
+                    toggleSearchScope()
                     return .handled
                 })
         }
@@ -166,6 +177,27 @@ struct MusicSearchView: View {
         )
         .padding(.vertical)
         .padding(.trailing, 15.0)
+    }
+
+    private func makeSearchScopeImage(for scope: MusicSearch.Scope) -> Image {
+        switch scope {
+        case .all:
+            return Image(systemName: "magnifyingglass")
+        case .album:
+            return Image(systemName: "music.note.list")
+        case .artist:
+            return Image(systemName: "music.microphone")
+        }
+    }
+
+    private func toggleSearchScope() {
+        let scope = musicSearch.scope
+
+        if currentEventModifier.contains(.option) {
+            musicSearch.scope = scope.reverse()
+        } else {
+            musicSearch.scope = scope.advance()
+        }
     }
 
     @ViewBuilder
@@ -243,6 +275,26 @@ struct MusicSearchView: View {
         Task {
             try await MusicPlayerType.shared.play()
         }
+    }
+}
+
+fileprivate extension MusicSearch.Scope {
+    func advance() -> Self {
+        let allCases = Self.allCases
+
+        let currentIndex = allCases.firstIndex(of: self)!
+        let nextIndex = (currentIndex + 1) % allCases.count
+
+        return allCases[nextIndex]
+    }
+
+    func reverse() -> Self {
+        let allCases = Self.allCases
+
+        let currentIndex = allCases.firstIndex(of: self)!
+        let previousIndex = (currentIndex - 1 + allCases.count) % allCases.count
+
+        return allCases[previousIndex]
     }
 }
 

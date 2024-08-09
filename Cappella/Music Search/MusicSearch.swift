@@ -8,19 +8,51 @@ import MusicKit
 
 @Observable @MainActor
 class MusicSearch {
+    enum Scope: CaseIterable {
+        case all
+        case album
+        case artist
+    }
+
+    var scope: Scope = .all {
+        didSet {
+            scheduleSearch()
+        }
+    }
+
     var term: String = "" {
         didSet {
-            termSubject.send((term, requestToken()))
+            scheduleSearch()
         }
     }
 
     private(set) var results: [ResultItem] = []
 
+    private struct RequestParameters {
+        let scope: Scope
+        let term: String
+
+        typealias TokenType = Int
+        let token: TokenType
+
+        init() {
+            self.term = ""
+            self.scope = .album
+            self.token = -1
+        }
+
+        init(_ term: String, in scope: Scope, token: TokenType) {
+            self.term = term
+            self.scope = scope
+            self.token = token
+        }
+    }
+
     private typealias TermSubjectType = CurrentValueSubject <
-        (String, Int),
+        RequestParameters,
         Never
     >
-    private let termSubject = TermSubjectType(("", -1))
+    private let termSubject = TermSubjectType(RequestParameters())
     private var cancellable: AnyCancellable? = nil
 
     private var currentToken: Int = 0
@@ -33,36 +65,122 @@ class MusicSearch {
                 scheduler: RunLoop.main,
                 latest: true
             )
-            .sink { value in
-                let term = value.0
-                let token = value.1
-
-                if term.isEmpty {
-                    self.updateSearchResults(with: [], token: token)
+            .sink { requestParameters in
+                if requestParameters.term.isEmpty {
+                    self.updateSearchResults(with: [], token: requestParameters.token)
                 } else {
                     Task { [weak self] in
                         guard let self else { return }
 
-                        try await self.performSearch(for: term, token: token)
+                        try await self.performSearch(for: requestParameters)
                     }
                 }
             }
     }
 
-    private func performSearch(for searchTerm: String, token: Int) async throws {
+    private func performSearch(for requestParameters: RequestParameters) async throws {
+        let termComponents = requestParameters
+            .term
+            .components(separatedBy: .whitespacesAndNewlines)
+            .filter { $0.count > 1 }
+        let preparedTerm = termComponents
+            .joined(separator: " ")
+
+        let scope = requestParameters.scope
+
+        var results = [ResultItem]()
+
+        if preparedTerm.isEmpty == false {
+            switch scope {
+            case .all:
+                let albumResults = try await resultItems(matching: termComponents, scope: .album)
+                let artistResults = try await resultItems(for: preparedTerm, scope: .artist)
+
+                results = [albumResults, artistResults]
+                    .flatMap { $0 }
+                    .reduce(into: [ResultItem]()) { newValue, item in
+                        if newValue.contains(where: {
+                            $0.id == item.id
+                        }) == false {
+                            newValue.append(item)
+                        }
+                    }
+                break
+            case .album:
+                results = try await resultItems(matching: termComponents, scope: scope)
+                break
+            case .artist:
+                results = try await resultItems(for: preparedTerm, scope: scope)
+                break
+            }
+        }
+
+        results = results.sorted(by: { first, second in
+            guard let firstSubtitle = first.collection.subtitle,
+                  let secondSubtitle = second.collection.subtitle else {
+                return first.collection.title < second.collection.title
+            }
+
+            return firstSubtitle < secondSubtitle
+        })
+
+        self.updateSearchResults(with: results, token: requestParameters.token)
+    }
+
+    private func resultItems(
+        matching terms: [String],
+        scope: Scope,
+        limit: Int = 15
+    ) async throws -> [ResultItem] {
+        var resultSets = [[ResultItem]]()
+
+        for term in terms {
+            let items = try await resultItems(for: term, scope: scope, limit: limit)
+//            print("\(term): \(items.map { $0.collection.title })")
+            resultSets.append(items)
+        }
+
+        guard let firstSet = resultSets.first else { return [] }
+
+        var commonItems = [ResultItem]()
+
+        for item in firstSet {
+            if resultSets.dropFirst().allSatisfy({ $0.contains(where: { $0.id == item.id }) }) {
+                commonItems.append(item)
+            }
+        }
+
+        return commonItems
+    }
+
+    private func resultItems(
+        for term: String,
+        scope: Scope,
+        limit: Int = 15
+    ) async throws -> [ResultItem] {
         var libraryRequest = MusicLibraryRequest<Album>()
 
-        libraryRequest.limit = 15
-        libraryRequest.filter(
-            matching: \.title,
-            contains: searchTerm
-        )
+        libraryRequest.limit = limit
+
+        switch scope {
+        case .all:
+            libraryRequest.filter(text: term)
+            break
+        case .album:
+            libraryRequest.filter(matching: \.title, contains: term)
+            break
+        case .artist:
+            libraryRequest.filter(matching: \.artistName, contains: term)
+            break
+        }
+
         libraryRequest.sort(
             by: \.libraryAddedDate,
             ascending: true
         )
 
         let response = try await libraryRequest.response()
+
         var results: [ResultItem] = []
 
         for album in response.items {
@@ -71,7 +189,7 @@ class MusicSearch {
             }
         }
 
-        self.updateSearchResults(with: results, token: token)
+        return results
     }
 
     private func makeResultItem(for album: Album) async throws -> ResultItem? {
@@ -95,6 +213,14 @@ class MusicSearch {
             collection: ResultItem.Entry(detailedAlbum),
             entries: entries
         )
+    }
+
+    private func scheduleSearch() {
+        termSubject.send(RequestParameters(
+            term,
+            in: scope,
+            token: requestToken()
+        ))
     }
 
     private func requestToken() -> Int {

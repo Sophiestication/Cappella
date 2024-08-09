@@ -26,64 +26,38 @@
                   </ActionContent>
                </BreakpointActionProxy>
             </Actions>
-            <Locations>
-               <Location
-                  uuid = "D052D39A-6219-4782-B627-06AA7ED677C7 - 224050d71c233db4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Cappella.CappellaMusicPlayer.playScheduledEntryIfNeeded() -&gt; ()"
-                  moduleName = "Cappella.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sophiestication/Developer/Sophiestication/Cappella/Cappella/Application/CappellaMusicPlayer.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "147"
-                  endingLineNumber = "147">
-               </Location>
-               <Location
-                  uuid = "D052D39A-6219-4782-B627-06AA7ED677C7 - baae93f546fdc7d0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for closure #1 @Sendable () async throws -&gt; () in Cappella.CappellaMusicPlayer.playScheduledEntryIfNeeded() -&gt; ()"
-                  moduleName = "Cappella.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sophiestication/Developer/Sophiestication/Cappella/Cappella/Application/CappellaMusicPlayer.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "147"
-                  endingLineNumber = "147">
-               </Location>
-               <Location
-                  uuid = "D052D39A-6219-4782-B627-06AA7ED677C7 - 7e9411dae18a79b2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Cappella.CappellaMusicPlayer.playScheduledEntryIfNeeded() -&gt; ()"
-                  moduleName = "Cappella.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sophiestication/Developer/Sophiestication/Cappella/Cappella/Application/CappellaMusicPlayer.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "147"
-                  endingLineNumber = "147">
-               </Location>
-               <Location
-                  uuid = "D052D39A-6219-4782-B627-06AA7ED677C7 - a732325f54c5dbb1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Cappella.CappellaMusicPlayer.playScheduledEntryIfNeeded() -&gt; ()"
-                  moduleName = "Cappella.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sophiestication/Developer/Sophiestication/Cappella/Cappella/Application/CappellaMusicPlayer.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "147"
-                  endingLineNumber = "147">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B6F42F07-6FE7-4806-86DF-994A1423048C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cappella/Music Search/MusicSearchView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "50C17992-EA59-46EE-A162-C03DD156791C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cappella/Music Search/MusicSearch.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "resultItems(matching:scope:limit:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
