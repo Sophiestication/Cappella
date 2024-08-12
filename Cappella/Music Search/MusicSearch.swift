@@ -37,7 +37,7 @@ class MusicSearch {
 
         init() {
             self.term = ""
-            self.scope = .album
+            self.scope = .all
             self.token = -1
         }
 
@@ -216,11 +216,12 @@ class MusicSearch {
     }
 
     private func scheduleSearch() {
-        termSubject.send(RequestParameters(
+        let request = RequestParameters(
             term,
             in: scope,
             token: requestToken()
-        ))
+        )
+        termSubject.send(request)
     }
 
     private func requestToken() -> Int {

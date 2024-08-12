@@ -6,6 +6,8 @@ import Cocoa
 import SwiftUI
 
 class PlatterWindow: NSPanel {
+    private var geometry: PlatterGeometry
+
     init(
         contentRect: NSRect,
         @ViewBuilder _ content: @escaping () -> some View
@@ -13,6 +15,10 @@ class PlatterWindow: NSPanel {
         let style: NSWindow.StyleMask = [
             .borderless, .nonactivatingPanel
         ]
+
+        geometry = PlatterGeometry(
+            containerSize: contentRect.size
+        )
 
         super.init(
             contentRect: contentRect,
@@ -30,12 +36,14 @@ class PlatterWindow: NSPanel {
         self.isExcludedFromWindowsMenu = true
 
         self.backgroundColor = .clear
-        self.hasShadow = true
+        self.hasShadow = false
 
         self.becomesKeyOnlyIfNeeded = true
 
-        let hostingView = NSHostingView(rootView: PlatterView {
+        let hostingView = NSHostingView(rootView: PlatterView { [self] in
             content()
+                .environment(\.platterGeometry, geometry)
+                .ignoresSafeArea(.all)
         })
 
         if let contentView = self.contentView {

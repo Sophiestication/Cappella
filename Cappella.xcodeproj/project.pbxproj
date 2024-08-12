@@ -11,11 +11,10 @@
 		E6030FEC2C4D0D260085C9FA /* TextButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6030FEB2C4D0D260085C9FA /* TextButtonStyle.swift */; };
 		E60946F22C4AC2EA009D90BA /* AuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60946F12C4AC2EA009D90BA /* AuthorizationView.swift */; };
 		E60946F62C4B9986009D90BA /* MusicSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60946F52C4B9986009D90BA /* MusicSearchView.swift */; };
+		E620627E2C6A7E4000460775 /* PlatterGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E620627D2C6A7E4000460775 /* PlatterGeometry.swift */; };
 		E6283F9A2C41739400158C13 /* ApplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6283F992C41739400158C13 /* ApplicationView.swift */; };
 		E63C52332C4D29CD00CAEB2F /* Glur in Frameworks */ = {isa = PBXBuildFile; productRef = E63C52322C4D29CD00CAEB2F /* Glur */; };
 		E6590E632C61FC4D0096EBAF /* OpenNowPlayingAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6590E622C61FC4D0096EBAF /* OpenNowPlayingAction.swift */; };
-		E6590E682C64AF490096EBAF /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = E6590E672C64AF490096EBAF /* Nuke */; };
-		E6590E6A2C64AF490096EBAF /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = E6590E692C64AF490096EBAF /* NukeUI */; };
 		E6590E6E2C64D89B0096EBAF /* MusicSearchArtworkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6590E6D2C64D89B0096EBAF /* MusicSearchArtworkImage.swift */; };
 		E666112B2C2C1782007839E6 /* Cappella.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666112A2C2C1782007839E6 /* Cappella.swift */; };
 		E666112D2C2C1783007839E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E666112C2C2C1783007839E6 /* Assets.xcassets */; };
@@ -56,6 +55,7 @@
 		E6030FEB2C4D0D260085C9FA /* TextButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButtonStyle.swift; sourceTree = "<group>"; };
 		E60946F12C4AC2EA009D90BA /* AuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
 		E60946F52C4B9986009D90BA /* MusicSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchView.swift; sourceTree = "<group>"; };
+		E620627D2C6A7E4000460775 /* PlatterGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterGeometry.swift; sourceTree = "<group>"; };
 		E6283F992C41739400158C13 /* ApplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationView.swift; sourceTree = "<group>"; };
 		E6590E622C61FC4D0096EBAF /* OpenNowPlayingAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenNowPlayingAction.swift; sourceTree = "<group>"; };
 		E6590E6D2C64D89B0096EBAF /* MusicSearchArtworkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchArtworkImage.swift; sourceTree = "<group>"; };
@@ -88,10 +88,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6590E682C64AF490096EBAF /* Nuke in Frameworks */,
 				E63C52332C4D29CD00CAEB2F /* Glur in Frameworks */,
 				E667CD792C55FC74000718FC /* Variablur in Frameworks */,
-				E6590E6A2C64AF490096EBAF /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +216,7 @@
 		E6F11E572C56A99A00AA45FC /* Platter */ = {
 			isa = PBXGroup;
 			children = (
+				E620627D2C6A7E4000460775 /* PlatterGeometry.swift */,
 				E6F11E582C56A9BA00AA45FC /* PlatterView.swift */,
 				E6ADDBF12C3532AF0088D9C8 /* PlatterWindow.swift */,
 			);
@@ -315,7 +314,6 @@
 			packageReferences = (
 				E63C52312C4D289000CAEB2F /* XCRemoteSwiftPackageReference "Glur" */,
 				E667CD772C55FC74000718FC /* XCRemoteSwiftPackageReference "Variablur" */,
-				E6590E662C64AF490096EBAF /* XCRemoteSwiftPackageReference "Nuke" */,
 			);
 			productRefGroup = E66611282C2C1782007839E6 /* Products */;
 			projectDirPath = "";
@@ -373,6 +371,7 @@
 				E666112B2C2C1782007839E6 /* Cappella.swift in Sources */,
 				E6A81D142C4177DF00DAC24B /* PlaybackView.swift in Sources */,
 				E60946F22C4AC2EA009D90BA /* AuthorizationView.swift in Sources */,
+				E620627E2C6A7E4000460775 /* PlatterGeometry.swift in Sources */,
 				E6590E6E2C64D89B0096EBAF /* MusicSearchArtworkImage.swift in Sources */,
 				E6A81D122C4177C300DAC24B /* NowPlayingView.swift in Sources */,
 			);
@@ -720,14 +719,6 @@
 				minimumVersion = 1.0.4;
 			};
 		};
-		E6590E662C64AF490096EBAF /* XCRemoteSwiftPackageReference "Nuke" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kean/Nuke.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 12.8.0;
-			};
-		};
 		E667CD772C55FC74000718FC /* XCRemoteSwiftPackageReference "Variablur" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/daprice/Variablur.git";
@@ -743,16 +734,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E63C52312C4D289000CAEB2F /* XCRemoteSwiftPackageReference "Glur" */;
 			productName = Glur;
-		};
-		E6590E672C64AF490096EBAF /* Nuke */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E6590E662C64AF490096EBAF /* XCRemoteSwiftPackageReference "Nuke" */;
-			productName = Nuke;
-		};
-		E6590E692C64AF490096EBAF /* NukeUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E6590E662C64AF490096EBAF /* XCRemoteSwiftPackageReference "Nuke" */;
-			productName = NukeUI;
 		};
 		E667CD782C55FC74000718FC /* Variablur */ = {
 			isa = XCSwiftPackageProductDependency;

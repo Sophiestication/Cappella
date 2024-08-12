@@ -25,20 +25,20 @@ class Cappella: NSObject, NSApplicationDelegate {
             ApplicationView()
         }
 
-        // Init now playing window
-        let nowPlayingHeight = 44.0
-        let horizontalPadding = 10.0
-
-        let nowPlayingWindowRect = NSRect(
-            x: horizontalPadding,
-            y: 5.0,
-            width: contentWidth - horizontalPadding * 2.0,
-            height: nowPlayingHeight)
-        nowPlayingWindow = PlatterWindow(contentRect: nowPlayingWindowRect) {
-            NowPlayingView()
-        }
-
-        applicationWindow.dockedPlatter = nowPlayingWindow
+//        // Init now playing window
+//        let nowPlayingHeight = 44.0
+//        let horizontalPadding = 10.0
+//
+//        let nowPlayingWindowRect = NSRect(
+//            x: horizontalPadding,
+//            y: 5.0,
+//            width: contentWidth - horizontalPadding * 2.0,
+//            height: nowPlayingHeight)
+//        nowPlayingWindow = PlatterWindow(contentRect: nowPlayingWindowRect) {
+//            NowPlayingView()
+//        }
+//
+//        applicationWindow.dockedPlatter = nowPlayingWindow
 
         // Dock to the menu bar
         menuBarExtra = MenuBarExtra(with: applicationWindow)

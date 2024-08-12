@@ -9,6 +9,8 @@ struct MusicSearchView: View {
     typealias MusicPlayerType = ApplicationMusicPlayer
     @State private var musicSearch = MusicSearch()
 
+    @Environment(\.platterGeometry) var platterGeometry
+
     @State private var footerDimension = 60.0
 
     @FocusState private var searchFieldFocused: Bool
@@ -25,30 +27,30 @@ struct MusicSearchView: View {
 
     var body: some View {
         ScrollViewReader { scrollProxy in
-            GeometryReader { geometry in
+//            GeometryReader { geometry in
                 VStack(spacing: 0.0) {
-                    makeHeaderView(for: geometry)
+//                    makeHeaderView(for: geometry)
 
-                    Divider()
-                        .background(.thinMaterial)
+//                    Divider()
+//                        .background(.thinMaterial)
 
-                    ScrollView(.vertical, showsIndicators: false) {
+//                    ScrollView(.vertical, showsIndicators: false) {
                         LazyVStack(
                             spacing: 0.0
                         ) {
                             ForEach(musicSearch.results) { resultItem in
-                                makeView(for: resultItem, containerWidth: geometry.size.width)
+                                makeView(for: resultItem, containerWidth: platterGeometry.containerSize.width)
                                     .padding(.top, 10.0)
                                     .scrollTargetLayout()
                             }
                         }
                         .padding(.bottom, footerDimension)
                         .id("scroll-container")
-                    }
+//                    }
                 }
 
                 .onAppear {
-                    musicSearch.term = "queen dead"
+                    musicSearch.term = "dead"
                     searchFieldFocused = true
                 }
 
@@ -65,13 +67,17 @@ struct MusicSearchView: View {
 //                    }
 //                }
 
+                .platterContent(id: "search-field", placement: .header) {
+                    Text("Header Searchfield")
+                }
+
                 .onModifierKeysChanged({ old, new in
                     self.currentEventModifier = new
                 })
                 .onKeyPress(.upArrow) { onUpArrowPress(.upArrow) }
                 .onKeyPress(.downArrow) { onDownArrowPress(.downArrow) }
                 .onKeyPress(.return) { onReturnPress(.return) }
-            }
+//            }
         }
     }
 
@@ -125,10 +131,10 @@ struct MusicSearchView: View {
     }
 
     @ViewBuilder
-    private func makeHeaderView(for geometry: GeometryProxy) -> some View {
+    private func makeHeaderView(for geometry: PlatterGeometry) -> some View {
         Group {
             makeSearchField()
-                .padding(.leading, geometry.size.width * 0.35)
+                .padding(.leading, geometry.containerSize.width * 0.35)
         }
     }
 
