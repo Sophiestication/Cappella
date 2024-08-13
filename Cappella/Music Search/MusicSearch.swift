@@ -139,7 +139,6 @@ final class MusicSearch {
 
         for term in terms {
             let items = try await resultItems(for: term, scope: scope, limit: limit)
-//            print("\(term): \(items.map { $0.collection.title })")
             resultSets.append(items)
         }
 
@@ -277,12 +276,10 @@ extension MusicSearch {
             case entry
         }
 
-        typealias Entry = ResultItem.Entry
-
         let collection: ResultItem
-        let entry: Entry?
+        let entry: ResultItem.Entry?
 
-        init(collection: ResultItem, entry: Entry? = nil) {
+        init(collection: ResultItem, entry: ResultItem.Entry? = nil) {
             self.collection = collection
             self.entry = entry
         }
@@ -307,13 +304,25 @@ extension MusicSearch {
             return true
         }
 
-        let nextItem = resultEntries.firstAfter(where: (group == .collection) ?
-            { $0.0.id == selection.collection.id } :
-            { $0.1 == selection.entry }
-        )
+        var nextSelection: Selection? = nil
 
-        if let nextItem {
-            self.selection = Selection(collection: nextItem.0, entry: nextItem.1)
+        if group == .collection {
+            if let nextItem = results.firstAfter(where: { $0.id == selection.collection.id }) {
+                nextSelection = Selection(collection: nextItem, entry: nextItem.entries.first)
+            } else {
+                nextSelection = Selection(
+                    collection: selection.collection,
+                    entry: selection.collection.entries.last
+                )
+            }
+        } else {
+            if let nextItem = resultEntries.firstAfter(where: { $0.1 == selection.entry }) {
+                nextSelection = Selection(collection: nextItem.0, entry: nextItem.1)
+            }
+        }
+
+        if let nextSelection {
+            self.selection = nextSelection
         } else if selection.entry == nil {
             guard let resultItem = results.first else {
                 return false
@@ -331,23 +340,35 @@ extension MusicSearch {
     func selectPrevious(_ group: Selection.Group) -> Bool {
         guard let selection else { return false }
 
-        let previousItem = resultEntries.firstBefore(where: (group == .collection) ?
-            { $0.0.id == selection.collection.id } :
-            { $0.1 == selection.entry }
-        )
+        var newSelection: Selection? = nil
 
-        if let previousItem {
-            self.selection = Selection(
-                collection: previousItem.0,
-                entry: previousItem.1
-            )
+        if group == .collection {
+            if selection.entry != selection.collection.entries.first {
+                newSelection = Selection(
+                    collection: selection.collection,
+                    entry: selection.collection.entries.first
+                )
+            } else {
+                if let nextItem = results.firstBefore(where: { $0.id == selection.collection.id }) {
+                    newSelection = Selection(collection: nextItem, entry: nextItem.entries.first)
+                }
+            }
+        } else {
+            if let nextItem = resultEntries.firstBefore(where: { $0.1 == selection.entry }) {
+                newSelection = Selection(collection: nextItem.0, entry: nextItem.1)
+            }
         }
 
-        return true
+        if let newSelection {
+            self.selection = newSelection
+            return true
+        }
+
+        return false
     }
 }
 
-extension MusicSearch {
+fileprivate extension MusicSearch {
     struct EntrySequence<
         S: Sequence,
         T: Sequence
@@ -391,7 +412,7 @@ extension MusicSearch {
     }
 }
 
-extension Sequence {
+fileprivate extension Sequence {
     func firstBefore(where predicate: (Self.Element) -> Bool) -> Element? {
         var previous: Element? = nil
 

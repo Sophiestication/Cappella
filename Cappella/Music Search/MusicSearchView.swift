@@ -9,11 +9,9 @@ struct MusicSearchView: View {
     typealias MusicPlayerType = ApplicationMusicPlayer
     @State private var musicSearch = MusicSearch()
 
-    @Environment(\.platterGeometry) var platterGeometry
-
-    @State private var footerDimension = 60.0
-
     private typealias ResultItem = MusicSearch.ResultItem
+
+    @Environment(\.platterGeometry) var platterGeometry
 
     @State private var lastHoverLocation: CGPoint? = nil
 
@@ -32,7 +30,6 @@ struct MusicSearchView: View {
                         .scrollTargetLayout()
                     }
                 }
-                .padding(.bottom, footerDimension)
                 .id("scroll-container")
             }
 

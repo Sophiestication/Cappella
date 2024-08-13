@@ -10,7 +10,6 @@ struct MusicSearchField: View {
     @Environment(\.platterGeometry) var platterGeometry
 
     @FocusState private var searchFieldFocused: Bool
-    @State private var currentEventModifier: EventModifiers = []
 
     init(with musicSearch: MusicSearch) {
         self.musicSearch = musicSearch
@@ -41,22 +40,27 @@ struct MusicSearchField: View {
 
         .padding(.leading, platterGeometry.containerSize.width * 0.35)
 
-        .onModifierKeysChanged { old, new in
-            self.currentEventModifier = new
+        .onKeyPress(.upArrow, phases: [.down, .repeat]) { keyPress in
+            musicSearch.selectPrevious(makeSelectionGroup(for: keyPress)) ? .handled : .ignored
         }
-        .onKeyPress(.upArrow) {
-            musicSearch.selectPrevious(.entry) ? .handled : .ignored
+        .onKeyPress(.downArrow, phases: [.down, .repeat]) { keyPress in
+            musicSearch.selectNext(makeSelectionGroup(for: keyPress)) ? .handled : .ignored
         }
-        .onKeyPress(.downArrow) {
-            musicSearch.selectNext(.entry) ? .handled : .ignored
-        }
-        .onKeyPress(.tab) {
-            toggleSearchScope()
+        .onKeyPress(.tab, phases: [.down, .repeat]) { keyPress in
+            toggleSearchScope(for: keyPress)
             return .handled
         }
         .onKeyPress(.return) {
             scheduleSelectionToPlay() ? .handled : .ignored
         }
+    }
+
+    private func makeSelectionGroup(for keyPress: KeyPress) -> MusicSearch.Selection.Group {
+        if keyPress.modifiers.contains(.option) {
+            return .collection
+        }
+
+        return .entry
     }
 
     private func makeSearchScopeImage(for scope: MusicSearch.Scope) -> Image {
@@ -70,10 +74,10 @@ struct MusicSearchField: View {
         }
     }
 
-    private func toggleSearchScope() {
+    private func toggleSearchScope(for keyPress: KeyPress) {
         let scope = musicSearch.scope
 
-        if currentEventModifier.contains(.option) {
+        if keyPress.modifiers.contains(.option) {
             musicSearch.scope = scope.reverse()
         } else {
             musicSearch.scope = scope.advance()
