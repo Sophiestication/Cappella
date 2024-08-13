@@ -40,11 +40,13 @@ class PlatterWindow: NSPanel {
 
         self.becomesKeyOnlyIfNeeded = true
 
-        let hostingView = NSHostingView(rootView: PlatterView { [self] in
+        let rootView = PlatterView {
             content()
-                .environment(\.platterGeometry, geometry)
-                .ignoresSafeArea(.all)
-        })
+        }
+        .environment(\.platterGeometry, geometry)
+        .ignoresSafeArea(.all)
+
+        let hostingView = NSHostingView(rootView: rootView)
 
         if let contentView = self.contentView {
             hostingView.frame = contentView.bounds

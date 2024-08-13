@@ -4,10 +4,11 @@
 
 import Foundation
 import Combine
+import SwiftUI
 import MusicKit
 
 @Observable @MainActor
-class MusicSearch {
+final class MusicSearch {
     enum Scope: CaseIterable {
         case all
         case album
@@ -27,6 +28,8 @@ class MusicSearch {
     }
 
     private(set) var results: [ResultItem] = []
+    var selection: Selection? = nil
+    var scheduledToPlay: Selection? = nil
 
     private struct RequestParameters {
         let scope: Scope
@@ -238,12 +241,20 @@ class MusicSearch {
 
         self.currentToken = token
         self.results = items
+
+        // TODO: Check if the current selection is still part of the result set
+        self.selection = nil
     }
 }
 
 extension MusicSearch {
+    typealias MusicPlayerType = ApplicationMusicPlayer
+    typealias Entry = MusicPlayerType.Queue.Entry
+}
+
+extension MusicSearch {
     struct ResultItem: Identifiable {
-        typealias Entry = ApplicationMusicPlayer.Queue.Entry
+        typealias Entry = MusicSearch.Entry
 
         var id: MusicItemID
 
@@ -256,6 +267,83 @@ extension MusicSearch {
             self.collection = collection
             self.entries = entries
         }
+    }
+}
+
+extension MusicSearch {
+    struct Selection: Equatable {
+        enum Group {
+            case collection
+            case entry
+        }
+
+        typealias Entry = ResultItem.Entry
+
+        let collection: ResultItem
+        let entry: Entry?
+
+        init(collection: ResultItem, entry: Entry? = nil) {
+            self.collection = collection
+            self.entry = entry
+        }
+
+        static func == (lhs: Self, rhs: Self) -> Bool {
+            lhs.collection.id == rhs.collection.id &&
+            lhs.entry == rhs.entry
+        }
+    }
+
+    func selectNext(_ group: Selection.Group) -> Bool {
+        guard let selection else {
+            guard let firstResultItem = results.first else {
+                return false
+            }
+            
+            self.selection = Selection(
+                collection: firstResultItem,
+                entry: firstResultItem.entries.first
+            )
+
+            return true
+        }
+
+        let nextItem = resultEntries.firstAfter(where: (group == .collection) ?
+            { $0.0.id == selection.collection.id } :
+            { $0.1 == selection.entry }
+        )
+
+        if let nextItem {
+            self.selection = Selection(collection: nextItem.0, entry: nextItem.1)
+        } else if selection.entry == nil {
+            guard let resultItem = results.first else {
+                return false
+            }
+
+            self.selection = Selection(
+                collection: resultItem,
+                entry: resultItem.entries.first
+            )
+        }
+
+        return true
+    }
+
+    func selectPrevious(_ group: Selection.Group) -> Bool {
+        guard let selection else { return false }
+
+        let previousItem = resultEntries.firstBefore(where: (group == .collection) ?
+            { $0.0.id == selection.collection.id } :
+            { $0.1 == selection.entry }
+        )
+
+        if let previousItem {
+            self.selection = Selection(
+                collection: previousItem.0,
+                entry: previousItem.1
+            )
+        }
+
+        return true
     }
 }
 
@@ -298,7 +386,7 @@ extension MusicSearch {
         }
     }
 
-    var allEntries: EntrySequence<[ResultItem], [ResultItem.Entry]> {
+    var resultEntries: EntrySequence<[ResultItem], [ResultItem.Entry]> {
         return EntrySequence(sequence: self.results)
     }
 }

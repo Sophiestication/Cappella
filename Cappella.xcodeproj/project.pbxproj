@@ -14,6 +14,7 @@
 		E620627E2C6A7E4000460775 /* PlatterGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E620627D2C6A7E4000460775 /* PlatterGeometry.swift */; };
 		E6283F9A2C41739400158C13 /* ApplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6283F992C41739400158C13 /* ApplicationView.swift */; };
 		E63C52332C4D29CD00CAEB2F /* Glur in Frameworks */ = {isa = PBXBuildFile; productRef = E63C52322C4D29CD00CAEB2F /* Glur */; };
+		E65067782C6B8FF900A5B00C /* MusicSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65067772C6B8FF300A5B00C /* MusicSearchField.swift */; };
 		E6590E632C61FC4D0096EBAF /* OpenNowPlayingAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6590E622C61FC4D0096EBAF /* OpenNowPlayingAction.swift */; };
 		E6590E6E2C64D89B0096EBAF /* MusicSearchArtworkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6590E6D2C64D89B0096EBAF /* MusicSearchArtworkImage.swift */; };
 		E666112B2C2C1782007839E6 /* Cappella.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666112A2C2C1782007839E6 /* Cappella.swift */; };
@@ -57,6 +58,7 @@
 		E60946F52C4B9986009D90BA /* MusicSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchView.swift; sourceTree = "<group>"; };
 		E620627D2C6A7E4000460775 /* PlatterGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterGeometry.swift; sourceTree = "<group>"; };
 		E6283F992C41739400158C13 /* ApplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationView.swift; sourceTree = "<group>"; };
+		E65067772C6B8FF300A5B00C /* MusicSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchField.swift; sourceTree = "<group>"; };
 		E6590E622C61FC4D0096EBAF /* OpenNowPlayingAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenNowPlayingAction.swift; sourceTree = "<group>"; };
 		E6590E6D2C64D89B0096EBAF /* MusicSearchArtworkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchArtworkImage.swift; sourceTree = "<group>"; };
 		E66611272C2C1782007839E6 /* Cappella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cappella.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,6 +176,7 @@
 		E667CD7E2C563D52000718FC /* Music Search */ = {
 			isa = PBXGroup;
 			children = (
+				E65067772C6B8FF300A5B00C /* MusicSearchField.swift */,
 				E6030FE92C4D0C770085C9FA /* MenuButtonStyle.swift */,
 				E68413892C5899E20019FB15 /* MusicSearch.swift */,
 				E6590E6D2C64D89B0096EBAF /* MusicSearchArtworkImage.swift */,
@@ -367,6 +370,7 @@
 				E6283F9A2C41739400158C13 /* ApplicationView.swift in Sources */,
 				E6030FEA2C4D0C770085C9FA /* MenuButtonStyle.swift in Sources */,
 				E667CD752C550391000718FC /* ContentScrollView.swift in Sources */,
+				E65067782C6B8FF900A5B00C /* MusicSearchField.swift in Sources */,
 				E667CD7C2C560841000718FC /* VisualEffectView.swift in Sources */,
 				E666112B2C2C1782007839E6 /* Cappella.swift in Sources */,
 				E6A81D142C4177DF00DAC24B /* PlaybackView.swift in Sources */,

@@ -7,7 +7,7 @@ import Combine
 import MusicKit
 
 struct MusicSearchArtworkImage: View {
-    typealias Entry = ApplicationMusicPlayer.Queue.Entry
+    typealias Entry = MusicSearch.Entry
     @State var entry: Entry?
 
     private let dimension: Int = 64
@@ -24,7 +24,7 @@ struct MusicSearchArtworkImage: View {
     }
 
     @ViewBuilder
-    private func makeArtworkImage(for entry: ApplicationMusicPlayer.Queue.Entry) -> some View {
+    private func makeArtworkImage(for entry: Entry) -> some View {
         if let artwork = entry.artwork,
            let url = makeURL(for: artwork) {
             makeArtworkImage(for: artwork, url)

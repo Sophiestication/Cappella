@@ -9,9 +9,6 @@ struct PlatterView<Content>: View where Content: View {
     private let content: () -> Content
 
     @State private var headerContent = PlatterHeaderContentPreferenceKey.defaultValue
-
-    @State private var contentOffset: CGPoint = .zero
-
     @State private var scrollGeometry: ScrollGeometry? = nil
 
     init(
@@ -30,19 +27,20 @@ struct PlatterView<Content>: View where Content: View {
                             height: contentSize(for: geometry).height
                         )
                         .offset(
-                            x: contentOffset.x,
-                            y: verticalBackgroundOffset(for: contentOffset, geometry: geometry)
+                            x: 0.0,
+                            y: verticalBackgroundOffset(geometry: geometry)
                         )
 
-                    VStack {
+                    VStack(spacing: 0.0) {
                         makeHeaderView()
                             .offset(
-                                x: contentOffset.x,
-                                y: verticalBackgroundOffset(for: contentOffset, geometry: geometry)
+                                x: 0.0,
+                                y: verticalBackgroundOffset(geometry: geometry)
                             )
+                            .zIndex(1)
+
                         content()
                     }
-//                    .environment(platterGeometry)
                 }
             }
 
@@ -81,7 +79,6 @@ struct PlatterView<Content>: View where Content: View {
     }
 
     private func verticalBackgroundOffset(
-        for offset: CGPoint,
         geometry: GeometryProxy
     ) -> CGFloat {
         guard let scrollGeometry else {
@@ -112,17 +109,17 @@ struct PlatterView<Content>: View where Content: View {
     }
 }
 
-@Observable
-fileprivate final class PlatterContent: Identifiable, Equatable, Sendable {
+@Observable @MainActor
+fileprivate final class PlatterContent: Identifiable, Equatable {
     let id: String
-    let content: @Sendable () -> AnyView
+    let content: () -> AnyView
 
-    init(id: String, content: @Sendable @escaping () -> AnyView) {
+    init(id: String, content: @escaping () -> AnyView) {
         self.id = id
         self.content = content
     }
 
-    static func == (lhs: PlatterContent, rhs: PlatterContent) -> Bool {
+    nonisolated static func == (lhs: PlatterContent, rhs: PlatterContent) -> Bool {
         lhs.id == rhs.id
     }
 }
@@ -152,7 +149,7 @@ extension View {
     func platterContent<Content: View>(
         id: String,
         placement: PlatterContentPlacement,
-        @ViewBuilder content: @Sendable @escaping () -> Content
+        @ViewBuilder content: @escaping () -> Content
     ) -> some View {
         self.preference(
             key: placement.preferenceKey,
