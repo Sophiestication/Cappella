@@ -53,6 +53,9 @@ struct MusicSearchField: View {
         .onKeyPress(.return) {
             scheduleSelectionToPlay() ? .handled : .ignored
         }
+        .onKeyPress(.escape) {
+            resetSearchTermIfNeeded() ? .handled : .ignored
+        }
     }
 
     private func makeSelectionGroup(for keyPress: KeyPress) -> MusicSearch.Selection.Group {
@@ -90,6 +93,15 @@ struct MusicSearchField: View {
         }
 
         musicSearch.scheduledToPlay = selection
+        return true
+    }
+
+    private func resetSearchTermIfNeeded() -> Bool {
+        guard !musicSearch.term.isEmpty else {
+            return false
+        }
+        
+        musicSearch.term = ""
         return true
     }
 }
