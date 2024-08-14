@@ -43,6 +43,7 @@ class PlatterWindow: NSPanel {
         let rootView = PlatterView {
             content()
         }
+        .environment(\.dismissPlatter, DismissPlatterAction(for: self))
         .environment(\.platterGeometry, geometry)
         .ignoresSafeArea(.all)
 

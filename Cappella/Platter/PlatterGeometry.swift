@@ -8,8 +8,18 @@ import SwiftUI
 final class PlatterGeometry: Sendable {
     let containerSize: CGSize
 
-    init(containerSize: CGSize = .zero) {
+    let headerDimension: CGFloat
+    let footerDimension: CGFloat
+
+    init(
+        containerSize: CGSize = .zero,
+        headerDimension: CGFloat = 90.0,
+        footerDimension: CGFloat = 60.0
+    ) {
         self.containerSize = containerSize
+
+        self.headerDimension = headerDimension
+        self.footerDimension = footerDimension
     }
 }
 

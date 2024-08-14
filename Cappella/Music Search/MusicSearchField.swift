@@ -8,6 +8,7 @@ struct MusicSearchField: View {
     @State private var musicSearch: MusicSearch
 
     @Environment(\.platterGeometry) var platterGeometry
+    @Environment(\.dismissPlatter) var dismissPlatter
 
     @FocusState private var searchFieldFocused: Bool
 
@@ -54,7 +55,11 @@ struct MusicSearchField: View {
             scheduleSelectionToPlay() ? .handled : .ignored
         }
         .onKeyPress(.escape) {
-            resetSearchTermIfNeeded() ? .handled : .ignored
+            if resetSearchTermIfNeeded() == false {
+                dismissPlatter()
+            }
+
+            return .handled
         }
     }
 

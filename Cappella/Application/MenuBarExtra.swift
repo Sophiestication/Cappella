@@ -41,7 +41,7 @@ class MenuBarExtra: NSObject {
             if let window = button.window {
                 NotificationCenter.default.addObserver(
                     self,
-                    selector: #selector(windowDidMove(_:)),
+                    selector: #selector(statusWindowDidMove(_:)),
                     name: NSWindow.didMoveNotification,
                     object: window
                 )
@@ -61,7 +61,7 @@ class MenuBarExtra: NSObject {
         }
     }
 
-    @objc private func windowDidMove(_ notification: Notification) {
+    @objc private func statusWindowDidMove(_ notification: Notification) {
 //        guard let window = notification.object as? NSWindow else { return }
 
         // TODO

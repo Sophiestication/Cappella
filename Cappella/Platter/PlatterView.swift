@@ -4,11 +4,14 @@
 
 import SwiftUI
 import AppKit
+import Variablur
 
 struct PlatterView<Content>: View where Content: View {
     private let content: () -> Content
 
     @State private var headerContent = PlatterHeaderContentPreferenceKey.defaultValue
+
+    @Environment(\.platterGeometry) var platterGeometry
     @State private var scrollGeometry: ScrollGeometry? = nil
 
     init(
@@ -31,16 +34,33 @@ struct PlatterView<Content>: View where Content: View {
                             y: verticalBackgroundOffset(geometry: geometry)
                         )
 
-                    VStack(spacing: 0.0) {
+                        content()
+                            .padding(.top, platterGeometry.headerDimension)
+                            .variableBlur(
+                                radius: 32.0,
+                                maxSampleCount: 32,
+                                verticalPassFirst: true
+                            ) { geometry, context in
+                                let maskRect = makeMaskRect(for: geometry)
+
+                                print("\(maskRect.origin)")
+
+                                context.fill(
+                                    Path(maskRect),
+                                    with: .linearGradient(
+                                        .init(colors: [.white, .clear]),
+                                        startPoint: maskRect.origin,
+                                        endPoint: .init(x: 0, y: maskRect.maxY)
+                                    )
+                                )
+                            }
+                            .padding(.bottom, platterGeometry.footerDimension)
+
                         makeHeaderView()
                             .offset(
                                 x: 0.0,
                                 y: verticalBackgroundOffset(geometry: geometry)
                             )
-                            .zIndex(1)
-
-                        content()
-                    }
                 }
             }
 
@@ -48,12 +68,38 @@ struct PlatterView<Content>: View where Content: View {
                 scrollGeometry
             } action: { oldValue, newValue in
                 scrollGeometry = newValue
+                print("offset: \(newValue.contentOffset.y)")
             }
 
             .onPreferenceChange(PlatterHeaderContentPreferenceKey.self) { value in
                 headerContent = value
             }
         }
+    }
+
+    private func makeMaskRect(for geometry: GeometryProxy) -> CGRect {
+        guard let scrollGeometry else {
+            return .zero
+        }
+
+        let rect = geometry.frame(in: .local)
+
+        let maskOrigin = CGPoint(
+            x: rect.minX + scrollGeometry.contentOffset.x,
+            y: rect.minY + scrollGeometry.contentOffset.y
+        )
+
+        let maskSize = CGSize(
+            width: rect.width,
+            height: platterGeometry.headerDimension
+        )
+
+        let maskRect = CGRect(
+            origin: maskOrigin,
+            size: maskSize
+        )
+
+        return maskRect
     }
 
     @ViewBuilder
@@ -86,14 +132,14 @@ struct PlatterView<Content>: View where Content: View {
         }
 
         let rect = scrollGeometry.bounds
-        print("\(rect); \(scrollGeometry.contentSize); \(rect.maxY)")
+//        print("\(rect); \(scrollGeometry.contentSize); \(rect.maxY)")
 
         if rect.minY < 0.0 {
             return 0.0
         }
 
         let bottomOffset = rect.maxY - scrollGeometry.contentSize.height
-        print("\(bottomOffset)")
+//        print("\(bottomOffset)")
 
         if bottomOffset > 0.0 {
             return scrollGeometry.bounds.minY - bottomOffset
