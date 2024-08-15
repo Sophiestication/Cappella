@@ -13,7 +13,7 @@ final class PlatterGeometry: Sendable {
 
     init(
         containerSize: CGSize = .zero,
-        headerDimension: CGFloat = 90.0,
+        headerDimension: CGFloat = 60.0,
         footerDimension: CGFloat = 60.0
     ) {
         self.containerSize = containerSize
