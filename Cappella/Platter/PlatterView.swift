@@ -14,7 +14,6 @@ struct PlatterView<Content>: View where Content: View {
     @Environment(\.dismissPlatter) var platterAction
 
     @Environment(\.pixelLength) var pixelLength
-    @State var overlayLineWidth: CGFloat = 1.0
     @State var cornerRadius: CGFloat = 18.0
 
     init(
@@ -32,15 +31,13 @@ struct PlatterView<Content>: View where Content: View {
                     .padding(.bottom, footerDimension)
                     .drawingGroup()
                     .headerBlur(with: platterGeometry)
-                    .mask(contentMask)
+                    .mask(makeContentMask())
                 makeHeaderView()
                 makeOverlayView()
             }
         }
-        .frame(
-            width: contentFrame.width,
-            height: contentFrame.maxY
-        )
+        .scrollIndicators(.never)
+        .scrollClipDisabled()
 
         .shadow(
             color: Color.black.opacity(1.0 / 4.0),
@@ -49,51 +46,20 @@ struct PlatterView<Content>: View where Content: View {
             y: 5.0
         )
 
-        .onScrollGeometryChange(for: CGPoint.self, of: { scrollGeometry in
-            scrollGeometry.contentOffset
-        }, action: { oldValue, newValue in
-            if oldValue == newValue {
-                return
-            }
-
-            if let platterGeometry {
-                platterGeometry.contentOffset = newValue
-            }
-        })
-        .scrollIndicators(.never)
-        .scrollClipDisabled()
-
         .onPreferenceChange(PlatterHeaderContentPreferenceKey.self) { value in
             headerContent = value
         }
     }
 
-    private var contentMask: Path {
-        guard let platterGeometry else {
-            return Path()
-        }
-
-        let contentRect = platterGeometry.contentFrame
-
-        var rect = CGRect(
-            x: 0.0,
-            y: contentRect.minY,
-            width: contentRect.width,
-            height: contentRect.height
-        )
-
-        let contentOffset = platterGeometry.contentOffset
-
-        rect = rect.offsetBy(
-            dx: contentOffset.x,
-            dy: max(contentOffset.y, 0.0)
-        )
-
-        return Path(
-            roundedRect: rect,
+    private func makeContentMask() -> some View {
+        Path(
+            roundedRect: CGRect(origin: .zero, size: backgroundSize),
             cornerRadius: cornerRadius,
             style: .continuous
         )
+        .fill(.black)
+        .offset(y: contentFrame.minY)
+        .pin(.vertical)
     }
 
     private func makePlatterShape() -> RoundedRectangle {
@@ -121,7 +87,8 @@ struct PlatterView<Content>: View where Content: View {
             width: backgroundSize.width,
             height: backgroundSize.height
         )
-        .offset(backgroundOffset)
+        .offset(y: contentFrame.minY)
+        .pin(.vertical)
     }
 
     private var backgroundSize: CGSize {
@@ -129,26 +96,7 @@ struct PlatterView<Content>: View where Content: View {
             return .zero
         }
 
-        let containerSize = platterGeometry.contentFrame
-
-        let backgroundSize = CGSizeMake(
-            containerSize.width,
-            containerSize.height
-        )
-        return backgroundSize
-    }
-
-    private var backgroundOffset: CGSize {
-        guard let platterGeometry else {
-            return .zero
-        }
-
-        let contentOffset = platterGeometry.contentOffset
-
-        return CGSize(
-            width: contentOffset.x,
-            height: max(contentOffset.y, 0.0) + platterGeometry.contentFrame.minY
-        )
+        return platterGeometry.contentFrame.size
     }
 
     @ViewBuilder
@@ -161,7 +109,8 @@ struct PlatterView<Content>: View where Content: View {
                 width: backgroundSize.width,
                 height: backgroundSize.height
             )
-            .offset(backgroundOffset)
+            .offset(y: contentFrame.minY)
+            .pin(.vertical)
     }
 
     @ViewBuilder
@@ -171,9 +120,9 @@ struct PlatterView<Content>: View where Content: View {
                 header.content()
             }
         }
-        .padding(.top, headerTopPadding)
 //        .background(.red.opacity(0.25))
-        .offset(backgroundOffset)
+        .offset(y: contentFrame.minY)
+        .pin(.vertical)
     }
 
     private var contentFrame: CGRect {
@@ -199,35 +148,34 @@ struct PlatterView<Content>: View where Content: View {
 
         return platterGeometry.footerDimension
     }
-
-    private var headerTopPadding: CGFloat {
-        let contentFrame = contentFrame
-        return contentFrame.minY
-    }
-
-    private var scrollViewBottomPadding: CGFloat {
-        guard let platterGeometry else {
-            return 0.0
-        }
-
-        let containerFrame = platterGeometry.containerFrame
-        let contentFrame = platterGeometry.contentFrame
-
-        return containerFrame.maxY - contentFrame.maxY
-    }
 }
 
 fileprivate func lerp(start: CGFloat, end: CGFloat, t: CGFloat) -> CGFloat {
     return (1 - t) * start + t * end
 }
 
-extension View {
+fileprivate extension View {
+    func pin(_ axis: Axis = .vertical) -> some View {
+        self.visualEffect { effect, geometry in
+            guard let bounds = geometry.bounds(of: .scrollView(axis: axis)) else {
+                return effect.offset()
+            }
+
+            return effect.offset(
+                x: max(bounds.minX, 0.0),
+                y: max(bounds.minY, 0.0)
+            )
+        }
+    }
+}
+
+fileprivate extension View {
     func headerBlur(
         with platterGeometry: PlatterGeometry?
     ) -> some View {
         self.variableBlur(
             radius: 64.0,
-            maxSampleCount: 60,
+            maxSampleCount: 15,
             verticalPassFirst: true
         ) { geometry, context in
             guard let platterGeometry else { return }
@@ -253,18 +201,18 @@ extension View {
 
     private func makeMaskRect(
         for geometry: GeometryProxy,
-        _ platterGeometry: PlatterGeometry?
+        _ platterGeometry: PlatterGeometry
     ) -> CGRect {
-        guard let platterGeometry else {
+        guard let bounds = geometry.bounds(of: .scrollView(axis: .vertical)) else {
             return .zero
         }
 
         let rect = geometry.frame(in: .local)
         let maskRect = CGRect(
-            x: rect.minX + platterGeometry.contentOffset.x,
-            y: rect.minY + max(platterGeometry.contentOffset.y, 0.0),
+            x: rect.minX + bounds.minX,
+            y: rect.minY + max(bounds.minY, 0.0),
             width: rect.width,
-            height: platterGeometry.headerDimension + platterGeometry.contentFrame.minY
+            height: platterGeometry.headerDimension
         )
         return maskRect
     }

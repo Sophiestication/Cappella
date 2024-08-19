@@ -20,8 +20,6 @@ class PlatterGeometry {
         )
     }
 
-    var contentOffset: CGPoint
-
     var headerDimension: CGFloat
     var footerDimension: CGFloat
 
@@ -31,8 +29,6 @@ class PlatterGeometry {
         footerDimension: CGFloat = 60.0
     ) {
         self.containerFrame = containerFrame
-
-        self.contentOffset = .zero
 
         self.headerDimension = headerDimension
         self.footerDimension = footerDimension

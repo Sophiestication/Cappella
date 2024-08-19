@@ -18,7 +18,7 @@ struct MusicSearchView: View {
 
     var body: some View {
         ScrollViewReader { scrollProxy in
-            LazyVStack(
+            VStack(
                 spacing: 0.0
             ) {
                 ForEach(musicSearch.results) { resultItem in
