@@ -235,7 +235,7 @@ extension View {
             let maskRect = makeMaskRect(for: geometry, platterGeometry)
 
             let h = platterGeometry.headerDimension
-            let radius = lerp(start: 0.0, end: 24.0, t: min(maskRect.minY, h) / h)
+            let radius = lerp(start: 0.0, end: 20.0, t: min(maskRect.minY, h) / h)
             context.addFilter(.blur(radius: radius))
 
             let shading = GraphicsContext.Shading.linearGradient(
