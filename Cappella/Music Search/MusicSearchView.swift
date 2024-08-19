@@ -12,29 +12,24 @@ struct MusicSearchView: View {
     private typealias ResultItem = MusicSearch.ResultItem
 
     @Environment(\.platterGeometry) var platterGeometry
-
     @State private var lastHoverLocation: CGPoint? = nil
 
     var body: some View {
         ScrollViewReader { scrollProxy in
-            VStack(spacing: 0.0) {
-                LazyVStack(
-                    spacing: 0.0
-                ) {
-                    ForEach(musicSearch.results) { resultItem in
-                        makeView(
-                            for: resultItem,
-                            containerWidth: platterGeometry.containerSize.width
-                        )
-                        .padding(.top, 10.0)
-                        .scrollTargetLayout()
-                    }
+            LazyVStack(
+                spacing: 0.0
+            ) {
+                ForEach(musicSearch.results) { resultItem in
+                    makeView(
+                        for: resultItem,
+                        containerWidth: contentSize.width
+                    )
+                    .padding(.top, 10.0)
                 }
-                .id("scroll-container")
             }
 
             .onAppear {
-                musicSearch.term = "dead"
+                musicSearch.term = "queen"
             }
 
             .platterContent(id: "search-field", placement: .header) {
@@ -46,7 +41,23 @@ struct MusicSearchView: View {
                     play(newSelection)
                 }
             }
+
+            .onChange(of: musicSearch.selection) { _, newSelection in
+                guard let newSelection else { return }
+
+                withAnimation(.smooth) {
+                    scrollProxy.scrollTo(newSelection.collection.id)
+                }
+            }
         }
+    }
+
+    private var contentSize: CGSize {
+        guard let platterGeometry else {
+            return .zero
+        }
+
+        return platterGeometry.contentFrame.size
     }
 
     @ViewBuilder
@@ -65,21 +76,22 @@ struct MusicSearchView: View {
                     if let subtitle = resultItem.collection.subtitle {
                         Text(subtitle)
                             .font(.subheadline)
-                            .lineLimit(1)
+                            .lineLimit(2)
                     }
                 }
-                .padding(.horizontal, 5.0)
+                .padding(.horizontal, 10.0)
             }
             .frame(width: containerWidth * 0.35, alignment: .trailing)
             .multilineTextAlignment(.trailing)
 
             Group {
                 VStack(alignment: .leading, spacing: 0.0) {
-                    ForEach(resultItem.entries, id: \.id) { entry in
+                    ForEach(resultItem.entries) { entry in
                         makeMenuItem(for: entry, in: resultItem)
                     }
                 }
                 .padding(.trailing, 5.0)
+                .scrollTargetLayout()
             }
             .frame(width: containerWidth * 0.65, alignment: .leading)
             .multilineTextAlignment(.leading)
@@ -130,8 +142,4 @@ struct MusicSearchView: View {
             try await MusicPlayerType.shared.play()
         }
     }
-}
-
-#Preview {
-    MusicSearchView()
 }

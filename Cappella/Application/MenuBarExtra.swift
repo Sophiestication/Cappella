@@ -104,7 +104,7 @@ class MenuBarExtra: NSObject {
         let windowRect = window.frame
         let newWindowRect = NSMakeRect(
             targetRect.midX - (windowRect.width * 0.50),
-            targetRect.minY - windowRect.height - 5.0,
+            targetRect.minY - windowRect.height,
             windowRect.width,
             windowRect.height
         )

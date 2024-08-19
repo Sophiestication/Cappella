@@ -10,6 +10,8 @@ struct MusicSearchField: View {
     @Environment(\.platterGeometry) var platterGeometry
     @Environment(\.dismissPlatter) var dismissPlatter
 
+    @Environment(\.pixelLength) var pixelLength
+
     @FocusState private var searchFieldFocused: Bool
 
     init(with musicSearch: MusicSearch) {
@@ -22,7 +24,7 @@ struct MusicSearchField: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 14.0)
-                .padding(.leading, 15.0)
+                .padding(.leading, 10.0)
             TextField("", text: $musicSearch.term, prompt: Text("Search"))
                 .disableAutocorrection(true)
 
@@ -33,19 +35,30 @@ struct MusicSearchField: View {
         .font(.system(size: 15.0, weight: .regular, design: .rounded))
         .padding(.vertical, 4.0)
         .background (
-            RoundedRectangle(cornerRadius: 14.0, style: .continuous)
+            RoundedRectangle(cornerRadius: 6.0, style: .continuous)
+                .stroke(lineWidth: pixelLength)
                 .fill(.quaternary)
         )
         .padding(.vertical)
         .padding(.trailing, 15.0)
 
-        .padding(.leading, platterGeometry.containerSize.width * 0.35)
+        .padding(.leading, leadingPadding)
 
         .onKeyPress(.upArrow, phases: [.down, .repeat]) { keyPress in
-            musicSearch.selectPrevious(makeSelectionGroup(for: keyPress)) ? .handled : .ignored
+            if musicSearch.selectPrevious(makeSelectionGroup(for: keyPress)) {
+                NSCursor.setHiddenUntilMouseMoves(true)
+                return .handled
+            }
+
+            return .ignored
         }
         .onKeyPress(.downArrow, phases: [.down, .repeat]) { keyPress in
-            musicSearch.selectNext(makeSelectionGroup(for: keyPress)) ? .handled : .ignored
+            if musicSearch.selectNext(makeSelectionGroup(for: keyPress)) {
+                NSCursor.setHiddenUntilMouseMoves(true)
+                return .handled
+            }
+
+            return .ignored
         }
         .onKeyPress(.tab, phases: [.down, .repeat]) { keyPress in
             toggleSearchScope(for: keyPress)
@@ -61,6 +74,14 @@ struct MusicSearchField: View {
 
             return .handled
         }
+    }
+
+    private var leadingPadding: CGFloat {
+        guard let platterGeometry else {
+            return 0.0
+        }
+
+        return platterGeometry.contentFrame.width * 0.35 + 8.0
     }
 
     private func makeSelectionGroup(for keyPress: KeyPress) -> MusicSearch.Selection.Group {

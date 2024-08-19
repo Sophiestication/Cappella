@@ -14,8 +14,8 @@ class Cappella: NSObject, NSApplicationDelegate {
     private var menuBarExtra: MenuBarExtra? = nil
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        let contentWidth = 400.0
-        let contentHeight = 720.0
+        let contentWidth = 440.0 + 88.0
+        let contentHeight = 720.0 + 240.0
 
         // Init application window
         let applicationWindowRect = NSRect(

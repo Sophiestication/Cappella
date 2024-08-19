@@ -5,24 +5,51 @@
 import SwiftUI
 
 @Observable
-final class PlatterGeometry: Sendable {
-    let containerSize: CGSize
+class PlatterGeometry {
+    var containerFrame: CGRect
 
-    let headerDimension: CGFloat
-    let footerDimension: CGFloat
+    var contentFrame: CGRect {
+        let frame = containerFrame
+        let inset = Self.contentInset
+
+        return CGRect(
+            x: inset.left,
+            y: inset.top,
+            width: frame.width - (inset.left + inset.right),
+            height: frame.height - (inset.top + inset.bottom)
+        )
+    }
+
+    var contentOffset: CGPoint
+
+    var headerDimension: CGFloat
+    var footerDimension: CGFloat
 
     init(
-        containerSize: CGSize = .zero,
+        containerFrame: CGRect = .zero,
         headerDimension: CGFloat = 60.0,
         footerDimension: CGFloat = 60.0
     ) {
-        self.containerSize = containerSize
+        self.containerFrame = containerFrame
+
+        self.contentOffset = .zero
 
         self.headerDimension = headerDimension
         self.footerDimension = footerDimension
     }
+
+    private static var contentInset: NSEdgeInsets {
+        let horizontalInset = 44.0
+
+        return NSEdgeInsets(
+            top: 6.0,
+            left: horizontalInset,
+            bottom: 240.0,
+            right: horizontalInset
+        )
+    }
 }
 
 extension EnvironmentValues {
-    @Entry var platterGeometry = PlatterGeometry()
+    @Entry var platterGeometry: PlatterGeometry? = nil
 }

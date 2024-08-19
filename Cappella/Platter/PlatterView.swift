@@ -3,7 +3,6 @@
 //
 
 import SwiftUI
-import AppKit
 import Variablur
 
 struct PlatterView<Content>: View where Content: View {
@@ -12,7 +11,11 @@ struct PlatterView<Content>: View where Content: View {
     @State private var headerContent = PlatterHeaderContentPreferenceKey.defaultValue
 
     @Environment(\.platterGeometry) var platterGeometry
-    @State private var scrollGeometry: ScrollGeometry? = nil
+    @Environment(\.dismissPlatter) var platterAction
+
+    @Environment(\.pixelLength) var pixelLength
+    @State var overlayLineWidth: CGFloat = 1.0
+    @State var cornerRadius: CGFloat = 18.0
 
     init(
         @ViewBuilder _ content: @escaping () -> Content
@@ -21,56 +24,142 @@ struct PlatterView<Content>: View where Content: View {
     }
 
     var body: some View {
-        GeometryReader { geometry in
-            ScrollView(.vertical, showsIndicators: false) {
-                ZStack(alignment: .top) {
-                    makeBackgroundView()
-                        .frame(
-                            width: contentSize(for: geometry).width,
-                            height: contentSize(for: geometry).height
-                        )
-                        .offset(
-                            x: 0.0,
-                            y: verticalBackgroundOffset(geometry: geometry)
-                        )
-
-                        content()
-//                            .drawingGroup()
-                            .padding(.top, platterGeometry.headerDimension)
-//                            .headerBlur(with: platterGeometry, scrollGeometry)
-                            .padding(.bottom, platterGeometry.footerDimension)
-
-                        makeHeaderView()
-                            .offset(
-                                x: 0.0,
-                                y: verticalBackgroundOffset(geometry: geometry)
-                            )
-                }
-            }
-
-            .onScrollGeometryChange(for: ScrollGeometry.self) { scrollGeometry in
-                scrollGeometry
-            } action: { _, newValue in
-                scrollGeometry = newValue
-            }
-
-            .onPreferenceChange(PlatterHeaderContentPreferenceKey.self) { value in
-                headerContent = value
+        ScrollView(.vertical) {
+            ZStack(alignment: .top) {
+                makeBackgroundView()
+                content()
+                    .padding(.top, headerDimension)
+                    .padding(.bottom, footerDimension)
+                    .mask(contentMask)
+                makeHeaderView()
+                makeOverlayView()
             }
         }
+        .frame(
+            width: contentFrame.width,
+            height: contentFrame.maxY
+        )
+
+        .shadow(
+            color: Color.black.opacity(1.0 / 4.0),
+            radius: 6.0,
+            x: 0.0,
+            y: 5.0
+        )
+
+        .onScrollGeometryChange(for: CGPoint.self, of: { scrollGeometry in
+            scrollGeometry.contentOffset
+        }, action: { oldValue, newValue in
+            if oldValue == newValue {
+                return
+            }
+
+            if let platterGeometry {
+                platterGeometry.contentOffset = newValue
+            }
+        })
+        .scrollIndicators(.never)
+        .scrollClipDisabled()
+
+        .onPreferenceChange(PlatterHeaderContentPreferenceKey.self) { value in
+            headerContent = value
+        }
+    }
+
+    private var contentMask: Path {
+        guard let platterGeometry else {
+            return Path()
+        }
+
+        let contentRect = platterGeometry.contentFrame
+
+        var rect = CGRect(
+            x: 0.0,
+            y: contentRect.minY,
+            width: contentRect.width,
+            height: contentRect.height
+        )
+
+        let contentOffset = platterGeometry.contentOffset
+
+        rect = rect.offsetBy(
+            dx: contentOffset.x,
+            dy: max(contentOffset.y, 0.0)
+        )
+
+        return Path(
+            roundedRect: rect,
+            cornerRadius: cornerRadius,
+            style: .continuous
+        )
+    }
+
+    private func makePlatterShape() -> RoundedRectangle {
+        RoundedRectangle(
+            cornerRadius: cornerRadius,
+            style: .continuous
+        )
     }
 
     @ViewBuilder
     private func makeBackgroundView() -> some View {
         VisualEffectView(
-            material: .underWindowBackground,
+            material: .menu,
             blendingMode: .behindWindow,
-            state: .active,
-            cornerRadius: 16.0
+            state: .active
         )
+        .clipShape(makePlatterShape())
+        .overlay(
+            makePlatterShape()
+                .inset(by: -pixelLength)
+                .stroke(lineWidth: pixelLength)
+                .fill(.black.opacity(1.0 / 2.0))
+        )
+        .frame(
+            width: backgroundSize.width,
+            height: backgroundSize.height
+        )
+        .offset(backgroundOffset)
+    }
 
-//        RoundedRectangle(cornerRadius: 16.0, style: .continuous)
-//            .fill(Color.black)
+    private var backgroundSize: CGSize {
+        guard let platterGeometry else {
+            return .zero
+        }
+
+        let containerSize = platterGeometry.contentFrame
+
+        let backgroundSize = CGSizeMake(
+            containerSize.width,
+            containerSize.height
+        )
+        return backgroundSize
+    }
+
+    private var backgroundOffset: CGSize {
+        guard let platterGeometry else {
+            return .zero
+        }
+
+        let contentOffset = platterGeometry.contentOffset
+
+        return CGSize(
+            width: contentOffset.x,
+            height: max(contentOffset.y, 0.0) + platterGeometry.contentFrame.minY
+        )
+    }
+
+    @ViewBuilder
+    private func makeOverlayView() -> some View {
+        makePlatterShape()
+            .inset(by: pixelLength)
+            .stroke(lineWidth: pixelLength)
+            .fill(.white.opacity(1.0 / 3.0))
+            .frame(
+                width: backgroundSize.width,
+                height: backgroundSize.height
+            )
+            .offset(backgroundOffset)
     }
 
     @ViewBuilder
@@ -80,42 +169,53 @@ struct PlatterView<Content>: View where Content: View {
                 header.content()
             }
         }
+        .padding(.top, headerTopPadding)
     }
 
-    private func verticalBackgroundOffset(
-        geometry: GeometryProxy
-    ) -> CGFloat {
-        guard let scrollGeometry else {
+    private var contentFrame: CGRect {
+        guard let platterGeometry else {
+            return .zero
+        }
+
+        return platterGeometry.contentFrame
+    }
+
+    private var headerDimension: CGFloat {
+        guard let platterGeometry else {
             return 0.0
         }
 
-        let rect = scrollGeometry.bounds
-//        print("\(rect); \(scrollGeometry.contentSize); \(rect.maxY)")
+        return platterGeometry.headerDimension
+    }
 
-        if rect.minY < 0.0 {
+    private var footerDimension: CGFloat {
+        guard let platterGeometry else {
             return 0.0
         }
 
-        let bottomOffset = rect.maxY - scrollGeometry.contentSize.height
-//        print("\(bottomOffset)")
-
-        if bottomOffset > 0.0 {
-            return scrollGeometry.bounds.minY - bottomOffset
-        }
-
-        return scrollGeometry.bounds.minY
+        return platterGeometry.footerDimension
     }
 
-    private func contentSize(for geometry: GeometryProxy) -> CGSize {
-        return CGSize(
-            width: geometry.size.width - 0.0,
-            height: geometry.size.height - 0.0)
+    private var headerTopPadding: CGFloat {
+        let contentFrame = contentFrame
+        return contentFrame.minY
+    }
+
+    private var scrollViewBottomPadding: CGFloat {
+        guard let platterGeometry else {
+            return 0.0
+        }
+
+        let containerFrame = platterGeometry.containerFrame
+        let contentFrame = platterGeometry.contentFrame
+
+        return containerFrame.maxY - contentFrame.maxY
     }
 }
 
 extension View {
     func headerBlur(
-        with platterGeometry: PlatterGeometry,
+        with platterGeometry: PlatterGeometry?,
         _ scrollGeometry: ScrollGeometry? = nil
     ) -> some View {
         self.variableBlur(
@@ -142,10 +242,11 @@ extension View {
 
     private func makeMaskRect(
         for geometry: GeometryProxy,
-        _ platterGeometry: PlatterGeometry,
+        _ platterGeometry: PlatterGeometry?,
         _ scrollGeometry: ScrollGeometry?
     ) -> CGRect {
-        guard let scrollGeometry else {
+        guard let scrollGeometry,
+              let platterGeometry else {
             return .zero
         }
 
@@ -200,10 +301,6 @@ struct PlatterContentPlacement {
     static let header = PlatterContentPlacement(
         preferenceKey: PlatterHeaderContentPreferenceKey.self
     )
-
-    //    static let footer = PlatterContentPlacement(
-    //        preferenceKey: PlatterFooterContentPreferenceKey.self
-    //    )
 }
 
 extension View {

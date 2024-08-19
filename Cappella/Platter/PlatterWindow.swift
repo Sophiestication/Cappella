@@ -6,8 +6,6 @@ import Cocoa
 import SwiftUI
 
 class PlatterWindow: NSPanel {
-    private var geometry: PlatterGeometry
-
     init(
         contentRect: NSRect,
         @ViewBuilder _ content: @escaping () -> some View
@@ -16,8 +14,8 @@ class PlatterWindow: NSPanel {
             .borderless, .nonactivatingPanel
         ]
 
-        geometry = PlatterGeometry(
-            containerSize: contentRect.size
+        let geometry = PlatterGeometry(
+            containerFrame: contentRect
         )
 
         super.init(
@@ -38,7 +36,7 @@ class PlatterWindow: NSPanel {
         self.backgroundColor = .clear
         self.hasShadow = false
 
-        self.becomesKeyOnlyIfNeeded = true
+        self.becomesKeyOnlyIfNeeded = false
 
         let rootView = PlatterView {
             content()
@@ -49,12 +47,20 @@ class PlatterWindow: NSPanel {
 
         let hostingView = NSHostingView(rootView: rootView)
 
-        if let contentView = self.contentView {
-            hostingView.frame = contentView.bounds
-            hostingView.autoresizingMask = [.width, .height]
+        let hostingViewOrigin = CGPoint(
+            x: contentRect.midX - geometry.contentFrame.width * 0.50,
+            y: 0.0
+        )
+        hostingView.setFrameOrigin(hostingViewOrigin)
+        hostingView.setFrameSize(geometry.contentFrame.size)
+        hostingView.autoresizingMask = [.width, .height]
 
-            contentView.addSubview(hostingView)
-        }
+        let containerView = PlatterContainerView(frame: contentRect)
+//        containerView.wantsLayer = true
+//        containerView.layer!.backgroundColor = CGColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.25)
+        containerView.addSubview(hostingView)
+
+        self.contentView = containerView
 
         NotificationCenter.default.addObserver(
             self,
@@ -86,6 +92,19 @@ class PlatterWindow: NSPanel {
 
     override var acceptsFirstResponder: Bool {
         true
+    }
+
+    override func frameRect(forContentRect contentRect: NSRect) -> NSRect {
+//        let frameRect = CGRect(
+//            x: contentRect.minX,
+//            y: contentRect.minY,
+//            width: contentRect.width,
+//            height: contentRect.height
+//        )
+
+        let frameRect = contentRect.insetBy(dx: -60, dy: -60.0)
+
+        return frameRect
     }
 
     @objc private func windowDidMove(_ notification: Notification) {
@@ -130,4 +149,8 @@ class PlatterWindow: NSPanel {
         )
         platter.setFrame(platterFrame, display: true)
     }
+}
+
+final class PlatterContainerView: NSView {
+    override var isFlipped: Bool { true }
 }
