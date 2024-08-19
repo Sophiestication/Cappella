@@ -14,6 +14,8 @@ struct MusicSearchView: View {
     @Environment(\.platterGeometry) var platterGeometry
     @State private var lastHoverLocation: CGPoint? = nil
 
+    @State private var isScrolling: Bool = false
+
     var body: some View {
         ScrollViewReader { scrollProxy in
             LazyVStack(
@@ -44,9 +46,24 @@ struct MusicSearchView: View {
 
             .onChange(of: musicSearch.selection) { _, newSelection in
                 guard let newSelection else { return }
+                guard newSelection.interactor == .keyboard else { return }
 
                 withAnimation(.smooth) {
                     scrollProxy.scrollTo(newSelection.collection.id)
+                }
+            }
+
+            .onContinuousHover(coordinateSpace: .global) { phase in
+                switch phase {
+                case .active(let point):
+                    if point != lastHoverLocation {
+                        lastHoverLocation = point
+
+//                        withAnimation(.smooth) {
+                            musicSearch.selection = nil
+                        //                        }
+                    }
+                case .ended: break
                 }
             }
         }
@@ -117,11 +134,12 @@ struct MusicSearchView: View {
 
                     musicSearch.selection = MusicSearch.Selection(
                         collection: resultItem,
-                        entry: entry
+                        entry: entry,
+                        .cursor
                     )
                 }
-            case .ended:
-                musicSearch.selection = nil
+            case .ended: break
+//                musicSearch.selection = nil
             }
         }
         .environment(\.isHighlighted, musicSearch.selection?.entry == entry)

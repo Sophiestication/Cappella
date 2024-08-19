@@ -276,21 +276,36 @@ extension MusicSearch {
             case entry
         }
 
+        enum Interactor {
+            case cursor
+            case keyboard
+        }
+
         let collection: ResultItem
         let entry: ResultItem.Entry?
+        let interactor: Interactor
 
-        init(collection: ResultItem, entry: ResultItem.Entry? = nil) {
+        init(
+            collection: ResultItem,
+            entry: ResultItem.Entry? = nil,
+            _ interactor: Interactor
+        ) {
             self.collection = collection
             self.entry = entry
+            self.interactor = interactor
         }
 
         static func == (lhs: Self, rhs: Self) -> Bool {
             lhs.collection.id == rhs.collection.id &&
-            lhs.entry == rhs.entry
+            lhs.entry == rhs.entry &&
+            lhs.interactor == rhs.interactor
         }
     }
 
-    func selectNext(_ group: Selection.Group) -> Bool {
+    func selectNext(
+        _ group: Selection.Group,
+        using interactor: Selection.Interactor = .keyboard
+    ) -> Bool {
         guard let selection else {
             guard let firstResultItem = results.first else {
                 return false
@@ -298,7 +313,8 @@ extension MusicSearch {
             
             self.selection = Selection(
                 collection: firstResultItem,
-                entry: firstResultItem.entries.first
+                entry: firstResultItem.entries.first,
+                interactor
             )
 
             return true
@@ -308,16 +324,25 @@ extension MusicSearch {
 
         if group == .collection {
             if let nextItem = results.firstAfter(where: { $0.id == selection.collection.id }) {
-                nextSelection = Selection(collection: nextItem, entry: nextItem.entries.first)
+                nextSelection = Selection(
+                    collection: nextItem,
+                    entry: nextItem.entries.first,
+                    interactor
+                )
             } else {
                 nextSelection = Selection(
                     collection: selection.collection,
-                    entry: selection.collection.entries.last
+                    entry: selection.collection.entries.last,
+                    interactor
                 )
             }
         } else {
             if let nextItem = resultEntries.firstAfter(where: { $0.1 == selection.entry }) {
-                nextSelection = Selection(collection: nextItem.0, entry: nextItem.1)
+                nextSelection = Selection(
+                    collection: nextItem.0,
+                    entry: nextItem.1,
+                    interactor
+                )
             }
         }
 
@@ -330,14 +355,18 @@ extension MusicSearch {
 
             self.selection = Selection(
                 collection: resultItem,
-                entry: resultItem.entries.first
+                entry: resultItem.entries.first,
+                interactor
             )
         }
 
         return true
     }
 
-    func selectPrevious(_ group: Selection.Group) -> Bool {
+    func selectPrevious(
+        _ group: Selection.Group,
+        using interactor: Selection.Interactor = .keyboard
+    ) -> Bool {
         guard let selection else { return false }
 
         var newSelection: Selection? = nil
@@ -346,16 +375,25 @@ extension MusicSearch {
             if selection.entry != selection.collection.entries.first {
                 newSelection = Selection(
                     collection: selection.collection,
-                    entry: selection.collection.entries.first
+                    entry: selection.collection.entries.first,
+                    interactor
                 )
             } else {
                 if let nextItem = results.firstBefore(where: { $0.id == selection.collection.id }) {
-                    newSelection = Selection(collection: nextItem, entry: nextItem.entries.first)
+                    newSelection = Selection(
+                        collection: nextItem,
+                        entry: nextItem.entries.first,
+                        interactor
+                    )
                 }
             }
         } else {
             if let nextItem = resultEntries.firstBefore(where: { $0.1 == selection.entry }) {
-                newSelection = Selection(collection: nextItem.0, entry: nextItem.1)
+                newSelection = Selection(
+                    collection: nextItem.0,
+                    entry: nextItem.1,
+                    interactor
+                )
             }
         }
 
