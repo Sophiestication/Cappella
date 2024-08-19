@@ -11,6 +11,7 @@ struct MusicSearchField: View {
     @Environment(\.dismissPlatter) var dismissPlatter
 
     @Environment(\.pixelLength) var pixelLength
+    private let cornerRadius: CGFloat = 6.0
 
     @FocusState private var searchFieldFocused: Bool
 
@@ -35,9 +36,19 @@ struct MusicSearchField: View {
         .font(.system(size: 15.0, weight: .regular, design: .rounded))
         .padding(.vertical, 4.0)
         .background (
-            RoundedRectangle(cornerRadius: 6.0, style: .continuous)
-                .stroke(lineWidth: pixelLength)
-                .fill(.quaternary)
+            RoundedRectangle(
+                cornerRadius: cornerRadius,
+                style: .continuous
+            )
+            .stroke(lineWidth: pixelLength)
+            .fill(.quaternary)
+            .background(
+                RoundedRectangle(
+                    cornerRadius: cornerRadius,
+                    style: .continuous
+                )
+                .fill(.thinMaterial)
+            )
         )
         .padding(.vertical)
         .padding(.trailing, 15.0)

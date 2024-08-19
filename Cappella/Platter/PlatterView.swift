@@ -30,6 +30,8 @@ struct PlatterView<Content>: View where Content: View {
                 content()
                     .padding(.top, headerDimension)
                     .padding(.bottom, footerDimension)
+                    .drawingGroup()
+                    .headerBlur(with: platterGeometry)
                     .mask(contentMask)
                 makeHeaderView()
                 makeOverlayView()
@@ -170,6 +172,8 @@ struct PlatterView<Content>: View where Content: View {
             }
         }
         .padding(.top, headerTopPadding)
+//        .background(.red.opacity(0.25))
+        .offset(backgroundOffset)
     }
 
     private var contentFrame: CGRect {
@@ -213,19 +217,26 @@ struct PlatterView<Content>: View where Content: View {
     }
 }
 
+fileprivate func lerp(start: CGFloat, end: CGFloat, t: CGFloat) -> CGFloat {
+    return (1 - t) * start + t * end
+}
+
 extension View {
     func headerBlur(
-        with platterGeometry: PlatterGeometry?,
-        _ scrollGeometry: ScrollGeometry? = nil
+        with platterGeometry: PlatterGeometry?
     ) -> some View {
         self.variableBlur(
             radius: 64.0,
-            maxSampleCount: 32,
+            maxSampleCount: 60,
             verticalPassFirst: true
         ) { geometry, context in
-            let maskRect = makeMaskRect(for: geometry, platterGeometry, scrollGeometry)
+            guard let platterGeometry else { return }
 
-//            context.addFilter(.blur(radius: 40))
+            let maskRect = makeMaskRect(for: geometry, platterGeometry)
+
+            let h = platterGeometry.headerDimension
+            let radius = lerp(start: 0.0, end: 24.0, t: min(maskRect.minY, h) / h)
+            context.addFilter(.blur(radius: radius))
 
             let shading = GraphicsContext.Shading.linearGradient(
                 Gradient(colors: [.white, .clear]),
@@ -242,31 +253,19 @@ extension View {
 
     private func makeMaskRect(
         for geometry: GeometryProxy,
-        _ platterGeometry: PlatterGeometry?,
-        _ scrollGeometry: ScrollGeometry?
+        _ platterGeometry: PlatterGeometry?
     ) -> CGRect {
-        guard let scrollGeometry,
-              let platterGeometry else {
+        guard let platterGeometry else {
             return .zero
         }
 
         let rect = geometry.frame(in: .local)
-
-        let maskOrigin = CGPoint(
-            x: rect.minX + scrollGeometry.contentOffset.x,
-            y: rect.minY + scrollGeometry.contentOffset.y
-        )
-
-        let maskSize = CGSize(
-            width: rect.width,
-            height: platterGeometry.headerDimension
-        )
-
         let maskRect = CGRect(
-            origin: maskOrigin,
-            size: maskSize
+            x: rect.minX + platterGeometry.contentOffset.x,
+            y: rect.minY + max(platterGeometry.contentOffset.y, 0.0),
+            width: rect.width,
+            height: platterGeometry.headerDimension + platterGeometry.contentFrame.minY
         )
-
         return maskRect
     }
 }

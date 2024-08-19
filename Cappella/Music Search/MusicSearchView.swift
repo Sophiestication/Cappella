@@ -24,7 +24,7 @@ struct MusicSearchView: View {
                         for: resultItem,
                         containerWidth: contentSize.width
                     )
-                    .padding(.top, 10.0)
+                    .padding(.vertical, 10.0)
                 }
             }
 
