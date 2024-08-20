@@ -13,7 +13,6 @@
 		E60946F62C4B9986009D90BA /* MusicSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60946F52C4B9986009D90BA /* MusicSearchView.swift */; };
 		E620627E2C6A7E4000460775 /* PlatterGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E620627D2C6A7E4000460775 /* PlatterGeometry.swift */; };
 		E6283F9A2C41739400158C13 /* ApplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6283F992C41739400158C13 /* ApplicationView.swift */; };
-		E63C52332C4D29CD00CAEB2F /* Glur in Frameworks */ = {isa = PBXBuildFile; productRef = E63C52322C4D29CD00CAEB2F /* Glur */; };
 		E65067782C6B8FF900A5B00C /* MusicSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65067772C6B8FF300A5B00C /* MusicSearchField.swift */; };
 		E650677A2C6BD91800A5B00C /* DismissPlatterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65067792C6BD91800A5B00C /* DismissPlatterAction.swift */; };
 		E6590E6E2C64D89B0096EBAF /* MusicSearchArtworkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6590E6D2C64D89B0096EBAF /* MusicSearchArtworkImage.swift */; };
@@ -90,7 +89,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E63C52332C4D29CD00CAEB2F /* Glur in Frameworks */,
 				E667CD792C55FC74000718FC /* Variablur in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -315,7 +313,6 @@
 			);
 			mainGroup = E666111E2C2C1782007839E6;
 			packageReferences = (
-				E63C52312C4D289000CAEB2F /* XCRemoteSwiftPackageReference "Glur" */,
 				E667CD772C55FC74000718FC /* XCRemoteSwiftPackageReference "Variablur" */,
 			);
 			productRefGroup = E66611282C2C1782007839E6 /* Products */;
@@ -551,7 +548,7 @@
 				CODE_SIGN_ENTITLEMENTS = Cappella/Resources/Cappella.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 400;
 				DEVELOPMENT_TEAM = 3NSYV8YA8F;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -566,7 +563,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.mac.CoverSutra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -582,7 +579,7 @@
 				CODE_SIGN_ENTITLEMENTS = Cappella/Resources/Cappella.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 400;
 				DEVELOPMENT_TEAM = 3NSYV8YA8F;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -597,7 +594,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.mac.CoverSutra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -715,14 +712,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E63C52312C4D289000CAEB2F /* XCRemoteSwiftPackageReference "Glur" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/joogps/Glur.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.4;
-			};
-		};
 		E667CD772C55FC74000718FC /* XCRemoteSwiftPackageReference "Variablur" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/daprice/Variablur.git";
@@ -734,11 +723,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E63C52322C4D29CD00CAEB2F /* Glur */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E63C52312C4D289000CAEB2F /* XCRemoteSwiftPackageReference "Glur" */;
-			productName = Glur;
-		};
 		E667CD782C55FC74000718FC /* Variablur */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E667CD772C55FC74000718FC /* XCRemoteSwiftPackageReference "Variablur" */;

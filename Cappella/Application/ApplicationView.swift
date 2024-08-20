@@ -4,7 +4,6 @@
 
 import SwiftUI
 import MusicKit
-import Glur
 
 struct ApplicationView: View {
     @State private var authorizationStatus = MusicAuthorization.currentStatus

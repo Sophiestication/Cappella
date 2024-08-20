@@ -27,9 +27,8 @@ struct PlatterView<Content>: View where Content: View {
             ZStack(alignment: .top) {
                 makeBackgroundView()
                 content()
-                    .padding(.top, headerDimension)
-                    .padding(.bottom, footerDimension)
-                    .drawingGroup()
+                    .safeAreaPadding(.top, headerDimension)
+                    .safeAreaPadding(.bottom, footerDimension)
                     .headerBlur(with: platterGeometry)
                     .mask(makeContentMask())
                 makeHeaderView()
@@ -175,7 +174,7 @@ fileprivate extension View {
     ) -> some View {
         self.variableBlur(
             radius: 64.0,
-            maxSampleCount: 15,
+            maxSampleCount: 30,
             verticalPassFirst: true
         ) { geometry, context in
             guard let platterGeometry else { return }
@@ -183,7 +182,7 @@ fileprivate extension View {
             let maskRect = makeMaskRect(for: geometry, platterGeometry)
 
             let h = platterGeometry.headerDimension
-            let radius = lerp(start: 0.0, end: 20.0, t: min(maskRect.minY, h) / h)
+            let radius = lerp(start: 0.0, end: 10.0, t: min(maskRect.minY, h) / h)
             context.addFilter(.blur(radius: radius))
 
             let shading = GraphicsContext.Shading.linearGradient(

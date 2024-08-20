@@ -44,18 +44,13 @@ struct MusicSearchArtworkImage: View {
                 .interpolation(.high)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .clipShape(makeContentShape())
                 .overlay(
                     makeContentShape()
-                        .stroke(lineWidth: pixelLength)
-                        .fill(.quaternary)
-                        .padding(EdgeInsets(
-                            top: pixelLength,
-                            leading: pixelLength,
-                            bottom: pixelLength,
-                            trailing: pixelLength
-                        ))
+                        .stroke(lineWidth: 1.0)
+                        .fill(.white.opacity(1.0 / 4.0))
+                        .blendMode(.overlay)
                 )
+                .clipShape(makeContentShape())
                 .shadow(
                     color: Color.black.opacity(0.25),
                     radius: 2.0,
@@ -75,7 +70,7 @@ struct MusicSearchArtworkImage: View {
         artwork.url(width: dimension, height: dimension)
     }
 
-    private func makeContentShape() -> some Shape {
+    private func makeContentShape() -> RoundedRectangle {
         RoundedRectangle(
             cornerSize: CGSize(width: 7.0, height: 7.0),
             style: .continuous

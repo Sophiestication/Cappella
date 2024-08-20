@@ -26,12 +26,16 @@ struct MusicSearchField: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 14.0)
                 .padding(.leading, 10.0)
-            TextField("", text: $musicSearch.term, prompt: Text("Search"))
-                .disableAutocorrection(true)
+            TextField(
+                "",
+                text: $musicSearch.term,
+                prompt: Text(makePrompt(for: musicSearch.scope))
+            )
+            .disableAutocorrection(true)
 
-                .textFieldStyle(.plain)
+            .textFieldStyle(.plain)
 
-                .focused($searchFieldFocused)
+            .focused($searchFieldFocused)
         }
         .font(.system(size: 15.0, weight: .regular, design: .rounded))
         .padding(.vertical, 4.0)
@@ -57,7 +61,6 @@ struct MusicSearchField: View {
 
         .onKeyPress(.upArrow, phases: [.down, .repeat]) { keyPress in
             if musicSearch.selectPrevious(makeSelectionGroup(for: keyPress)) {
-                NSCursor.setHiddenUntilMouseMoves(true)
                 return .handled
             }
 
@@ -65,7 +68,6 @@ struct MusicSearchField: View {
         }
         .onKeyPress(.downArrow, phases: [.down, .repeat]) { keyPress in
             if musicSearch.selectNext(makeSelectionGroup(for: keyPress)) {
-                NSCursor.setHiddenUntilMouseMoves(true)
                 return .handled
             }
 
@@ -111,6 +113,17 @@ struct MusicSearchField: View {
             return Image(systemName: "music.note.list")
         case .artist:
             return Image(systemName: "music.microphone")
+        }
+    }
+
+    private func makePrompt(for scope: MusicSearch.Scope) -> String {
+        switch scope {
+        case .all:
+            "Search Library"
+        case .album:
+            "Search Albums"
+        case .artist:
+            "Search Artists"
         }
     }
 
