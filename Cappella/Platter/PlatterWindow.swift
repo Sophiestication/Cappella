@@ -6,6 +6,9 @@ import Cocoa
 import SwiftUI
 
 class PlatterWindow: NSPanel {
+    private var platterGeometry: PlatterGeometry
+    private var dragView: NSView? = nil
+
     init(
         contentRect: NSRect,
         @ViewBuilder _ content: @escaping () -> some View
@@ -14,7 +17,7 @@ class PlatterWindow: NSPanel {
             .borderless, .nonactivatingPanel
         ]
 
-        let geometry = PlatterGeometry(
+        platterGeometry = PlatterGeometry(
             containerFrame: contentRect
         )
 
@@ -28,8 +31,8 @@ class PlatterWindow: NSPanel {
         self.hidesOnDeactivate = false
         self.canHide = false
 
-        self.isMovable = true
-        self.isMovableByWindowBackground = true
+        self.isMovable = false
+        self.isMovableByWindowBackground = false
 
         self.isExcludedFromWindowsMenu = true
 
@@ -42,18 +45,20 @@ class PlatterWindow: NSPanel {
             content()
         }
         .environment(\.dismissPlatter, DismissPlatterAction(for: self))
-        .environment(\.platterGeometry, geometry)
+        .environment(\.platterGeometry, platterGeometry)
         .ignoresSafeArea(.all)
 
         let hostingView = NSHostingView(rootView: rootView)
 
         let hostingViewOrigin = CGPoint(
-            x: contentRect.midX - geometry.contentFrame.width * 0.50,
+            x: contentRect.midX - platterGeometry.contentFrame.width * 0.50,
             y: 0.0
         )
         hostingView.setFrameOrigin(hostingViewOrigin)
-        hostingView.setFrameSize(geometry.contentFrame.size)
+        hostingView.setFrameSize(platterGeometry.contentFrame.size)
         hostingView.autoresizingMask = [.width, .height]
+
+        self.dragView = hostingView
 
         let containerView = PlatterContainerView(frame: contentRect)
 //        containerView.wantsLayer = true
@@ -94,21 +99,20 @@ class PlatterWindow: NSPanel {
         true
     }
 
-    override func frameRect(forContentRect contentRect: NSRect) -> NSRect {
-//        let frameRect = CGRect(
-//            x: contentRect.minX,
-//            y: contentRect.minY,
-//            width: contentRect.width,
-//            height: contentRect.height
-//        )
-
-        let frameRect = contentRect.insetBy(dx: -60, dy: -60.0)
-
-        return frameRect
-    }
-
     @objc private func windowDidMove(_ notification: Notification) {
 //        layoutDockedPlatter()
+    }
+
+    private func layoutDragView() {
+        guard let dragView else { return }
+
+        let contentRect = platterGeometry.containerFrame
+        let hostingViewOrigin = CGPoint(
+            x: contentRect.midX - platterGeometry.contentFrame.width * 0.50,
+            y: 0.0
+        )
+        dragView.setFrameOrigin(hostingViewOrigin)
+        dragView.setFrameSize(platterGeometry.contentFrame.size)
     }
 
     private func layoutDockedPlatter() {

@@ -45,6 +45,13 @@ class MenuBarExtra: NSObject {
                     name: NSWindow.didMoveNotification,
                     object: window
                 )
+
+                NotificationCenter.default.addObserver(
+                    self,
+                    selector: #selector(windowDidResignKey(_:)),
+                    name: NSWindow.didResignKeyNotification,
+                    object: nil
+                )
             }
         }
 
@@ -52,19 +59,17 @@ class MenuBarExtra: NSObject {
     }
 
     deinit {
-        Task { @MainActor in
-            NotificationCenter.default.removeObserver(
-                self,
-                name: NSWindow.didMoveNotification,
-                object: statusItem.button?.window
-            )
-        }
+        NotificationCenter.default.removeObserver(self)
     }
 
     @objc private func statusWindowDidMove(_ notification: Notification) {
-//        guard let window = notification.object as? NSWindow else { return }
+        guard let window = notification.object as? NSWindow else { return }
 
-        // TODO
+        layoutWindow(self.window)
+    }
+
+    @objc private func windowDidResignKey(_ notification: Notification) {
+        windowShown = false
     }
 
     private func windowDidShow(_ windowShown: Bool) {

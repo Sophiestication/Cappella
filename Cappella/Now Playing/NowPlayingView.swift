@@ -40,10 +40,10 @@ struct NowPlayingView: View {
             PlaybackView()
                 .disabled(queue.currentEntry == nil)
         }
-        .padding(.horizontal)
+        .padding(.horizontal, 10.0)
     }
 
-    private static let artworkDimension: Int = 24
+    private static let artworkDimension: Int = 32
 
     @ViewBuilder
     private func makeArtworkImage(for entry: MusicPlayerType.Queue.Entry) -> some View {
@@ -64,6 +64,7 @@ struct NowPlayingView: View {
         AsyncImage(url: url) { image in
             image
                 .resizable()
+                .interpolation(.high)
                 .aspectRatio(contentMode: .fit)
                 .clipShape(makeContentShape())
         } placeholder: {

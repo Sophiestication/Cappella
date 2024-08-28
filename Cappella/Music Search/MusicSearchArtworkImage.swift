@@ -43,10 +43,11 @@ struct MusicSearchArtworkImage: View {
             image
                 .interpolation(.high)
                 .resizable()
-                .aspectRatio(contentMode: .fit)
+                .aspectRatio(contentMode: .fill)
                 .overlay(
                     makeContentShape()
-                        .stroke(lineWidth: 1.0)
+                        .inset(by: pixelLength)
+                        .stroke(lineWidth: pixelLength)
                         .fill(.white.opacity(1.0 / 4.0))
                         .blendMode(.overlay)
                 )

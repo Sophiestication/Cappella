@@ -25,8 +25,8 @@ class PlatterGeometry {
 
     init(
         containerFrame: CGRect = .zero,
-        headerDimension: CGFloat = 60.0,
-        footerDimension: CGFloat = 60.0
+        headerDimension: CGFloat = 70.0,
+        footerDimension: CGFloat = 44.0
     ) {
         self.containerFrame = containerFrame
 
@@ -35,7 +35,7 @@ class PlatterGeometry {
     }
 
     private static var contentInset: NSEdgeInsets {
-        let horizontalInset = 44.0
+        let horizontalInset = horizontalInset
 
         return NSEdgeInsets(
             top: 6.0,
@@ -44,6 +44,8 @@ class PlatterGeometry {
             right: horizontalInset
         )
     }
+
+    static let horizontalInset: CGFloat = 120.0
 }
 
 extension EnvironmentValues {

@@ -29,11 +29,15 @@ struct MusicSearchView: View {
             }
 
             .onAppear {
-                musicSearch.term = "faith"
+                musicSearch.term = "lana"
             }
 
             .platterContent(id: "search-field", placement: .header) {
                 MusicSearchField(with: musicSearch)
+            }
+
+            .platterContent(id: "now-playing", placement: .docked) {
+                NowPlayingView()
             }
 
             .onChange(of: musicSearch.scheduledToPlay, initial: false) { _, newSelection in
@@ -110,22 +114,22 @@ struct MusicSearchView: View {
             Text(entry.title)
         })
         .buttonStyle(.menu)
-        .onContinuousHover(coordinateSpace: .global) { phase in
-            switch phase {
-            case .active(let point):
-                if point != lastHoverLocation {
-                    lastHoverLocation = point
-
-                    musicSearch.selection = MusicSearch.Selection(
-                        collection: resultItem,
-                        entry: entry,
-                        .cursor
-                    )
-                }
-            case .ended:
-                musicSearch.selection = nil
-            }
-        }
+//        .onContinuousHover(coordinateSpace: .global) { phase in
+//            switch phase {
+//            case .active(let point):
+//                if point != lastHoverLocation {
+//                    lastHoverLocation = point
+//
+//                    musicSearch.selection = MusicSearch.Selection(
+//                        collection: resultItem,
+//                        entry: entry,
+//                        .cursor
+//                    )
+//                }
+//            case .ended:
+//                musicSearch.selection = nil
+//            }
+//        }
         .environment(\.isHighlighted, musicSearch.selection?.entry == entry)
         .environment(\.isTriggered, musicSearch.scheduledToPlay?.entry == entry)
     }

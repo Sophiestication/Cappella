@@ -13,6 +13,7 @@
 		E60946F62C4B9986009D90BA /* MusicSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60946F52C4B9986009D90BA /* MusicSearchView.swift */; };
 		E620627E2C6A7E4000460775 /* PlatterGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E620627D2C6A7E4000460775 /* PlatterGeometry.swift */; };
 		E6283F9A2C41739400158C13 /* ApplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6283F992C41739400158C13 /* ApplicationView.swift */; };
+		E64048E72C75282C007CEB55 /* Rubberband.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64048E62C75282C007CEB55 /* Rubberband.swift */; };
 		E65067782C6B8FF900A5B00C /* MusicSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65067772C6B8FF300A5B00C /* MusicSearchField.swift */; };
 		E650677A2C6BD91800A5B00C /* DismissPlatterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65067792C6BD91800A5B00C /* DismissPlatterAction.swift */; };
 		E6590E6E2C64D89B0096EBAF /* MusicSearchArtworkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6590E6D2C64D89B0096EBAF /* MusicSearchArtworkImage.swift */; };
@@ -57,6 +58,7 @@
 		E60946F52C4B9986009D90BA /* MusicSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchView.swift; sourceTree = "<group>"; };
 		E620627D2C6A7E4000460775 /* PlatterGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterGeometry.swift; sourceTree = "<group>"; };
 		E6283F992C41739400158C13 /* ApplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationView.swift; sourceTree = "<group>"; };
+		E64048E62C75282C007CEB55 /* Rubberband.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rubberband.swift; sourceTree = "<group>"; };
 		E65067772C6B8FF300A5B00C /* MusicSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchField.swift; sourceTree = "<group>"; };
 		E65067792C6BD91800A5B00C /* DismissPlatterAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissPlatterAction.swift; sourceTree = "<group>"; };
 		E6590E6D2C64D89B0096EBAF /* MusicSearchArtworkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchArtworkImage.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 		E667CD7D2C563D42000718FC /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E64048E62C75282C007CEB55 /* Rubberband.swift */,
 				E667CD742C550391000718FC /* ContentScrollView.swift */,
 				E6030FEB2C4D0D260085C9FA /* TextButtonStyle.swift */,
 				E667CD7B2C560841000718FC /* VisualEffectView.swift */,
@@ -374,6 +377,7 @@
 				E60946F22C4AC2EA009D90BA /* AuthorizationView.swift in Sources */,
 				E620627E2C6A7E4000460775 /* PlatterGeometry.swift in Sources */,
 				E6590E6E2C64D89B0096EBAF /* MusicSearchArtworkImage.swift in Sources */,
+				E64048E72C75282C007CEB55 /* Rubberband.swift in Sources */,
 				E6A81D122C4177C300DAC24B /* NowPlayingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
