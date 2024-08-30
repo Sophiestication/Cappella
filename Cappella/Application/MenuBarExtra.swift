@@ -63,9 +63,8 @@ class MenuBarExtra: NSObject {
     }
 
     @objc private func statusWindowDidMove(_ notification: Notification) {
-        guard let window = notification.object as? NSWindow else { return }
-
-        layoutWindow(self.window)
+        guard let window = notification.object as? PlatterWindow else { return }
+        layoutWindow(window)
     }
 
     @objc private func windowDidResignKey(_ notification: Notification) {

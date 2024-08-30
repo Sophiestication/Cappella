@@ -19,17 +19,21 @@ struct MusicSearchView: View {
             LazyVStack(
                 spacing: 0.0
             ) {
-                ForEach(musicSearch.results) { resultItem in
-                    makeView(
-                        for: resultItem,
-                        containerWidth: contentSize.width
-                    )
-                    .padding(.vertical, 10.0)
+                if hasSearchTerm {
+                    ForEach(musicSearch.results) { resultItem in
+                        makeView(
+                            for: resultItem,
+                            containerWidth: contentSize.width
+                        )
+                        .padding(.vertical, 10.0)
+                    }
+                } else {
+                    PlaybackQueueView()
                 }
             }
 
             .onAppear {
-                musicSearch.term = "lana"
+                musicSearch.term = ""
             }
 
             .platterContent(id: "search-field", placement: .header) {
@@ -55,6 +59,10 @@ struct MusicSearchView: View {
                 }
             }
         }
+    }
+
+    private var hasSearchTerm: Bool {
+        musicSearch.term.isEmpty == false
     }
 
     private var contentSize: CGSize {
@@ -114,22 +122,22 @@ struct MusicSearchView: View {
             Text(entry.title)
         })
         .buttonStyle(.menu)
-//        .onContinuousHover(coordinateSpace: .global) { phase in
-//            switch phase {
-//            case .active(let point):
-//                if point != lastHoverLocation {
-//                    lastHoverLocation = point
-//
-//                    musicSearch.selection = MusicSearch.Selection(
-//                        collection: resultItem,
-//                        entry: entry,
-//                        .cursor
-//                    )
-//                }
-//            case .ended:
-//                musicSearch.selection = nil
-//            }
-//        }
+        .onContinuousHover(coordinateSpace: .global) { phase in
+            switch phase {
+            case .active(let point):
+                if point != lastHoverLocation {
+                    lastHoverLocation = point
+
+                    musicSearch.selection = MusicSearch.Selection(
+                        collection: resultItem,
+                        entry: entry,
+                        .cursor
+                    )
+                }
+            case .ended:
+                musicSearch.selection = nil
+            }
+        }
         .environment(\.isHighlighted, musicSearch.selection?.entry == entry)
         .environment(\.isTriggered, musicSearch.scheduledToPlay?.entry == entry)
     }

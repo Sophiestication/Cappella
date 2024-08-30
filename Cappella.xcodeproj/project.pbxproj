@@ -20,12 +20,14 @@
 		E666112B2C2C1782007839E6 /* Cappella.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666112A2C2C1782007839E6 /* Cappella.swift */; };
 		E666112D2C2C1783007839E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E666112C2C2C1783007839E6 /* Assets.xcassets */; };
 		E66611302C2C1783007839E6 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = E666112F2C2C1783007839E6 /* Base */; };
-		E666113B2C2C1783007839E6 /* CappellaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666113A2C2C1783007839E6 /* CappellaTests.swift */; };
+		E666113B2C2C1783007839E6 /* PlaybackQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666113A2C2C1783007839E6 /* PlaybackQueueTests.swift */; };
 		E66611452C2C1783007839E6 /* CappellaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66611442C2C1783007839E6 /* CappellaUITests.swift */; };
 		E66611472C2C1783007839E6 /* CappellaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66611462C2C1783007839E6 /* CappellaUITestsLaunchTests.swift */; };
 		E667CD752C550391000718FC /* ContentScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E667CD742C550391000718FC /* ContentScrollView.swift */; };
 		E667CD792C55FC74000718FC /* Variablur in Frameworks */ = {isa = PBXBuildFile; productRef = E667CD782C55FC74000718FC /* Variablur */; };
 		E667CD7C2C560841000718FC /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E667CD7B2C560841000718FC /* VisualEffectView.swift */; };
+		E682036E2C80BE4A00294A52 /* PlaybackQueueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E682036C2C80BE4A00294A52 /* PlaybackQueueView.swift */; };
+		E68203702C80CC6F00294A52 /* PlaybackQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E682036F2C80CC6F00294A52 /* PlaybackQueue.swift */; };
 		E684138A2C5899E20019FB15 /* MusicSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68413892C5899E20019FB15 /* MusicSearch.swift */; };
 		E6A81D122C4177C300DAC24B /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A81D112C4177C300DAC24B /* NowPlayingView.swift */; };
 		E6A81D142C4177DF00DAC24B /* PlaybackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A81D132C4177DF00DAC24B /* PlaybackView.swift */; };
@@ -68,12 +70,14 @@
 		E666112F2C2C1783007839E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		E66611312C2C1783007839E6 /* Cappella.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cappella.entitlements; sourceTree = "<group>"; };
 		E66611362C2C1783007839E6 /* CappellaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CappellaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E666113A2C2C1783007839E6 /* CappellaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CappellaTests.swift; sourceTree = "<group>"; };
+		E666113A2C2C1783007839E6 /* PlaybackQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackQueueTests.swift; sourceTree = "<group>"; };
 		E66611402C2C1783007839E6 /* CappellaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CappellaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E66611442C2C1783007839E6 /* CappellaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CappellaUITests.swift; sourceTree = "<group>"; };
 		E66611462C2C1783007839E6 /* CappellaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CappellaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E667CD742C550391000718FC /* ContentScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentScrollView.swift; sourceTree = "<group>"; };
 		E667CD7B2C560841000718FC /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
+		E682036C2C80BE4A00294A52 /* PlaybackQueueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackQueueView.swift; sourceTree = "<group>"; };
+		E682036F2C80CC6F00294A52 /* PlaybackQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackQueue.swift; sourceTree = "<group>"; };
 		E68413892C5899E20019FB15 /* MusicSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearch.swift; sourceTree = "<group>"; };
 		E6A81D112C4177C300DAC24B /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
 		E6A81D132C4177DF00DAC24B /* PlaybackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackView.swift; sourceTree = "<group>"; };
@@ -140,8 +144,9 @@
 				E667CD7E2C563D52000718FC /* Music Search */,
 				E667CD7F2C563D6D000718FC /* Now Playing */,
 				E6F11E572C56A99A00AA45FC /* Platter */,
-				E667CD7D2C563D42000718FC /* Shared */,
+				E682036D2C80BE4A00294A52 /* Playback Queue */,
 				E667CD802C563D89000718FC /* Resources */,
+				E667CD7D2C563D42000718FC /* Shared */,
 			);
 			path = Cappella;
 			sourceTree = "<group>";
@@ -149,7 +154,7 @@
 		E66611392C2C1783007839E6 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				E666113A2C2C1783007839E6 /* CappellaTests.swift */,
+				E666113A2C2C1783007839E6 /* PlaybackQueueTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -214,6 +219,15 @@
 				E6ADDBF32C3B0B8F0088D9C8 /* MenuBarExtra.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		E682036D2C80BE4A00294A52 /* Playback Queue */ = {
+			isa = PBXGroup;
+			children = (
+				E682036F2C80CC6F00294A52 /* PlaybackQueue.swift */,
+				E682036C2C80BE4A00294A52 /* PlaybackQueueView.swift */,
+			);
+			path = "Playback Queue";
 			sourceTree = "<group>";
 		};
 		E6F11E572C56A99A00AA45FC /* Platter */ = {
@@ -367,9 +381,11 @@
 				E6ADDBF22C3532AF0088D9C8 /* PlatterWindow.swift in Sources */,
 				E60946F62C4B9986009D90BA /* MusicSearchView.swift in Sources */,
 				E650677A2C6BD91800A5B00C /* DismissPlatterAction.swift in Sources */,
+				E68203702C80CC6F00294A52 /* PlaybackQueue.swift in Sources */,
 				E6283F9A2C41739400158C13 /* ApplicationView.swift in Sources */,
 				E6030FEA2C4D0C770085C9FA /* MenuButtonStyle.swift in Sources */,
 				E667CD752C550391000718FC /* ContentScrollView.swift in Sources */,
+				E682036E2C80BE4A00294A52 /* PlaybackQueueView.swift in Sources */,
 				E65067782C6B8FF900A5B00C /* MusicSearchField.swift in Sources */,
 				E667CD7C2C560841000718FC /* VisualEffectView.swift in Sources */,
 				E666112B2C2C1782007839E6 /* Cappella.swift in Sources */,
@@ -386,7 +402,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E666113B2C2C1783007839E6 /* CappellaTests.swift in Sources */,
+				E666113B2C2C1783007839E6 /* PlaybackQueueTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,7 +495,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -536,7 +551,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -558,8 +572,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = CoverSutra;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "CoverSutra helps you to search and play Apple Music content.";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "CoverSutra helps you to find and play albums in your Apple Music Library.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2006-2024 Sophiestication Software. All rights reserved.";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -589,8 +603,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = CoverSutra;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "CoverSutra helps you to search and play Apple Music content.";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "CoverSutra helps you to find and play albums in your Apple Music Library.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2006-2024 Sophiestication Software. All rights reserved.";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -614,12 +628,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3NSYV8YA8F;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.CappellaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cappella.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cappella";
 			};
 			name = Debug;
@@ -632,12 +645,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3NSYV8YA8F;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.CappellaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cappella.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cappella";
 			};
 			name = Release;
@@ -653,7 +665,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.CappellaUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TEST_TARGET_NAME = Cappella;
 			};
 			name = Debug;
@@ -669,7 +681,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.CappellaUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TEST_TARGET_NAME = Cappella;
 			};
 			name = Release;

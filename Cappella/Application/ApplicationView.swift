@@ -7,23 +7,38 @@ import MusicKit
 
 struct ApplicationView: View {
     @State private var authorizationStatus = MusicAuthorization.currentStatus
+    @State private var playbackQueue: PlaybackQueue? = nil
 
     var body: some View {
-        switch authorizationStatus {
-        case .authorized:
-            makeContentView()
-        case .notDetermined:
-            makeAuthorizationView()
-        case .denied, .restricted:
-            makeDeniedView()
-        @unknown default:
-            makeDeniedView() // TODO
+        Group {
+            switch authorizationStatus {
+            case .authorized:
+                makeContentView()
+            case .notDetermined:
+                makeAuthorizationView()
+            case .denied, .restricted:
+                makeDeniedView()
+            @unknown default:
+                makeDeniedView() // TODO
+            }
         }
     }
 
     @ViewBuilder
     private func makeContentView() -> some View {
-        MusicSearchView()
+        if playbackQueue != nil {
+            MusicSearchView()
+                .environment(playbackQueue)
+        } else {
+            Color.clear
+                .task {
+                    do {
+                        playbackQueue = try await PlaybackQueue()
+                    } catch {
+                        print("Error initializing PlaybackQueue: \(error)")
+                    }
+                }
+        }
     }
 
     @ViewBuilder
