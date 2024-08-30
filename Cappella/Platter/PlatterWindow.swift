@@ -75,6 +75,22 @@ class PlatterWindow: NSPanel {
         )
     }
 
+    func orderOut(_ sender: Any?, animated: Bool = false) {
+        if animated {
+            NSAnimationContext.runAnimationGroup { context in
+                context.duration = 1.0 / 3.0
+                context.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+
+                self.animator().alphaValue = 0.0
+            } completionHandler: {
+                self.orderOut(self)
+                self.alphaValue = 1.0
+            }
+        } else {
+            orderOut(sender)
+        }
+    }
+
     var dockedPlatter: PlatterWindow? = nil {
         didSet {
             if let platter = dockedPlatter {

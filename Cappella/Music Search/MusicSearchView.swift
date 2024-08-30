@@ -14,6 +14,8 @@ struct MusicSearchView: View {
     @Environment(\.platterGeometry) var platterGeometry
     @State private var lastHoverLocation: CGPoint? = nil
 
+    @Environment(\.dismissPlatter) var dismissPlatter
+
     var body: some View {
         ScrollViewReader { scrollProxy in
             LazyVStack(
@@ -118,6 +120,7 @@ struct MusicSearchView: View {
     ) -> some View {
         Button(action: {
             play(resultItem, startingAt: entry)
+            dismissPlatter()
         }, label: {
             Text(entry.title)
         })

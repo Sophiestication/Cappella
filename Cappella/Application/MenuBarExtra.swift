@@ -80,7 +80,7 @@ class MenuBarExtra: NSObject {
             layoutWindow(window)
             window.makeKeyAndOrderFront(nil)
         } else {
-            window.orderOut(nil)
+            window.orderOut(nil, animated: true)
         }
     }
 

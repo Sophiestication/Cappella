@@ -19,7 +19,7 @@ struct DismissPlatterAction {
     func callAsFunction() {
         guard let platterWindow else { return }
 
-        platterWindow.orderOut(nil)
+        platterWindow.orderOut(nil, animated: true)
     }
 }
 

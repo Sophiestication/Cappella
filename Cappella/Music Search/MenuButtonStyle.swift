@@ -49,7 +49,7 @@ struct MenuButtonStyle: PrimitiveButtonStyle {
         isTriggeringAction = true
         isHighlightedForTriggerAnimation = true
 
-        withAnimation(.linear(duration: 0.075).repeatCount(4)) {
+        withAnimation(.linear(duration: 0.075).repeatCount(3)) {
             isHighlightedForTriggerAnimation = false
         } completion: {
             isTriggeringAction = false
