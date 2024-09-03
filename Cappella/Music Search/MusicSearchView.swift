@@ -119,8 +119,7 @@ struct MusicSearchView: View {
         in resultItem: ResultItem
     ) -> some View {
         Button(action: {
-            play(resultItem, startingAt: entry)
-            dismissPlatter()
+            invokeMenuItem(for: entry, in: resultItem)
         }, label: {
             Text(entry.title)
         })
@@ -128,21 +127,29 @@ struct MusicSearchView: View {
         .onContinuousHover(coordinateSpace: .global) { phase in
             switch phase {
             case .active(let point):
-                if point != lastHoverLocation {
-                    lastHoverLocation = point
-
-                    musicSearch.selection = MusicSearch.Selection(
-                        collection: resultItem,
-                        entry: entry,
-                        .cursor
-                    )
-                }
+                lastHoverLocation = point
+                musicSearch.selection = MusicSearch.Selection(
+                    collection: resultItem,
+                    entry: entry,
+                    .cursor
+                )
             case .ended:
                 musicSearch.selection = nil
             }
         }
         .environment(\.isHighlighted, musicSearch.selection?.entry == entry)
         .environment(\.isTriggered, musicSearch.scheduledToPlay?.entry == entry)
+    }
+
+    private func invokeMenuItem(
+        for entry: ResultItem.Entry,
+        in resultItem: ResultItem
+    ) {
+        play(resultItem, startingAt: entry)
+
+        dismissPlatter()
+
+        musicSearch.selection = nil
     }
 
     private func play(_ selection: MusicSearch.Selection) {

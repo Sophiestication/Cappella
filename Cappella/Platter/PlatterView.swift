@@ -3,7 +3,7 @@
 //
 
 import SwiftUI
-import Variablur
+import Inferno
 
 struct PlatterView<Content>: View where Content: View {
     private let content: () -> Content
@@ -33,8 +33,13 @@ struct PlatterView<Content>: View where Content: View {
 
                 Group {
                     content()
+                        .buttonStyle(.platter)
+
                         .safeAreaPadding(.top, headerDimension)
                         .safeAreaPadding(.bottom, footerDimension)
+
+                        .containerRelativeFrame(.horizontal)
+
                         .blur(.header, using: platterGeometry)
 //                        .blur(.docked, using: platterGeometry)
                     makeHeaderView()
@@ -276,7 +281,7 @@ struct PlatterView<Content>: View where Content: View {
         }
         .onEnded { _ in
             withAnimation(.smooth) {
-                dragOffset = .zero
+                self.dragOffset = .zero
             }
         }
     }

@@ -11,6 +11,9 @@ struct PlaybackQueueView: View {
 
     private typealias Entry = MusicPlayerType.Queue.Entry
 
+    @State private var draggedEntry: Entry? = nil
+    @State private var draggedEntryOffset: CGSize = .zero
+
     @Environment(\.playbackQueue) var playbackQueue
 
     var body: some View {
@@ -46,6 +49,29 @@ struct PlaybackQueueView: View {
             }
         })
         .buttonStyle(.menu)
+
+        .gesture(makeDragGesture(for: entry))
+        .offset(entry == draggedEntry ? draggedEntryOffset : .zero)
+        .zIndex(draggedEntry == entry ? 1 : 0)
+    }
+
+    private func makeDragGesture(for entry: Entry) -> some Gesture {
+        DragGesture(
+            minimumDistance: 0.0,
+            coordinateSpace: .global
+        )
+        .onChanged { value in
+            withAnimation(.interactiveSpring) {
+                draggedEntry = entry
+                draggedEntryOffset = value.translation
+            }
+        }
+        .onEnded { _ in
+            withAnimation(.smooth) {
+                draggedEntry = nil
+                draggedEntryOffset = .zero
+            }
+        }
     }
 
     private static let artworkDimension: Int = 32

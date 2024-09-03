@@ -1,13 +1,22 @@
 {
-  "originHash" : "30d84d38a248482835cd2044bfde11d12416d6a16fd39755a693487c36f841f1",
+  "originHash" : "5f3885bc3624f495108e93d958039015e353a37574bd00de9c0f14332f63aec3",
   "pins" : [
     {
-      "identity" : "variablur",
+      "identity" : "hotkey",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/daprice/Variablur.git",
+      "location" : "https://github.com/soffes/HotKey.git",
       "state" : {
         "branch" : "main",
-        "revision" : "29fdd8c5e2721c1706b0ed8008d516f8d8d75879"
+        "revision" : "4d02d80de143d69b7eeb5962729591a157a57ede"
+      }
+    },
+    {
+      "identity" : "inferno",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/twostraws/Inferno.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "9c0941c91b9dc0e22e471bda0ac89f6e676d59b1"
       }
     }
   ],
