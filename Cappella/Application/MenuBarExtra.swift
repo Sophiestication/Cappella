@@ -45,14 +45,14 @@ class MenuBarExtra: NSObject {
                     name: NSWindow.didMoveNotification,
                     object: window
                 )
-
-                NotificationCenter.default.addObserver(
-                    self,
-                    selector: #selector(windowDidResignKey(_:)),
-                    name: NSWindow.didResignKeyNotification,
-                    object: nil
-                )
             }
+
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(windowDidResignKey(_:)),
+                name: NSWindow.didResignKeyNotification,
+                object: window
+            )
         }
 
         layoutWindow(window)

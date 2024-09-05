@@ -59,7 +59,7 @@ struct ApplicationView: View {
     private func makeDeniedView() -> some View {
         VStack {
             Text("Music Library Access Denied")
-            
+
             Button(action: {
                 if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Media") {
                     openURL(url)
@@ -70,9 +70,4 @@ struct ApplicationView: View {
             .padding(.vertical, 10.0)
         }
     }
-}
-
-#Preview {
-    ApplicationView()
-        .frame(width: 400.0, height: 600.0)
 }
