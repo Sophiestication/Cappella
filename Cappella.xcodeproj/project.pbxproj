@@ -19,7 +19,7 @@
 		E653D1E02C89EDC0003AAE1E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D1DF2C89EDC0003AAE1E /* SettingsView.swift */; };
 		E653D1E22C89EDC6003AAE1E /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D1E12C89EDC6003AAE1E /* GeneralSettingsView.swift */; };
 		E653D1E42C89FCC9003AAE1E /* ShortcutSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D1E32C89FCC9003AAE1E /* ShortcutSettingsView.swift */; };
-		E653D1E62C8A19DE003AAE1E /* ShortcutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D1E52C8A19DE003AAE1E /* ShortcutView.swift */; };
+		E653D1E62C8A19DE003AAE1E /* ShortcutRecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D1E52C8A19DE003AAE1E /* ShortcutRecorderView.swift */; };
 		E6590E6E2C64D89B0096EBAF /* MusicSearchArtworkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6590E6D2C64D89B0096EBAF /* MusicSearchArtworkImage.swift */; };
 		E666112B2C2C1782007839E6 /* Cappella.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666112A2C2C1782007839E6 /* Cappella.swift */; };
 		E666112D2C2C1783007839E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E666112C2C2C1783007839E6 /* Assets.xcassets */; };
@@ -29,6 +29,9 @@
 		E66611472C2C1783007839E6 /* CappellaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66611462C2C1783007839E6 /* CappellaUITestsLaunchTests.swift */; };
 		E667CD752C550391000718FC /* ContentScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E667CD742C550391000718FC /* ContentScrollView.swift */; };
 		E667CD7C2C560841000718FC /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E667CD7B2C560841000718FC /* VisualEffectView.swift */; };
+		E67B5CF42C8CB34200E47348 /* MASShortcut in Frameworks */ = {isa = PBXBuildFile; productRef = E67B5CF32C8CB34200E47348 /* MASShortcut */; };
+		E67B5CFB2C8CDA0400E47348 /* KeyEquivalentListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B5CFA2C8CDA0400E47348 /* KeyEquivalentListener.swift */; };
+		E67B5CFE2C8D8CC000E47348 /* EventModifiers+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B5CFD2C8D8CC000E47348 /* EventModifiers+Additions.swift */; };
 		E682036E2C80BE4A00294A52 /* PlaybackQueueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E682036C2C80BE4A00294A52 /* PlaybackQueueView.swift */; };
 		E68203702C80CC6F00294A52 /* PlaybackQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E682036F2C80CC6F00294A52 /* PlaybackQueue.swift */; };
 		E684138A2C5899E20019FB15 /* MusicSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68413892C5899E20019FB15 /* MusicSearch.swift */; };
@@ -71,7 +74,7 @@
 		E653D1DF2C89EDC0003AAE1E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E653D1E12C89EDC6003AAE1E /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
 		E653D1E32C89FCC9003AAE1E /* ShortcutSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutSettingsView.swift; sourceTree = "<group>"; };
-		E653D1E52C8A19DE003AAE1E /* ShortcutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutView.swift; sourceTree = "<group>"; };
+		E653D1E52C8A19DE003AAE1E /* ShortcutRecorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutRecorderView.swift; sourceTree = "<group>"; };
 		E6590E6D2C64D89B0096EBAF /* MusicSearchArtworkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchArtworkImage.swift; sourceTree = "<group>"; };
 		E66611272C2C1782007839E6 /* Cappella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cappella.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E666112A2C2C1782007839E6 /* Cappella.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cappella.swift; sourceTree = "<group>"; };
@@ -85,6 +88,8 @@
 		E66611462C2C1783007839E6 /* CappellaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CappellaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E667CD742C550391000718FC /* ContentScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentScrollView.swift; sourceTree = "<group>"; };
 		E667CD7B2C560841000718FC /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
+		E67B5CFA2C8CDA0400E47348 /* KeyEquivalentListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyEquivalentListener.swift; sourceTree = "<group>"; };
+		E67B5CFD2C8D8CC000E47348 /* EventModifiers+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventModifiers+Additions.swift"; sourceTree = "<group>"; };
 		E682036C2C80BE4A00294A52 /* PlaybackQueueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackQueueView.swift; sourceTree = "<group>"; };
 		E682036F2C80CC6F00294A52 /* PlaybackQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackQueue.swift; sourceTree = "<group>"; };
 		E68413892C5899E20019FB15 /* MusicSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearch.swift; sourceTree = "<group>"; };
@@ -105,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E67B5CF42C8CB34200E47348 /* MASShortcut in Frameworks */,
 				E6D789332C87598100C495DE /* Inferno in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,7 +139,6 @@
 				E66611292C2C1782007839E6 /* Cappella */,
 				E66611392C2C1783007839E6 /* Tests */,
 				E66611432C2C1783007839E6 /* UITests */,
-				E6D789312C87598100C495DE /* Frameworks */,
 				E66611282C2C1782007839E6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				E667CD812C563DB2000718FC /* Application */,
+				E67B5CFC2C8CDD2300E47348 /* Keyboard Shortcuts */,
 				E667CD7E2C563D52000718FC /* Music Search */,
 				E667CD7F2C563D6D000718FC /* Now Playing */,
 				E6F11E572C56A99A00AA45FC /* Platter */,
@@ -239,9 +245,18 @@
 				E653D1DF2C89EDC0003AAE1E /* SettingsView.swift */,
 				E653D1E12C89EDC6003AAE1E /* GeneralSettingsView.swift */,
 				E653D1E32C89FCC9003AAE1E /* ShortcutSettingsView.swift */,
-				E653D1E52C8A19DE003AAE1E /* ShortcutView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		E67B5CFC2C8CDD2300E47348 /* Keyboard Shortcuts */ = {
+			isa = PBXGroup;
+			children = (
+				E67B5CFD2C8D8CC000E47348 /* EventModifiers+Additions.swift */,
+				E67B5CFA2C8CDA0400E47348 /* KeyEquivalentListener.swift */,
+				E653D1E52C8A19DE003AAE1E /* ShortcutRecorderView.swift */,
+			);
+			path = "Keyboard Shortcuts";
 			sourceTree = "<group>";
 		};
 		E682036D2C80BE4A00294A52 /* Playback Queue */ = {
@@ -251,13 +266,6 @@
 				E682036C2C80BE4A00294A52 /* PlaybackQueueView.swift */,
 			);
 			path = "Playback Queue";
-			sourceTree = "<group>";
-		};
-		E6D789312C87598100C495DE /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E6F11E572C56A99A00AA45FC /* Platter */ = {
@@ -363,6 +371,7 @@
 			packageReferences = (
 				E6682D0E2C85C15500F53B45 /* XCRemoteSwiftPackageReference "HotKey" */,
 				E6D789302C8757D400C495DE /* XCRemoteSwiftPackageReference "Inferno" */,
+				E67B5CF22C8CB34200E47348 /* XCRemoteSwiftPackageReference "MASShortcut" */,
 			);
 			productRefGroup = E66611282C2C1782007839E6 /* Products */;
 			projectDirPath = "";
@@ -407,10 +416,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6F11E592C56A9BA00AA45FC /* PlatterView.swift in Sources */,
-				E653D1E62C8A19DE003AAE1E /* ShortcutView.swift in Sources */,
+				E653D1E62C8A19DE003AAE1E /* ShortcutRecorderView.swift in Sources */,
 				E653D1E22C89EDC6003AAE1E /* GeneralSettingsView.swift in Sources */,
 				E653D1E42C89FCC9003AAE1E /* ShortcutSettingsView.swift in Sources */,
 				E6030FEC2C4D0D260085C9FA /* TextButtonStyle.swift in Sources */,
+				E67B5CFE2C8D8CC000E47348 /* EventModifiers+Additions.swift in Sources */,
 				E684138A2C5899E20019FB15 /* MusicSearch.swift in Sources */,
 				E6ADDBF42C3B0B8F0088D9C8 /* MenuBarExtra.swift in Sources */,
 				E653D1DE2C89EC15003AAE1E /* ApplicationDelegate.swift in Sources */,
@@ -427,6 +437,7 @@
 				E6D789352C877E2600C495DE /* PlatterButtonStyle.swift in Sources */,
 				E667CD7C2C560841000718FC /* VisualEffectView.swift in Sources */,
 				E666112B2C2C1782007839E6 /* Cappella.swift in Sources */,
+				E67B5CFB2C8CDA0400E47348 /* KeyEquivalentListener.swift in Sources */,
 				E6A81D142C4177DF00DAC24B /* PlaybackView.swift in Sources */,
 				E620627E2C6A7E4000460775 /* PlatterGeometry.swift in Sources */,
 				E6590E6E2C64D89B0096EBAF /* MusicSearchArtworkImage.swift in Sources */,
@@ -773,6 +784,14 @@
 				kind = branch;
 			};
 		};
+		E67B5CF22C8CB34200E47348 /* XCRemoteSwiftPackageReference "MASShortcut" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cocoabits/MASShortcut.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		E6D789302C8757D400C495DE /* XCRemoteSwiftPackageReference "Inferno" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/Inferno.git";
@@ -784,6 +803,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E67B5CF32C8CB34200E47348 /* MASShortcut */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E67B5CF22C8CB34200E47348 /* XCRemoteSwiftPackageReference "MASShortcut" */;
+			productName = MASShortcut;
+		};
 		E6D789322C87598100C495DE /* Inferno */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E6D789302C8757D400C495DE /* XCRemoteSwiftPackageReference "Inferno" */;

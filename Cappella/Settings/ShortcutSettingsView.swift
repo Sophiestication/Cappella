@@ -43,13 +43,14 @@ struct ShortcutSettingsView: View {
     @ViewBuilder
     private func makeShortcutSetting(_ title: String) -> some View {
         LabeledContent {
-            ShortcutView()
+            ShortcutRecorderView()
         } label: {
             Text(title)
         }
     }
 }
 
-#Preview {
-    SettingsView()
+#Preview(traits: .fixedLayout(width: 600.0, height: 480.0)) {
+    ShortcutSettingsView()
+        .padding()
 }

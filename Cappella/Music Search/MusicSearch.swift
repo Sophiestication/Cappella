@@ -177,7 +177,7 @@ final class MusicSearch {
         }
 
         libraryRequest.sort(
-            by: \.libraryAddedDate,
+            by: \.releaseDate,
             ascending: true
         )
 
