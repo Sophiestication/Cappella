@@ -8,6 +8,8 @@ struct ShortcutSettingsView: View {
     @AppStorage("menuBarExtraShown") private var menuBarExtraShown = true
     @AppStorage("dockItemShown") private var dockItemShown = true
 
+    private let separatorLength: CGFloat = 20.0
+
     var body: some View {
         Form {
             Section {
@@ -15,7 +17,7 @@ struct ShortcutSettingsView: View {
                 makeShortcutSetting("Show/Hide Now Playing:")
             }
 
-            Spacer()
+            Spacer(minLength: separatorLength)
 
             Section {
                 makeShortcutSetting("Play/Pause Current Song:")
@@ -23,14 +25,14 @@ struct ShortcutSettingsView: View {
                 makeShortcutSetting("Previous Song:")
             }
 
-            Spacer()
+            Spacer(minLength: separatorLength)
 
             Section {
                 makeShortcutSetting("Toggle Repeat Mode:")
                 makeShortcutSetting("Shuffle On/Off:")
             }
 
-            Spacer()
+            Spacer(minLength: separatorLength)
 
             Section {
                 makeShortcutSetting("Increase Sound Volume:")
@@ -50,7 +52,7 @@ struct ShortcutSettingsView: View {
     }
 }
 
-#Preview(traits: .fixedLayout(width: 600.0, height: 480.0)) {
+#Preview(traits: .fixedLayout(width: 680.0, height: 480.0)) {
     ShortcutSettingsView()
         .padding()
 }

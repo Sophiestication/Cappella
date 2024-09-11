@@ -4,27 +4,30 @@
 
 import SwiftUI
 import Cocoa
-import MASShortcut
+import HotKey
+import Carbon
 
 struct ShortcutRecorderView: View {
     @FocusState private var isFocued: Bool
     @State private var isRecording: Bool = false
 
-    @State private var keyEquivalent: MASShortcut? = nil
-    @State private var modifiers: MASShortcut? = nil
+    @State private var keyEquivalent: GlobalKeyboardShortcut.KeyEquivalent? = nil
+    @State private var modifiers: NSEvent.ModifierFlags? = nil
 
     var body: some View {
         HStack {
-            if let modifierString = keyEquivalent?.modifierFlagsString,
-               let keyCodeString = keyEquivalent?.keyCodeString {
-                Text("\(modifierString)\(keyCodeString)")
-            } else if let modifierString = modifiers?.modifierFlagsString {
+            if let modifierString = modifiers?.description,
+               let string = keyEquivalent?.description {
+                Text("\(modifierString)\(string)")
+            } else if let string = keyEquivalent?.description {
+                Text("\(string)")
+            } else if let modifierString = modifiers?.description {
                 Text("\(modifierString)")
             } else {
                 Text("Click to record shortcut")
             }
         }
-        .font(.caption)
+        .padding(.horizontal)
         .frame(minWidth: 140.0)
 
         .overlay(
@@ -52,21 +55,45 @@ struct ShortcutRecorderView: View {
             isRecording = true
         }
 
-        .onKeyEquivalent { keyCode, modifiers in
+        .onKeyPress { keyPress in
             guard isRecording else { return .ignored }
 
-            keyEquivalent = MASShortcut(keyCode: keyCode, modifierFlags: modifiers)
+            if let event = NSApp.currentEvent {
+                keyEquivalent = GlobalKeyboardShortcut.KeyEquivalent(with: event)
+                modifiers = event.modifierFlags
+            } else {
+                keyEquivalent = nil
+                modifiers = nil
+            }
+
             isRecording = false
 
             return .handled
         }
+
+//        .onKeyEquivalent { keyCode, modifiers in // record key combination
+//            guard isRecording else { return .ignored }
+//
+//            if let key = Key(carbonKeyCode: keyCode) {
+//                keyEquivalent = KeyCombo(
+//                    key: key,
+//                    modifiers: modifiers
+//                )
+//            } else {
+//                keyEquivalent = nil
+//            }
+//
+//            isRecording = false
+//
+//            return .handled
+//        }
         .onModifierKeysChanged { old, new in
             guard isRecording else { return }
 
             if new.isEmpty {
                 modifiers = nil
             } else {
-                modifiers = MASShortcut(keyCode: 0, modifierFlags: new.NSEventModifierFlags)
+                modifiers = NSEvent.ModifierFlags(new)
             }
         }
     }

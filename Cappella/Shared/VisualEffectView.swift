@@ -19,9 +19,6 @@ struct VisualEffectView: NSViewRepresentable {
     func makeNSView(context: Context) -> NSVisualEffectView {
         let view = NSVisualEffectView()
 
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        view.autoresizingMask = [ .width, .height ]
-
         view.material = material
         view.blendingMode = blendingMode
 

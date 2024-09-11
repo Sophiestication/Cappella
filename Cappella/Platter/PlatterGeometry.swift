@@ -45,7 +45,7 @@ class PlatterGeometry {
         )
     }
 
-    static let horizontalInset: CGFloat = 120.0
+    static let horizontalInset: CGFloat = 200.0
 }
 
 extension EnvironmentValues {

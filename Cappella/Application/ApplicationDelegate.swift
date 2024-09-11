@@ -44,6 +44,13 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     func applicationWillTerminate(_ notification: Notification) {
     }
 
+    func applicationShouldHandleReopen(
+        _ sender: NSApplication,
+        hasVisibleWindows flag: Bool
+    ) -> Bool {
+        return false
+    }
+
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
         return false
     }

@@ -8,16 +8,16 @@ import AppKit
 
 extension View {
     func onKeyEquivalent(
-        _ action: @escaping (Int, NSEvent.ModifierFlags) -> KeyPress.Result
+        _ action: @escaping (UInt32, NSEvent.ModifierFlags) -> KeyPress.Result
     ) -> some View {
         self.background(KeyEquivalentListener(action: action))
     }
 }
 
 fileprivate class KeyEquivalentListenerView: NSView {
-    let action: (Int, NSEvent.ModifierFlags) -> KeyPress.Result
+    let action: (UInt32, NSEvent.ModifierFlags) -> KeyPress.Result
 
-    init(_ action: @escaping (Int, NSEvent.ModifierFlags) -> KeyPress.Result) {
+    init(_ action: @escaping (UInt32, NSEvent.ModifierFlags) -> KeyPress.Result) {
         self.action = action
         super.init(frame: .zero)
     }
@@ -27,10 +27,10 @@ fileprivate class KeyEquivalentListenerView: NSView {
     }
 
     override func performKeyEquivalent(with event: NSEvent) -> Bool {
-        let keyCode = Int(event.keyCode)
+        let keyCode = event.keyCode
         let modifierFlags = event.modifierFlags
         
-        if action(keyCode, modifierFlags) == .handled {
+        if action(UInt32(keyCode), modifierFlags) == .handled {
             return true
         }
 
@@ -39,7 +39,7 @@ fileprivate class KeyEquivalentListenerView: NSView {
 }
 
 fileprivate struct KeyEquivalentListener: NSViewRepresentable {
-    let action: (Int, NSEvent.ModifierFlags) -> KeyPress.Result
+    let action: (UInt32, NSEvent.ModifierFlags) -> KeyPress.Result
 
     func makeNSView(context: Context) -> NSView {
         let view = KeyEquivalentListenerView(action)
