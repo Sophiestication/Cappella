@@ -3,25 +3,21 @@
 //
 
 import SwiftUI
-import Cocoa
-import HotKey
-import Carbon
+import AppKit
 
 struct ShortcutRecorderView: View {
-    @FocusState private var isFocued: Bool
+    @FocusState private var isFocused: Bool
     @State private var isRecording: Bool = false
 
-    @State private var keyEquivalent: GlobalKeyboardShortcut.KeyEquivalent? = nil
-    @State private var modifiers: NSEvent.ModifierFlags? = nil
+    @Binding var keyboardShortcut: GlobalKeyboardShortcut?
+    @State private var currentModifiers: NSEvent.ModifierFlags? = nil
 
     var body: some View {
         HStack {
-            if let modifierString = modifiers?.description,
-               let string = keyEquivalent?.description {
-                Text("\(modifierString)\(string)")
-            } else if let string = keyEquivalent?.description {
-                Text("\(string)")
-            } else if let modifierString = modifiers?.description {
+            if let keyboardShortcut {
+                Text("\(keyboardShortcut)")
+            } else if isRecording,
+                      let modifierString = currentModifiers?.description {
                 Text("\(modifierString)")
             } else {
                 Text("Click to record shortcut")
@@ -41,7 +37,12 @@ struct ShortcutRecorderView: View {
         )
 
         .focusable()
-        .focused($isFocued)
+        .focused($isFocused)
+        .onChange(of: isFocused, initial: false) { _, isFocued  in
+            if isFocused == false {
+                isRecording = false
+            }
+        }
         .focusEffectDisabled()
 
         .onKeyPress(.return, phases: .down, action: { keyPress in // start recording
@@ -59,41 +60,22 @@ struct ShortcutRecorderView: View {
             guard isRecording else { return .ignored }
 
             if let event = NSApp.currentEvent {
-                keyEquivalent = GlobalKeyboardShortcut.KeyEquivalent(with: event)
-                modifiers = event.modifierFlags
+                keyboardShortcut = GlobalKeyboardShortcut(with: event)
             } else {
-                keyEquivalent = nil
-                modifiers = nil
+                keyboardShortcut = nil
             }
 
             isRecording = false
 
             return .handled
         }
-
-//        .onKeyEquivalent { keyCode, modifiers in // record key combination
-//            guard isRecording else { return .ignored }
-//
-//            if let key = Key(carbonKeyCode: keyCode) {
-//                keyEquivalent = KeyCombo(
-//                    key: key,
-//                    modifiers: modifiers
-//                )
-//            } else {
-//                keyEquivalent = nil
-//            }
-//
-//            isRecording = false
-//
-//            return .handled
-//        }
         .onModifierKeysChanged { old, new in
             guard isRecording else { return }
 
             if new.isEmpty {
-                modifiers = nil
+                currentModifiers = nil
             } else {
-                modifiers = NSEvent.ModifierFlags(new)
+                currentModifiers = NSEvent.ModifierFlags(new)
             }
         }
     }
@@ -112,15 +94,15 @@ struct ShortcutRecorderView: View {
 
         .accessibilityLabel(Text("Clear"))
 
-        .opacity(keyEquivalent == nil ? 0.0 : 1.0)
+        .opacity(keyboardShortcut == nil ? 0.0 : 1.0)
     }
 
     @ViewBuilder
     private func makeBackgroundView() -> some View {
-        if isRecording && isFocued {
+        if isRecording && isFocused {
             backgroundShape
                 .fill(.selection)
-        } else if isFocued {
+        } else if isFocused {
             backgroundShape
                 .stroke(.selection)
         } else {
@@ -134,17 +116,17 @@ struct ShortcutRecorderView: View {
     }
 
     private func clear() {
-        keyEquivalent = nil
-        modifiers = nil
-
+        keyboardShortcut = nil
         isRecording = false
     }
 }
 
 #Preview(traits: .fixedLayout(width: 600.0, height: 480.0)) {
+    @Previewable @State var shortcut: GlobalKeyboardShortcut? = nil
+
     Form {
         LabeledContent {
-            ShortcutRecorderView()
+            ShortcutRecorderView(keyboardShortcut: $shortcut)
         } label: {
             Text("Play/Pause Current Song:")
         }

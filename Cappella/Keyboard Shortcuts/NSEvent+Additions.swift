@@ -17,3 +17,16 @@ extension NSEvent.ModifierFlags {
         if modifiers.contains(.numericPad) { self.insert(.numericPad) }
     }
 }
+
+extension NSEvent.ModifierFlags: @retroactive CustomStringConvertible {
+    public var description: String {
+        var string = ""
+
+        if contains(.control) { string += "\u{2303}" }
+        if contains(.option) { string += "\u{2325}" }
+        if contains(.shift) { string += "\u{21E7}" }
+        if contains(.command) { string += "\u{2318}" }
+
+        return string
+    }
+}

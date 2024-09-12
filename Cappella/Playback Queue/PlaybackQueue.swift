@@ -87,7 +87,7 @@ final class PlaybackQueue {
             }
         }
 
-        print("\(entries.map { $0.title } )")
+//        print("\(entries.map { $0.title } )")
 
         MusicPlayerType.shared.queue = MusicPlayerType.Queue(entries, startingAt: currentEntry)
 

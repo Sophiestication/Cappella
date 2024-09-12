@@ -17,6 +17,28 @@ struct CompatibilityKeyEquivalent {
     }
 }
 
+extension CompatibilityKeyEquivalent: Codable {
+    enum CodingKeys: String, CodingKey {
+        case keyCode
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(keyCode, forKey: .keyCode)
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        keyCode = try container.decode(Int.self, forKey: .keyCode)
+    }
+}
+
+extension CompatibilityKeyEquivalent: Equatable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.keyCode == rhs.keyCode
+    }
+}
+
 // System keycodes
 extension CompatibilityKeyEquivalent {
     static let a = Self(kVK_ANSI_A)
