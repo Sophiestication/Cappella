@@ -12,7 +12,7 @@ struct SettingsView: View {
             }
 
             Tab("Shortcuts", systemImage: "keyboard") {
-                ShortcutSettingsView()
+                KeyboardShortcutSettingsView()
             }
         }
         .frame(maxWidth: 600)

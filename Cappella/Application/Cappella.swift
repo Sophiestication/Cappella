@@ -7,7 +7,11 @@ import SwiftUI
 @main
 struct Cappella: App {
     @NSApplicationDelegateAdaptor private var applicationDelegate: ApplicationDelegate
-    private var keyboardShortcutSettings = GlobalKeyboardShortcutSettings(userDefaults: .standard)
+
+    private var keyboardShortcutSettings = GlobalKeyboardShortcutSettings(
+        userDefaults: .standard,
+        keyboardShortcutHandler: GlobalKeyboardShortcutHandler.shared
+    )
 
     var body: some Scene {
 #if os(macOS)

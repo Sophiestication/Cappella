@@ -22,10 +22,12 @@ extension NSEvent.ModifierFlags: @retroactive CustomStringConvertible {
     public var description: String {
         var string = ""
 
+        if contains(.command) { string += "\u{2318}" }
         if contains(.control) { string += "\u{2303}" }
         if contains(.option) { string += "\u{2325}" }
         if contains(.shift) { string += "\u{21E7}" }
-        if contains(.command) { string += "\u{2318}" }
+        if contains(.capsLock) { string += "\u{21EA}" }
+        if contains(.numericPad) { string += "Pad" }
 
         return string
     }

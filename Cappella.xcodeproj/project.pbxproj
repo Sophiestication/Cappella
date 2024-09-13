@@ -12,16 +12,16 @@
 		E620627E2C6A7E4000460775 /* PlatterGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E620627D2C6A7E4000460775 /* PlatterGeometry.swift */; };
 		E6283F9A2C41739400158C13 /* ApplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6283F992C41739400158C13 /* ApplicationView.swift */; };
 		E64048E72C75282C007CEB55 /* Rubberband.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64048E62C75282C007CEB55 /* Rubberband.swift */; };
-		E6485A3A2C90419300F4040D /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = E6485A392C90419300F4040D /* HotKey */; };
 		E6485A3D2C904FEC00F4040D /* GlobalKeyboardShortcutSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6485A3C2C904FEC00F4040D /* GlobalKeyboardShortcutSettings.swift */; };
 		E6485A512C90B8B300F4040D /* GlobalKeyboardShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6485A502C90B8B300F4040D /* GlobalKeyboardShortcut.swift */; };
 		E6485A532C90C4E900F4040D /* CompatibilityKeyEquivalent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6485A522C90C4E900F4040D /* CompatibilityKeyEquivalent.swift */; };
+		E6485A5A2C9427E200F4040D /* GlobalKeyboardShortcutHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6485A592C9427E200F4040D /* GlobalKeyboardShortcutHandler.swift */; };
 		E65067782C6B8FF900A5B00C /* MusicSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65067772C6B8FF300A5B00C /* MusicSearchField.swift */; };
 		E650677A2C6BD91800A5B00C /* DismissPlatterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65067792C6BD91800A5B00C /* DismissPlatterAction.swift */; };
 		E653D1DE2C89EC15003AAE1E /* ApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D1DD2C89EC15003AAE1E /* ApplicationDelegate.swift */; };
 		E653D1E02C89EDC0003AAE1E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D1DF2C89EDC0003AAE1E /* SettingsView.swift */; };
 		E653D1E22C89EDC6003AAE1E /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D1E12C89EDC6003AAE1E /* GeneralSettingsView.swift */; };
-		E653D1E42C89FCC9003AAE1E /* ShortcutSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D1E32C89FCC9003AAE1E /* ShortcutSettingsView.swift */; };
+		E653D1E42C89FCC9003AAE1E /* KeyboardShortcutSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D1E32C89FCC9003AAE1E /* KeyboardShortcutSettingsView.swift */; };
 		E653D1E62C8A19DE003AAE1E /* ShortcutRecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D1E52C8A19DE003AAE1E /* ShortcutRecorderView.swift */; };
 		E6590E6E2C64D89B0096EBAF /* MusicSearchArtworkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6590E6D2C64D89B0096EBAF /* MusicSearchArtworkImage.swift */; };
 		E666112B2C2C1782007839E6 /* Cappella.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666112A2C2C1782007839E6 /* Cappella.swift */; };
@@ -72,12 +72,13 @@
 		E6485A3C2C904FEC00F4040D /* GlobalKeyboardShortcutSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalKeyboardShortcutSettings.swift; sourceTree = "<group>"; };
 		E6485A502C90B8B300F4040D /* GlobalKeyboardShortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalKeyboardShortcut.swift; sourceTree = "<group>"; };
 		E6485A522C90C4E900F4040D /* CompatibilityKeyEquivalent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityKeyEquivalent.swift; sourceTree = "<group>"; };
+		E6485A592C9427E200F4040D /* GlobalKeyboardShortcutHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalKeyboardShortcutHandler.swift; sourceTree = "<group>"; };
 		E65067772C6B8FF300A5B00C /* MusicSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchField.swift; sourceTree = "<group>"; };
 		E65067792C6BD91800A5B00C /* DismissPlatterAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissPlatterAction.swift; sourceTree = "<group>"; };
 		E653D1DD2C89EC15003AAE1E /* ApplicationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDelegate.swift; sourceTree = "<group>"; };
 		E653D1DF2C89EDC0003AAE1E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E653D1E12C89EDC6003AAE1E /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
-		E653D1E32C89FCC9003AAE1E /* ShortcutSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutSettingsView.swift; sourceTree = "<group>"; };
+		E653D1E32C89FCC9003AAE1E /* KeyboardShortcutSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcutSettingsView.swift; sourceTree = "<group>"; };
 		E653D1E52C8A19DE003AAE1E /* ShortcutRecorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutRecorderView.swift; sourceTree = "<group>"; };
 		E6590E6D2C64D89B0096EBAF /* MusicSearchArtworkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchArtworkImage.swift; sourceTree = "<group>"; };
 		E66611272C2C1782007839E6 /* Cappella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cappella.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,7 +115,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6485A3A2C90419300F4040D /* HotKey in Frameworks */,
 				E6D789332C87598100C495DE /* Inferno in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,11 +252,11 @@
 		E6682D122C85CEF200F53B45 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				E67B5D012C8EE3B200E47348 /* SettingsFormStyle.swift */,
 				E653D1E12C89EDC6003AAE1E /* GeneralSettingsView.swift */,
+				E653D1E32C89FCC9003AAE1E /* KeyboardShortcutSettingsView.swift */,
+				E67B5D012C8EE3B200E47348 /* SettingsFormStyle.swift */,
 				E67B5CFF2C8EDEDF00E47348 /* SettingsGroupBoxStyle.swift */,
 				E653D1DF2C89EDC0003AAE1E /* SettingsView.swift */,
-				E653D1E32C89FCC9003AAE1E /* ShortcutSettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -266,6 +266,7 @@
 			children = (
 				E6485A522C90C4E900F4040D /* CompatibilityKeyEquivalent.swift */,
 				E6485A502C90B8B300F4040D /* GlobalKeyboardShortcut.swift */,
+				E6485A592C9427E200F4040D /* GlobalKeyboardShortcutHandler.swift */,
 				E6485A3C2C904FEC00F4040D /* GlobalKeyboardShortcutSettings.swift */,
 				E67B5CFD2C8D8CC000E47348 /* NSEvent+Additions.swift */,
 				E653D1E52C8A19DE003AAE1E /* ShortcutRecorderView.swift */,
@@ -384,7 +385,6 @@
 			);
 			mainGroup = E666111E2C2C1782007839E6;
 			packageReferences = (
-				E6682D0E2C85C15500F53B45 /* XCRemoteSwiftPackageReference "HotKey" */,
 				E6D789302C8757D400C495DE /* XCRemoteSwiftPackageReference "Inferno" */,
 			);
 			productRefGroup = E66611282C2C1782007839E6 /* Products */;
@@ -432,11 +432,12 @@
 				E6F11E592C56A9BA00AA45FC /* PlatterView.swift in Sources */,
 				E653D1E62C8A19DE003AAE1E /* ShortcutRecorderView.swift in Sources */,
 				E653D1E22C89EDC6003AAE1E /* GeneralSettingsView.swift in Sources */,
-				E653D1E42C89FCC9003AAE1E /* ShortcutSettingsView.swift in Sources */,
+				E653D1E42C89FCC9003AAE1E /* KeyboardShortcutSettingsView.swift in Sources */,
 				E67B5D022C8EE3B200E47348 /* SettingsFormStyle.swift in Sources */,
 				E67B5CFE2C8D8CC000E47348 /* NSEvent+Additions.swift in Sources */,
 				E684138A2C5899E20019FB15 /* MusicSearch.swift in Sources */,
 				E6ADDBF42C3B0B8F0088D9C8 /* MenuBarExtra.swift in Sources */,
+				E6485A5A2C9427E200F4040D /* GlobalKeyboardShortcutHandler.swift in Sources */,
 				E653D1DE2C89EC15003AAE1E /* ApplicationDelegate.swift in Sources */,
 				E6485A3D2C904FEC00F4040D /* GlobalKeyboardShortcutSettings.swift in Sources */,
 				E6ADDBF22C3532AF0088D9C8 /* PlatterWindow.swift in Sources */,
@@ -795,14 +796,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E6682D0E2C85C15500F53B45 /* XCRemoteSwiftPackageReference "HotKey" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/soffes/HotKey.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		E6D789302C8757D400C495DE /* XCRemoteSwiftPackageReference "Inferno" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/Inferno.git";
@@ -814,11 +807,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E6485A392C90419300F4040D /* HotKey */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E6682D0E2C85C15500F53B45 /* XCRemoteSwiftPackageReference "HotKey" */;
-			productName = HotKey;
-		};
 		E6D789322C87598100C495DE /* Inferno */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E6D789302C8757D400C495DE /* XCRemoteSwiftPackageReference "Inferno" */;

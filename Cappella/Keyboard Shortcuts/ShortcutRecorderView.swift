@@ -14,17 +14,20 @@ struct ShortcutRecorderView: View {
 
     var body: some View {
         HStack {
-            if let keyboardShortcut {
+            if isRecording {
+                if let currentModifiers {
+                    Text("\(currentModifiers.description)")
+                } else {
+                    Text("Type shortcut")
+                }
+            } else if let keyboardShortcut {
                 Text("\(keyboardShortcut)")
-            } else if isRecording,
-                      let modifierString = currentModifiers?.description {
-                Text("\(modifierString)")
             } else {
                 Text("Click to record shortcut")
             }
         }
         .padding(.horizontal)
-        .frame(minWidth: 140.0)
+        .frame(minWidth: 180.0)
 
         .overlay(
             makeClearButton(), alignment: .trailing
@@ -52,6 +55,8 @@ struct ShortcutRecorderView: View {
 
             return .handled
         })
+
+        .contentShape(.interaction, backgroundShape)
         .onTapGesture {
             isRecording = true
         }
@@ -59,19 +64,22 @@ struct ShortcutRecorderView: View {
         .onKeyPress { keyPress in
             guard isRecording else { return .ignored }
 
-            if let event = NSApp.currentEvent {
-                keyboardShortcut = GlobalKeyboardShortcut(with: event)
-            } else {
-                keyboardShortcut = nil
-            }
+//            if keyPress.key == .escape &&
+//               keyPress.modifiers.isEmpty {
+//                isRecording = false
+//            } else {
+                if let event = NSApp.currentEvent {
+                    keyboardShortcut = GlobalKeyboardShortcut(with: event)
+                } else {
+                    keyboardShortcut = nil
+                }
+//            }
 
             isRecording = false
 
             return .handled
         }
         .onModifierKeysChanged { old, new in
-            guard isRecording else { return }
-
             if new.isEmpty {
                 currentModifiers = nil
             } else {
@@ -99,16 +107,25 @@ struct ShortcutRecorderView: View {
 
     @ViewBuilder
     private func makeBackgroundView() -> some View {
-        if isRecording && isFocused {
+        ZStack {
             backgroundShape
-                .fill(.selection)
-        } else if isFocused {
+                .shadow(color: Color.blue, radius: isFocused ? 2.0 : 0.0)
+                .opacity(isFocused ? 1.0 : 0.0)
             backgroundShape
-                .stroke(.selection)
-        } else {
-            backgroundShape
-                .stroke(.tertiary)
+                .fill(.background)
+
+            if isRecording && isFocused {
+                backgroundShape
+                    .fill(.selection)
+            } else if isFocused {
+                backgroundShape
+                    .stroke(.selection)
+            } else {
+                backgroundShape
+                    .stroke(.tertiary)
+            }
         }
+        .animation(.smooth, value: isFocused)
     }
 
     private var backgroundShape: some Shape {

@@ -219,7 +219,7 @@ extension CompatibilityKeyEquivalent: CustomStringConvertible {
         // Special keys
         case kVK_Return: return "\u{2305}"  // ⏎
         case kVK_Tab: return "\u{21E4}"     // ⇤
-        case kVK_Space: return "\u{2423}"   // ␣
+        case kVK_Space: return "Space" // "\u{2423}"   // ␣
         case kVK_Delete: return "\u{232B}"  // ⌫
         case kVK_Escape: return "\u{238B}"  // ⎋
         case kVK_Command: return "\u{2318}" // ⌘
@@ -261,10 +261,10 @@ extension CompatibilityKeyEquivalent: CustomStringConvertible {
         // Miscellaneous keys
         case kVK_ContextualMenu: return "\u{2263}"  // ≣
         case kVK_Help: return "\u{003F}"            // ?
-        case kVK_Home: return "\u{2302}"            // ⌂
+        case kVK_Home: return "Home" // "\u{2302}"            // ⌂
         case kVK_PageUp: return "\u{21DE}"          // ⇞
         case kVK_ForwardDelete: return "\u{2326}"   // ⌦
-        case kVK_End: return "\u{21F2}"             // ⇲
+        case kVK_End: return "End" // \u{21F2}"             // ⇲
         case kVK_PageDown: return "\u{21DF}"        // ⇟
 
         // Arrow keys

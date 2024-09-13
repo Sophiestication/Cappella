@@ -11,6 +11,28 @@ class GlobalKeyboardShortcutSettings {
     typealias KeyboardShortcut = GlobalKeyboardShortcut
     typealias KeyboardShortcutID = GlobalKeyboardShortcut.ID
 
+    private typealias Storage = [KeyboardShortcutID: KeyboardShortcut]
+    private var all: Storage {
+        didSet {
+            keyboardShortcutHandler.update(from: all)
+            Self.store(all, to: userDefaults)
+        }
+    }
+
+    private let userDefaults: UserDefaults
+    private let keyboardShortcutHandler: GlobalKeyboardShortcutHandler
+
+    init(
+        userDefaults: UserDefaults,
+        keyboardShortcutHandler: GlobalKeyboardShortcutHandler
+    ) {
+        self.userDefaults = userDefaults
+        self.keyboardShortcutHandler = keyboardShortcutHandler
+
+        self.all = Self.restore(from: userDefaults)
+        keyboardShortcutHandler.update(from: all)
+    }
+
     func keyboardShortcut(for id: KeyboardShortcutID) -> KeyboardShortcut? {
         all[id]
     }
@@ -24,20 +46,6 @@ class GlobalKeyboardShortcutSettings {
         }
 
         Self.store(all, to: userDefaults)
-    }
-
-    private typealias Storage = [KeyboardShortcutID: KeyboardShortcut]
-    private var all: Storage {
-        didSet {
-            Self.store(all, to: userDefaults)
-        }
-    }
-
-    private let userDefaults: UserDefaults
-
-    init(userDefaults: UserDefaults) {
-        self.userDefaults = userDefaults
-        self.all = Self.restore(from: userDefaults)
     }
 
     private static let userDefaultsKey = "GlobalKeyboardShortcuts"

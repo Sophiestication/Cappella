@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct ShortcutSettingsView: View {
+struct KeyboardShortcutSettingsView: View {
     @Environment(\.globalKeyboardShortcutSettings) var keyboardShortcutSettings
     private let separatorLength: CGFloat = 20.0
 
@@ -68,6 +68,6 @@ struct ShortcutSettingsView: View {
 }
 
 #Preview(traits: .fixedLayout(width: 680.0, height: 480.0)) {
-    ShortcutSettingsView()
+    KeyboardShortcutSettingsView()
         .scenePadding()
 }
