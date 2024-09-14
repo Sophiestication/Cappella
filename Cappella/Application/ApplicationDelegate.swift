@@ -9,7 +9,6 @@ import SwiftUI
 class ApplicationDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     private var applicationWindow: PlatterWindow!
     private var nowPlayingWindow: PlatterWindow!
-    private var menuBarExtra: MenuBarExtra? = nil
 
     private var globalKeyboardShortcutSubscription: AnyCancellable?
 
@@ -40,10 +39,7 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, ObservableObject {
 //
 //        applicationWindow.dockedPlatter = nowPlayingWindow
 
-        // Dock to the menu bar
-        menuBarExtra = MenuBarExtra(with: applicationWindow)
-
-        globalKeyboardShortcutSubscription = GlobalKeyboardShortcutHandler
+       globalKeyboardShortcutSubscription = GlobalKeyboardShortcutHandler
             .shared
             .didReceiveEvent
             .sink { [weak self] event in

@@ -43,7 +43,6 @@
 		E6A81D122C4177C300DAC24B /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A81D112C4177C300DAC24B /* NowPlayingView.swift */; };
 		E6A81D142C4177DF00DAC24B /* PlaybackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A81D132C4177DF00DAC24B /* PlaybackView.swift */; };
 		E6ADDBF22C3532AF0088D9C8 /* PlatterWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADDBF12C3532AF0088D9C8 /* PlatterWindow.swift */; };
-		E6ADDBF42C3B0B8F0088D9C8 /* MenuBarExtra.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADDBF32C3B0B8F0088D9C8 /* MenuBarExtra.swift */; };
 		E6D789332C87598100C495DE /* Inferno in Frameworks */ = {isa = PBXBuildFile; productRef = E6D789322C87598100C495DE /* Inferno */; };
 		E6D789352C877E2600C495DE /* PlatterButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D789342C877E2600C495DE /* PlatterButtonStyle.swift */; };
 		E6F11E592C56A9BA00AA45FC /* PlatterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F11E582C56A9BA00AA45FC /* PlatterView.swift */; };
@@ -107,7 +106,6 @@
 		E6A81D112C4177C300DAC24B /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
 		E6A81D132C4177DF00DAC24B /* PlaybackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackView.swift; sourceTree = "<group>"; };
 		E6ADDBF12C3532AF0088D9C8 /* PlatterWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterWindow.swift; sourceTree = "<group>"; };
-		E6ADDBF32C3B0B8F0088D9C8 /* MenuBarExtra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarExtra.swift; sourceTree = "<group>"; };
 		E6D789342C877E2600C495DE /* PlatterButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterButtonStyle.swift; sourceTree = "<group>"; };
 		E6F11E582C56A9BA00AA45FC /* PlatterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -250,7 +248,6 @@
 				E653D1DD2C89EC15003AAE1E /* ApplicationDelegate.swift */,
 				E6283F992C41739400158C13 /* ApplicationView.swift */,
 				E666112A2C2C1782007839E6 /* Cappella.swift */,
-				E6ADDBF32C3B0B8F0088D9C8 /* MenuBarExtra.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -446,7 +443,6 @@
 				E67B5D022C8EE3B200E47348 /* SettingsFormStyle.swift in Sources */,
 				E67B5CFE2C8D8CC000E47348 /* NSEvent+Additions.swift in Sources */,
 				E684138A2C5899E20019FB15 /* MusicSearch.swift in Sources */,
-				E6ADDBF42C3B0B8F0088D9C8 /* MenuBarExtra.swift in Sources */,
 				E6485A5A2C9427E200F4040D /* GlobalKeyboardShortcutHandler.swift in Sources */,
 				E653D1DE2C89EC15003AAE1E /* ApplicationDelegate.swift in Sources */,
 				E6485A3D2C904FEC00F4040D /* GlobalKeyboardShortcutSettings.swift in Sources */,

@@ -7,7 +7,6 @@ import SwiftUI
 @Observable
 class PlatterProxy {
     private weak var platterWindow: PlatterWindow?
-    private weak var menuExtra: MenuBarExtra?
 
     init() {
         self.platterWindow = nil
@@ -15,12 +14,6 @@ class PlatterProxy {
 
     init(for platterWindow: PlatterWindow) {
         self.platterWindow = platterWindow
-        self.menuExtra = nil
-    }
-
-    init(for menuExtra: MenuBarExtra) {
-        self.platterWindow = nil
-        self.menuExtra = menuExtra
     }
 
     @MainActor

@@ -8,6 +8,10 @@ import SwiftUI
 class PlatterWindow: NSPanel {
     private var platterProxy: PlatterProxy? = nil
     private var platterGeometry: PlatterGeometry
+
+    private let statusItem: NSStatusItem
+    private var pressDownTimestamp: TimeInterval = .zero
+
     private var dragView: NSView? = nil
 
     init(
@@ -22,12 +26,18 @@ class PlatterWindow: NSPanel {
             containerFrame: contentRect
         )
 
+        statusItem = NSStatusBar.system.statusItem(
+            withLength: NSStatusItem.variableLength
+        )
+
         super.init(
             contentRect: contentRect,
             styleMask: style,
             backing: .buffered,
             defer: false
         )
+
+        self.level = .tornOffMenu
 
         self.hidesOnDeactivate = false
         self.canHide = false
@@ -48,8 +58,11 @@ class PlatterWindow: NSPanel {
             content()
         }
         .environment(\.platterProxy, platterProxy)
-        .environment(\.dismissPlatter, DismissPlatterAction(for: self))
         .environment(\.platterGeometry, platterGeometry)
+
+        .environment(\.openPlatter, OpenPlatterAction(for: self))
+        .environment(\.dismissPlatter, DismissPlatterAction(for: self))
+
         .ignoresSafeArea(.all)
 
         let hostingView = NSHostingView(rootView: rootView)
@@ -77,6 +90,42 @@ class PlatterWindow: NSPanel {
             name: NSWindow.didMoveNotification,
             object: self
         )
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(windowDidResignKey(_:)),
+            name: NSWindow.didResignKeyNotification,
+            object: self
+        )
+
+        if let button = statusItem.button {
+            button.image = NSImage(named: NSImage.Name("statusItemTemplate2"))
+
+            let pressRecognizer = NSPressGestureRecognizer(
+                target: self,
+                action: #selector(handleStatusItemPressGesture(_:))
+            )
+            pressRecognizer.minimumPressDuration = 0.0
+            button.addGestureRecognizer(pressRecognizer)
+
+            if let window = button.window {
+                NotificationCenter.default.addObserver(
+                    self,
+                    selector: #selector(statusWindowDidMove(_:)),
+                    name: NSWindow.didMoveNotification,
+                    object: window
+                )
+            }
+        }
+    }
+
+    func orderFront(_ sender: Any?, animated: Bool = false) {
+        if let button = statusItem.button {
+            button.highlight(true)
+        }
+
+        layoutWindow(self)
+        makeKeyAndOrderFront(sender)
     }
 
     func orderOut(_ sender: Any?, animated: Bool = false) {
@@ -86,6 +135,10 @@ class PlatterWindow: NSPanel {
                 context.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
 
                 self.animator().alphaValue = 0.0
+
+                if let button = statusItem.button {
+                    button.animator().highlight(false)
+                }
             } completionHandler: {
                 self.orderOut(self)
                 self.alphaValue = 1.0
@@ -121,6 +174,34 @@ class PlatterWindow: NSPanel {
 
     @objc private func windowDidMove(_ notification: Notification) {
 //        layoutDockedPlatter()
+    }
+
+    @objc private func windowDidResignKey(_ notification: Notification) {
+        orderOut(notification, animated: true)
+    }
+
+    @objc private func statusWindowDidMove(_ notification: Notification) {
+        guard let window = notification.object as? PlatterWindow else { return }
+        layoutWindow(window)
+    }
+
+    @objc private func handleStatusItemPressGesture(_ sender: NSPressGestureRecognizer) {
+        switch sender.state {
+        case .began:
+            pressDownTimestamp = Date().timeIntervalSince1970
+
+            if isVisible {
+                orderOut(sender, animated: true)
+            } else {
+                orderFront(sender, animated: true)
+            }
+        case .ended, .cancelled:
+            if Date().timeIntervalSince1970 - self.pressDownTimestamp >= 0.33 {
+                orderOut(sender, animated: true)
+            }
+        default:
+            break
+        }
     }
 
     private func layoutDragView() {
@@ -172,6 +253,24 @@ class PlatterWindow: NSPanel {
             height: 44.0
         )
         platter.setFrame(platterFrame, display: true)
+    }
+
+    private func layoutWindow(_ window: PlatterWindow) {
+        guard let statusItemWindow = statusItem.button?.window else {
+            return
+        }
+
+        let targetRect = statusItemWindow.frame
+
+        let windowRect = window.frame
+        let newWindowRect = NSMakeRect(
+            targetRect.midX - (windowRect.width * 0.50),
+            targetRect.minY - windowRect.height,
+            windowRect.width,
+            windowRect.height
+        )
+
+        window.setFrame(newWindowRect, display: true)
     }
 }
 
