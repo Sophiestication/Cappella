@@ -13,12 +13,15 @@ struct NowPlayingView: View {
     @State private var authorizationStatus = MusicAuthorization.currentStatus
 
     var body: some View {
-        switch authorizationStatus {
-        case .authorized:
-            makeContentView()
-        default:
-            Color.red
+        Group {
+            switch authorizationStatus {
+            case .authorized:
+                makeContentView()
+            default:
+                Color.red
+            }
         }
+        .platterKeyboardShortcut(using: .nowPlaying)
     }
 
     @ViewBuilder

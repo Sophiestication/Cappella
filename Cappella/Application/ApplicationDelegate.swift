@@ -2,13 +2,16 @@
 // Copyright © 2024 Sophiestication Software. All rights reserved.
 //
 
-import Cocoa
+import AppKit
+import Combine
 import SwiftUI
 
 class ApplicationDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     private var applicationWindow: PlatterWindow!
     private var nowPlayingWindow: PlatterWindow!
     private var menuBarExtra: MenuBarExtra? = nil
+
+    private var globalKeyboardShortcutSubscription: AnyCancellable?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         let contentWidth = 440.0 + (PlatterGeometry.horizontalInset * 2.0)
@@ -39,6 +42,14 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, ObservableObject {
 
         // Dock to the menu bar
         menuBarExtra = MenuBarExtra(with: applicationWindow)
+
+        globalKeyboardShortcutSubscription = GlobalKeyboardShortcutHandler
+            .shared
+            .didReceiveEvent
+            .sink { [weak self] event in
+                guard let self else { return }
+                self.applicationShouldHandleGlobalKeyboardShortcut(event)
+            }
     }
 
     func applicationWillTerminate(_ notification: Notification) {
@@ -53,5 +64,11 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, ObservableObject {
 
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
         return false
+    }
+
+    func applicationShouldHandleGlobalKeyboardShortcut(
+        _ event: GlobalKeyboardShortcutHandler.Event
+    ) {
+        print("\(event)")
     }
 }

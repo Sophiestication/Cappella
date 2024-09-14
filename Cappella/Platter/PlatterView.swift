@@ -12,7 +12,6 @@ struct PlatterView<Content>: View where Content: View {
     @State private var dockedContent = PlatterDockedContentPreferenceKey.defaultValue
 
     @Environment(\.platterGeometry) var platterGeometry
-    @Environment(\.dismissPlatter) var platterAction
 
     @Environment(\.pixelLength) var pixelLength
     @State var cornerRadius: CGFloat = 18.0

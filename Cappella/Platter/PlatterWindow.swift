@@ -6,6 +6,7 @@ import Cocoa
 import SwiftUI
 
 class PlatterWindow: NSPanel {
+    private var platterProxy: PlatterProxy? = nil
     private var platterGeometry: PlatterGeometry
     private var dragView: NSView? = nil
 
@@ -41,9 +42,12 @@ class PlatterWindow: NSPanel {
 
         self.becomesKeyOnlyIfNeeded = false
 
+        platterProxy = PlatterProxy(for: self)
+
         let rootView = PlatterView {
             content()
         }
+        .environment(\.platterProxy, platterProxy)
         .environment(\.dismissPlatter, DismissPlatterAction(for: self))
         .environment(\.platterGeometry, platterGeometry)
         .ignoresSafeArea(.all)

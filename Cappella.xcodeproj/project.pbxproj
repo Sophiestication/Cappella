@@ -16,6 +16,9 @@
 		E6485A512C90B8B300F4040D /* GlobalKeyboardShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6485A502C90B8B300F4040D /* GlobalKeyboardShortcut.swift */; };
 		E6485A532C90C4E900F4040D /* CompatibilityKeyEquivalent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6485A522C90C4E900F4040D /* CompatibilityKeyEquivalent.swift */; };
 		E6485A5A2C9427E200F4040D /* GlobalKeyboardShortcutHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6485A592C9427E200F4040D /* GlobalKeyboardShortcutHandler.swift */; };
+		E6485A5C2C94B2C500F4040D /* Platter+KeyboardShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6485A5B2C94B2C500F4040D /* Platter+KeyboardShortcut.swift */; };
+		E6485A5E2C94B7B800F4040D /* OpenPlatterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6485A5D2C94B7B800F4040D /* OpenPlatterAction.swift */; };
+		E6485A602C94C3A600F4040D /* PlatterProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6485A5F2C94C3A600F4040D /* PlatterProxy.swift */; };
 		E65067782C6B8FF900A5B00C /* MusicSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65067772C6B8FF300A5B00C /* MusicSearchField.swift */; };
 		E650677A2C6BD91800A5B00C /* DismissPlatterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65067792C6BD91800A5B00C /* DismissPlatterAction.swift */; };
 		E653D1DE2C89EC15003AAE1E /* ApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D1DD2C89EC15003AAE1E /* ApplicationDelegate.swift */; };
@@ -73,6 +76,9 @@
 		E6485A502C90B8B300F4040D /* GlobalKeyboardShortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalKeyboardShortcut.swift; sourceTree = "<group>"; };
 		E6485A522C90C4E900F4040D /* CompatibilityKeyEquivalent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityKeyEquivalent.swift; sourceTree = "<group>"; };
 		E6485A592C9427E200F4040D /* GlobalKeyboardShortcutHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalKeyboardShortcutHandler.swift; sourceTree = "<group>"; };
+		E6485A5B2C94B2C500F4040D /* Platter+KeyboardShortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Platter+KeyboardShortcut.swift"; sourceTree = "<group>"; };
+		E6485A5D2C94B7B800F4040D /* OpenPlatterAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenPlatterAction.swift; sourceTree = "<group>"; };
+		E6485A5F2C94C3A600F4040D /* PlatterProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterProxy.swift; sourceTree = "<group>"; };
 		E65067772C6B8FF300A5B00C /* MusicSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchField.swift; sourceTree = "<group>"; };
 		E65067792C6BD91800A5B00C /* DismissPlatterAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissPlatterAction.swift; sourceTree = "<group>"; };
 		E653D1DD2C89EC15003AAE1E /* ApplicationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDelegate.swift; sourceTree = "<group>"; };
@@ -287,8 +293,11 @@
 			isa = PBXGroup;
 			children = (
 				E65067792C6BD91800A5B00C /* DismissPlatterAction.swift */,
+				E6485A5D2C94B7B800F4040D /* OpenPlatterAction.swift */,
+				E6485A5B2C94B2C500F4040D /* Platter+KeyboardShortcut.swift */,
 				E6D789342C877E2600C495DE /* PlatterButtonStyle.swift */,
 				E620627D2C6A7E4000460775 /* PlatterGeometry.swift */,
+				E6485A5F2C94C3A600F4040D /* PlatterProxy.swift */,
 				E6F11E582C56A9BA00AA45FC /* PlatterView.swift */,
 				E6ADDBF12C3532AF0088D9C8 /* PlatterWindow.swift */,
 			);
@@ -430,6 +439,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6F11E592C56A9BA00AA45FC /* PlatterView.swift in Sources */,
+				E6485A5E2C94B7B800F4040D /* OpenPlatterAction.swift in Sources */,
 				E653D1E62C8A19DE003AAE1E /* ShortcutRecorderView.swift in Sources */,
 				E653D1E22C89EDC6003AAE1E /* GeneralSettingsView.swift in Sources */,
 				E653D1E42C89FCC9003AAE1E /* KeyboardShortcutSettingsView.swift in Sources */,
@@ -441,8 +451,10 @@
 				E653D1DE2C89EC15003AAE1E /* ApplicationDelegate.swift in Sources */,
 				E6485A3D2C904FEC00F4040D /* GlobalKeyboardShortcutSettings.swift in Sources */,
 				E6ADDBF22C3532AF0088D9C8 /* PlatterWindow.swift in Sources */,
+				E6485A5C2C94B2C500F4040D /* Platter+KeyboardShortcut.swift in Sources */,
 				E60946F62C4B9986009D90BA /* MusicSearchView.swift in Sources */,
 				E650677A2C6BD91800A5B00C /* DismissPlatterAction.swift in Sources */,
+				E6485A602C94C3A600F4040D /* PlatterProxy.swift in Sources */,
 				E68203702C80CC6F00294A52 /* PlaybackQueue.swift in Sources */,
 				E653D1E02C89EDC0003AAE1E /* SettingsView.swift in Sources */,
 				E6283F9A2C41739400158C13 /* ApplicationView.swift in Sources */,

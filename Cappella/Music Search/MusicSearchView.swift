@@ -60,6 +60,8 @@ struct MusicSearchView: View {
                     scrollProxy.scrollTo(newSelection.collection.id)
                 }
             }
+
+            .platterKeyboardShortcut(using: .musicSearch)
         }
     }
 

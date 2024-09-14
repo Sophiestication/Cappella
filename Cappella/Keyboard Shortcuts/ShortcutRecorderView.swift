@@ -51,14 +51,14 @@ struct ShortcutRecorderView: View {
         .onKeyPress(.return, phases: .down, action: { keyPress in // start recording
             guard isRecording == false else { return .ignored }
 
-            isRecording = true
+            record()
 
             return .handled
         })
 
         .contentShape(.interaction, backgroundShape)
         .onTapGesture {
-            isRecording = true
+            record()
         }
 
         .onKeyPress { keyPress in
@@ -130,6 +130,11 @@ struct ShortcutRecorderView: View {
 
     private var backgroundShape: some Shape {
         Capsule(style: .continuous)
+    }
+
+    private func record() {
+        isRecording = true
+        keyboardShortcut = nil
     }
 
     private func clear() {

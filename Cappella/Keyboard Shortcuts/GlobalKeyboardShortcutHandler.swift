@@ -207,22 +207,22 @@ final class GlobalKeyboardShortcutHandler {
     }
 
     private static var systemKeyRepeatInterval: TimeInterval {
-        if let interval = Self.getIORegistryValue(for: kIOHIDKeyRepeatKey) {
-            return TimeInterval(interval) / 1000.0
+        if let interval = Self.IORegistryValue(for: kIOHIDKeyRepeatKey) {
+            return TimeInterval(interval) / 1_000_000_000.0
         }
 
         return 0.05 // Fallback value
     }
 
     private static var systemInitialKeyRepeatDelay: TimeInterval {
-        if let delay = Self.getIORegistryValue(for: kIOHIDInitialKeyRepeatKey) {
-            return TimeInterval(delay) / 1000.0
+        if let delay = Self.IORegistryValue(for: kIOHIDInitialKeyRepeatKey) {
+            return TimeInterval(delay) / 1_000_000_000.0
         }
 
         return 0.5 // Fallback value
     }
 
-    private static func getIORegistryValue(for key: String) -> Int? {
+    private static func IORegistryValue(for key: String) -> Int? {
         var iterator: io_iterator_t = 0
         defer { IOObjectRelease(iterator) }
 

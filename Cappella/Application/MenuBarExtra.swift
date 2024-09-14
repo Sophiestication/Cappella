@@ -10,7 +10,7 @@ class MenuBarExtra: NSObject {
     private let statusItem: NSStatusItem
     private let window: PlatterWindow
 
-    private var windowShown: Bool = false {
+    var windowShown: Bool = false {
         didSet {
             windowDidShow(windowShown)
         }
