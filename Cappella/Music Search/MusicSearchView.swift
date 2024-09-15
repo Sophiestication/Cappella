@@ -133,7 +133,7 @@ struct MusicSearchView: View {
                 musicSearch.selection = MusicSearch.Selection(
                     collection: resultItem,
                     entry: entry,
-                    .cursor
+                    .pointer
                 )
             case .ended:
                 musicSearch.selection = nil

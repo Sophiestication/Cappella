@@ -11,6 +11,7 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     private var nowPlayingWindow: PlatterWindow!
 
     private var globalKeyboardShortcutSubscription: AnyCancellable?
+    private var keyboardShortcutBezel: KeyboardShortcutBezel?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         let contentWidth = 440.0 + (PlatterGeometry.horizontalInset * 2.0)
@@ -46,6 +47,8 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, ObservableObject {
                 guard let self else { return }
                 self.applicationShouldHandleGlobalKeyboardShortcut(event)
             }
+
+        keyboardShortcutBezel = KeyboardShortcutBezel()
     }
 
     func applicationWillTerminate(_ notification: Notification) {
@@ -62,9 +65,14 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         return false
     }
 
+    @MainActor
     func applicationShouldHandleGlobalKeyboardShortcut(
         _ event: GlobalKeyboardShortcutHandler.Event
     ) {
         print("\(event.keyboardShortcut) \(event.phase)")
+
+        if let keyboardShortcutBezel {
+            keyboardShortcutBezel.update(for: event)
+        }
     }
 }

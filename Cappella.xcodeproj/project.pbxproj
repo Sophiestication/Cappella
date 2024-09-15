@@ -41,6 +41,7 @@
 		E6A81D122C4177C300DAC24B /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A81D112C4177C300DAC24B /* NowPlayingView.swift */; };
 		E6A81D142C4177DF00DAC24B /* PlaybackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A81D132C4177DF00DAC24B /* PlaybackView.swift */; };
 		E6ADDBF22C3532AF0088D9C8 /* PlatterWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADDBF12C3532AF0088D9C8 /* PlatterWindow.swift */; };
+		E6C15E412C970CC700C95CD9 /* KeyboardShortcutBezel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C15E402C970CC700C95CD9 /* KeyboardShortcutBezel.swift */; };
 		E6D789332C87598100C495DE /* Inferno in Frameworks */ = {isa = PBXBuildFile; productRef = E6D789322C87598100C495DE /* Inferno */; };
 		E6D789352C877E2600C495DE /* PlatterButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D789342C877E2600C495DE /* PlatterButtonStyle.swift */; };
 		E6F11E592C56A9BA00AA45FC /* PlatterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F11E582C56A9BA00AA45FC /* PlatterView.swift */; };
@@ -102,6 +103,7 @@
 		E6A81D112C4177C300DAC24B /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
 		E6A81D132C4177DF00DAC24B /* PlaybackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackView.swift; sourceTree = "<group>"; };
 		E6ADDBF12C3532AF0088D9C8 /* PlatterWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterWindow.swift; sourceTree = "<group>"; };
+		E6C15E402C970CC700C95CD9 /* KeyboardShortcutBezel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcutBezel.swift; sourceTree = "<group>"; };
 		E6D789342C877E2600C495DE /* PlatterButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterButtonStyle.swift; sourceTree = "<group>"; };
 		E6F11E582C56A9BA00AA45FC /* PlatterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,6 +148,7 @@
 		E6485A632C9578A600F4040D /* Keyboard Shortcut Bezel */ = {
 			isa = PBXGroup;
 			children = (
+				E6C15E402C970CC700C95CD9 /* KeyboardShortcutBezel.swift */,
 				E6485A612C9578A300F4040D /* KeyboardShortcutBezelView.swift */,
 			);
 			path = "Keyboard Shortcut Bezel";
@@ -458,6 +461,7 @@
 				E67B5D002C8EDEDF00E47348 /* SettingsGroupBoxStyle.swift in Sources */,
 				E682036E2C80BE4A00294A52 /* PlaybackQueueView.swift in Sources */,
 				E65067782C6B8FF900A5B00C /* MusicSearchField.swift in Sources */,
+				E6C15E412C970CC700C95CD9 /* KeyboardShortcutBezel.swift in Sources */,
 				E6485A622C9578A300F4040D /* KeyboardShortcutBezelView.swift in Sources */,
 				E6D789352C877E2600C495DE /* PlatterButtonStyle.swift in Sources */,
 				E667CD7C2C560841000718FC /* VisualEffectView.swift in Sources */,

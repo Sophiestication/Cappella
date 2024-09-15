@@ -277,7 +277,7 @@ extension MusicSearch {
         }
 
         enum Interactor {
-            case cursor
+            case pointer
             case keyboard
         }
 

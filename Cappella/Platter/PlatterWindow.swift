@@ -57,10 +57,10 @@ class PlatterWindow: NSPanel {
         let rootView = PlatterView {
             content()
         }
-            .environment(\.platterProxy, platterProxy)
-            .environment(\.platterGeometry, platterGeometry)
+        .environment(\.platterProxy, platterProxy)
+        .environment(\.platterGeometry, platterGeometry)
 
-            .ignoresSafeArea(.all)
+        .ignoresSafeArea(.all)
 
         let hostingView = NSHostingView(rootView: rootView)
 
@@ -75,8 +75,8 @@ class PlatterWindow: NSPanel {
         self.dragView = hostingView
 
         let containerView = PlatterContainerView(frame: contentRect)
-        //        containerView.wantsLayer = true
-        //        containerView.layer!.backgroundColor = CGColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.25)
+        // containerView.wantsLayer = true
+        // containerView.layer!.backgroundColor = CGColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.25)
         containerView.addSubview(hostingView)
 
         self.contentView = containerView
@@ -260,20 +260,20 @@ class PlatterProxy {
         self.presentationState = .dismissed // TODO?
     }
 
-    enum PresentationState {
+    private enum PresentationState {
         case presenting
         case presented
         case dismissing
         case dismissed
     }
 
-    private(set) var presentationState: PresentationState
+    private var presentationState: PresentationState
 
     @MainActor
     func present() {
         guard let platterWindow else { return }
         guard presentationState == .dismissing ||
-                presentationState == .dismissed else {
+              presentationState == .dismissed else {
             return
         }
 
@@ -298,7 +298,7 @@ class PlatterProxy {
     func dismiss() {
         guard let platterWindow else { return }
         guard presentationState == .presenting ||
-                presentationState == .presented else {
+              presentationState == .presented else {
             return
         }
 

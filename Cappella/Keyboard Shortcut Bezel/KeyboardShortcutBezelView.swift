@@ -6,10 +6,21 @@ import SwiftUI
 
 struct KeyboardShortcutBezelView : View {
     var body: some View {
-        RoundedRectangle(cornerRadius: 8.0, style: .continuous)
-            .fill(.teal)
-            .opacity(0.50)
-            .frame(width: 200.0, height: 200.0)
+        VisualEffectView(
+            material: .hudWindow,
+            blendingMode: .behindWindow,
+            state: .active
+        )
+        .clipShape(bezelShape)
+        .frame(width: bezelDimension, height: bezelDimension)
+    }
+
+    private var bezelDimension: CGFloat { 200.0 }
+    private var bezelShape: some Shape {
+        RoundedRectangle(
+            cornerRadius: 18.0,
+            style: .continuous
+        )
     }
 }
 
