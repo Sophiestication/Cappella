@@ -15,10 +15,25 @@ struct Cappella: App {
 
     var body: some Scene {
 #if os(macOS)
+//        makeKeyboardShortcutBezel()
+
         Settings {
             SettingsView()
         }
         .environment(\.globalKeyboardShortcutSettings, keyboardShortcutSettings)
 #endif
+    }
+
+    @SceneBuilder
+    private func makeKeyboardShortcutBezel() -> some Scene {
+        Window(Text(""), id: "keyboardShortcutBezel") {
+            KeyboardShortcutBezelView()
+        }
+        .windowStyle(.hiddenTitleBar)
+        .windowLevel(.floating)
+
+        .windowIdealSize(.fitToContent)
+
+        .restorationBehavior(.disabled)
     }
 }

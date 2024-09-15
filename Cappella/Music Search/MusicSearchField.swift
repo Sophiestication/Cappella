@@ -7,8 +7,8 @@ import SwiftUI
 struct MusicSearchField: View {
     @State private var musicSearch: MusicSearch
 
+    @Environment(\.platterProxy) var platterProxy
     @Environment(\.platterGeometry) var platterGeometry
-    @Environment(\.dismissPlatter) var dismissPlatter
 
     @Environment(\.pixelLength) var pixelLength
     private let cornerRadius: CGFloat = 6.0
@@ -81,8 +81,10 @@ struct MusicSearchField: View {
             scheduleSelectionToPlay() ? .handled : .ignored
         }
         .onKeyPress(.escape) {
+            guard let platterProxy else { return .ignored }
+
             if resetSearchTermIfNeeded() == false {
-                dismissPlatter()
+                platterProxy.dismiss()
             }
 
             return .handled

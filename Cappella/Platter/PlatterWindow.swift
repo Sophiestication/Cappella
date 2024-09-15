@@ -9,7 +9,7 @@ class PlatterWindow: NSPanel {
     private var platterProxy: PlatterProxy? = nil
     private var platterGeometry: PlatterGeometry
 
-    private let statusItem: NSStatusItem
+    fileprivate let statusItem: NSStatusItem
     private var pressDownTimestamp: TimeInterval = .zero
 
     private var dragView: NSView? = nil
@@ -57,13 +57,10 @@ class PlatterWindow: NSPanel {
         let rootView = PlatterView {
             content()
         }
-        .environment(\.platterProxy, platterProxy)
-        .environment(\.platterGeometry, platterGeometry)
+            .environment(\.platterProxy, platterProxy)
+            .environment(\.platterGeometry, platterGeometry)
 
-        .environment(\.openPlatter, OpenPlatterAction(for: self))
-        .environment(\.dismissPlatter, DismissPlatterAction(for: self))
-
-        .ignoresSafeArea(.all)
+            .ignoresSafeArea(.all)
 
         let hostingView = NSHostingView(rootView: rootView)
 
@@ -78,8 +75,8 @@ class PlatterWindow: NSPanel {
         self.dragView = hostingView
 
         let containerView = PlatterContainerView(frame: contentRect)
-//        containerView.wantsLayer = true
-//        containerView.layer!.backgroundColor = CGColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.25)
+        //        containerView.wantsLayer = true
+        //        containerView.layer!.backgroundColor = CGColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.25)
         containerView.addSubview(hostingView)
 
         self.contentView = containerView
@@ -119,35 +116,6 @@ class PlatterWindow: NSPanel {
         }
     }
 
-    func orderFront(_ sender: Any?, animated: Bool = false) {
-        if let button = statusItem.button {
-            button.highlight(true)
-        }
-
-        layoutWindow(self)
-        makeKeyAndOrderFront(sender)
-    }
-
-    func orderOut(_ sender: Any?, animated: Bool = false) {
-        if animated {
-            NSAnimationContext.runAnimationGroup { context in
-                context.duration = 1.0 / 3.0
-                context.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-
-                self.animator().alphaValue = 0.0
-
-                if let button = statusItem.button {
-                    button.animator().highlight(false)
-                }
-            } completionHandler: {
-                self.orderOut(self)
-                self.alphaValue = 1.0
-            }
-        } else {
-            orderOut(sender)
-        }
-    }
-
     var dockedPlatter: PlatterWindow? = nil {
         didSet {
             if let platter = dockedPlatter {
@@ -177,7 +145,9 @@ class PlatterWindow: NSPanel {
     }
 
     @objc private func windowDidResignKey(_ notification: Notification) {
-        orderOut(notification, animated: true)
+        if let platterProxy {
+            platterProxy.dismiss()
+        }
     }
 
     @objc private func statusWindowDidMove(_ notification: Notification) {
@@ -186,18 +156,16 @@ class PlatterWindow: NSPanel {
     }
 
     @objc private func handleStatusItemPressGesture(_ sender: NSPressGestureRecognizer) {
+        guard let platterProxy else { return }
+
         switch sender.state {
         case .began:
             pressDownTimestamp = Date().timeIntervalSince1970
+            platterProxy.togglePresentation()
 
-            if isVisible {
-                orderOut(sender, animated: true)
-            } else {
-                orderFront(sender, animated: true)
-            }
         case .ended, .cancelled:
             if Date().timeIntervalSince1970 - self.pressDownTimestamp >= 0.33 {
-                orderOut(sender, animated: true)
+                platterProxy.dismiss()
             }
         default:
             break
@@ -255,7 +223,7 @@ class PlatterWindow: NSPanel {
         platter.setFrame(platterFrame, display: true)
     }
 
-    private func layoutWindow(_ window: PlatterWindow) {
+    fileprivate func layoutWindow(_ window: PlatterWindow) {
         guard let statusItemWindow = statusItem.button?.window else {
             return
         }
@@ -276,4 +244,94 @@ class PlatterWindow: NSPanel {
 
 final class PlatterContainerView: NSView {
     override var isFlipped: Bool { true }
+}
+
+@Observable
+class PlatterProxy {
+    private weak var platterWindow: PlatterWindow?
+
+    init() {
+        self.platterWindow = nil
+        self.presentationState = .dismissed
+    }
+
+    init(for platterWindow: PlatterWindow) {
+        self.platterWindow = platterWindow
+        self.presentationState = .dismissed // TODO?
+    }
+
+    enum PresentationState {
+        case presenting
+        case presented
+        case dismissing
+        case dismissed
+    }
+
+    private(set) var presentationState: PresentationState
+
+    @MainActor
+    func present() {
+        guard let platterWindow else { return }
+        guard presentationState == .dismissing ||
+                presentationState == .dismissed else {
+            return
+        }
+
+        platterWindow.layoutWindow(platterWindow)
+
+        NSAnimationContext.animate(.smooth, changes: {
+            presentationState = .presenting
+
+            platterWindow.alphaValue = 1.0
+            platterWindow.makeKeyAndOrderFront(nil)
+
+            if let button = platterWindow.statusItem.button {
+                button.highlight(true)
+            }
+        }, completion: {
+            guard self.presentationState == .presenting else { return }
+            self.presentationState = .presented
+        })
+    }
+
+    @MainActor
+    func dismiss() {
+        guard let platterWindow else { return }
+        guard presentationState == .presenting ||
+                presentationState == .presented else {
+            return
+        }
+
+        NSAnimationContext.animate(.smooth, changes: {
+            presentationState = .dismissing
+
+            platterWindow.animator().alphaValue = 0.0
+
+            if let button = platterWindow.statusItem.button {
+                button.animator().highlight(false)
+            }
+        }, completion: {
+            guard self.presentationState == .dismissing else { return }
+
+            self.presentationState = .dismissed
+            platterWindow.orderOut(nil)
+        })
+    }
+
+    @MainActor
+    func togglePresentation() {
+        switch presentationState {
+        case .presenting, .presented:
+            dismiss()
+            break
+
+        case .dismissing, .dismissed:
+            present()
+            break
+        }
+    }
+}
+
+extension EnvironmentValues {
+    @Entry var platterProxy: PlatterProxy? = nil
 }

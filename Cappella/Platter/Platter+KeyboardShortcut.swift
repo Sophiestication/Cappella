@@ -8,9 +8,6 @@ import Combine
 fileprivate struct KeyboardShortcutPlatterPresentingModifier: ViewModifier {
     @Environment(\.platterProxy) var platterProxy
 
-    @Environment(\.openPlatter) var openPlatter
-    @Environment(\.dismissPlatter) var dismissPlatter
-
     @State private var cancellable: AnyCancellable?
 
     private let keyboardShortcutID: GlobalKeyboardShortcut.ID
@@ -33,14 +30,10 @@ fileprivate struct KeyboardShortcutPlatterPresentingModifier: ViewModifier {
                         if event.phase == .down {
                             keyUpShouldDismiss = false
 
-                            if platterProxy.isPresented {
-                                dismissPlatter()
-                            } else {
-                                openPlatter()
-                            }
+                            platterProxy.togglePresentation()
                         } else if event.phase == .up {
                             if keyUpShouldDismiss {
-                                dismissPlatter()
+                                platterProxy.dismiss()
                             }
                         } else if event.phase == .repeat {
                             keyUpShouldDismiss = true

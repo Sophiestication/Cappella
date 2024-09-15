@@ -65,6 +65,6 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     func applicationShouldHandleGlobalKeyboardShortcut(
         _ event: GlobalKeyboardShortcutHandler.Event
     ) {
-        print("\(event)")
+        print("\(event.keyboardShortcut) \(event.phase)")
     }
 }

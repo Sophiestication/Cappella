@@ -11,10 +11,10 @@ struct MusicSearchView: View {
 
     private typealias ResultItem = MusicSearch.ResultItem
 
+    @Environment(\.platterProxy) var platterProxy
     @Environment(\.platterGeometry) var platterGeometry
-    @State private var lastHoverLocation: CGPoint? = nil
 
-    @Environment(\.dismissPlatter) var dismissPlatter
+    @State private var lastHoverLocation: CGPoint? = nil
 
     var body: some View {
         ScrollViewReader { scrollProxy in
@@ -149,7 +149,9 @@ struct MusicSearchView: View {
     ) {
         play(resultItem, startingAt: entry)
 
-        dismissPlatter()
+        if let platterProxy {
+            platterProxy.dismiss()
+        }
 
         musicSearch.selection = nil
     }
