@@ -6,7 +6,10 @@ import AppKit
 import Combine
 import SwiftUI
 
+@MainActor
 class ApplicationDelegate: NSObject, NSApplicationDelegate, ObservableObject {
+    private var musicPlayer = CappellaMusicPlayer()
+
     private var applicationWindow: PlatterWindow!
     private var nowPlayingWindow: PlatterWindow!
 
@@ -17,30 +20,15 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         let contentWidth = 440.0 + (PlatterGeometry.horizontalInset * 2.0)
         let contentHeight = 720.0 + 240.0
 
-        // Init application window
         let applicationWindowRect = NSRect(
             x: 0.0, y: 0.0,
             width: contentWidth, height: contentHeight)
         applicationWindow = PlatterWindow(contentRect: applicationWindowRect) {
             ApplicationView()
+                .environment(\.musicPlayer, self.musicPlayer)
         }
 
-//        // Init now playing window
-//        let nowPlayingHeight = 44.0
-//        let horizontalPadding = 10.0
-//
-//        let nowPlayingWindowRect = NSRect(
-//            x: horizontalPadding,
-//            y: 5.0,
-//            width: contentWidth - horizontalPadding * 2.0,
-//            height: nowPlayingHeight)
-//        nowPlayingWindow = PlatterWindow(contentRect: nowPlayingWindowRect) {
-//            NowPlayingView()
-//        }
-//
-//        applicationWindow.dockedPlatter = nowPlayingWindow
-
-       globalKeyboardShortcutSubscription = GlobalKeyboardShortcutHandler
+        globalKeyboardShortcutSubscription = GlobalKeyboardShortcutHandler
             .shared
             .didReceiveEvent
             .sink { [weak self] event in
@@ -48,7 +36,7 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, ObservableObject {
                 self.applicationShouldHandleGlobalKeyboardShortcut(event)
             }
 
-        keyboardShortcutBezel = KeyboardShortcutBezel()
+        keyboardShortcutBezel = KeyboardShortcutBezel(using: self.musicPlayer)
     }
 
     func applicationWillTerminate(_ notification: Notification) {
@@ -65,11 +53,12 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         return false
     }
 
-    @MainActor
     func applicationShouldHandleGlobalKeyboardShortcut(
         _ event: GlobalKeyboardShortcutHandler.Event
     ) {
         print("\(event.keyboardShortcut) \(event.phase)")
+
+        musicPlayer.perform(using: event)
 
         if let keyboardShortcutBezel {
             keyboardShortcutBezel.update(for: event)

@@ -302,3 +302,7 @@ fileprivate func hotKeyEventHandler(
         .takeUnretainedValue()
     return handler.handleHotKeyEvent(event, eventHotKeyID)
 }
+
+extension EnvironmentValues {
+    @Entry var currentGlobalKeyboardShortcutEvent: GlobalKeyboardShortcutHandler.Event? = nil
+}

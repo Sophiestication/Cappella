@@ -42,6 +42,7 @@
 		E6A81D142C4177DF00DAC24B /* PlaybackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A81D132C4177DF00DAC24B /* PlaybackView.swift */; };
 		E6ADDBF22C3532AF0088D9C8 /* PlatterWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADDBF12C3532AF0088D9C8 /* PlatterWindow.swift */; };
 		E6C15E412C970CC700C95CD9 /* KeyboardShortcutBezel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C15E402C970CC700C95CD9 /* KeyboardShortcutBezel.swift */; };
+		E6C15E442C9876DB00C95CD9 /* CappellaMusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C15E432C9876DB00C95CD9 /* CappellaMusicPlayer.swift */; };
 		E6D789332C87598100C495DE /* Inferno in Frameworks */ = {isa = PBXBuildFile; productRef = E6D789322C87598100C495DE /* Inferno */; };
 		E6D789352C877E2600C495DE /* PlatterButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D789342C877E2600C495DE /* PlatterButtonStyle.swift */; };
 		E6F11E592C56A9BA00AA45FC /* PlatterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F11E582C56A9BA00AA45FC /* PlatterView.swift */; };
@@ -104,6 +105,7 @@
 		E6A81D132C4177DF00DAC24B /* PlaybackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackView.swift; sourceTree = "<group>"; };
 		E6ADDBF12C3532AF0088D9C8 /* PlatterWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterWindow.swift; sourceTree = "<group>"; };
 		E6C15E402C970CC700C95CD9 /* KeyboardShortcutBezel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcutBezel.swift; sourceTree = "<group>"; };
+		E6C15E432C9876DB00C95CD9 /* CappellaMusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CappellaMusicPlayer.swift; sourceTree = "<group>"; };
 		E6D789342C877E2600C495DE /* PlatterButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterButtonStyle.swift; sourceTree = "<group>"; };
 		E6F11E582C56A9BA00AA45FC /* PlatterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -182,6 +184,7 @@
 				E667CD812C563DB2000718FC /* Application */,
 				E67B5CFC2C8CDD2300E47348 /* Keyboard Shortcuts */,
 				E6485A632C9578A600F4040D /* Keyboard Shortcut Bezel */,
+				E6C15E452C9876E200C95CD9 /* Music Player */,
 				E667CD7E2C563D52000718FC /* Music Search */,
 				E667CD7F2C563D6D000718FC /* Now Playing */,
 				E6F11E572C56A99A00AA45FC /* Platter */,
@@ -292,6 +295,14 @@
 				E682036C2C80BE4A00294A52 /* PlaybackQueueView.swift */,
 			);
 			path = "Playback Queue";
+			sourceTree = "<group>";
+		};
+		E6C15E452C9876E200C95CD9 /* Music Player */ = {
+			isa = PBXGroup;
+			children = (
+				E6C15E432C9876DB00C95CD9 /* CappellaMusicPlayer.swift */,
+			);
+			path = "Music Player";
 			sourceTree = "<group>";
 		};
 		E6F11E572C56A99A00AA45FC /* Platter */ = {
@@ -462,6 +473,7 @@
 				E682036E2C80BE4A00294A52 /* PlaybackQueueView.swift in Sources */,
 				E65067782C6B8FF900A5B00C /* MusicSearchField.swift in Sources */,
 				E6C15E412C970CC700C95CD9 /* KeyboardShortcutBezel.swift in Sources */,
+				E6C15E442C9876DB00C95CD9 /* CappellaMusicPlayer.swift in Sources */,
 				E6485A622C9578A300F4040D /* KeyboardShortcutBezelView.swift in Sources */,
 				E6D789352C877E2600C495DE /* PlatterButtonStyle.swift in Sources */,
 				E667CD7C2C560841000718FC /* VisualEffectView.swift in Sources */,

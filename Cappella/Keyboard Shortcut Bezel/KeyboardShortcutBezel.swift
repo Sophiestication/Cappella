@@ -5,10 +5,13 @@
 import SwiftUI
 import Combine
 import AppKit
-import CoreGraphics
+import MusicKit
 
 @MainActor
 final class KeyboardShortcutBezel {
+    typealias MusicPlayerType = CappellaMusicPlayer
+    private let musicPlayer: MusicPlayerType
+
     typealias KeyboardShortcutEvent = GlobalKeyboardShortcutHandler.Event
 
     private enum PresentationState {
@@ -23,13 +26,23 @@ final class KeyboardShortcutBezel {
     private let window: NSWindow
     private let containerView: NSView
 
-    init() {
+    private let keyboardShortcutEventSubject = PassthroughSubject<
+        KeyboardShortcutEvent,
+        Never
+    >()
+
+    init(using musicPlayer: MusicPlayerType) {
+        self.musicPlayer = musicPlayer
         self.presentationState = .dismissed
 
         let window = Self.makeBezelWindow()
         self.window = window
 
-        let containerView = Self.makeBezelContainerView(for: window)
+        let containerView = Self.makeBezelContainerView(
+            for: window,
+            eventSubject: keyboardShortcutEventSubject.eraseToAnyPublisher(),
+            musicPlayer: musicPlayer
+        )
         self.containerView = containerView
 
         window.contentView = containerView
@@ -55,6 +68,8 @@ final class KeyboardShortcutBezel {
 
     @MainActor
     func update(for event: KeyboardShortcutEvent) {
+        keyboardShortcutEventSubject.send(event)
+
         if event.phase.isStrictSubset(of: [.down, .repeat]) {
             cancelDismissIfNeeded()
             present()
@@ -71,17 +86,19 @@ final class KeyboardShortcutBezel {
         }
 
         layout()
+        window.orderFrontRegardless()
 
-        NSAnimationContext.animate(.easeInOut(duration: 0.5), changes: {
+        NSAnimationContext.runAnimationGroup { context in
+            context.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+            context.duration = 0.25
+
             presentationState = .presenting
 
-            window.alphaValue = 1.0
-            window.orderFrontRegardless()
-
-        }, completion: {
+            window.animator().alphaValue = 1.0
+        } completionHandler: {
             guard self.presentationState == .presenting else { return }
             self.presentationState = .presented
-        })
+        }
     }
 
     @MainActor
@@ -96,7 +113,7 @@ final class KeyboardShortcutBezel {
 
         dismissCancellable = Just(())
             .delay(
-                for: .seconds(2.5),
+                for: .seconds(2.0),
                 scheduler: RunLoop.main
             )
             .sink { [weak self] _ in
@@ -112,16 +129,19 @@ final class KeyboardShortcutBezel {
             return
         }
 
-        NSAnimationContext.animate(.easeInOut(duration: 2.5), changes: {
+        NSAnimationContext.runAnimationGroup { context in
+            context.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+            context.duration = 1.0
+
             presentationState = .dismissing
 
             window.animator().alphaValue = 0.0
-        }, completion: {
+        } completionHandler: {
             guard self.presentationState == .dismissing else { return }
 
             self.presentationState = .dismissed
             self.window.orderOut(nil)
-        })
+        }
     }
 
     private static func makeBezelWindow() -> NSWindow {
@@ -132,8 +152,10 @@ final class KeyboardShortcutBezel {
             defer: false
         )
 
-        window.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.maximumWindow)))
+        window.level = .screenSaver
         window.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary, .stationary]
+
+        window.isReleasedWhenClosed = true
 
         window.hidesOnDeactivate = false
         window.canHide = false
@@ -149,11 +171,22 @@ final class KeyboardShortcutBezel {
         window.becomesKeyOnlyIfNeeded = false
         window.ignoresMouseEvents = true
 
+        window.alphaValue = 0.0
+
         return window
     }
 
-    private static func makeBezelContainerView(for window: NSWindow) -> NSView {
-        let containerView = NSHostingView(rootView: KeyboardShortcutBezelView())
+    private static func makeBezelContainerView(
+        for window: NSWindow,
+        eventSubject: AnyPublisher<KeyboardShortcutEvent, Never>,
+        musicPlayer: MusicPlayerType
+    ) -> NSView {
+        let containerView = NSHostingView(
+            rootView: KeyboardShortcutBezelView(
+                eventPublisher: eventSubject
+            )
+            .environment(\.musicPlayer, musicPlayer)
+        )
 
         containerView.autoresizingMask = [.width, .height]
 

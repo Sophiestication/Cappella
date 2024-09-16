@@ -44,6 +44,7 @@ struct ShortcutRecorderView: View {
         .onChange(of: isFocused, initial: false) { _, isFocued  in
             if isFocused == false {
                 isRecording = false
+                currentModifiers = nil
             }
         }
         .focusEffectDisabled()
@@ -75,11 +76,14 @@ struct ShortcutRecorderView: View {
                 }
 //            }
 
+            currentModifiers = nil
             isRecording = false
 
             return .handled
         }
         .onModifierKeysChanged { old, new in
+            guard isRecording else { return }
+
             if new.isEmpty {
                 currentModifiers = nil
             } else {
@@ -138,6 +142,7 @@ struct ShortcutRecorderView: View {
     }
 
     private func clear() {
+        currentModifiers = nil
         keyboardShortcut = nil
         isRecording = false
     }

@@ -279,7 +279,10 @@ class PlatterProxy {
 
         platterWindow.layoutWindow(platterWindow)
 
-        NSAnimationContext.animate(.smooth, changes: {
+        NSAnimationContext.runAnimationGroup { context in
+            context.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+            context.duration = 0.125
+
             presentationState = .presenting
 
             platterWindow.alphaValue = 1.0
@@ -288,10 +291,10 @@ class PlatterProxy {
             if let button = platterWindow.statusItem.button {
                 button.highlight(true)
             }
-        }, completion: {
+        } completionHandler: {
             guard self.presentationState == .presenting else { return }
             self.presentationState = .presented
-        })
+        }
     }
 
     @MainActor
@@ -302,7 +305,10 @@ class PlatterProxy {
             return
         }
 
-        NSAnimationContext.animate(.smooth, changes: {
+        NSAnimationContext.runAnimationGroup { context in
+            context.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+            context.duration = 0.25
+
             presentationState = .dismissing
 
             platterWindow.animator().alphaValue = 0.0
@@ -310,12 +316,12 @@ class PlatterProxy {
             if let button = platterWindow.statusItem.button {
                 button.animator().highlight(false)
             }
-        }, completion: {
+        } completionHandler: {
             guard self.presentationState == .dismissing else { return }
 
             self.presentationState = .dismissed
             platterWindow.orderOut(nil)
-        })
+        }
     }
 
     @MainActor
