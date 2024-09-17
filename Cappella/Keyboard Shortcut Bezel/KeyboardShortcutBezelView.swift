@@ -87,6 +87,8 @@ struct KeyboardShortcutBezelView : View {
 
             if let entry = queue.currentEntry {
                 Text(entry.title)
+                    .lineLimit(1)
+                    .padding(.horizontal, 10.0)
             }
         }
     }
