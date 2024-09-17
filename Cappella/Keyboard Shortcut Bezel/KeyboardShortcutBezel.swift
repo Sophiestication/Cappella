@@ -199,9 +199,11 @@ final class KeyboardShortcutBezel {
             let contentSize = view.fittingSize
             let screenRect = screen.frame
 
+            let systemBezelOffset: CGFloat = 6.0
+
             let origin = CGPoint(
                 x: screenRect.midX - contentSize.width * 0.5,
-                y: contentSize.height * (1.0 - 1.0 / 3.0)
+                y: contentSize.height * (1.0 - 1.0 / 3.0) + systemBezelOffset
             )
 
             let windowRect = CGRect(origin: origin, size: contentSize)

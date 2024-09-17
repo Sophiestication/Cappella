@@ -19,8 +19,8 @@ struct KeyboardShortcutSettingsView: View {
 
             Section {
                 makeShortcutSetting("Play/Pause Current Song:", binding(for: .playPause))
-                makeShortcutSetting("Next Song:", binding(for: .nextSong))
-                makeShortcutSetting("Previous Song:", binding(for: .previousSong))
+                makeShortcutSetting("Next Song:", binding(for: .fastForward))
+                makeShortcutSetting("Previous Song:", binding(for: .rewind))
             }
 
             Spacer(minLength: separatorLength)

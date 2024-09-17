@@ -10,7 +10,10 @@ struct KeyboardShortcutBezelView : View {
     let eventPublisher: AnyPublisher<GlobalKeyboardShortcutHandler.Event, Never>
     @State private var currentEvent: GlobalKeyboardShortcutHandler.Event? = nil
 
-    @Environment(\.musicPlayer) var musicPlayer: CappellaMusicPlayer?
+    typealias MusicPlayerType = CappellaMusicPlayer
+
+    @Environment(\.musicPlayer) var musicPlayer: MusicPlayerType?
+    @ObservedObject private var queue = ApplicationMusicPlayer.shared.queue
 
     var body: some View {
         makeContentView()
@@ -28,10 +31,11 @@ struct KeyboardShortcutBezelView : View {
         if let event = currentEvent {
             switch event.id {
             case .playPause:
-                makePlaybackContentView()
-            case .nextSong,
-                 .previousSong:
-                makePlaybackContentView()
+                makePlayPauseView(event.phase)
+            case .fastForward:
+                makeFastForwardContentView(event.phase)
+            case .rewind:
+                makeRewindContentView(event.phase)
             case .toggleRepeatMode:
                 makeRepeatModeContentView()
             case .shuffleOnOff:
@@ -49,8 +53,42 @@ struct KeyboardShortcutBezelView : View {
     }
 
     @ViewBuilder
-    private func makePlaybackContentView() -> some View {
-        Color.clear
+    private func makePlayPauseView(_ phase: KeyPress.Phases) -> some View {
+        if let playbackStatus = musicPlayer?.scheduledPlaybackStatus {
+            VStack {
+                switch playbackStatus {
+                case .paused:
+                    makePlaybackView(for: Image("pauseTemplate"), phase)
+                case .playing, .seekingForward, .seekingBackward:
+                    makePlaybackView(for: Image("playTemplate"), phase)
+                case .interrupted, .stopped:
+                    makePlaybackView(for: Image("stopTemplate"), phase)
+                default:
+                    EmptyView()
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func makeFastForwardContentView(_ phase: KeyPress.Phases) -> some View {
+        makePlaybackView(for: Image("fastForwardTemplate"), phase)
+    }
+
+    @ViewBuilder
+    private func makeRewindContentView(_ phase: KeyPress.Phases) -> some View {
+        makePlaybackView(for: Image("rewindTemplate"), phase)
+    }
+
+    @ViewBuilder
+    private func makePlaybackView(for image: Image, _ phase: KeyPress.Phases) -> some View {
+        VStack {
+            makeImageView(for: image)
+
+            if let entry = queue.currentEntry {
+                Text(entry.title)
+            }
+        }
     }
 
     @ViewBuilder
@@ -58,11 +96,11 @@ struct KeyboardShortcutBezelView : View {
         if let repeatMode = musicPlayer?.playbackState.repeatMode {
             switch repeatMode {
             case .none:
-                makeImageView(for: Image(systemName: "questionmark"))
+                makeImageView(for: Image("repeatModeOffTemplate"))
             case .one:
-                makeImageView(for: Image(systemName: "repeat.1"))
+                makeImageView(for: Image("repeatModeOneTemplate"))
             case .all:
-                makeImageView(for: Image(systemName: "repeat"))
+                makeImageView(for: Image("repeatModeAllTemplate"))
             default:
                 EmptyView()
             }
@@ -71,7 +109,16 @@ struct KeyboardShortcutBezelView : View {
 
     @ViewBuilder
     private func makeShuffleModeContentView() -> some View {
-        Color.clear
+        if let shuffleMode = musicPlayer?.playbackState.shuffleMode {
+            switch shuffleMode {
+            case .off:
+                makeImageView(for: Image("shuffleOffTemplate"))
+            case .songs:
+                makeImageView(for: Image("shuffleOnTemplate"))
+            default:
+                EmptyView()
+            }
+        }
     }
 
     @ViewBuilder

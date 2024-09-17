@@ -34,8 +34,8 @@ extension GlobalKeyboardShortcut {
         case musicSearch = 2
 
         case playPause = 10
-        case nextSong = 11
-        case previousSong = 12
+        case fastForward = 11
+        case rewind = 12
 
         case toggleRepeatMode = 20
         case shuffleOnOff = 21
