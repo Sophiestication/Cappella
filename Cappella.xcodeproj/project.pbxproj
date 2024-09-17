@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -110,10 +110,6 @@
 		E6F11E582C56A9BA00AA45FC /* PlatterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		E66611532C2C1B63007839E6 /* Configuration */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Configuration; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
-
 /* Begin PBXFrameworksBuildPhase section */
 		E66611242C2C1782007839E6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -159,7 +155,6 @@
 		E666111E2C2C1782007839E6 = {
 			isa = PBXGroup;
 			children = (
-				E66611532C2C1B63007839E6 /* Configuration */,
 				E66611292C2C1782007839E6 /* Cappella */,
 				E66611392C2C1783007839E6 /* Tests */,
 				E66611432C2C1783007839E6 /* UITests */,
