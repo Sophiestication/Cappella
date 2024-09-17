@@ -98,6 +98,10 @@
 		E67B5CFD2C8D8CC000E47348 /* NSEvent+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSEvent+Additions.swift"; sourceTree = "<group>"; };
 		E67B5CFF2C8EDEDF00E47348 /* SettingsGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGroupBoxStyle.swift; sourceTree = "<group>"; };
 		E67B5D012C8EE3B200E47348 /* SettingsFormStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFormStyle.swift; sourceTree = "<group>"; };
+		E67E43A12C9A0C0600C4CA35 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
+		E67E43A32C9A0C2600C4CA35 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
+		E67E43A42C9A0C2600C4CA35 /* TestFlight.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TestFlight.xcconfig; sourceTree = "<group>"; };
+		E67E43A52C9A0D2600C4CA35 /* Public.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Public.xcconfig; sourceTree = "<group>"; };
 		E682036C2C80BE4A00294A52 /* PlaybackQueueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackQueueView.swift; sourceTree = "<group>"; };
 		E682036F2C80CC6F00294A52 /* PlaybackQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackQueue.swift; sourceTree = "<group>"; };
 		E68413892C5899E20019FB15 /* MusicSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearch.swift; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 		E666111E2C2C1782007839E6 = {
 			isa = PBXGroup;
 			children = (
+				E67E43A22C9A0C0600C4CA35 /* Configuration */,
 				E66611292C2C1782007839E6 /* Cappella */,
 				E66611392C2C1783007839E6 /* Tests */,
 				E66611432C2C1783007839E6 /* UITests */,
@@ -281,6 +286,17 @@
 				E653D1E52C8A19DE003AAE1E /* ShortcutRecorderView.swift */,
 			);
 			path = "Keyboard Shortcuts";
+			sourceTree = "<group>";
+		};
+		E67E43A22C9A0C0600C4CA35 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				E67E43A52C9A0D2600C4CA35 /* Public.xcconfig */,
+				E67E43A12C9A0C0600C4CA35 /* Development.xcconfig */,
+				E67E43A42C9A0C2600C4CA35 /* TestFlight.xcconfig */,
+				E67E43A32C9A0C2600C4CA35 /* Production.xcconfig */,
+			);
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 		E682036D2C80BE4A00294A52 /* Playback Queue */ = {
@@ -526,8 +542,9 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		E66611482C2C1783007839E6 /* Debug */ = {
+		E66611482C2C1783007839E6 /* Development */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E67E43A12C9A0C0600C4CA35 /* Development.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -586,10 +603,75 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
-			name = Debug;
+			name = Development;
 		};
-		E66611492C2C1783007839E6 /* Release */ = {
+		E666114B2C2C1783007839E6 /* Development */ = {
 			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Cappella/Resources/Cappella.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3NSYV8YA8F;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = CoverSutra;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "CoverSutra helps you to find and play albums in your Apple Music Library.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2006-2024 Sophiestication Software. All rights reserved.";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.mac.CoverSutra;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Development;
+		};
+		E666114E2C2C1783007839E6 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 22;
+				DEVELOPMENT_TEAM = 3NSYV8YA8F;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.CappellaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 6.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cappella.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cappella";
+			};
+			name = Development;
+		};
+		E66611512C2C1783007839E6 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 22;
+				DEVELOPMENT_TEAM = 3NSYV8YA8F;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.CappellaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 6.0;
+				TEST_TARGET_NAME = Cappella;
+			};
+			name = Development;
+		};
+		E67E43972C9A0B2F00C4CA35 /* TestFlight */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E67E43A42C9A0C2600C4CA35 /* TestFlight.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -640,9 +722,9 @@
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
-			name = Release;
+			name = TestFlight;
 		};
-		E666114B2C2C1783007839E6 /* Debug */ = {
+		E67E43982C9A0B2F00C4CA35 /* TestFlight */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -651,7 +733,6 @@
 				CODE_SIGN_ENTITLEMENTS = Cappella/Resources/Cappella.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 400;
 				DEVELOPMENT_TEAM = 3NSYV8YA8F;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -666,17 +747,102 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.mac.CoverSutra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 6.0;
-				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = Debug;
+			name = TestFlight;
 		};
-		E666114C2C2C1783007839E6 /* Release */ = {
+		E67E43992C9A0B2F00C4CA35 /* TestFlight */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 22;
+				DEVELOPMENT_TEAM = 3NSYV8YA8F;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.CappellaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 6.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cappella.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cappella";
+			};
+			name = TestFlight;
+		};
+		E67E439A2C9A0B2F00C4CA35 /* TestFlight */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 22;
+				DEVELOPMENT_TEAM = 3NSYV8YA8F;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.CappellaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 6.0;
+				TEST_TARGET_NAME = Cappella;
+			};
+			name = TestFlight;
+		};
+		E67E439B2C9A0B3900C4CA35 /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E67E43A32C9A0C2600C4CA35 /* Production.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Production;
+		};
+		E67E439C2C9A0B3900C4CA35 /* Production */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -685,7 +851,6 @@
 				CODE_SIGN_ENTITLEMENTS = Cappella/Resources/Cappella.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 400;
 				DEVELOPMENT_TEAM = 3NSYV8YA8F;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -700,21 +865,19 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.mac.CoverSutra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
-				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = Release;
+			name = Production;
 		};
-		E666114E2C2C1783007839E6 /* Debug */ = {
+		E67E439D2C9A0B3900C4CA35 /* Production */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = 3NSYV8YA8F;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -724,30 +887,13 @@
 				SWIFT_VERSION = 6.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cappella.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cappella";
 			};
-			name = Debug;
+			name = Production;
 		};
-		E666114F2C2C1783007839E6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3NSYV8YA8F;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.CappellaTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 6.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cappella.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cappella";
-			};
-			name = Release;
-		};
-		E66611512C2C1783007839E6 /* Debug */ = {
+		E67E439E2C9A0B3900C4CA35 /* Production */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = 3NSYV8YA8F;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -757,23 +903,7 @@
 				SWIFT_VERSION = 6.0;
 				TEST_TARGET_NAME = Cappella;
 			};
-			name = Debug;
-		};
-		E66611522C2C1783007839E6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3NSYV8YA8F;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.CappellaUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 6.0;
-				TEST_TARGET_NAME = Cappella;
-			};
-			name = Release;
+			name = Production;
 		};
 /* End XCBuildConfiguration section */
 
@@ -781,38 +911,42 @@
 		E66611222C2C1782007839E6 /* Build configuration list for PBXProject "Cappella" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E66611482C2C1783007839E6 /* Debug */,
-				E66611492C2C1783007839E6 /* Release */,
+				E66611482C2C1783007839E6 /* Development */,
+				E67E439B2C9A0B3900C4CA35 /* Production */,
+				E67E43972C9A0B2F00C4CA35 /* TestFlight */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Production;
 		};
 		E666114A2C2C1783007839E6 /* Build configuration list for PBXNativeTarget "Cappella" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E666114B2C2C1783007839E6 /* Debug */,
-				E666114C2C2C1783007839E6 /* Release */,
+				E666114B2C2C1783007839E6 /* Development */,
+				E67E439C2C9A0B3900C4CA35 /* Production */,
+				E67E43982C9A0B2F00C4CA35 /* TestFlight */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Production;
 		};
 		E666114D2C2C1783007839E6 /* Build configuration list for PBXNativeTarget "CappellaTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E666114E2C2C1783007839E6 /* Debug */,
-				E666114F2C2C1783007839E6 /* Release */,
+				E666114E2C2C1783007839E6 /* Development */,
+				E67E439D2C9A0B3900C4CA35 /* Production */,
+				E67E43992C9A0B2F00C4CA35 /* TestFlight */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Production;
 		};
 		E66611502C2C1783007839E6 /* Build configuration list for PBXNativeTarget "CappellaUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E66611512C2C1783007839E6 /* Debug */,
-				E66611522C2C1783007839E6 /* Release */,
+				E66611512C2C1783007839E6 /* Development */,
+				E67E439E2C9A0B3900C4CA35 /* Production */,
+				E67E439A2C9A0B2F00C4CA35 /* TestFlight */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Production;
 		};
 /* End XCConfigurationList section */
 

@@ -6,6 +6,7 @@ import SwiftUI
 import Combine
 import AppKit
 import MusicKit
+import MediaPlayer
 
 @MainActor
 final class KeyboardShortcutBezel {
