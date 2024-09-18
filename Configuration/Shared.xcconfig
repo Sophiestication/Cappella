@@ -1,0 +1,24 @@
+//
+// Copyright © 2024 Sophiestication Software. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+MARKETING_VERSION = 4.0
+
+PRODUCT_NAME = $(TARGET_NAME)
+PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.$(PRODUCT_NAME)
+
+DEVELOPMENT_TEAM = 3NSYV8YA8F
+CODE_SIGN_ENTITLEMENTS = Cappella/Resources/Cappella.entitlements
+CODE_SIGN_STYLE = Automatic
+
+MACOSX_DEPLOYMENT_TARGET = 15.0
+
+GENERATE_INFOPLIST_FILE = YES
+INFOPLIST_KEY_CFBundleDisplayName = $(PRODUCT_NAME)
+INFOPLIST_FILE = Cappella/Resources/Cappella-Info.plist
+INFOPLIST_KEY_LSApplicationCategoryType = public.app-category.music
+INFOPLIST_KEY_NSAppleMusicUsageDescription = CoverSutra helps you to find and play albums in your Apple Music Library.
+INFOPLIST_KEY_NSHumanReadableCopyright = Copyright © 2006-2024 Sophiestication Software. All rights

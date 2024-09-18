@@ -5,3 +5,5 @@
 *.xcuserdata
 *.xcuserdatad
 xcuserdata/
+
+Configuration/BuildNumber.xcconfig
