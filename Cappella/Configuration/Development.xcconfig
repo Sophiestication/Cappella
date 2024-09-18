@@ -5,7 +5,5 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-#include "Shared.xcconfig"
-#include "BuildNumber.xcconfig"
+#include "Cappella.xcconfig"
 
-CURRENT_PROJECT_VERSION = $(GIT_BUILD_NUMBER)

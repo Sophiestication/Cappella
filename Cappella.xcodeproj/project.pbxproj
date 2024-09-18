@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,11 @@
 		E6485A5A2C9427E200F4040D /* GlobalKeyboardShortcutHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6485A592C9427E200F4040D /* GlobalKeyboardShortcutHandler.swift */; };
 		E6485A5C2C94B2C500F4040D /* Platter+KeyboardShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6485A5B2C94B2C500F4040D /* Platter+KeyboardShortcut.swift */; };
 		E6485A622C9578A300F4040D /* KeyboardShortcutBezelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6485A612C9578A300F4040D /* KeyboardShortcutBezelView.swift */; };
+		E64A873A2C9B283A008CCCC5 /* Cappella.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E64A87342C9B283A008CCCC5 /* Cappella.xcconfig */; };
+		E64A873B2C9B283A008CCCC5 /* Development.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E64A87352C9B283A008CCCC5 /* Development.xcconfig */; };
+		E64A873C2C9B283A008CCCC5 /* Production.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E64A87362C9B283A008CCCC5 /* Production.xcconfig */; };
+		E64A873D2C9B283A008CCCC5 /* TestFlight.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E64A87372C9B283A008CCCC5 /* TestFlight.xcconfig */; };
+		E64A873E2C9B283A008CCCC5 /* Tests.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E64A87382C9B283A008CCCC5 /* Tests.xcconfig */; };
 		E65067782C6B8FF900A5B00C /* MusicSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65067772C6B8FF300A5B00C /* MusicSearchField.swift */; };
 		E653D1DE2C89EC15003AAE1E /* ApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D1DD2C89EC15003AAE1E /* ApplicationDelegate.swift */; };
 		E653D1E02C89EDC0003AAE1E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D1DF2C89EDC0003AAE1E /* SettingsView.swift */; };
@@ -77,7 +82,11 @@
 		E6485A5B2C94B2C500F4040D /* Platter+KeyboardShortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Platter+KeyboardShortcut.swift"; sourceTree = "<group>"; };
 		E6485A612C9578A300F4040D /* KeyboardShortcutBezelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcutBezelView.swift; sourceTree = "<group>"; };
 		E64A86F12C9A2383008CCCC5 /* Cappella-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Cappella-Info.plist"; sourceTree = "<group>"; };
-		E64A87222C9AEBF3008CCCC5 /* Tests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Tests.xcconfig; sourceTree = "<group>"; };
+		E64A87342C9B283A008CCCC5 /* Cappella.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Cappella.xcconfig; sourceTree = "<group>"; };
+		E64A87352C9B283A008CCCC5 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
+		E64A87362C9B283A008CCCC5 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
+		E64A87372C9B283A008CCCC5 /* TestFlight.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TestFlight.xcconfig; sourceTree = "<group>"; };
+		E64A87382C9B283A008CCCC5 /* Tests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Tests.xcconfig; sourceTree = "<group>"; };
 		E65067772C6B8FF300A5B00C /* MusicSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchField.swift; sourceTree = "<group>"; };
 		E653D1DD2C89EC15003AAE1E /* ApplicationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDelegate.swift; sourceTree = "<group>"; };
 		E653D1DF2C89EDC0003AAE1E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -98,10 +107,6 @@
 		E67B5CFD2C8D8CC000E47348 /* NSEvent+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSEvent+Additions.swift"; sourceTree = "<group>"; };
 		E67B5CFF2C8EDEDF00E47348 /* SettingsGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGroupBoxStyle.swift; sourceTree = "<group>"; };
 		E67B5D012C8EE3B200E47348 /* SettingsFormStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFormStyle.swift; sourceTree = "<group>"; };
-		E67E43A12C9A0C0600C4CA35 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
-		E67E43A32C9A0C2600C4CA35 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
-		E67E43A42C9A0C2600C4CA35 /* TestFlight.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TestFlight.xcconfig; sourceTree = "<group>"; };
-		E67E43A52C9A0D2600C4CA35 /* Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
 		E682036C2C80BE4A00294A52 /* PlaybackQueueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackQueueView.swift; sourceTree = "<group>"; };
 		E682036F2C80CC6F00294A52 /* PlaybackQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackQueue.swift; sourceTree = "<group>"; };
 		E68413892C5899E20019FB15 /* MusicSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearch.swift; sourceTree = "<group>"; };
@@ -113,6 +118,10 @@
 		E6D789342C877E2600C495DE /* PlatterButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterButtonStyle.swift; sourceTree = "<group>"; };
 		E6F11E582C56A9BA00AA45FC /* PlatterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		E64A87282C9B236E008CCCC5 /* Build */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Build; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		E66611242C2C1782007839E6 /* Frameworks */ = {
@@ -156,10 +165,22 @@
 			path = "Keyboard Shortcut Bezel";
 			sourceTree = "<group>";
 		};
+		E64A87392C9B283A008CCCC5 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				E64A87342C9B283A008CCCC5 /* Cappella.xcconfig */,
+				E64A87352C9B283A008CCCC5 /* Development.xcconfig */,
+				E64A87372C9B283A008CCCC5 /* TestFlight.xcconfig */,
+				E64A87362C9B283A008CCCC5 /* Production.xcconfig */,
+				E64A87382C9B283A008CCCC5 /* Tests.xcconfig */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
 		E666111E2C2C1782007839E6 = {
 			isa = PBXGroup;
 			children = (
-				E67E43A22C9A0C0600C4CA35 /* Configuration */,
+				E64A87282C9B236E008CCCC5 /* Build */,
 				E66611292C2C1782007839E6 /* Cappella */,
 				E66611392C2C1783007839E6 /* Tests */,
 				E66611432C2C1783007839E6 /* UITests */,
@@ -181,6 +202,7 @@
 		E66611292C2C1782007839E6 /* Cappella */ = {
 			isa = PBXGroup;
 			children = (
+				E64A87392C9B283A008CCCC5 /* Configuration */,
 				E667CD812C563DB2000718FC /* Application */,
 				E67B5CFC2C8CDD2300E47348 /* Keyboard Shortcuts */,
 				E6485A632C9578A600F4040D /* Keyboard Shortcut Bezel */,
@@ -286,18 +308,6 @@
 				E653D1E52C8A19DE003AAE1E /* ShortcutRecorderView.swift */,
 			);
 			path = "Keyboard Shortcuts";
-			sourceTree = "<group>";
-		};
-		E67E43A22C9A0C0600C4CA35 /* Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				E67E43A12C9A0C0600C4CA35 /* Development.xcconfig */,
-				E67E43A32C9A0C2600C4CA35 /* Production.xcconfig */,
-				E67E43A52C9A0D2600C4CA35 /* Shared.xcconfig */,
-				E67E43A42C9A0C2600C4CA35 /* TestFlight.xcconfig */,
-				E64A87222C9AEBF3008CCCC5 /* Tests.xcconfig */,
-			);
-			path = Configuration;
 			sourceTree = "<group>";
 		};
 		E682036D2C80BE4A00294A52 /* Playback Queue */ = {
@@ -438,6 +448,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E666112D2C2C1783007839E6 /* Assets.xcassets in Resources */,
+				E64A873A2C9B283A008CCCC5 /* Cappella.xcconfig in Resources */,
+				E64A873B2C9B283A008CCCC5 /* Development.xcconfig in Resources */,
+				E64A873C2C9B283A008CCCC5 /* Production.xcconfig in Resources */,
+				E64A873D2C9B283A008CCCC5 /* TestFlight.xcconfig in Resources */,
+				E64A873E2C9B283A008CCCC5 /* Tests.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,7 +610,7 @@
 		};
 		E666114B2C2C1783007839E6 /* Development */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E67E43A12C9A0C0600C4CA35 /* Development.xcconfig */;
+			baseConfigurationReference = E64A87352C9B283A008CCCC5 /* Development.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -614,7 +629,7 @@
 		};
 		E666114E2C2C1783007839E6 /* Development */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E64A87222C9AEBF3008CCCC5 /* Tests.xcconfig */;
+			baseConfigurationReference = E64A87382C9B283A008CCCC5 /* Tests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -625,7 +640,7 @@
 		};
 		E66611512C2C1783007839E6 /* Development */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E64A87222C9AEBF3008CCCC5 /* Tests.xcconfig */;
+			baseConfigurationReference = E64A87382C9B283A008CCCC5 /* Tests.xcconfig */;
 			buildSettings = {
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 6.0;
@@ -689,7 +704,7 @@
 		};
 		E67E43982C9A0B2F00C4CA35 /* TestFlight */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E67E43A42C9A0C2600C4CA35 /* TestFlight.xcconfig */;
+			baseConfigurationReference = E64A87372C9B283A008CCCC5 /* TestFlight.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -707,7 +722,7 @@
 		};
 		E67E43992C9A0B2F00C4CA35 /* TestFlight */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E64A87222C9AEBF3008CCCC5 /* Tests.xcconfig */;
+			baseConfigurationReference = E64A87382C9B283A008CCCC5 /* Tests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -718,7 +733,7 @@
 		};
 		E67E439A2C9A0B2F00C4CA35 /* TestFlight */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E64A87222C9AEBF3008CCCC5 /* Tests.xcconfig */;
+			baseConfigurationReference = E64A87382C9B283A008CCCC5 /* Tests.xcconfig */;
 			buildSettings = {
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 6.0;
@@ -782,7 +797,7 @@
 		};
 		E67E439C2C9A0B3900C4CA35 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E67E43A32C9A0C2600C4CA35 /* Production.xcconfig */;
+			baseConfigurationReference = E64A87362C9B283A008CCCC5 /* Production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -800,7 +815,7 @@
 		};
 		E67E439D2C9A0B3900C4CA35 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E64A87222C9AEBF3008CCCC5 /* Tests.xcconfig */;
+			baseConfigurationReference = E64A87382C9B283A008CCCC5 /* Tests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -811,7 +826,7 @@
 		};
 		E67E439E2C9A0B3900C4CA35 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E64A87222C9AEBF3008CCCC5 /* Tests.xcconfig */;
+			baseConfigurationReference = E64A87382C9B283A008CCCC5 /* Tests.xcconfig */;
 			buildSettings = {
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 6.0;

@@ -6,6 +6,24 @@
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES"
       buildArchitectures = "Automatic">
+      <PreActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Update Build Number"
+               scriptText = "&quot;${SRCROOT}/Build/Scripts/UpdateBuildNumber.sh&quot;&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "E66611262C2C1782007839E6"
+                     BuildableName = ".app"
+                     BlueprintName = "Cappella"
+                     ReferencedContainer = "container:Cappella.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PreActions>
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -16,7 +34,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E66611262C2C1782007839E6"
-               BuildableName = "CoverSutra.app"
+               BuildableName = ".app"
                BlueprintName = "Cappella"
                ReferencedContainer = "container:Cappella.xcodeproj">
             </BuildableReference>
@@ -36,7 +54,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E66611352C2C1783007839E6"
-               BuildableName = "CappellaTests.xctest"
+               BuildableName = ".xctest"
                BlueprintName = "CappellaTests"
                ReferencedContainer = "container:Cappella.xcodeproj">
             </BuildableReference>
@@ -47,7 +65,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E666113F2C2C1783007839E6"
-               BuildableName = "CappellaUITests.xctest"
+               BuildableName = ".xctest"
                BlueprintName = "CappellaUITests"
                ReferencedContainer = "container:Cappella.xcodeproj">
             </BuildableReference>
@@ -69,7 +87,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E66611262C2C1782007839E6"
-            BuildableName = "CoverSutra.app"
+            BuildableName = ".app"
             BlueprintName = "Cappella"
             ReferencedContainer = "container:Cappella.xcodeproj">
          </BuildableReference>
@@ -86,7 +104,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E66611262C2C1782007839E6"
-            BuildableName = "CoverSutra.app"
+            BuildableName = ".app"
             BlueprintName = "Cappella"
             ReferencedContainer = "container:Cappella.xcodeproj">
          </BuildableReference>

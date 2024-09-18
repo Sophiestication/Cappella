@@ -1,0 +1,22 @@
+//
+// Copyright © 2024 Sophiestication Software. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "BuildNumber.xcconfig"
+
+SOSO_VENDOR_IDENTIFIER = com.sophiestication
+
+SOSO_APPLICATION_BUILD = $(GIT_BUILD_NUMBER)
+SOSO_APPLICATION_VERSION = 4.0
+
+SOSO_VENDOR_URL = sophiestication.com
+SOSO_VENDOR_EMAIL = hello@sophiestication.com
+
+ORGANIZATION_IDENTIFIER = $(SOSO_VENDOR_IDENTIFIER)
+DEVELOPMENT_TEAM = 3NSYV8YA8F
+
+CURRENT_PROJECT_VERSION = $(SOSO_APPLICATION_BUILD)
+MARKETING_VERSION = $(SOSO_APPLICATION_VERSION)

@@ -5,4 +5,7 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-#include "Shared.xcconfig"
+#include "Cappella.xcconfig"
+
+PRODUCT_NAME = CoverSutra
+PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.mac.$(PRODUCT_NAME)

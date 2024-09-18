@@ -6,4 +6,5 @@
 *.xcuserdatad
 xcuserdata/
 
-Configuration/BuildNumber.xcconfig
+## BuildNumber.xcconfig is auto generated
+Build/Configuration/BuildNumber.xcconfig
