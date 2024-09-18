@@ -16,7 +16,7 @@
                   <BuildableReference
                      BuildableIdentifier = "primary"
                      BlueprintIdentifier = "E66611262C2C1782007839E6"
-                     BuildableName = ".app"
+                     BuildableName = "CoverSutra.app"
                      BlueprintName = "Cappella"
                      ReferencedContainer = "container:Cappella.xcodeproj">
                   </BuildableReference>
@@ -34,7 +34,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E66611262C2C1782007839E6"
-               BuildableName = ".app"
+               BuildableName = "CoverSutra.app"
                BlueprintName = "Cappella"
                ReferencedContainer = "container:Cappella.xcodeproj">
             </BuildableReference>
@@ -54,7 +54,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E66611352C2C1783007839E6"
-               BuildableName = ".xctest"
+               BuildableName = "CappellaTests.xctest"
                BlueprintName = "CappellaTests"
                ReferencedContainer = "container:Cappella.xcodeproj">
             </BuildableReference>
@@ -65,7 +65,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E666113F2C2C1783007839E6"
-               BuildableName = ".xctest"
+               BuildableName = "CappellaUITests.xctest"
                BlueprintName = "CappellaUITests"
                ReferencedContainer = "container:Cappella.xcodeproj">
             </BuildableReference>
@@ -87,7 +87,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E66611262C2C1782007839E6"
-            BuildableName = ".app"
+            BuildableName = "CoverSutra.app"
             BlueprintName = "Cappella"
             ReferencedContainer = "container:Cappella.xcodeproj">
          </BuildableReference>
@@ -104,7 +104,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E66611262C2C1782007839E6"
-            BuildableName = ".app"
+            BuildableName = "CoverSutra.app"
             BlueprintName = "Cappella"
             ReferencedContainer = "container:Cappella.xcodeproj">
          </BuildableReference>

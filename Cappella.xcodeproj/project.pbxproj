@@ -18,11 +18,6 @@
 		E6485A5A2C9427E200F4040D /* GlobalKeyboardShortcutHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6485A592C9427E200F4040D /* GlobalKeyboardShortcutHandler.swift */; };
 		E6485A5C2C94B2C500F4040D /* Platter+KeyboardShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6485A5B2C94B2C500F4040D /* Platter+KeyboardShortcut.swift */; };
 		E6485A622C9578A300F4040D /* KeyboardShortcutBezelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6485A612C9578A300F4040D /* KeyboardShortcutBezelView.swift */; };
-		E64A873A2C9B283A008CCCC5 /* Cappella.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E64A87342C9B283A008CCCC5 /* Cappella.xcconfig */; };
-		E64A873B2C9B283A008CCCC5 /* Development.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E64A87352C9B283A008CCCC5 /* Development.xcconfig */; };
-		E64A873C2C9B283A008CCCC5 /* Production.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E64A87362C9B283A008CCCC5 /* Production.xcconfig */; };
-		E64A873D2C9B283A008CCCC5 /* TestFlight.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E64A87372C9B283A008CCCC5 /* TestFlight.xcconfig */; };
-		E64A873E2C9B283A008CCCC5 /* Tests.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E64A87382C9B283A008CCCC5 /* Tests.xcconfig */; };
 		E65067782C6B8FF900A5B00C /* MusicSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65067772C6B8FF300A5B00C /* MusicSearchField.swift */; };
 		E653D1DE2C89EC15003AAE1E /* ApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D1DD2C89EC15003AAE1E /* ApplicationDelegate.swift */; };
 		E653D1E02C89EDC0003AAE1E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D1DF2C89EDC0003AAE1E /* SettingsView.swift */; };
@@ -448,11 +443,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E666112D2C2C1783007839E6 /* Assets.xcassets in Resources */,
-				E64A873A2C9B283A008CCCC5 /* Cappella.xcconfig in Resources */,
-				E64A873B2C9B283A008CCCC5 /* Development.xcconfig in Resources */,
-				E64A873C2C9B283A008CCCC5 /* Production.xcconfig in Resources */,
-				E64A873D2C9B283A008CCCC5 /* TestFlight.xcconfig in Resources */,
-				E64A873E2C9B283A008CCCC5 /* Tests.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
