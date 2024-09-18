@@ -27,7 +27,6 @@
 		E6590E6E2C64D89B0096EBAF /* MusicSearchArtworkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6590E6D2C64D89B0096EBAF /* MusicSearchArtworkImage.swift */; };
 		E666112B2C2C1782007839E6 /* Cappella.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666112A2C2C1782007839E6 /* Cappella.swift */; };
 		E666112D2C2C1783007839E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E666112C2C2C1783007839E6 /* Assets.xcassets */; };
-		E66611302C2C1783007839E6 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = E666112F2C2C1783007839E6 /* Base */; };
 		E666113B2C2C1783007839E6 /* PlaybackQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666113A2C2C1783007839E6 /* PlaybackQueueTests.swift */; };
 		E66611452C2C1783007839E6 /* CappellaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66611442C2C1783007839E6 /* CappellaUITests.swift */; };
 		E66611472C2C1783007839E6 /* CappellaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66611462C2C1783007839E6 /* CappellaUITestsLaunchTests.swift */; };
@@ -77,7 +76,8 @@
 		E6485A592C9427E200F4040D /* GlobalKeyboardShortcutHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalKeyboardShortcutHandler.swift; sourceTree = "<group>"; };
 		E6485A5B2C94B2C500F4040D /* Platter+KeyboardShortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Platter+KeyboardShortcut.swift"; sourceTree = "<group>"; };
 		E6485A612C9578A300F4040D /* KeyboardShortcutBezelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcutBezelView.swift; sourceTree = "<group>"; };
-		E64A86F12C9A2383008CCCC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E64A86F12C9A2383008CCCC5 /* Cappella-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Cappella-Info.plist"; sourceTree = "<group>"; };
+		E64A87222C9AEBF3008CCCC5 /* Tests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Tests.xcconfig; sourceTree = "<group>"; };
 		E65067772C6B8FF300A5B00C /* MusicSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchField.swift; sourceTree = "<group>"; };
 		E653D1DD2C89EC15003AAE1E /* ApplicationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDelegate.swift; sourceTree = "<group>"; };
 		E653D1DF2C89EDC0003AAE1E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -88,7 +88,6 @@
 		E66611272C2C1782007839E6 /* Cappella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cappella.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E666112A2C2C1782007839E6 /* Cappella.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cappella.swift; sourceTree = "<group>"; };
 		E666112C2C2C1783007839E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E666112F2C2C1783007839E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		E66611312C2C1783007839E6 /* Cappella.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cappella.entitlements; sourceTree = "<group>"; };
 		E66611362C2C1783007839E6 /* CappellaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CappellaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E666113A2C2C1783007839E6 /* PlaybackQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackQueueTests.swift; sourceTree = "<group>"; };
@@ -102,7 +101,7 @@
 		E67E43A12C9A0C0600C4CA35 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		E67E43A32C9A0C2600C4CA35 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		E67E43A42C9A0C2600C4CA35 /* TestFlight.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TestFlight.xcconfig; sourceTree = "<group>"; };
-		E67E43A52C9A0D2600C4CA35 /* Public.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Public.xcconfig; sourceTree = "<group>"; };
+		E67E43A52C9A0D2600C4CA35 /* Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
 		E682036C2C80BE4A00294A52 /* PlaybackQueueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackQueueView.swift; sourceTree = "<group>"; };
 		E682036F2C80CC6F00294A52 /* PlaybackQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackQueue.swift; sourceTree = "<group>"; };
 		E68413892C5899E20019FB15 /* MusicSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearch.swift; sourceTree = "<group>"; };
@@ -182,7 +181,6 @@
 		E66611292C2C1782007839E6 /* Cappella */ = {
 			isa = PBXGroup;
 			children = (
-				E64A86F12C9A2383008CCCC5 /* Info.plist */,
 				E667CD812C563DB2000718FC /* Application */,
 				E67B5CFC2C8CDD2300E47348 /* Keyboard Shortcuts */,
 				E6485A632C9578A600F4040D /* Keyboard Shortcut Bezel */,
@@ -248,9 +246,9 @@
 		E667CD802C563D89000718FC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E64A86F12C9A2383008CCCC5 /* Cappella-Info.plist */,
 				E66611312C2C1783007839E6 /* Cappella.entitlements */,
 				E666112C2C2C1783007839E6 /* Assets.xcassets */,
-				E666112E2C2C1783007839E6 /* MainMenu.xib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -293,10 +291,11 @@
 		E67E43A22C9A0C0600C4CA35 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				E67E43A52C9A0D2600C4CA35 /* Public.xcconfig */,
 				E67E43A12C9A0C0600C4CA35 /* Development.xcconfig */,
-				E67E43A42C9A0C2600C4CA35 /* TestFlight.xcconfig */,
 				E67E43A32C9A0C2600C4CA35 /* Production.xcconfig */,
+				E67E43A52C9A0D2600C4CA35 /* Shared.xcconfig */,
+				E67E43A42C9A0C2600C4CA35 /* TestFlight.xcconfig */,
+				E64A87222C9AEBF3008CCCC5 /* Tests.xcconfig */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -439,7 +438,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E666112D2C2C1783007839E6 /* Assets.xcassets in Resources */,
-				E66611302C2C1783007839E6 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,21 +530,9 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		E666112E2C2C1783007839E6 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E666112F2C2C1783007839E6 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		E66611482C2C1783007839E6 /* Development */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E67E43A12C9A0C0600C4CA35 /* Development.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -609,30 +595,17 @@
 		};
 		E666114B2C2C1783007839E6 /* Development */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E67E43A12C9A0C0600C4CA35 /* Development.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Cappella/Resources/Cappella.entitlements;
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 3NSYV8YA8F;
 				ENABLE_HARDENED_RUNTIME = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Cappella/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = CoverSutra;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "CoverSutra helps you to find and play albums in your Apple Music Library.";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2006-2024 Sophiestication Software. All rights reserved.";
-				INFOPLIST_KEY_NSMainNibFile = MainMenu;
-				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.mac.CoverSutra;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 6.0;
@@ -641,15 +614,9 @@
 		};
 		E666114E2C2C1783007839E6 /* Development */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E64A87222C9AEBF3008CCCC5 /* Tests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
-				DEVELOPMENT_TEAM = 3NSYV8YA8F;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.CappellaTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 6.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cappella.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cappella";
@@ -658,14 +625,8 @@
 		};
 		E66611512C2C1783007839E6 /* Development */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E64A87222C9AEBF3008CCCC5 /* Tests.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
-				DEVELOPMENT_TEAM = 3NSYV8YA8F;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.CappellaUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 6.0;
 				TEST_TARGET_NAME = Cappella;
@@ -674,7 +635,6 @@
 		};
 		E67E43972C9A0B2F00C4CA35 /* TestFlight */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E67E43A42C9A0C2600C4CA35 /* TestFlight.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -729,30 +689,17 @@
 		};
 		E67E43982C9A0B2F00C4CA35 /* TestFlight */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E67E43A42C9A0C2600C4CA35 /* TestFlight.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Cappella/Resources/Cappella.entitlements;
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 3NSYV8YA8F;
 				ENABLE_HARDENED_RUNTIME = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Cappella/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = CoverSutra;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "CoverSutra helps you to find and play albums in your Apple Music Library.";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2006-2024 Sophiestication Software. All rights reserved.";
-				INFOPLIST_KEY_NSMainNibFile = MainMenu;
-				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.mac.CoverSutra;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 			};
@@ -760,15 +707,9 @@
 		};
 		E67E43992C9A0B2F00C4CA35 /* TestFlight */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E64A87222C9AEBF3008CCCC5 /* Tests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
-				DEVELOPMENT_TEAM = 3NSYV8YA8F;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.CappellaTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 6.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cappella.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cappella";
@@ -777,14 +718,8 @@
 		};
 		E67E439A2C9A0B2F00C4CA35 /* TestFlight */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E64A87222C9AEBF3008CCCC5 /* Tests.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
-				DEVELOPMENT_TEAM = 3NSYV8YA8F;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.CappellaUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 6.0;
 				TEST_TARGET_NAME = Cappella;
@@ -793,7 +728,6 @@
 		};
 		E67E439B2C9A0B3900C4CA35 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E67E43A32C9A0C2600C4CA35 /* Production.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -848,30 +782,17 @@
 		};
 		E67E439C2C9A0B3900C4CA35 /* Production */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E67E43A32C9A0C2600C4CA35 /* Production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Cappella/Resources/Cappella.entitlements;
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 3NSYV8YA8F;
 				ENABLE_HARDENED_RUNTIME = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Cappella/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = CoverSutra;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "CoverSutra helps you to find and play albums in your Apple Music Library.";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2006-2024 Sophiestication Software. All rights reserved.";
-				INFOPLIST_KEY_NSMainNibFile = MainMenu;
-				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.mac.CoverSutra;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 			};
@@ -879,15 +800,9 @@
 		};
 		E67E439D2C9A0B3900C4CA35 /* Production */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E64A87222C9AEBF3008CCCC5 /* Tests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
-				DEVELOPMENT_TEAM = 3NSYV8YA8F;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.CappellaTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 6.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cappella.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cappella";
@@ -896,14 +811,8 @@
 		};
 		E67E439E2C9A0B3900C4CA35 /* Production */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E64A87222C9AEBF3008CCCC5 /* Tests.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
-				DEVELOPMENT_TEAM = 3NSYV8YA8F;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.CappellaUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 6.0;
 				TEST_TARGET_NAME = Cappella;

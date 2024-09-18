@@ -6,6 +6,24 @@
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES"
       buildArchitectures = "Automatic">
+      <PreActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Update Build Number"
+               scriptText = "#!/bin/sh&#10;&#10;# Change to the project directory&#10;cd &quot;${SRCROOT}&quot;&#10;&#10;# Get the Git commit count&#10;GIT_BUILD_NUMBER=$(git rev-list --count HEAD)&#10;&#10;# Export the variable for use in build settings&#10;export GIT_BUILD_NUMBER&#10;&#10;echo &quot;Updating build number to $GIT_BUILD_NUMBER&quot;&#10;&#10;# Write the build number to a file that can be included&#10;echo &quot;GIT_BUILD_NUMBER = $GIT_BUILD_NUMBER&quot; &gt; &quot;${SRCROOT}/Configuration/BuildNumber.xcconfig&quot;&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "E66611262C2C1782007839E6"
+                     BuildableName = "Cappella.app"
+                     BlueprintName = "Cappella"
+                     ReferencedContainer = "container:Cappella.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PreActions>
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"

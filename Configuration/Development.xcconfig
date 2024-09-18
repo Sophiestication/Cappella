@@ -5,8 +5,7 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-#include "Public.xcconfig"
+#include "Shared.xcconfig"
+#include "BuildNumber.xcconfig"
 
-VERSIONING_SYSTEM = apple-generic
-CURRENT_PROJECT_VERSION = 400
-VERSION_INFO_PREFIX =
+CURRENT_PROJECT_VERSION = $(GIT_BUILD_NUMBER)
