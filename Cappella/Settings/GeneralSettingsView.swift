@@ -8,6 +8,8 @@ struct GeneralSettingsView: View {
     @AppStorage("menuBarExtraShown") private var menuBarExtraShown = true
     @AppStorage("dockItemShown") private var dockItemShown = true
 
+    @AppStorage("dockTileArtworkShown") private var dockTileArtworkShown = false
+
     @AppStorage("playerNotifications") private var playerNotifications: PlayerNotificationStyle = .album
 
     var body: some View {
@@ -20,6 +22,14 @@ struct GeneralSettingsView: View {
                     }
                 } label: {
                     Text("Show Application Icon in:")
+                }
+            }
+
+            Section {
+                LabeledContent {
+                    Toggle("Album Artwork in Dock", isOn: $dockTileArtworkShown)
+                } label: {
+                    Text("Show:")
                 }
             }
 

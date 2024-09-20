@@ -18,19 +18,51 @@ final class DockTile: NSObject, NSMenuDelegate {
     private var musicPlayer: MusicPlayerType
 
     private typealias MusicPlayerQueue = ApplicationMusicPlayer.Queue
-    private var queue = ApplicationMusicPlayer.shared.queue
-    private var cancellable: AnyCancellable? = nil
+    private var queue: MusicPlayerQueue { ApplicationMusicPlayer.shared.queue }
+    private var cancellables = Set<AnyCancellable>()
 
     init(using musicPlayer: MusicPlayerType) {
         self.musicPlayer = musicPlayer
-//        self.cancellable = queue
-//            .objectWillChange
-//            .receive(on: RunLoop.main)
-//            .sink { [weak self] in
-//                if let self {
-//                    print("dock tile needs update")
-//                }
+
+        super.init()
+
+//        NotificationCenter.default
+//            .publisher(
+//                for: UserDefaults.didChangeNotification,
+//                object: nil
+//            )
+//            .map { _ in
+//                UserDefaults.standard.bool(forKey: "dockTileArtworkShown")
 //            }
+//            .removeDuplicates()
+//            .sink { [weak self] shouldShowArtwork in
+//                guard let self = self else { return }
+//                self.updateDockTile()
+//            }
+//            .store(in: &cancellables)
+
+        queue.objectWillChange
+            .receive(on: RunLoop.main)
+            .sink { [weak self] in
+                if let self {
+                    updateDockTile()
+                }
+            }
+            .store(in: &cancellables)
+
+        updateDockTile()
+    }
+
+    private func updateDockTile() {
+        let dockTile = NSApplication.shared.dockTile
+
+        if dockTileArtworkShown {
+            dockTile.contentView = DockTileView(for: queue.currentEntry)
+        } else {
+            dockTile.contentView = nil
+        }
+
+        dockTile.display()
     }
 
     private func makeMenu(for queue: MusicPlayerQueue) -> NSMenu? {
@@ -117,5 +149,9 @@ final class DockTile: NSObject, NSMenuDelegate {
         }
 
         return menuItem
+    }
+
+    private var dockTileArtworkShown: Bool {
+        UserDefaults.standard.bool(forKey: "dockTileArtworkShown")
     }
 }

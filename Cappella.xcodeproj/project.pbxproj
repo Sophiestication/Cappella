@@ -39,6 +39,7 @@
 		E684138A2C5899E20019FB15 /* MusicSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68413892C5899E20019FB15 /* MusicSearch.swift */; };
 		E690917F2C9C6922007F4188 /* DockTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E690917D2C9C6922007F4188 /* DockTile.swift */; };
 		E69091812C9C7311007F4188 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E69091802C9C7311007F4188 /* Localizable.xcstrings */; };
+		E69091832C9D7825007F4188 /* DockTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69091822C9D7825007F4188 /* DockTileView.swift */; };
 		E6A81D122C4177C300DAC24B /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A81D112C4177C300DAC24B /* NowPlayingView.swift */; };
 		E6A81D142C4177DF00DAC24B /* PlaybackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A81D132C4177DF00DAC24B /* PlaybackView.swift */; };
 		E6ADDBF22C3532AF0088D9C8 /* PlatterWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADDBF12C3532AF0088D9C8 /* PlatterWindow.swift */; };
@@ -109,6 +110,7 @@
 		E68413892C5899E20019FB15 /* MusicSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearch.swift; sourceTree = "<group>"; };
 		E690917D2C9C6922007F4188 /* DockTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockTile.swift; sourceTree = "<group>"; };
 		E69091802C9C7311007F4188 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		E69091822C9D7825007F4188 /* DockTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockTileView.swift; sourceTree = "<group>"; };
 		E6A81D112C4177C300DAC24B /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
 		E6A81D132C4177DF00DAC24B /* PlaybackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackView.swift; sourceTree = "<group>"; };
 		E6ADDBF12C3532AF0088D9C8 /* PlatterWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterWindow.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				E690917D2C9C6922007F4188 /* DockTile.swift */,
+				E69091822C9D7825007F4188 /* DockTileView.swift */,
 			);
 			path = "Dock Tile";
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				E67B5D002C8EDEDF00E47348 /* SettingsGroupBoxStyle.swift in Sources */,
 				E682036E2C80BE4A00294A52 /* PlaybackQueueView.swift in Sources */,
 				E65067782C6B8FF900A5B00C /* MusicSearchField.swift in Sources */,
+				E69091832C9D7825007F4188 /* DockTileView.swift in Sources */,
 				E6C15E412C970CC700C95CD9 /* KeyboardShortcutBezel.swift in Sources */,
 				E690917F2C9C6922007F4188 /* DockTile.swift in Sources */,
 				E6C15E442C9876DB00C95CD9 /* CappellaMusicPlayer.swift in Sources */,

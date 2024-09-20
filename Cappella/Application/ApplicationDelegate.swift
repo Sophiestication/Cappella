@@ -74,8 +74,6 @@ class ApplicationDelegate:
     }
 
     func applicationDockMenu(_ sender: NSApplication) -> NSMenu? {
-        print("applicationDockMenu")
-
         guard let dockTile else { return nil }
         return dockTile.menu
     }
