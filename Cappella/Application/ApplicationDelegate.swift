@@ -5,16 +5,23 @@
 import AppKit
 import Combine
 import SwiftUI
+import MusicKit
 
 @MainActor
-class ApplicationDelegate: NSObject, NSApplicationDelegate, ObservableObject {
-    private var musicPlayer = CappellaMusicPlayer()
+class ApplicationDelegate:
+    NSObject,
+    NSApplicationDelegate,
+    ObservableObject
+{
+    private(set) var musicPlayer = CappellaMusicPlayer()
 
     private var applicationWindow: PlatterWindow!
     private var nowPlayingWindow: PlatterWindow!
 
     private var globalKeyboardShortcutSubscription: AnyCancellable?
     private var keyboardShortcutBezel: KeyboardShortcutBezel?
+
+    private var dockTile: DockTile?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         let contentWidth = 440.0 + (PlatterGeometry.horizontalInset * 2.0)
@@ -37,6 +44,7 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, ObservableObject {
             }
 
         keyboardShortcutBezel = KeyboardShortcutBezel(using: self.musicPlayer)
+        dockTile = DockTile(using: self.musicPlayer)
     }
 
     func applicationWillTerminate(_ notification: Notification) {
@@ -63,5 +71,20 @@ class ApplicationDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         if let keyboardShortcutBezel {
             keyboardShortcutBezel.update(for: event)
         }
+    }
+
+    func applicationDockMenu(_ sender: NSApplication) -> NSMenu? {
+        print("applicationDockMenu")
+
+        guard let dockTile else { return nil }
+        return dockTile.menu
+    }
+
+    @objc func playEntry(_ sender: NSMenuItem) {
+        guard let entry = sender.representedObject as! ApplicationMusicPlayer.Queue.Entry? else {
+            return
+        }
+
+        musicPlayer.play(entry)
     }
 }

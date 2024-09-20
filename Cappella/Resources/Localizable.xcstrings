@@ -1,0 +1,98 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "%@" : {
+
+    },
+    "Authorize  Music" : {
+
+    },
+    "Clear" : {
+
+    },
+    "Click to record shortcut" : {
+
+    },
+    "Controls" : {
+
+    },
+    "Dock" : {
+
+    },
+    "General" : {
+
+    },
+    "Menu Bar" : {
+
+    },
+    "Music Library Access Denied" : {
+
+    },
+    "Never" : {
+
+    },
+    "Next" : {
+
+    },
+    "Now Playing Notifications are sent out whenever a new song starts playing in iTunes, but not when the change was triggered by the user." : {
+
+    },
+    "NOWPLAYING_MENUITEM" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Now Playing"
+          }
+        }
+      }
+    },
+    "On album change" : {
+
+    },
+    "On song change" : {
+
+    },
+    "Open Settings…" : {
+
+    },
+    "Play" : {
+
+    },
+    "Previous" : {
+
+    },
+    "Repeat All" : {
+
+    },
+    "Repeat Mode" : {
+
+    },
+    "Repeat Off" : {
+
+    },
+    "Repeat One" : {
+
+    },
+    "Shortcuts" : {
+
+    },
+    "Show Application Icon in:" : {
+
+    },
+    "Show Now Playing Notifications:" : {
+
+    },
+    "Shuffle" : {
+
+    },
+    "Type shortcut" : {
+
+    }
+  },
+  "version" : "1.0"
+}

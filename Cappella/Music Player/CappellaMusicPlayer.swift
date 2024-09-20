@@ -41,6 +41,11 @@ final class CappellaMusicPlayer {
         }
     }
 
+    func play(_ entry: Entry) {
+        player.queue.currentEntry = entry
+        schedulePlay()
+    }
+
     private func playPause(using event: KeyboardShortcutEvent) {
         guard event.phase == .down else {
             return

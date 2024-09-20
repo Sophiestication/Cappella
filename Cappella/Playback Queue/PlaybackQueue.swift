@@ -36,12 +36,6 @@ final class PlaybackQueue {
         let defaults = UserDefaults.standard
         let entries = queue.entries
 
-//        let debugCurrentEntryId = queue.currentEntry?.id ?? "nil"
-//        let debugStrings = entries.map {
-//            "\($0.id == debugCurrentEntryId ? "* " : "")\($0.title)"
-//        }
-//        print("storing \(debugCurrentEntryId) \(debugStrings)")
-
         let identifiers = entries.compactMap { (entry) -> String? in
             guard let item = entry.item else { return nil }
             return item.id.rawValue
@@ -86,8 +80,6 @@ final class PlaybackQueue {
                 currentEntry = entries[index]
             }
         }
-
-//        print("\(entries.map { $0.title } )")
 
         MusicPlayerType.shared.queue = MusicPlayerType.Queue(entries, startingAt: currentEntry)
 
