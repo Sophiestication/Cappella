@@ -140,8 +140,15 @@ class PlatterWindow: NSPanel {
         true
     }
 
+    override func constrainFrameRect(
+        _ frameRect: NSRect,
+        to screen: NSScreen?
+    ) -> NSRect {
+        return preferredWindowRect(propossedWindowRect: frameRect, screen)
+//        super.constrainFrameRect(frameRect, to: screen)
+    }
+
     @objc private func windowDidMove(_ notification: Notification) {
-//        layoutDockedPlatter()
     }
 
     @objc private func windowDidResignKey(_ notification: Notification) {
@@ -221,6 +228,27 @@ class PlatterWindow: NSPanel {
             height: 44.0
         )
         platter.setFrame(platterFrame, display: true)
+    }
+
+    func preferredWindowRect(
+        propossedWindowRect: CGRect,
+        _ screen: NSScreen?
+    ) -> CGRect {
+        guard let statusItemWindow = statusItem.button?.window else {
+            return propossedWindowRect
+        }
+
+        let targetRect = statusItemWindow.frame
+
+        let windowRect = self.frame
+        let newWindowRect = NSMakeRect(
+            targetRect.midX - (windowRect.width * 0.50),
+            targetRect.minY - windowRect.height,
+            windowRect.width,
+            windowRect.height
+        )
+
+        return newWindowRect
     }
 
     fileprivate func layoutWindow(_ window: PlatterWindow) {

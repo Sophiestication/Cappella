@@ -1,5 +1,5 @@
 {
-  "originHash" : "58f8b3f7d8f9b4f63e69fd84d69162443e380cea92e2b9303b4d1088f304f775",
+  "originHash" : "bdc2e1a0e19d5846ceff67b3dfaf2865d92c3417504d047840b17585c09aa35c",
   "pins" : [
     {
       "identity" : "inferno",
@@ -8,6 +8,15 @@
       "state" : {
         "branch" : "main",
         "revision" : "9c0941c91b9dc0e22e471bda0ac89f6e676d59b1"
+      }
+    },
+    {
+      "identity" : "wave",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jtrivedi/Wave.git",
+      "state" : {
+        "revision" : "d95ce41fa52c42d9790388e9086c892930e9e48b",
+        "version" : "0.3.2"
       }
     }
   ],

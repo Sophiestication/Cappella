@@ -15,7 +15,7 @@ struct KeyboardShortcutSettingsView: View {
                 makeShortcutSetting("Show/Hide Now Playing:", binding(for: .nowPlaying))
             }
 
-            Spacer(minLength: separatorLength)
+            separator
 
             Section {
                 makeShortcutSetting("Play/Pause Current Song:", binding(for: .playPause))
@@ -23,21 +23,19 @@ struct KeyboardShortcutSettingsView: View {
                 makeShortcutSetting("Previous Song:", binding(for: .rewind))
             }
 
-            Spacer(minLength: separatorLength)
+            separator
 
             Section {
                 makeShortcutSetting("Toggle Repeat Mode:", binding(for: .toggleRepeatMode))
                 makeShortcutSetting("Shuffle On/Off:", binding(for: .shuffleOnOff))
             }
-
-            Spacer(minLength: separatorLength)
-
-            Section {
-                makeShortcutSetting("Increase Sound Volume:", binding(for: .increaseSoundVolume))
-                makeShortcutSetting("Decrease Sound Volume:", binding(for: .decreaseSoundVolume))
-                makeShortcutSetting("Toggle Mute Playback:", binding(for: .toggleMute))
-            }
         }
+        .navigationTitle(Text("Keyboard Shortcuts"))
+    }
+
+    private var separator: some View {
+        Spacer()
+            .frame(height: separatorLength)
     }
 
     private func binding(

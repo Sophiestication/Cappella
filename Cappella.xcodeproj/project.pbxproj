@@ -442,6 +442,7 @@
 			mainGroup = E666111E2C2C1782007839E6;
 			packageReferences = (
 				E6D789302C8757D400C495DE /* XCRemoteSwiftPackageReference "Inferno" */,
+				E69091842C9EA76B007F4188 /* XCRemoteSwiftPackageReference "Wave" */,
 			);
 			productRefGroup = E66611282C2C1782007839E6 /* Products */;
 			projectDirPath = "";
@@ -893,6 +894,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E69091842C9EA76B007F4188 /* XCRemoteSwiftPackageReference "Wave" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jtrivedi/Wave.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.2;
+			};
+		};
 		E6D789302C8757D400C495DE /* XCRemoteSwiftPackageReference "Inferno" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/Inferno.git";
