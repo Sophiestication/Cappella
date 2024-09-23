@@ -164,4 +164,3 @@ final class CappellaMusicPlayer {
 extension EnvironmentValues {
     @Entry var musicPlayer: CappellaMusicPlayer? = nil
 }
-

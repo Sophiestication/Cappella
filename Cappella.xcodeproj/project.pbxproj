@@ -40,6 +40,7 @@
 		E690917F2C9C6922007F4188 /* DockTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E690917D2C9C6922007F4188 /* DockTile.swift */; };
 		E69091812C9C7311007F4188 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E69091802C9C7311007F4188 /* Localizable.xcstrings */; };
 		E69091832C9D7825007F4188 /* DockTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69091822C9D7825007F4188 /* DockTileView.swift */; };
+		E69091882CA1F3E5007F4188 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = E69091872CA1F3E5007F4188 /* Algorithms */; };
 		E6A81D122C4177C300DAC24B /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A81D112C4177C300DAC24B /* NowPlayingView.swift */; };
 		E6A81D142C4177DF00DAC24B /* PlaybackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A81D132C4177DF00DAC24B /* PlaybackView.swift */; };
 		E6ADDBF22C3532AF0088D9C8 /* PlatterWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADDBF12C3532AF0088D9C8 /* PlatterWindow.swift */; };
@@ -129,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E69091882CA1F3E5007F4188 /* Algorithms in Frameworks */,
 				E6D789332C87598100C495DE /* Inferno in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,6 +445,7 @@
 			packageReferences = (
 				E6D789302C8757D400C495DE /* XCRemoteSwiftPackageReference "Inferno" */,
 				E69091842C9EA76B007F4188 /* XCRemoteSwiftPackageReference "Wave" */,
+				E69091862CA1F3E5007F4188 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 			);
 			productRefGroup = E66611282C2C1782007839E6 /* Products */;
 			projectDirPath = "";
@@ -902,6 +905,14 @@
 				minimumVersion = 0.3.2;
 			};
 		};
+		E69091862CA1F3E5007F4188 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
 		E6D789302C8757D400C495DE /* XCRemoteSwiftPackageReference "Inferno" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/Inferno.git";
@@ -913,6 +924,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E69091872CA1F3E5007F4188 /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E69091862CA1F3E5007F4188 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
+		};
 		E6D789322C87598100C495DE /* Inferno */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E6D789302C8757D400C495DE /* XCRemoteSwiftPackageReference "Inferno" */;

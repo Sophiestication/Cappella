@@ -6,6 +6,7 @@ import Foundation
 import Combine
 import SwiftUI
 import MusicKit
+import Algorithms
 
 @Observable @MainActor
 final class MusicSearch {
@@ -13,6 +14,7 @@ final class MusicSearch {
         case all
         case album
         case artist
+        case song
     }
 
     var scope: Scope = .all {
@@ -86,7 +88,9 @@ final class MusicSearch {
             .term
             .components(separatedBy: .whitespacesAndNewlines)
             .filter { $0.count > 1 }
-        let preparedTerm = termComponents
+        let preparedTerm = requestParameters
+            .term
+            .components(separatedBy: .whitespacesAndNewlines)
             .joined(separator: " ")
 
         let scope = requestParameters.scope
@@ -115,6 +119,9 @@ final class MusicSearch {
             case .artist:
                 results = try await resultItems(for: preparedTerm, scope: scope)
                 break
+            case .song:
+                results = try await resultItems(for: preparedTerm, scope: scope)
+                break
             }
         }
 
@@ -133,7 +140,7 @@ final class MusicSearch {
     private func resultItems(
         matching terms: [String],
         scope: Scope,
-        limit: Int = 15
+        limit: Int = 10
     ) async throws -> [ResultItem] {
         var resultSets = [[ResultItem]]()
 
@@ -158,7 +165,7 @@ final class MusicSearch {
     private func resultItems(
         for term: String,
         scope: Scope,
-        limit: Int = 15
+        limit: Int = 10
     ) async throws -> [ResultItem] {
         var libraryRequest = MusicLibraryRequest<Album>()
 
@@ -174,6 +181,11 @@ final class MusicSearch {
         case .artist:
             libraryRequest.filter(matching: \.artistName, contains: term)
             break
+        case .song:
+            return try await resultItemsBySong(
+                for: term,
+                limit: limit
+            )
         }
 
         libraryRequest.sort(
@@ -194,8 +206,46 @@ final class MusicSearch {
         return results
     }
 
+    private func resultItemsBySong(
+        for term: String,
+        limit: Int
+    ) async throws -> [ResultItem] {
+        var libraryRequest = MusicLibraryRequest<Song>()
+
+        libraryRequest.limit = limit
+
+        libraryRequest.filter(matching: \.title, contains: term)
+
+        libraryRequest.sort(
+            by: \.artistName,
+            ascending: true
+        )
+
+        let response = try await libraryRequest.response()
+
+        var results: [ResultItem] = []
+
+        for song in response.items {
+            let detailedSong = try await song.with(
+                [ .albums ],
+                preferredSource: .library
+            )
+
+            if let albums = detailedSong.albums {
+                for album in albums {
+                    if let resultItem = try await makeResultItem(for: album) {
+                        results.append(resultItem)
+                    }
+                }
+            }
+        }
+
+        results = results.uniqued(on: \.id)
+        return results
+    }
+
     private func makeResultItem(for album: Album) async throws -> ResultItem? {
-        let detailedAlbum = try await album.with([ .tracks ])
+        let detailedAlbum = try await album.with([ .tracks ], preferredSource: .library)
 
         guard let tracks = detailedAlbum.tracks else {
             return nil

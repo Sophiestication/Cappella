@@ -24,7 +24,7 @@ struct MusicSearchField: View {
             makeSearchScopeImage(for: musicSearch.scope)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 14.0)
+                .frame(width: 14.0, height: 14.0)
                 .padding(.leading, 10.0)
             TextField(
                 "",
@@ -115,6 +115,8 @@ struct MusicSearchField: View {
             return Image(systemName: "music.note.list")
         case .artist:
             return Image(systemName: "music.microphone")
+        case .song:
+            return Image(systemName: "music.note")
         }
     }
 
@@ -126,6 +128,8 @@ struct MusicSearchField: View {
             "Search Albums"
         case .artist:
             "Search Artists"
+        case .song:
+            "Search by Song"
         }
     }
 
