@@ -1,5 +1,5 @@
 //
-//  Copyright © 2024 Sophiestication Software. All rights reserved.
+//  Copyright © 2006-2024 Sophiestication Software. All rights reserved.
 //
 
 import XCTest
