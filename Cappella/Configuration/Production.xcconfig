@@ -9,3 +9,5 @@
 
 PRODUCT_NAME = CoverSutra
 PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.mac.$(PRODUCT_NAME)
+
+ENABLE_TESTABILITY = NO

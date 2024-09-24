@@ -7,3 +7,4 @@
 
 #include "Cappella.xcconfig"
 
+ENABLE_TESTABILITY = YES
