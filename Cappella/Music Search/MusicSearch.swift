@@ -95,13 +95,22 @@ final class MusicSearch {
 
         let scope = requestParameters.scope
 
+        let limit = 15
         var results = [ResultItem]()
 
         if preparedTerm.isEmpty == false {
             switch scope {
             case .all:
-                let albumResults = try await resultItems(matching: termComponents, scope: .album)
-                let artistResults = try await resultItems(for: preparedTerm, scope: .artist)
+                let albumResults = try await resultItems(
+                    matching: termComponents,
+                    scope: .album,
+                    limit: limit
+                )
+                let artistResults = try await resultItems(
+                    for: preparedTerm,
+                    scope: .artist,
+                    limit: limit
+                )
 
                 results = [albumResults, artistResults]
                     .flatMap { $0 }
@@ -114,13 +123,25 @@ final class MusicSearch {
                     }
                 break
             case .album:
-                results = try await resultItems(matching: termComponents, scope: scope)
+                results = try await resultItems(
+                    matching: termComponents,
+                    scope: scope,
+                    limit: limit
+                )
                 break
             case .artist:
-                results = try await resultItems(for: preparedTerm, scope: scope)
+                results = try await resultItems(
+                    for: preparedTerm,
+                    scope: scope,
+                    limit: limit
+                )
                 break
             case .song:
-                results = try await resultItems(for: preparedTerm, scope: scope)
+                results = try await resultItems(
+                    for: preparedTerm,
+                    scope: scope,
+                    limit: limit
+                )
                 break
             }
         }
@@ -140,7 +161,7 @@ final class MusicSearch {
     private func resultItems(
         matching terms: [String],
         scope: Scope,
-        limit: Int = 10
+        limit: Int
     ) async throws -> [ResultItem] {
         var resultSets = [[ResultItem]]()
 
@@ -165,7 +186,7 @@ final class MusicSearch {
     private func resultItems(
         for term: String,
         scope: Scope,
-        limit: Int = 10
+        limit: Int
     ) async throws -> [ResultItem] {
         var libraryRequest = MusicLibraryRequest<Album>()
 
