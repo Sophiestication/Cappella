@@ -57,7 +57,7 @@ struct MusicSearchView: View {
                 guard newSelection.interactor == .keyboard else { return }
 
                 withAnimation(.smooth) {
-                    scrollProxy.scrollTo(newSelection.collection.id)
+                    scrollProxy.scrollTo(newSelection.item.id)
                 }
             }
 
@@ -131,7 +131,7 @@ struct MusicSearchView: View {
             case .active(let point):
                 lastHoverLocation = point
                 musicSearch.selection = MusicSearch.Selection(
-                    collection: resultItem,
+                    item: resultItem,
                     entry: entry,
                     .pointer
                 )
@@ -157,7 +157,7 @@ struct MusicSearchView: View {
     }
 
     private func play(_ selection: MusicSearch.Selection) {
-        play(selection.collection, startingAt: selection.entry)
+        play(selection.item, startingAt: selection.entry)
     }
 
     private func play(_ resultItem: ResultItem, startingAt currentEntry: ResultItem.Entry?) {

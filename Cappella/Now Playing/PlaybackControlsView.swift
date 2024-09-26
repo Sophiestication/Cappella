@@ -5,7 +5,7 @@
 import SwiftUI
 import MusicKit
 
-struct PlaybackView: View {
+struct PlaybackControlsView: View {
     private typealias MusicPlayerType = ApplicationMusicPlayer
     @ObservedObject private var playbackState = MusicPlayerType.shared.state
 
@@ -69,5 +69,5 @@ struct PlaybackView: View {
 }
 
 #Preview {
-    PlaybackView()
+    PlaybackControlsView()
 }

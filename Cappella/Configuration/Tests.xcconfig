@@ -5,4 +5,21 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-#include "Cappella.xcconfig"
+#include "../../Build/Configuration/Vendor.xcconfig"
+
+ENABLE_TESTABILITY = YES
+
+PRODUCT_NAME = $(TARGET_NAME)
+MODULE_NAME = $(TARGET_NAME)
+PRODUCT_MODULE_NAME = $(TARGET_NAME)
+
+PRODUCT_BUNDLE_IDENTIFIER = $(SOSO_VENDOR_IDENTIFIER).$(PRODUCT_NAME)
+
+CODE_SIGN_STYLE = Automatic
+
+TEST_HOST = $(BUILT_PRODUCTS_DIR)/Cappella.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cappella
+BUNDLE_LOADER = $(TEST_HOST)
+
+GENERATE_INFOPLIST_FILE = YES
+INFOPLIST_KEY_CFBundleName = $(PRODUCT_NAME)
+INFOPLIST_KEY_CFBundleDisplayName = $(PRODUCT_NAME)

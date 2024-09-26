@@ -54,7 +54,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E66611352C2C1783007839E6"
-               BuildableName = "CappellaTests.xctest"
+               BuildableName = ".xctest"
                BlueprintName = "CappellaTests"
                ReferencedContainer = "container:Cappella.xcodeproj">
             </BuildableReference>
@@ -92,6 +92,13 @@
             ReferencedContainer = "container:Cappella.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <AdditionalOptions>
+         <AdditionalOption
+            key = "APP_DISTRIBUTOR_ID_OVERRIDE"
+            value = "com.apple.TestFlight"
+            isEnabled = "YES">
+         </AdditionalOption>
+      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "TestFlight"

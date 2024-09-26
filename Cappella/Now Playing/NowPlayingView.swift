@@ -40,7 +40,7 @@ struct NowPlayingView: View {
 
             Spacer()
 
-            PlaybackView()
+            PlaybackControlsView()
                 .disabled(queue.currentEntry == nil)
         }
         .padding(.horizontal, 10.0)

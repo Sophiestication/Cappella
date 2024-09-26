@@ -352,22 +352,22 @@ extension MusicSearch {
             case keyboard
         }
 
-        let collection: ResultItem
+        let item: ResultItem
         let entry: ResultItem.Entry?
         let interactor: Interactor
 
         init(
-            collection: ResultItem,
+            item: ResultItem,
             entry: ResultItem.Entry? = nil,
             _ interactor: Interactor
         ) {
-            self.collection = collection
+            self.item = item
             self.entry = entry
             self.interactor = interactor
         }
 
         static func == (lhs: Self, rhs: Self) -> Bool {
-            lhs.collection.id == rhs.collection.id &&
+            lhs.item.id == rhs.item.id &&
             lhs.entry == rhs.entry &&
             lhs.interactor == rhs.interactor
         }
@@ -383,7 +383,7 @@ extension MusicSearch {
             }
             
             self.selection = Selection(
-                collection: firstResultItem,
+                item: firstResultItem,
                 entry: firstResultItem.entries.first,
                 interactor
             )
@@ -394,23 +394,23 @@ extension MusicSearch {
         var nextSelection: Selection? = nil
 
         if group == .collection {
-            if let nextItem = results.firstAfter(where: { $0.id == selection.collection.id }) {
+            if let nextItem = results.firstAfter(where: { $0.id == selection.item.id }) {
                 nextSelection = Selection(
-                    collection: nextItem,
+                    item: nextItem,
                     entry: nextItem.entries.first,
                     interactor
                 )
             } else {
                 nextSelection = Selection(
-                    collection: selection.collection,
-                    entry: selection.collection.entries.last,
+                    item: selection.item,
+                    entry: selection.item.entries.last,
                     interactor
                 )
             }
         } else {
             if let nextItem = resultEntries.firstAfter(where: { $0.1 == selection.entry }) {
                 nextSelection = Selection(
-                    collection: nextItem.0,
+                    item: nextItem.0,
                     entry: nextItem.1,
                     interactor
                 )
@@ -425,7 +425,7 @@ extension MusicSearch {
             }
 
             self.selection = Selection(
-                collection: resultItem,
+                item: resultItem,
                 entry: resultItem.entries.first,
                 interactor
             )
@@ -443,16 +443,16 @@ extension MusicSearch {
         var newSelection: Selection? = nil
 
         if group == .collection {
-            if selection.entry != selection.collection.entries.first {
+            if selection.entry != selection.item.entries.first {
                 newSelection = Selection(
-                    collection: selection.collection,
-                    entry: selection.collection.entries.first,
+                    item: selection.item,
+                    entry: selection.item.entries.first,
                     interactor
                 )
             } else {
-                if let nextItem = results.firstBefore(where: { $0.id == selection.collection.id }) {
+                if let nextItem = results.firstBefore(where: { $0.id == selection.item.id }) {
                     newSelection = Selection(
-                        collection: nextItem,
+                        item: nextItem,
                         entry: nextItem.entries.first,
                         interactor
                     )
@@ -461,7 +461,7 @@ extension MusicSearch {
         } else {
             if let nextItem = resultEntries.firstBefore(where: { $0.1 == selection.entry }) {
                 newSelection = Selection(
-                    collection: nextItem.0,
+                    item: nextItem.0,
                     entry: nextItem.1,
                     interactor
                 )

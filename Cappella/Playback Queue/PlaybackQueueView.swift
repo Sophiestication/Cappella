@@ -14,6 +14,9 @@ struct PlaybackQueueView: View {
     @State private var draggedEntry: Entry? = nil
     @State private var draggedEntryOffset: CGSize = .zero
 
+    @Environment(\.platterProxy) var platterProxy
+    @Environment(\.platterGeometry) var platterGeometry
+
     @Environment(\.playbackQueue) var playbackQueue
 
     var body: some View {
@@ -33,11 +36,16 @@ struct PlaybackQueueView: View {
 
         }, label: {
             HStack {
-                makeArtworkImage(for: entry)
-                    .frame(
-                        width: CGFloat(Self.artworkDimension),
-                        height: CGFloat(Self.artworkDimension)
-                    )
+                HStack {
+                    makeReorderView(for: entry)
+                    makeDeleteView()
+                    makeArtworkImage(for: entry)
+                        .frame(
+                            width: CGFloat(Self.artworkDimension),
+                            height: CGFloat(Self.artworkDimension)
+                        )
+                }
+                .frame(width: leadingPadding)
 
                 VStack(alignment: .leading) {
                     Text(entry.title)
@@ -46,11 +54,11 @@ struct PlaybackQueueView: View {
                         Text(subtitle)
                     }
                 }
+                .background(.red)
             }
         })
         .buttonStyle(.menu)
 
-        .gesture(makeDragGesture(for: entry))
         .offset(entry == draggedEntry ? draggedEntryOffset : .zero)
         .zIndex(draggedEntry == entry ? 1 : 0)
     }
@@ -63,7 +71,10 @@ struct PlaybackQueueView: View {
         .onChanged { value in
             withAnimation(.interactiveSpring) {
                 draggedEntry = entry
-                draggedEntryOffset = value.translation
+                draggedEntryOffset = CGSize(
+                    width: 0.0,
+                    height: value.translation.height
+                )
             }
         }
         .onEnded { _ in
@@ -74,7 +85,27 @@ struct PlaybackQueueView: View {
         }
     }
 
-    private static let artworkDimension: Int = 32
+    @ViewBuilder
+    private func makeReorderView(for entry: Entry) -> some View {
+        Image("reorderTemplate")
+            .resizable()
+            .frame(width: 18.0, height: 18.0)
+            .gesture(makeDragGesture(for: entry))
+    }
+
+    @ViewBuilder
+    private func makeDeleteView() -> some View {
+        Button(action: {
+
+        }, label: {
+            Image("deleteTemplate")
+                .resizable()
+                .frame(width: 18.0, height: 18.0)
+        })
+        .buttonStyle(.plain)
+    }
+
+    private static let artworkDimension: Int = 42
 
     @ViewBuilder
     private func makeArtworkImage(for entry: Entry) -> some View {
@@ -123,5 +154,13 @@ struct PlaybackQueueView: View {
     private func makePlaceholderView() -> some View {
         makeContentShape()
             .fill(.quaternary)
+    }
+
+    private var leadingPadding: CGFloat {
+        guard let platterGeometry else {
+            return 0.0
+        }
+
+        return platterGeometry.contentFrame.width * 0.35 + 8.0
     }
 }
