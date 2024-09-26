@@ -62,6 +62,9 @@ struct PlaybackQueueMenuItem: View {
 
         PlaybackQueueMenuItem()
             .environment(\.isMenuItemSelected, true)
+
+        PlaybackQueueMenuItem()
+            .environment(\.isMenuItemTriggering, true)
     }
     .padding(60.0)
 

@@ -11,10 +11,13 @@ struct MenuItem<
     >: View {
     @Environment(\.platterGeometry) var platterGeometry
     @Environment(\.isMenuItemSelected) var isMenuItemSelected
+    @Environment(\.isMenuItemTriggering) var isMenuItemTriggering
 
     private var content: Content
     private var label: Label?
     private var accessory: Accessory?
+
+    @State private var isBlinking: Bool = false
 
     init(
         @ViewBuilder _ content: () -> Content,
@@ -44,20 +47,22 @@ struct MenuItem<
     }
 
     var body: some View {
-        HStack(alignment: .center) {
-            Spacer(minLength: leadingPadding)
-                .overlay(
-                    HStack(spacing: 0.0) {
-                        Spacer()
-                        accessory
-                            .buttonStyle(.menuAccessory)
-                        Spacer()
+        HStack {
+            if isContentOnly == false {
+                Spacer(minLength: leadingPadding)
+                    .overlay(
+                        HStack(spacing: 0.0) {
+                            Spacer()
+                            accessory
+                                .buttonStyle(.menuAccessory)
+                            Spacer()
 
-                        label
-                    }
-                    .padding(5.0),
-                    alignment: .trailing
-                )
+                            label
+                        }
+                        .padding(5.0),
+                        alignment: .trailing
+                    )
+            }
 
             VStack(alignment: .leading) {
                 content
@@ -65,8 +70,9 @@ struct MenuItem<
 
             .font(.system(size: 13, weight: .regular, design: .default))
             .fontWeight(.medium)
+            .fontDesign(.rounded)
 
-            .padding(5.0)
+            .padding(isContentOnly ? 0.0 : 5.0)
 
             Spacer()
         }
@@ -76,8 +82,22 @@ struct MenuItem<
 
         .foregroundStyle(
             .primary,
-            isMenuItemSelected ? .primary : .secondary
+            shouldHighlight ? .primary : .secondary
         )
+
+        .onChange(of: isMenuItemTriggering, initial: true) { _, newValue in
+            withAnimation(.easeInOut(duration: 0.1).repeatCount(3)) {
+                if newValue {
+                    isBlinking = newValue
+                }
+            } completion: {
+                isBlinking = false
+            }
+        }
+    }
+
+    private var isContentOnly: Bool {
+        label == nil
     }
 
     private var leadingPadding: CGFloat {
@@ -88,10 +108,14 @@ struct MenuItem<
         return platterGeometry.contentFrame.width * 0.35
     }
 
+    private var cornerRadius: CGFloat {
+        isContentOnly ? 5.0 : 10.0
+    }
+
     @ViewBuilder
     private var contentShape: some Shape {
         RoundedRectangle(
-            cornerRadius: 10.0,
+            cornerRadius: cornerRadius,
             style: .continuous
         )
     }
@@ -100,7 +124,11 @@ struct MenuItem<
     private var background: some View {
         contentShape
             .fill(Color.accentColor)
-            .opacity(isMenuItemSelected ? 1.0 : 0.0)
+            .opacity(shouldHighlight ? 1.0 : 0.0)
+    }
+
+    private var shouldHighlight: Bool {
+        isMenuItemSelected || isBlinking
     }
 }
 
@@ -114,6 +142,11 @@ struct MenuItem<
             Text("Hello World")
         }
         .environment(\.isMenuItemSelected, true)
+
+        MenuItem() {
+            Text("Hello World")
+        }
+        .environment(\.isMenuItemTriggering, true)
     }
     .padding(60.0)
 
