@@ -10,6 +10,7 @@ struct MenuItem<
         Accessory: View
     >: View {
     @Environment(\.platterGeometry) var platterGeometry
+
     @Environment(\.isMenuItemSelected) var isMenuItemSelected
     @Environment(\.isMenuItemTriggering) var isMenuItemTriggering
 
@@ -58,8 +59,7 @@ struct MenuItem<
                             Spacer()
 
                             label
-                        }
-                        .padding(5.0),
+                        },
                         alignment: .trailing
                     )
             }
@@ -67,6 +67,8 @@ struct MenuItem<
             VStack(alignment: .leading) {
                 content
             }
+            .padding(.horizontal, isContentOnly ? 10.0 : 5.0)
+            .padding(.vertical, 5.0)
 
             .font(.system(size: 13, weight: .regular, design: .default))
             .fontWeight(.medium)
@@ -76,7 +78,6 @@ struct MenuItem<
 
             Spacer()
         }
-        .padding(5.0)
         .contentShape(contentShape)
         .background(background)
 
