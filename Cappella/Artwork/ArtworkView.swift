@@ -41,8 +41,8 @@ struct ArtworkView: View {
                     .clipShape(contentShape)
                     .shadow(
                         color: Color.black.opacity(0.25),
-                        radius: 2.0,
-                        y: 1.0
+                        radius: 4.0,
+                        y: 2.0
                     )
             } placeholder: {
                 placeholder
@@ -72,13 +72,13 @@ struct ArtworkView: View {
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
-    VStack {
+    VStack(spacing: 44.0) {
         ArtworkView(dimension: 40.0)
         ArtworkView(dimension: 64.0)
         ArtworkView(dimension: 128.0)
         ArtworkView(dimension: 240.0)
     }
-    .scenePadding()
+    .padding(60.0)
 
     .environment(\.artworkProvider, PreviewArtworkProvider())
 }
