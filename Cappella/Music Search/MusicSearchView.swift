@@ -85,7 +85,7 @@ struct MusicSearchView: View {
         HStack(alignment: .top, spacing: 0.0) {
             Group {
                 VStack(alignment: .trailing) {
-                    MusicSearchArtworkImage(entry: resultItem.collection)
+                    ArtworkView(dimension: 64)
                     Text(resultItem.collection.title)
                         .font(.headline)
                         .lineLimit(4)
@@ -113,6 +113,7 @@ struct MusicSearchView: View {
             .frame(width: containerWidth * 0.65, alignment: .leading)
             .multilineTextAlignment(.leading)
         }
+        .environment(\.artworkProvider, resultItem.collection.artwork)
     }
 
     @ViewBuilder
