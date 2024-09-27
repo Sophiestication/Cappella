@@ -8,6 +8,10 @@ import MusicKit
 
 struct MusicLibraryTests {
     @Test func testFetchAlbumByTitle() async throws {
+        guard MusicAuthorization.currentStatus == .authorized else {
+            return // ignore on CI
+        }
+
         let title = "Radical Optimism"
 
         let albums = try await MusicLibrary.fetchAlbums(
