@@ -9,7 +9,6 @@ struct PlaybackQueueMenuItem: View {
     var body: some View {
         MenuItem {
             titleView
-                .foregroundStyle(.primary)
             subtitleView
                 .foregroundStyle(.secondary)
         } label: {

@@ -56,6 +56,7 @@ struct MenuItem<
                             Spacer()
                             accessory
                                 .buttonStyle(.menuAccessory)
+                                .menuItemTextShadow()
                             Spacer()
 
                             label
@@ -66,13 +67,10 @@ struct MenuItem<
 
             VStack(alignment: .leading) {
                 content
+                    .menuItemTextShadow()
             }
             .padding(.horizontal, isContentOnly ? 10.0 : 5.0)
             .padding(.vertical, 5.0)
-
-            .font(.system(size: 13, weight: .regular, design: .default))
-            .fontWeight(.medium)
-            .fontDesign(.rounded)
 
             .padding(isContentOnly ? 0.0 : 5.0)
 
@@ -129,7 +127,7 @@ struct MenuItem<
     }
 
     private var shouldHighlight: Bool {
-        isMenuItemSelected || isBlinking
+        isMenuItemSelected
     }
 }
 

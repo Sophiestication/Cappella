@@ -20,11 +20,8 @@ struct MenuAccessoryButtonStyle: ButtonStyle {
                 )
                 .animation(.interactiveSpring, value: configuration.isPressed)
         }
-        .shadow(radius: 1.0, y: 1.0)
         .padding(10.0)
         .contentShape(.interaction, contentShape)
-
-//        .background(.red.opacity(0.25))
     }
 
     private let dimension: CGFloat = 16.0

@@ -48,6 +48,9 @@
 		E691D24D2CA5D55000FD46BE /* Environment+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691D24C2CA5D55000FD46BE /* Environment+Menu.swift */; };
 		E691D2502CA5DEC600FD46BE /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691D24F2CA5DEC600FD46BE /* MenuItem.swift */; };
 		E691D2542CA684B200FD46BE /* PreviewArtwork1.png in Copy Development Assets */ = {isa = PBXBuildFile; fileRef = E691D2482CA5C09700FD46BE /* PreviewArtwork1.png */; };
+		E691D2562CA69EBC00FD46BE /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691D2552CA69EBC00FD46BE /* Menu.swift */; };
+		E691D2582CA6C24700FD46BE /* MenuLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691D2572CA6C24700FD46BE /* MenuLayout.swift */; };
+		E691D25A2CA6E61000FD46BE /* MenuShadowModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691D2592CA6E61000FD46BE /* MenuShadowModifier.swift */; };
 		E6A81D122C4177C300DAC24B /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A81D112C4177C300DAC24B /* NowPlayingView.swift */; };
 		E6A81D142C4177DF00DAC24B /* PlaybackControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A81D132C4177DF00DAC24B /* PlaybackControlsView.swift */; };
 		E6ADDBF22C3532AF0088D9C8 /* PlatterWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADDBF12C3532AF0088D9C8 /* PlatterWindow.swift */; };
@@ -132,6 +135,9 @@
 		E691D24A2CA5CFDA00FD46BE /* MenuAccessoryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuAccessoryButtonStyle.swift; sourceTree = "<group>"; };
 		E691D24C2CA5D55000FD46BE /* Environment+Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Menu.swift"; sourceTree = "<group>"; };
 		E691D24F2CA5DEC600FD46BE /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		E691D2552CA69EBC00FD46BE /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		E691D2572CA6C24700FD46BE /* MenuLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuLayout.swift; sourceTree = "<group>"; };
+		E691D2592CA6E61000FD46BE /* MenuShadowModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuShadowModifier.swift; sourceTree = "<group>"; };
 		E6A81D112C4177C300DAC24B /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
 		E6A81D132C4177DF00DAC24B /* PlaybackControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackControlsView.swift; sourceTree = "<group>"; };
 		E6ADDBF12C3532AF0088D9C8 /* PlatterWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterWindow.swift; sourceTree = "<group>"; };
@@ -354,8 +360,11 @@
 			isa = PBXGroup;
 			children = (
 				E691D24C2CA5D55000FD46BE /* Environment+Menu.swift */,
-				E691D24F2CA5DEC600FD46BE /* MenuItem.swift */,
+				E691D2552CA69EBC00FD46BE /* Menu.swift */,
 				E691D24A2CA5CFDA00FD46BE /* MenuAccessoryButtonStyle.swift */,
+				E691D24F2CA5DEC600FD46BE /* MenuItem.swift */,
+				E691D2572CA6C24700FD46BE /* MenuLayout.swift */,
+				E691D2592CA6E61000FD46BE /* MenuShadowModifier.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -524,14 +533,17 @@
 				E65067782C6B8FF900A5B00C /* MusicSearchField.swift in Sources */,
 				E69091832C9D7825007F4188 /* DockTileView.swift in Sources */,
 				E690919E2CA54D5D007F4188 /* PlaybackQueueMenuItem.swift in Sources */,
+				E691D25A2CA6E61000FD46BE /* MenuShadowModifier.swift in Sources */,
 				E6C15E412C970CC700C95CD9 /* KeyboardShortcutBezel.swift in Sources */,
 				E690917F2C9C6922007F4188 /* DockTile.swift in Sources */,
+				E691D2562CA69EBC00FD46BE /* Menu.swift in Sources */,
 				E6C15E442C9876DB00C95CD9 /* CappellaMusicPlayer.swift in Sources */,
 				E6485A622C9578A300F4040D /* KeyboardShortcutBezelView.swift in Sources */,
 				E6D789352C877E2600C495DE /* PlatterButtonStyle.swift in Sources */,
 				E667CD7C2C560841000718FC /* VisualEffectView.swift in Sources */,
 				E6485A532C90C4E900F4040D /* CompatibilityKeyEquivalent.swift in Sources */,
 				E666112B2C2C1782007839E6 /* Cappella.swift in Sources */,
+				E691D2582CA6C24700FD46BE /* MenuLayout.swift in Sources */,
 				E691D24B2CA5CFDA00FD46BE /* MenuAccessoryButtonStyle.swift in Sources */,
 				E6A81D142C4177DF00DAC24B /* PlaybackControlsView.swift in Sources */,
 				E620627E2C6A7E4000460775 /* PlatterGeometry.swift in Sources */,
