@@ -27,4 +27,27 @@ extension MusicLibrary {
 
         return albums
     }
+
+    static func fetchAlbums(
+        artist: String,
+        preferredSource: MusicPropertySource = .library
+    ) async throws -> [Album] {
+        var request = MusicLibraryRequest<Album>()
+
+        request.filter(matching: \.artistName, equalTo: artist)
+        request.sort(by: \.releaseDate, ascending: false)
+
+        var albums: [Album] = []
+
+        for item in try await request.response().items {
+            let detailedAlbum = try await item.with(
+                [ .tracks ],
+                preferredSource: preferredSource
+            )
+
+            albums.append(detailedAlbum)
+        }
+
+        return albums
+    }
 }

@@ -59,7 +59,7 @@ struct MenuItem<
                                 .menuItemTextShadow()
                             Spacer()
 
-                            label
+                            label.offset(x: -4.0) // TODO
                         },
                         alignment: .trailing
                     )
@@ -69,10 +69,10 @@ struct MenuItem<
                 content
                     .menuItemTextShadow()
             }
-            .padding(.horizontal, isContentOnly ? 10.0 : 5.0)
+            .padding(.horizontal, 10.0)
             .padding(.vertical, 5.0)
 
-            .padding(isContentOnly ? 0.0 : 5.0)
+            .padding(.vertical, isContentOnly ? 0.0 : 5.0)
 
             Spacer()
         }
@@ -101,7 +101,7 @@ struct MenuItem<
 
     private var leadingPadding: CGFloat {
         guard let platterGeometry else {
-            return 140.0
+            return 180.0
         }
 
         return platterGeometry.contentFrame.width * 0.35

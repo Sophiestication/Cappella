@@ -51,6 +51,7 @@
 		E691D2562CA69EBC00FD46BE /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691D2552CA69EBC00FD46BE /* Menu.swift */; };
 		E691D2582CA6C24700FD46BE /* MenuLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691D2572CA6C24700FD46BE /* MenuLayout.swift */; };
 		E691D25A2CA6E61000FD46BE /* MenuShadowModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691D2592CA6E61000FD46BE /* MenuShadowModifier.swift */; };
+		E691D25C2CA6F9DA00FD46BE /* MenuLabeledContentStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691D25B2CA6F9DA00FD46BE /* MenuLabeledContentStyle.swift */; };
 		E6A81D122C4177C300DAC24B /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A81D112C4177C300DAC24B /* NowPlayingView.swift */; };
 		E6A81D142C4177DF00DAC24B /* PlaybackControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A81D132C4177DF00DAC24B /* PlaybackControlsView.swift */; };
 		E6ADDBF22C3532AF0088D9C8 /* PlatterWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADDBF12C3532AF0088D9C8 /* PlatterWindow.swift */; };
@@ -138,6 +139,7 @@
 		E691D2552CA69EBC00FD46BE /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		E691D2572CA6C24700FD46BE /* MenuLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuLayout.swift; sourceTree = "<group>"; };
 		E691D2592CA6E61000FD46BE /* MenuShadowModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuShadowModifier.swift; sourceTree = "<group>"; };
+		E691D25B2CA6F9DA00FD46BE /* MenuLabeledContentStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuLabeledContentStyle.swift; sourceTree = "<group>"; };
 		E6A81D112C4177C300DAC24B /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
 		E6A81D132C4177DF00DAC24B /* PlaybackControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackControlsView.swift; sourceTree = "<group>"; };
 		E6ADDBF12C3532AF0088D9C8 /* PlatterWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterWindow.swift; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 				E691D2552CA69EBC00FD46BE /* Menu.swift */,
 				E691D24A2CA5CFDA00FD46BE /* MenuAccessoryButtonStyle.swift */,
 				E691D24F2CA5DEC600FD46BE /* MenuItem.swift */,
+				E691D25B2CA6F9DA00FD46BE /* MenuLabeledContentStyle.swift */,
 				E691D2572CA6C24700FD46BE /* MenuLayout.swift */,
 				E691D2592CA6E61000FD46BE /* MenuShadowModifier.swift */,
 			);
@@ -508,6 +511,7 @@
 				E6F11E592C56A9BA00AA45FC /* PlatterView.swift in Sources */,
 				E653D1E62C8A19DE003AAE1E /* ShortcutRecorderView.swift in Sources */,
 				E691D2442CA5A23300FD46BE /* ArtworkProviding.swift in Sources */,
+				E691D25C2CA6F9DA00FD46BE /* MenuLabeledContentStyle.swift in Sources */,
 				E653D1E22C89EDC6003AAE1E /* GeneralSettingsView.swift in Sources */,
 				E691D2502CA5DEC600FD46BE /* MenuItem.swift in Sources */,
 				E653D1E42C89FCC9003AAE1E /* KeyboardShortcutSettingsView.swift in Sources */,

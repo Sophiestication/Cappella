@@ -12,24 +12,25 @@ struct Menu<Content: View>: View {
     var body: some View {
         Group(sections: content) { sections in
             ForEach(sections) { section in
-                HStack {
-                    VStack(alignment: .trailing) {
-
-                        ForEach(section.header) { header in
-                            header
-                        }
+                VStack(alignment: .leading) {
+                    ForEach(section.header) { header in
+                        header
+                    }
+                    .font(.system(size: 16, weight: .regular, design: .default))
+                    .alignmentGuide(.leading) { guide in
+                        -leadingPadding - 15.0
                     }
 
-                    VStack(spacing: 1.0) {
+                    VStack(spacing: 20.0) {
                         ForEach(section.content) { subview in
-                            MenuItem {
-                                subview
-                            }
+                            subview
                         }
                     }
                 }
             }
         }
+
+        .labeledContentStyle(.menu)
 
         .font(.system(size: 13, weight: .regular, design: .default))
         .fontWeight(.medium)
@@ -38,7 +39,7 @@ struct Menu<Content: View>: View {
 
     private var leadingPadding: CGFloat {
         guard let platterGeometry else {
-            return 140.0
+            return 180.0
         }
 
         return platterGeometry.contentFrame.width * 0.35
@@ -51,46 +52,52 @@ extension ContainerValues {
 
 #Preview(traits: .sizeThatFitsLayout) {
     Menu {
-        PlaybackQueueMenuItem()
-        PlaybackQueueMenuItem()
-            .environment(\.isMenuItemSelected, true)
-
         Section {
-            Text("End Of An Era")
-            Text("Houdini")
-            Text("Training Season")
-            Text("These Walls")
-            Text("Whatcha Doing")
-            Text("French Exit")
-            Text("Illusion")
-            Text("Falling Forever")
-            Text("Anything For Love")
-            Text("Maria")
-            Text("Happy For You")
-        } header: {
-            ArtworkView(dimension: 64)
-            Text("Radical Optimism")
-            Text("Dua Lipa")
+            PlaybackQueueMenuItem()
+            PlaybackQueueMenuItem()
+                .environment(\.isMenuItemSelected, true)
         }
 
         Section {
-            Text("End Of An Era")
-            Text("Houdini")
-            Text("Training Season")
-            Text("These Walls")
-            Text("Whatcha Doing")
-            Text("French Exit")
-            Text("Illusion")
-            Text("Falling Forever")
-            Text("Anything For Love")
-            Text("Maria")
-            Text("Happy For You")
+            LabeledContent {
+                Text("End Of An Era")
+                Text("Houdini")
+                Text("Training Season")
+                Text("These Walls")
+                Text("Whatcha Doing")
+                Text("French Exit")
+                Text("Illusion")
+                Text("Falling Forever")
+                Text("Anything For Love")
+                Text("Maria")
+                Text("Happy For You")
+            } label: {
+                ArtworkView(dimension: 64)
+                Text("Radical Optimism")
+                Text("Dua Lipa")
+            }
+
+            LabeledContent {
+                Text("End Of An Era")
+                Text("Houdini")
+                Text("Training Season")
+                Text("These Walls")
+                Text("Whatcha Doing")
+                Text("French Exit")
+                Text("Illusion")
+                Text("Falling Forever")
+                Text("Anything For Love")
+                Text("Maria")
+                Text("Happy For You")
+            } label: {
+                ArtworkView(dimension: 64)
+                Text("Radical Optimism")
+                Text("Dua Lipa")
+            }
         } header: {
-            ArtworkView(dimension: 64)
-            Text("Radical Optimism")
-            Text("Dua Lipa")
+            Text("Recently Played")
         }
     }
-    .safeAreaPadding()
+    .scenePadding()
     .environment(\.artworkProvider, PreviewArtworkProvider())
 }
