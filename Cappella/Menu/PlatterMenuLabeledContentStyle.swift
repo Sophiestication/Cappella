@@ -4,9 +4,12 @@
 
 import SwiftUI
 
-struct MenuLabeledContentStyle: LabeledContentStyle {
+struct PlatterMenuLabeledContentStyle<
+    SelectionValue: Hashable
+>: LabeledContentStyle {
     @Environment(\.platterGeometry) var platterGeometry
-    @Environment(\.menuSelection) var menuSelection
+
+    @Binding var selection: SelectionValue
 
     func makeBody(configuration: Self.Configuration) -> some View {
         HStack(alignment: .top, spacing: 5.0) {
@@ -17,22 +20,22 @@ struct MenuLabeledContentStyle: LabeledContentStyle {
 
             VStack(alignment: .leading, spacing: 0.0) {
                 ForEach(subviews: configuration.content) { subview in
-                    MenuItem {
+                    PlatterMenuItem {
                         subview
-                        Text("\(subview.containerValues.tag(for: String.self))")
                     }
                     .environment(\.isMenuItemSelected, isSubviewSelected(subview))
                 }
-
-                Group(subviews: configuration.content) { subviews in
-                    Text("\(subviews.first!.id)")
-                }
             }
+            .buttonStyle(PlatterMenuLabeledContentButtonStyle())
         }
     }
 
     private func isSubviewSelected(_ subview: Subview) -> Bool {
-        false
+        guard let tag = subview.containerValues.tag(for: SelectionValue.self) else {
+            return false
+        }
+
+        return selection == tag
     }
 
     private var leadingPadding: CGFloat {
@@ -44,8 +47,9 @@ struct MenuLabeledContentStyle: LabeledContentStyle {
     }
 }
 
-extension LabeledContentStyle where Self == MenuLabeledContentStyle {
-    @MainActor static var menu: MenuLabeledContentStyle {
-        MenuLabeledContentStyle()
+fileprivate struct PlatterMenuLabeledContentButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .menuItemTextShadow()
     }
 }

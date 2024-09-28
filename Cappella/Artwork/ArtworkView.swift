@@ -30,7 +30,8 @@ struct ArtworkView: View {
                 image
                     .interpolation(.high)
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
+                    .aspectRatio(contentMode: .fit)
+                    .background(placeholder)
                     .overlay(
                         contentShape
                             .inset(by: pixelLength)

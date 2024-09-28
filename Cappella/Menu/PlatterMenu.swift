@@ -4,29 +4,22 @@
 
 import SwiftUI
 
-struct Menu<
-    Content: View
+struct PlatterMenu<
+    Content: View,
+    SelectionValue: Hashable
 >: View {
     @Environment(\.platterGeometry) var platterGeometry
 
     @ViewBuilder var content: Content
 
-    typealias Selection = Set<AnyHashable>
-    @Binding private var selection: Selection
+    @Binding private var selection: SelectionValue
 
     init(
-        selection: Binding<Selection>,
+        selection: Binding<SelectionValue>,
         @ViewBuilder content: () -> Content
     ) {
         self.content = content()
         self._selection = selection
-    }
-
-    init(
-        @ViewBuilder content: () -> Content
-    ) {
-        self.content = content()
-        self._selection = .constant([])
     }
 
     var body: some View {
@@ -44,15 +37,16 @@ struct Menu<
                     VStack(spacing: 0.0) {
                         ForEach(section.content) { subview in
                             subview
-                                .containerValue(\.menuSelection, selection)
+                                .environment(\.isMenuItemSelected, isSubviewSelected(subview))
                         }
                     }
                 }
             }
         }
 
-        .environment(\.menuSelection, selection)
-        .labeledContentStyle(.menu)
+        .labelStyle(PlatterMenuLabelStyle())
+        .buttonStyle(PlatterMenuButtonStyle())
+        .labeledContentStyle(PlatterMenuLabeledContentStyle(selection: $selection))
 
         .font(.system(size: 13, weight: .regular, design: .default))
         .fontWeight(.medium)
@@ -60,7 +54,11 @@ struct Menu<
     }
 
     private func isSubviewSelected(_ subview: Subview) -> Bool {
-        return selection.contains(subview.id)
+        guard let tag = subview.containerValues.tag(for: SelectionValue.self) else {
+            return false
+        }
+
+        return selection == tag
     }
 
     private var leadingPadding: CGFloat {
@@ -72,34 +70,21 @@ struct Menu<
     }
 }
 
-extension EnvironmentValues {
-    @Entry var menuSelection: Set<AnyHashable> = []
-}
-
-extension ContainerValues {
-    @Entry var menuSelection: Set<AnyHashable> = []
-}
-
 #Preview(traits: .sizeThatFitsLayout) {
-    @Previewable @State var selection: Set<AnyHashable> = [
-        "Off to the Races"
-    ]
+    @Previewable @State var selection: PreviewItem.ID = "Born to Die"
     @Previewable @State var collections = PreviewCollection.previews
 
-    Menu(selection: $selection) {
-        Section {
-            PlaybackQueueMenuItem()
-            PlaybackQueueMenuItem()
-                .environment(\.isMenuItemSelected, true)
-        } header: {
-            Text("Now Playing")
-        }
-
+    PlatterMenu(selection: $selection) {
         Section {
             ForEach(collections) { collection in
                 LabeledContent {
                     ForEach(collection.items) { item in
-                        Text(item.title)
+                        Button {
+
+                        } label: {
+                            Text("\(item.title)")
+                        }
+                        .environment(\.isMenuItemSelected, item.id == selection)
                     }
                 } label: {
                     ArtworkView(length: 64)
@@ -114,11 +99,19 @@ extension ContainerValues {
         }
 
         Section {
-            MenuItem { Text("End Of An Era") }
-            MenuItem() { Text("End Of An Era") }
-                .environment(\.isMenuItemSelected, true)
-            MenuItem() { Text("End Of An Era") }
-                .environment(\.isMenuItemTriggering, true)
+            ForEach(collections) { collection in
+                ForEach(collection.items) { item in
+                    Label {
+                        Text("\(item.title)")
+                        Text("\(collection.subtitle) – \(collection.title)")
+                    } icon: {
+                        ArtworkView(length: 40)
+                    }
+                }
+                .environment(\.artworkProvider, collection.artwork)
+            }
+        } header: {
+            Text("Now Playing")
         }
     }
     .scenePadding()

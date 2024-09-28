@@ -7,7 +7,7 @@ import MusicKit
 
 struct PlaybackQueueMenuItem: View {
     var body: some View {
-        MenuItem {
+        PlatterMenuItem {
             titleView
             subtitleView
                 .foregroundStyle(.secondary)

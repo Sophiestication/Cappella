@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct MenuItem<
+struct PlatterMenuItem<
         Content: View,
         Label: View,
         Accessory: View
@@ -69,7 +69,7 @@ struct MenuItem<
 
             VStack(alignment: .leading) {
                 content
-                    .menuItemTextShadow()
+                    .multilineTextAlignment(.leading)
             }
             .padding(.horizontal, 10.0)
             .padding(.vertical, 5.0)
@@ -96,17 +96,18 @@ struct MenuItem<
             }
         }
 
-        .onContinuousHover { phase in
-            switch phase {
-            case .active(_):
-                isHovering = true
-            break
-
-            case .ended:
-                isHovering = false
-            break
-            }
+        .onHover {
+            isHovering = $0
         }
+
+//        .onContinuousHover(coordinateSpace: .global) { phase in
+//            switch phase {
+//            case .active(let point):
+//                isHovering = true
+//            case .ended:
+//                isHovering = false
+//            }
+//        }
     }
 
     private var isContentOnly: Bool {
@@ -143,25 +144,4 @@ struct MenuItem<
     private var shouldHighlight: Bool {
         isMenuItemSelected || isHovering
     }
-}
-
-#Preview(traits: .sizeThatFitsLayout) {
-    VStack(spacing: 10.0) {
-        MenuItem {
-            Text("Hello World")
-        }
-
-        MenuItem() {
-            Text("Hello World")
-        }
-        .environment(\.isMenuItemSelected, true)
-
-        MenuItem() {
-            Text("Hello World")
-        }
-        .environment(\.isMenuItemTriggering, true)
-    }
-    .padding(60.0)
-
-    .environment(\.artworkProvider, PreviewArtworkProvider())
 }
