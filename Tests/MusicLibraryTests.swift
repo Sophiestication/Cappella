@@ -4,7 +4,7 @@
 
 import Testing
 import MusicKit
-@testable import Cappella
+//@testable import Cappella
 
 struct MusicLibraryTests {
     @Test func testFetchAlbumByTitle() async throws {

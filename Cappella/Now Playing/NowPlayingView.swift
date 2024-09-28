@@ -28,7 +28,7 @@ struct NowPlayingView: View {
     private func makeContentView() -> some View {
         HStack {
             if let entry = queue.currentEntry {
-                ArtworkView(dimension: 40)
+                ArtworkView(length: 40)
                     .environment(\.artworkProvider, entry.artwork)
 
                 Text("\(entry.title)")

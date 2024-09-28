@@ -8,17 +8,17 @@ struct ArtworkView: View {
     @Environment(\.artworkProvider) var artwork: ArtworkProviding?
     @Environment(\.pixelLength) var pixelLength
 
-    @State var dimension: Int = 64
+    @State var length: Int = 64
 
     var body: some View {
         artworkImage
-            .frame(width: CGFloat(dimension), height: CGFloat(dimension))
+            .frame(width: CGFloat(length), height: CGFloat(length))
     }
 
     @ViewBuilder
     private var contentShape: RoundedRectangle {
         RoundedRectangle(
-            cornerRadius: ceil(CGFloat(dimension) * 0.11),
+            cornerRadius: ceil(CGFloat(length) * 0.11),
             style: .continuous
         )
     }
@@ -41,7 +41,7 @@ struct ArtworkView: View {
                     .clipShape(contentShape)
                     .shadow(
                         color: Color.black.opacity(0.25),
-                        radius: 4.0,
+                        radius: 1.5,
                         y: 2.0
                     )
             } placeholder: {
@@ -54,8 +54,8 @@ struct ArtworkView: View {
 
     private var url: URL? {
         artwork?.url(
-            width: dimension,
-            height: dimension
+            width: length,
+            height: length
         )
     }
 
@@ -73,10 +73,10 @@ struct ArtworkView: View {
 
 #Preview(traits: .sizeThatFitsLayout) {
     VStack(spacing: 44.0) {
-        ArtworkView(dimension: 40)
-        ArtworkView(dimension: 64)
-        ArtworkView(dimension: 128)
-        ArtworkView(dimension: 240)
+        ArtworkView(length: 40)
+        ArtworkView(length: 64)
+        ArtworkView(length: 128)
+        ArtworkView(length: 240)
     }
     .padding(60.0)
 

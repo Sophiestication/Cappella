@@ -8,7 +8,7 @@ struct MenuAccessoryButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         HStack {
             configuration.label
-                .frame(width: dimension, height: dimension)
+                .frame(width: length, height: length)
 
                 .opacity(configuration.isPressed ? 0.50 : 1.0)
                 .animation(.smooth, value: configuration.isPressed)
@@ -24,7 +24,7 @@ struct MenuAccessoryButtonStyle: ButtonStyle {
         .contentShape(.interaction, contentShape)
     }
 
-    private let dimension: CGFloat = 16.0
+    private let length: CGFloat = 16.0
 
     private func scale(for configuration: Configuration) -> CGFloat {
         configuration.isPressed ? 0.88 : 1.0

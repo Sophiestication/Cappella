@@ -41,7 +41,7 @@ struct PlaybackQueueMenuItem: View {
 
     @ViewBuilder
     private var artworkView: some View {
-        ArtworkView(dimension: 40)
+        ArtworkView(length: 40)
     }
 
     @ViewBuilder

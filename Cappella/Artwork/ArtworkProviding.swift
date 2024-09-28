@@ -19,11 +19,17 @@ extension Artwork: ArtworkProviding {
 }
 
 struct PreviewArtworkProvider: ArtworkProviding {
+    private let resourceName: String
+
+    init(_ resourceName: String = "PreviewArtwork1") {
+        self.resourceName = resourceName
+    }
+
     var backgroundColor: CGColor? {
         CGColor(red: 1.0 / 255.0, green: 67.0 / 255.0, blue: 72.0 / 255.0, alpha: 1.0)
     }
 
     func url(width: Int, height: Int) -> URL? {
-        Bundle.main.url(forResource: "PreviewArtwork1", withExtension: "png")
+        Bundle.main.url(forResource: resourceName, withExtension: "png")
     }
 }

@@ -6,6 +6,7 @@ import SwiftUI
 
 struct MenuLabeledContentStyle: LabeledContentStyle {
     @Environment(\.platterGeometry) var platterGeometry
+    @Environment(\.menuSelection) var menuSelection
 
     func makeBody(configuration: Self.Configuration) -> some View {
         HStack(alignment: .top, spacing: 5.0) {
@@ -18,10 +19,20 @@ struct MenuLabeledContentStyle: LabeledContentStyle {
                 ForEach(subviews: configuration.content) { subview in
                     MenuItem {
                         subview
+                        Text("\(subview.containerValues.tag(for: String.self))")
                     }
+                    .environment(\.isMenuItemSelected, isSubviewSelected(subview))
+                }
+
+                Group(subviews: configuration.content) { subviews in
+                    Text("\(subviews.first!.id)")
                 }
             }
         }
+    }
+
+    private func isSubviewSelected(_ subview: Subview) -> Bool {
+        false
     }
 
     private var leadingPadding: CGFloat {

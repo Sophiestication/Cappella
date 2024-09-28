@@ -85,7 +85,7 @@ struct MusicSearchView: View {
         HStack(alignment: .top, spacing: 0.0) {
             Group {
                 VStack(alignment: .trailing) {
-                    ArtworkView(dimension: 64)
+                    ArtworkView(length: 64)
                     Text(resultItem.collection.title)
                         .font(.headline)
                         .lineLimit(4)

@@ -19,6 +19,7 @@ struct MenuItem<
     private var accessory: Accessory?
 
     @State private var isBlinking: Bool = false
+    @State private var isHovering: Bool = false
 
     init(
         @ViewBuilder _ content: () -> Content,
@@ -57,6 +58,7 @@ struct MenuItem<
                             accessory
                                 .buttonStyle(.menuAccessory)
                                 .menuItemTextShadow()
+                                .opacity(shouldHighlight ? 1.0 : 0.0)
                             Spacer()
 
                             label.offset(x: -4.0) // TODO
@@ -93,6 +95,18 @@ struct MenuItem<
                 isBlinking = false
             }
         }
+
+        .onContinuousHover { phase in
+            switch phase {
+            case .active(_):
+                isHovering = true
+            break
+
+            case .ended:
+                isHovering = false
+            break
+            }
+        }
     }
 
     private var isContentOnly: Bool {
@@ -127,7 +141,7 @@ struct MenuItem<
     }
 
     private var shouldHighlight: Bool {
-        isMenuItemSelected
+        isMenuItemSelected || isHovering
     }
 }
 
