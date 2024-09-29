@@ -8,15 +8,18 @@ struct PlatterMenuLabeledContentStyle<
     SelectionValue: Hashable
 >: LabeledContentStyle {
     @Environment(\.platterGeometry) var platterGeometry
+    @Environment(\.labelsVisibility) var labelsVisibility
 
     @Binding var selection: SelectionValue?
 
     func makeBody(configuration: Self.Configuration) -> some View {
         HStack(alignment: .top, spacing: 5.0) {
-            VStack(alignment: .trailing) {
-                configuration.label
+            if labelsVisibility != .hidden {
+                VStack(alignment: .trailing) {
+                    configuration.label
+                }
+                .frame(width: leadingPadding, alignment: .topTrailing)
             }
-            .frame(width: leadingPadding, alignment: .topTrailing)
 
             VStack(alignment: .leading, spacing: 0.0) {
                 ForEach(subviews: configuration.content) { subview in
