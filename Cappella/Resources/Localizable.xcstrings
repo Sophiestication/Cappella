@@ -7,6 +7,16 @@
     "%@" : {
 
     },
+    "%@ – %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ – %2$@"
+          }
+        }
+      }
+    },
     "Album Artwork in Dock" : {
 
     },
@@ -46,6 +56,9 @@
     "Next" : {
 
     },
+    "Now Playing" : {
+
+    },
     "Now Playing Notifications are sent out whenever a new song starts playing in iTunes, but not when the change was triggered by the user." : {
 
     },
@@ -73,6 +86,9 @@
 
     },
     "Previous" : {
+
+    },
+    "Recently Played" : {
 
     },
     "Repeat All" : {

@@ -11,15 +11,17 @@ struct PlatterMenuItem<
     >: View {
     @Environment(\.platterGeometry) var platterGeometry
 
+    @Environment(\.menuItemID) var menuItemID
     @Environment(\.isMenuItemSelected) var isMenuItemSelected
     @Environment(\.isMenuItemTriggering) var isMenuItemTriggering
+
+    @State private var selectedValue: AnyHashable? = nil
 
     private var content: Content
     private var label: Label?
     private var accessory: Accessory?
 
     @State private var isBlinking: Bool = false
-    @State private var isHovering: Bool = false
 
     init(
         @ViewBuilder _ content: () -> Content,
@@ -97,17 +99,12 @@ struct PlatterMenuItem<
         }
 
         .onHover {
-            isHovering = $0
+            selectedValue = $0 ? menuItemID : nil
         }
-
-//        .onContinuousHover(coordinateSpace: .global) { phase in
-//            switch phase {
-//            case .active(let point):
-//                isHovering = true
-//            case .ended:
-//                isHovering = false
-//            }
-//        }
+        .preference(
+            key: PlatterMenuSelectionKey.self,
+            value: selectedValue
+        )
     }
 
     private var isContentOnly: Bool {
@@ -142,6 +139,6 @@ struct PlatterMenuItem<
     }
 
     private var shouldHighlight: Bool {
-        isMenuItemSelected || isHovering
+        isMenuItemSelected
     }
 }

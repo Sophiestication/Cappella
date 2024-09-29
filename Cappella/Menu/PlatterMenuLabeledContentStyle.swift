@@ -9,7 +9,7 @@ struct PlatterMenuLabeledContentStyle<
 >: LabeledContentStyle {
     @Environment(\.platterGeometry) var platterGeometry
 
-    @Binding var selection: SelectionValue
+    @Binding var selection: SelectionValue?
 
     func makeBody(configuration: Self.Configuration) -> some View {
         HStack(alignment: .top, spacing: 5.0) {
@@ -22,7 +22,9 @@ struct PlatterMenuLabeledContentStyle<
                 ForEach(subviews: configuration.content) { subview in
                     PlatterMenuItem {
                         subview
+                            .menuItemTextShadow()
                     }
+                    .environment(\.menuItemID, selectionValue(for: subview))
                     .environment(\.isMenuItemSelected, isSubviewSelected(subview))
                 }
             }
@@ -30,8 +32,12 @@ struct PlatterMenuLabeledContentStyle<
         }
     }
 
+    private func selectionValue(for subview: Subview) -> SelectionValue? {
+        subview.containerValues.tag(for: SelectionValue.self)
+    }
+
     private func isSubviewSelected(_ subview: Subview) -> Bool {
-        guard let tag = subview.containerValues.tag(for: SelectionValue.self) else {
+        guard let tag = selectionValue(for: subview) else {
             return false
         }
 

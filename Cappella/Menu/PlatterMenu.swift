@@ -8,14 +8,13 @@ struct PlatterMenu<
     Content: View,
     SelectionValue: Hashable
 >: View {
-    @Environment(\.platterGeometry) var platterGeometry
+    @Environment(\.platterGeometry) private var platterGeometry
 
-    @ViewBuilder var content: Content
-
-    @Binding private var selection: SelectionValue
+    @ViewBuilder private var content: Content
+    @Binding private var selection: SelectionValue?
 
     init(
-        selection: Binding<SelectionValue>,
+        selection: Binding<SelectionValue?>,
         @ViewBuilder content: () -> Content
     ) {
         self.content = content()
@@ -34,9 +33,10 @@ struct PlatterMenu<
                         -leadingPadding - 15.0
                     }
 
-                    VStack(spacing: 0.0) {
+                    LazyVStack(spacing: 0.0) {
                         ForEach(section.content) { subview in
                             subview
+                                .environment(\.menuItemID, selectionValue(for: subview))
                                 .environment(\.isMenuItemSelected, isSubviewSelected(subview))
                         }
                     }
@@ -51,10 +51,18 @@ struct PlatterMenu<
         .font(.system(size: 13, weight: .regular, design: .default))
         .fontWeight(.medium)
         .fontDesign(.rounded)
+
+        .onPreferenceChange(PlatterMenuSelectionKey.self) { newSelection in
+            self.selection = newSelection as? SelectionValue
+        }
+    }
+
+    private func selectionValue(for subview: Subview) -> SelectionValue? {
+        subview.containerValues.tag(for: SelectionValue.self)
     }
 
     private func isSubviewSelected(_ subview: Subview) -> Bool {
-        guard let tag = subview.containerValues.tag(for: SelectionValue.self) else {
+        guard let tag = selectionValue(for: subview) else {
             return false
         }
 
@@ -70,49 +78,14 @@ struct PlatterMenu<
     }
 }
 
-#Preview(traits: .sizeThatFitsLayout) {
-    @Previewable @State var selection: PreviewItem.ID = "Born to Die"
-    @Previewable @State var collections = PreviewCollection.previews
+struct PlatterMenuSelectionKey: PreferenceKey {
+    typealias Value = AnyHashable?
 
-    PlatterMenu(selection: $selection) {
-        Section {
-            ForEach(collections) { collection in
-                LabeledContent {
-                    ForEach(collection.items) { item in
-                        Button {
+    static var defaultValue: Value { nil }
 
-                        } label: {
-                            Text("\(item.title)")
-                        }
-                        .environment(\.isMenuItemSelected, item.id == selection)
-                    }
-                } label: {
-                    ArtworkView(length: 64)
-                    Text(collection.title)
-                    Text(collection.subtitle)
-                        .foregroundStyle(.secondary)
-                }
-                .environment(\.artworkProvider, collection.artwork)
-            }
-        } header: {
-            Text("Recently Played")
-        }
-
-        Section {
-            ForEach(collections) { collection in
-                ForEach(collection.items) { item in
-                    Label {
-                        Text("\(item.title)")
-                        Text("\(collection.subtitle) – \(collection.title)")
-                    } icon: {
-                        ArtworkView(length: 40)
-                    }
-                }
-                .environment(\.artworkProvider, collection.artwork)
-            }
-        } header: {
-            Text("Now Playing")
+    static func reduce(value: inout Value, nextValue: () -> Value) {
+        if let nextValue = nextValue() {
+            value = nextValue
         }
     }
-    .scenePadding()
 }

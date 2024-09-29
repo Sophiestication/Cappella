@@ -7,4 +7,5 @@ import SwiftUI
 extension EnvironmentValues {
     @Entry var isMenuItemSelected: Bool = false
     @Entry var isMenuItemTriggering: Bool = false
+    @Entry var menuItemID: AnyHashable? = nil
 }
