@@ -8,6 +8,7 @@ struct PlatterMenuLabeledContentStyle<
     SelectionValue: Hashable
 >: LabeledContentStyle {
     @Environment(\.labelsVisibility) var labelsVisibility
+    @Environment(\.platterGeometry) var platterGeometry
 
     @Binding var selection: SelectionValue?
 
@@ -16,15 +17,15 @@ struct PlatterMenuLabeledContentStyle<
             if labelsVisibility != .hidden {
                 VStack(alignment: .trailing) {
                     configuration.label
+                        .multilineTextAlignment(.trailing)
                 }
-                .frame(width: 180.0, alignment: .topTrailing)
+                .frame(width: leadingPadding, alignment: .topTrailing)
             }
 
             VStack(alignment: .leading, spacing: 0.0) {
                 ForEach(subviews: configuration.content) { subview in
                     PlatterMenuItem {
                         subview
-                            .menuItemTextShadow()
                     }
                     .environment(\.menuItemState, menuItemState(for: subview))
                 }
@@ -43,5 +44,13 @@ struct PlatterMenuLabeledContentStyle<
             isSelected: selection == id,
             isTriggered: false
         )
+    }
+
+    private var leadingPadding: CGFloat {
+        guard let platterGeometry else {
+            return 0.0
+        }
+
+        return platterGeometry.contentFrame.width * 0.35
     }
 }

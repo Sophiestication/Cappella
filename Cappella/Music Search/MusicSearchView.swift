@@ -9,33 +9,36 @@ struct MusicSearchView: View {
     typealias MusicPlayerType = ApplicationMusicPlayer
     @State private var musicSearch = MusicSearch()
 
+    @State private var selection: ResultItem.Entry.ID? = nil
+
     private typealias ResultItem = MusicSearch.ResultItem
 
     @Environment(\.platterProxy) var platterProxy
     @Environment(\.platterGeometry) var platterGeometry
 
-    @State private var lastHoverLocation: CGPoint? = nil
-
     var body: some View {
         ScrollViewReader { scrollProxy in
-            LazyVStack(
+            VStack(
                 spacing: 0.0
             ) {
                 if hasSearchTerm {
-                    ForEach(musicSearch.results) { resultItem in
-                        makeView(
-                            for: resultItem,
-                            containerWidth: contentSize.width
-                        )
-                        .padding(.vertical, 10.0)
+                    PlatterMenu(selection: $selection) {
+                        ForEach(musicSearch.results) { resultItem in
+                            makeView(
+                                for: resultItem,
+                                containerWidth: contentSize.width
+                            )
+                            .padding(.vertical, 10.0)
+                        }
                     }
                 } else {
                     PlaybackQueueView()
                 }
             }
+            .padding()
 
             .onAppear {
-                musicSearch.term = ""
+                musicSearch.term = "zombie"
             }
 
             .platterContent(id: "search-field", placement: .header) {
@@ -79,6 +82,34 @@ struct MusicSearchView: View {
 
     @ViewBuilder
     private func makeView(
+        for resultItem: ResultItem,
+        containerWidth: CGFloat
+    ) -> some View {
+        LabeledContent {
+            ForEach(resultItem.entries) { entry in
+                Button {
+                    invokeMenuItem(for: entry, in: resultItem)
+                } label: {
+                    Text(entry.title)
+                }
+                .tag(entry.id)
+            }
+        } label: {
+            ArtworkView(length: 64)
+            Text(resultItem.collection.title)
+                .lineLimit(4)
+
+            if let subtitle = resultItem.collection.subtitle {
+                Text(subtitle)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(2)
+            }
+        }
+        .environment(\.artworkProvider, resultItem.collection.artwork)
+    }
+
+    @ViewBuilder
+    private func makeView2(
         for resultItem: ResultItem,
         containerWidth: CGFloat
     ) -> some View {
@@ -129,8 +160,7 @@ struct MusicSearchView: View {
         .buttonStyle(.menu)
         .onContinuousHover(coordinateSpace: .global) { phase in
             switch phase {
-            case .active(let point):
-                lastHoverLocation = point
+            case .active(_):
                 musicSearch.selection = MusicSearch.Selection(
                     item: resultItem,
                     entry: entry,
@@ -149,11 +179,6 @@ struct MusicSearchView: View {
         in resultItem: ResultItem
     ) {
         play(resultItem, startingAt: entry)
-
-        if let platterProxy {
-            platterProxy.dismiss()
-        }
-
         musicSearch.selection = nil
     }
 

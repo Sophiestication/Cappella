@@ -60,9 +60,9 @@ struct PlatterMenuItem<
             return .ignored
         }
 
-        .onHover {
-            preferredSelection = $0 ? menuItemState?.id : nil
-        }
+//        .onHover {
+//            preferredSelection = $0 ? menuItemState?.id : nil
+//        }
         .preference(
             key: PlatterMenuSelectionKey.self,
             value: preferredSelection

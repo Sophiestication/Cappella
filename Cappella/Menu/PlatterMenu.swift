@@ -33,7 +33,7 @@ struct PlatterMenu<
                         -leadingPadding - 15.0
                     }
 
-                    LazyVStack(spacing: 0.0) {
+                    VStack(spacing: 0.0) {
                         ForEach(section.content) { subview in
                             subview
                         }

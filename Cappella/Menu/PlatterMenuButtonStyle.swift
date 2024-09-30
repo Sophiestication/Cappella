@@ -24,8 +24,6 @@ struct PlatterMenuButtonStyle: PrimitiveButtonStyle {
     @ViewBuilder
     private func label(for configuration: Configuration) -> some View {
         configuration.label
-            .menuItemTextShadow()
-
             .preference(
                 key: PlatterMenuItemTriggerKey.self,
                 value: trigger(for: configuration)

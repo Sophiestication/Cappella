@@ -55,10 +55,6 @@ struct Cappella: App {
                 }
             }
         }
-
-        WindowGroup {
-            DevelopmentPreviewMenu()
-        }
 #endif
     }
 }
