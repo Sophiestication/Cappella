@@ -10,8 +10,6 @@ class MenuItemState: ObservableObject, Identifiable, Equatable, CustomDebugStrin
     @Published var isSelected: Bool
     @Published var isTriggered: Bool
 
-    @Published var trigger: () -> Void
-
     init(
         _ id: AnyHashable,
         isSelected: Bool = false,
@@ -20,7 +18,6 @@ class MenuItemState: ObservableObject, Identifiable, Equatable, CustomDebugStrin
         self.id = id
         self.isSelected = isSelected
         self.isTriggered = isTriggered
-        self.trigger = {}
     }
 
     static func == (lhs: MenuItemState, rhs: MenuItemState) -> Bool {

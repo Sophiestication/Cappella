@@ -5,76 +5,33 @@
 import SwiftUI
 
 struct PlatterMenuItem<
-        Content: View,
-        Label: View,
-        Accessory: View
+        Content: View
     >: View {
-    @Environment(\.platterGeometry) var platterGeometry
     @Environment(\.menuItemState) var menuItemState
+    @Environment(\.platterProxy) var platterProxy
 
     @State private var preferredSelection: AnyHashable? = nil
 
     private var content: Content
-    private var label: Label?
-    private var accessory: Accessory?
 
     @State private var trigger: PlatterMenuItemTrigger? = nil
-    @State private var isBlinking: Bool = false
-
-    init(
-        @ViewBuilder _ content: () -> Content,
-        @ViewBuilder label: () -> Label,
-        @ViewBuilder accessory: () -> Accessory
-    ) {
-        self.content = content()
-        self.label = label()
-        self.accessory = accessory()
-    }
-
-    init(
-        @ViewBuilder _ content: () -> Content,
-        @ViewBuilder label: () -> Label
-    ) where Accessory == EmptyView {
-        self.content = content()
-        self.label = label()
-        self.accessory = nil
-    }
+    @State private var isTriggeringAction = false
+    @State private var isHighlightedForTriggerAnimation = false
 
     init(
         @ViewBuilder _ content: () -> Content
-    ) where Label == EmptyView, Accessory == EmptyView {
+    ) {
         self.content = content()
-        self.label = nil
-        self.accessory = nil
     }
 
     var body: some View {
         HStack {
-            if isContentOnly == false {
-                Spacer(minLength: leadingPadding)
-                    .overlay(
-                        HStack(spacing: 0.0) {
-                            Spacer()
-                            accessory
-                                .buttonStyle(.menuAccessory)
-                                .menuItemTextShadow()
-                                .opacity(shouldHighlight ? 1.0 : 0.0)
-                            Spacer()
-
-                            label.offset(x: -4.0) // TODO
-                        },
-                        alignment: .trailing
-                    )
-            }
-
             VStack(alignment: .leading) {
                 content
                     .multilineTextAlignment(.leading)
             }
             .padding(.horizontal, 10.0)
             .padding(.vertical, 5.0)
-
-            .padding(.vertical, isContentOnly ? 0.0 : 5.0)
 
             Spacer()
         }
@@ -89,28 +46,18 @@ struct PlatterMenuItem<
         .onTapGesture {
             if let trigger {
                 trigger()
+                performTrigger()
             }
         }
         .onKeyPress(.return) {
             if let trigger {
                 trigger()
+                performTrigger()
+
+                return .handled
             }
 
-            return .handled
-        }
-
-        .onChange(of: menuItemState, initial: true) { _, newState in
-            guard let newState,
-                  newState.isTriggered == true else {
-                isBlinking = false
-                return
-            }
-
-            withAnimation(.easeInOut(duration: 0.1).repeatCount(3)) {
-                isBlinking = true
-            } completion: {
-                isBlinking = false
-            }
+            return .ignored
         }
 
         .onHover {
@@ -126,20 +73,8 @@ struct PlatterMenuItem<
         }
     }
 
-    private var isContentOnly: Bool {
-        label == nil
-    }
-
-    private var leadingPadding: CGFloat {
-        guard let platterGeometry else {
-            return 180.0
-        }
-
-        return platterGeometry.contentFrame.width * 0.35
-    }
-
     private var cornerRadius: CGFloat {
-        isContentOnly ? 5.0 : 10.0
+        5.0
     }
 
     @ViewBuilder
@@ -157,9 +92,24 @@ struct PlatterMenuItem<
             .opacity(shouldHighlight ? 1.0 : 0.0)
     }
 
+    private func performTrigger() {
+        isTriggeringAction = true
+        isHighlightedForTriggerAnimation = true
+
+        withAnimation(.easeInOut(duration: 0.1).repeatCount(3)) {
+            isHighlightedForTriggerAnimation = false
+        } completion: {
+            isTriggeringAction = false
+
+            if let platterProxy {
+                platterProxy.dismiss()
+            }
+        }
+    }
+
     private var shouldHighlight: Bool {
-        if isBlinking {
-            return true
+        if isTriggeringAction {
+            return isHighlightedForTriggerAnimation
         }
 
         guard let menuItemState else {

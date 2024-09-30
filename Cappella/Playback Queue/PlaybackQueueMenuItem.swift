@@ -11,12 +11,12 @@ struct PlaybackQueueMenuItem: View {
             titleView
             subtitleView
                 .foregroundStyle(.secondary)
-        } label: {
+        }/* label: {
             artworkView
         } accessory: {
             reorderControl
             deleteControl
-        }
+        }*/
     }
 
     @ViewBuilder
