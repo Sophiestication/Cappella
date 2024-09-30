@@ -12,20 +12,6 @@ struct DevelopmentPreviewMenu: View {
 
     var body: some View {
         VStack(spacing: 0.0) {
-            HStack {
-                if let selection {
-                    Text("\(selection)")
-                        .lineLimit(1, reservesSpace: true)
-                        .padding()
-                }
-
-                if let nowPlaying {
-                    Text("\(nowPlaying.title)")
-                        .lineLimit(1, reservesSpace: true)
-                        .padding()
-                }
-            }
-
             PlatterMenu(selection: $selection) {
                 Section {
                     ForEach(collections) { collection in
@@ -48,9 +34,7 @@ struct DevelopmentPreviewMenu: View {
                 } header: {
                     Text("Recently Played")
                 }
-            }
 
-            PlatterMenu(selection: $selection) {
                 Section {
                     ForEach(collections) { collection in
                         ForEach(collection.items) { item in
@@ -63,10 +47,13 @@ struct DevelopmentPreviewMenu: View {
                                         Text("\(collection.subtitle) – \(collection.title)")
                                     } icon: {
                                         ArtworkView(length: 40)
+//                                            .padding(.leading, 140.0)
                                     }
                                 }
+                                .tag(item.id)
                             } label: {
                             }
+                            .labelsVisibility(.hidden)
                         }
                         .environment(\.artworkProvider, collection.artwork)
                     }
@@ -76,6 +63,21 @@ struct DevelopmentPreviewMenu: View {
             }
         }
         .scenePadding()
+        .overlay(
+            HStack {
+                if let selection {
+                    Text("\(selection)")
+                        .lineLimit(1, reservesSpace: true)
+                        .padding()
+                }
+
+                if let nowPlaying {
+                    Text("\(nowPlaying.title)")
+                        .lineLimit(1, reservesSpace: true)
+                        .padding()
+                }
+            }, alignment: .topLeading
+        )
     }
 }
 
