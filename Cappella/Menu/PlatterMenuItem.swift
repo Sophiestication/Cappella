@@ -10,17 +10,15 @@ struct PlatterMenuItem<
         Accessory: View
     >: View {
     @Environment(\.platterGeometry) var platterGeometry
+    @Environment(\.menuItemState) var menuItemState
 
-    @Environment(\.menuItemID) var menuItemID
-    @Environment(\.isMenuItemSelected) var isMenuItemSelected
-    @Environment(\.isMenuItemTriggering) var isMenuItemTriggering
-
-    @State private var selectedValue: AnyHashable? = nil
+    @State private var preferredSelection: AnyHashable? = nil
 
     private var content: Content
     private var label: Label?
     private var accessory: Accessory?
 
+    @State private var trigger: PlatterMenuItemTrigger? = nil
     @State private var isBlinking: Bool = false
 
     init(
@@ -88,23 +86,44 @@ struct PlatterMenuItem<
             shouldHighlight ? .primary : .secondary
         )
 
-        .onChange(of: isMenuItemTriggering, initial: true) { _, newValue in
+        .onTapGesture {
+            if let trigger {
+                trigger()
+            }
+        }
+        .onKeyPress(.return) {
+            if let trigger {
+                trigger()
+            }
+
+            return .handled
+        }
+
+        .onChange(of: menuItemState, initial: true) { _, newState in
+            guard let newState,
+                  newState.isTriggered == true else {
+                isBlinking = false
+                return
+            }
+
             withAnimation(.easeInOut(duration: 0.1).repeatCount(3)) {
-                if newValue {
-                    isBlinking = newValue
-                }
+                isBlinking = true
             } completion: {
                 isBlinking = false
             }
         }
 
         .onHover {
-            selectedValue = $0 ? menuItemID : nil
+            preferredSelection = $0 ? menuItemState?.id : nil
         }
         .preference(
             key: PlatterMenuSelectionKey.self,
-            value: selectedValue
+            value: preferredSelection
         )
+
+        .onPreferenceChange(PlatterMenuItemTriggerKey.self) { newTrigger in
+            self.trigger = newTrigger
+        }
     }
 
     private var isContentOnly: Bool {
@@ -139,6 +158,14 @@ struct PlatterMenuItem<
     }
 
     private var shouldHighlight: Bool {
-        isMenuItemSelected
+        if isBlinking {
+            return true
+        }
+
+        guard let menuItemState else {
+            return false
+        }
+
+        return menuItemState.isSelected
     }
 }

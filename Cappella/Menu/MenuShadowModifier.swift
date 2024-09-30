@@ -5,16 +5,24 @@
 import SwiftUI
 
 fileprivate struct MenuItemTextShadowModifier: ViewModifier {
-    @Environment(\.isMenuItemSelected) var isMenuItemSelected
+    @Environment(\.menuItemState) var menuItemState
     @Environment(\.pixelLength) var pixelLength
 
     func body(content: Content) -> some View {
         content
             .shadow(
-                color: Color.black.opacity(isMenuItemSelected ? 0.80 : 0.0),
+                color: Color.black.opacity(shouldHighlight ? 0.80 : 0.0),
                 radius: pixelLength,
                 y: pixelLength
             )
+    }
+
+    private var shouldHighlight: Bool {
+        guard let menuItemState else {
+            return false
+        }
+
+        return menuItemState.isSelected
     }
 }
 

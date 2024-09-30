@@ -4,11 +4,39 @@
 
 import SwiftUI
 
-struct PlatterMenuButtonStyle: ButtonStyle {
+struct PlatterMenuButtonStyle: PrimitiveButtonStyle {
+    private let contentOnly: Bool
+
+    init(contentOnly: Bool = false) {
+        self.contentOnly = contentOnly
+    }
+
     func makeBody(configuration: Configuration) -> some View {
-        PlatterMenuItem {
-            configuration.label
-                .menuItemTextShadow()
+        if contentOnly {
+            label(for: configuration)
+        } else {
+            PlatterMenuItem {
+                label(for: configuration)
+            }
         }
+    }
+
+    @ViewBuilder
+    private func label(for configuration: Configuration) -> some View {
+        configuration.label
+            .menuItemTextShadow()
+
+            .preference(
+                key: PlatterMenuItemTriggerKey.self,
+                value: trigger(for: configuration)
+            )
+    }
+
+    private func trigger(for configuration: Configuration) -> PlatterMenuItemTrigger? {
+        let trigger = PlatterMenuItemTrigger(id: UUID()) {
+            configuration.trigger()
+        }
+
+        return trigger
     }
 }

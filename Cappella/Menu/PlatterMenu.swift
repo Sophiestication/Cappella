@@ -36,16 +36,14 @@ struct PlatterMenu<
                     LazyVStack(spacing: 0.0) {
                         ForEach(section.content) { subview in
                             subview
-                                .environment(\.menuItemID, selectionValue(for: subview))
-                                .environment(\.isMenuItemSelected, isSubviewSelected(subview))
                         }
                     }
                 }
             }
         }
 
+        .buttonStyle(PlatterMenuButtonStyle(contentOnly: false))
         .labelStyle(PlatterMenuLabelStyle())
-        .buttonStyle(PlatterMenuButtonStyle())
         .labeledContentStyle(PlatterMenuLabeledContentStyle(selection: $selection))
 
         .font(.system(size: 13, weight: .regular, design: .default))
@@ -57,16 +55,16 @@ struct PlatterMenu<
         }
     }
 
-    private func selectionValue(for subview: Subview) -> SelectionValue? {
-        subview.containerValues.tag(for: SelectionValue.self)
-    }
-
-    private func isSubviewSelected(_ subview: Subview) -> Bool {
-        guard let tag = selectionValue(for: subview) else {
-            return false
+    private func menuItemState(for subview: Subview) -> MenuItemState? {
+        guard let id = subview.containerValues.tag(for: SelectionValue.self) else {
+            return nil
         }
 
-        return selection == tag
+        return MenuItemState(
+            id,
+            isSelected: selection == id,
+            isTriggered: false
+        )
     }
 
     private var leadingPadding: CGFloat {

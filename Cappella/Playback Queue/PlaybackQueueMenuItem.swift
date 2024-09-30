@@ -54,18 +54,3 @@ struct PlaybackQueueMenuItem: View {
         Text("Dua Lipa – Radical Optimism")
     }
 }
-
-#Preview(traits: .sizeThatFitsLayout) {
-    VStack(spacing: 10.0) {
-        PlaybackQueueMenuItem()
-
-        PlaybackQueueMenuItem()
-            .environment(\.isMenuItemSelected, true)
-
-        PlaybackQueueMenuItem()
-            .environment(\.isMenuItemTriggering, true)
-    }
-    .padding(60.0)
-
-    .environment(\.artworkProvider, PreviewArtworkProvider())
-}

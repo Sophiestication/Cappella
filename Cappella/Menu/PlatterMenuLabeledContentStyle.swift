@@ -7,7 +7,6 @@ import SwiftUI
 struct PlatterMenuLabeledContentStyle<
     SelectionValue: Hashable
 >: LabeledContentStyle {
-    @Environment(\.platterGeometry) var platterGeometry
     @Environment(\.labelsVisibility) var labelsVisibility
 
     @Binding var selection: SelectionValue?
@@ -18,7 +17,7 @@ struct PlatterMenuLabeledContentStyle<
                 VStack(alignment: .trailing) {
                     configuration.label
                 }
-                .frame(width: leadingPadding, alignment: .topTrailing)
+                .frame(width: 180.0, alignment: .topTrailing)
             }
 
             VStack(alignment: .leading, spacing: 0.0) {
@@ -27,38 +26,22 @@ struct PlatterMenuLabeledContentStyle<
                         subview
                             .menuItemTextShadow()
                     }
-                    .environment(\.menuItemID, selectionValue(for: subview))
-                    .environment(\.isMenuItemSelected, isSubviewSelected(subview))
+                    .environment(\.menuItemState, menuItemState(for: subview))
                 }
             }
-            .buttonStyle(PlatterMenuLabeledContentButtonStyle())
+            .buttonStyle(PlatterMenuButtonStyle(contentOnly: true))
         }
     }
 
-    private func selectionValue(for subview: Subview) -> SelectionValue? {
-        subview.containerValues.tag(for: SelectionValue.self)
-    }
-
-    private func isSubviewSelected(_ subview: Subview) -> Bool {
-        guard let tag = selectionValue(for: subview) else {
-            return false
+    private func menuItemState(for subview: Subview) -> MenuItemState? {
+        guard let id = subview.containerValues.tag(for: SelectionValue.self) else {
+            return nil
         }
 
-        return selection == tag
-    }
-
-    private var leadingPadding: CGFloat {
-        guard let platterGeometry else {
-            return 180.0
-        }
-
-        return platterGeometry.contentFrame.width * 0.35
-    }
-}
-
-fileprivate struct PlatterMenuLabeledContentButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .menuItemTextShadow()
+        return MenuItemState(
+            id,
+            isSelected: selection == id,
+            isTriggered: false
+        )
     }
 }
