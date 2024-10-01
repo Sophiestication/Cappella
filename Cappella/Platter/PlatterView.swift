@@ -39,7 +39,7 @@ struct PlatterView<Content>: View where Content: View {
 
                         .containerRelativeFrame(.horizontal)
 
-                        .blur(.header, using: platterGeometry)
+//                        .blur(.header, using: platterGeometry)
 //                        .blur(.docked, using: platterGeometry)
                     makeHeaderView()
                     makeDockedContentView()
@@ -51,6 +51,9 @@ struct PlatterView<Content>: View where Content: View {
         }
         .scrollIndicators(.never)
         .scrollClipDisabled()
+
+        .fontWeight(.medium)
+        .fontDesign(.rounded)
 
         .shadow(
             color: Color.black.opacity(1.0 / 4.0),

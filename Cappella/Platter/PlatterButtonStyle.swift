@@ -10,7 +10,7 @@ struct PlatterButtonStyle: PrimitiveButtonStyle {
 
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .font(.system(size: 16.0, weight: .semibold, design: .rounded))
+            .font(.system(size: 16.0, weight: .semibold))
             .foregroundStyle(.black)
             .padding(.horizontal, 8.0)
             .background(makeBackground(for: configuration))

@@ -51,6 +51,6 @@ struct PlatterMenuLabeledContentStyle<
             return 0.0
         }
 
-        return platterGeometry.contentFrame.width * 0.35
+        return platterGeometry.contentFrame.width * 0.3
     }
 }

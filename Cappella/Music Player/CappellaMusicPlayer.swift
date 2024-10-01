@@ -11,10 +11,17 @@ final class CappellaMusicPlayer {
     typealias MusicPlayerType = ApplicationMusicPlayer
 
     private var player: MusicPlayerType { MusicPlayerType.shared }
-    var playbackState: MusicPlayerType.State { player.state }
+
+    typealias State = MusicPlayerType.State
+    var playbackState: State { player.state }
+
+    typealias Queue = MusicPlayerType.Queue
+    var queue: Queue { player.queue }
 
     typealias Entry = MusicPlayerType.Queue.Entry
     var currentEntry: Entry? { player.queue.currentEntry }
+
+    typealias PressPhases = KeyPress.Phases
 
     private(set) var scheduledPlaybackStatus: MusicPlayerType.PlaybackStatus = .stopped
 
@@ -22,19 +29,19 @@ final class CappellaMusicPlayer {
     func perform(using event: KeyboardShortcutEvent) {
         switch event.id {
         case .playPause:
-            playPause(using: event)
+            playPause(using: event.phase)
 
         case .fastForward:
-            fastForward(using: event)
+            fastForward(using: event.phase)
 
         case .rewind:
-            rewind(using: event)
+            rewind(using: event.phase)
 
         case .toggleRepeatMode:
-            toggleRepeatMode(using: event)
+            toggleRepeatMode(using: event.phase)
 
         case .shuffleOnOff:
-            toggleShuffle(using: event)
+            toggleShuffle(using: event.phase)
 
         default:
             break
@@ -46,8 +53,8 @@ final class CappellaMusicPlayer {
         schedulePlay()
     }
 
-    private func playPause(using event: KeyboardShortcutEvent) {
-        guard event.phase == .down else {
+    func playPause(using phases: PressPhases) {
+        guard phases == .down else {
             return
         }
 
@@ -74,10 +81,10 @@ final class CappellaMusicPlayer {
         }
     }
 
-    private func fastForward(using event: KeyboardShortcutEvent){
+    func fastForward(using phases: PressPhases){
         let playbackStatus = playbackState.playbackStatus
 
-        if event.phase == .up {
+        if phases == .up {
             if playbackStatus == .seekingForward {
                 player.endSeeking()
                 player.pause()
@@ -87,9 +94,9 @@ final class CappellaMusicPlayer {
                     try await MusicPlayerType.shared.skipToNextEntry()
                 }
             }
-        } else if event.phase == .down {
+        } else if phases == .down {
 
-        } else if event.phase == .repeat {
+        } else if phases.contains(.repeat) {
             if playbackStatus != .seekingForward {
                 scheduledPlaybackStatus = .seekingForward
                 player.beginSeekingForward()
@@ -97,10 +104,10 @@ final class CappellaMusicPlayer {
         }
     }
 
-    private func rewind(using event: KeyboardShortcutEvent) {
+    func rewind(using phases: PressPhases) {
         let playbackStatus = playbackState.playbackStatus
 
-        if event.phase == .up {
+        if phases == .up {
             if playbackStatus == .seekingBackward {
                 player.endSeeking()
                 player.pause()
@@ -110,9 +117,9 @@ final class CappellaMusicPlayer {
                     try await MusicPlayerType.shared.skipToPreviousEntry()
                 }
             }
-        } else if event.phase == .down {
+        } else if phases == .down {
 
-        } else if event.phase == .repeat {
+        } else if phases.contains(.repeat) {
             if playbackStatus != .seekingBackward {
                 scheduledPlaybackStatus = .seekingBackward
                 player.beginSeekingBackward()
@@ -120,8 +127,8 @@ final class CappellaMusicPlayer {
         }
     }
 
-    private func toggleShuffle(using event: KeyboardShortcutEvent) {
-        guard event.phase == .down else {
+    func toggleShuffle(using phases: PressPhases) {
+        guard phases == .down else {
             return
         }
 
@@ -139,8 +146,8 @@ final class CappellaMusicPlayer {
         playbackState.shuffleMode = newShuffleMode
     }
 
-    private func toggleRepeatMode(using event: KeyboardShortcutEvent) {
-        guard event.phase == .down else {
+    func toggleRepeatMode(using phases: PressPhases) {
+        guard phases == .down else {
             return
         }
 

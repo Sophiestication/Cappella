@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E6030FEA2C4D0C770085C9FA /* MenuButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6030FE92C4D0C770085C9FA /* MenuButtonStyle.swift */; };
 		E60946F62C4B9986009D90BA /* MusicSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60946F52C4B9986009D90BA /* MusicSearchView.swift */; };
 		E620627E2C6A7E4000460775 /* PlatterGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E620627D2C6A7E4000460775 /* PlatterGeometry.swift */; };
 		E6283F9A2C41739400158C13 /* ApplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6283F992C41739400158C13 /* ApplicationView.swift */; };
@@ -57,8 +56,9 @@
 		E691D2752CA93B9000FD46BE /* DevelopmentPreviewMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691D2742CA93B9000FD46BE /* DevelopmentPreviewMenu.swift */; };
 		E691D2772CA991EF00FD46BE /* MenuItemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691D2762CA991EF00FD46BE /* MenuItemState.swift */; };
 		E691D2792CA9EC7D00FD46BE /* PlatterMenuItemTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691D2782CA9EC7D00FD46BE /* PlatterMenuItemTrigger.swift */; };
+		E691D27B2CAAE07F00FD46BE /* RepeatButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691D27A2CAAE07F00FD46BE /* RepeatButtonStyle.swift */; };
+		E691D27F2CAB1CAE00FD46BE /* SystemKeyRepeatInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691D27E2CAB1CAE00FD46BE /* SystemKeyRepeatInterval.swift */; };
 		E6A81D122C4177C300DAC24B /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A81D112C4177C300DAC24B /* NowPlayingView.swift */; };
-		E6A81D142C4177DF00DAC24B /* PlaybackControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A81D132C4177DF00DAC24B /* PlaybackControlsView.swift */; };
 		E6ADDBF22C3532AF0088D9C8 /* PlatterWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADDBF12C3532AF0088D9C8 /* PlatterWindow.swift */; };
 		E6C15E412C970CC700C95CD9 /* KeyboardShortcutBezel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C15E402C970CC700C95CD9 /* KeyboardShortcutBezel.swift */; };
 		E6C15E442C9876DB00C95CD9 /* CappellaMusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C15E432C9876DB00C95CD9 /* CappellaMusicPlayer.swift */; };
@@ -93,7 +93,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E6030FE92C4D0C770085C9FA /* MenuButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonStyle.swift; sourceTree = "<group>"; };
 		E60946F52C4B9986009D90BA /* MusicSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchView.swift; sourceTree = "<group>"; };
 		E620627D2C6A7E4000460775 /* PlatterGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterGeometry.swift; sourceTree = "<group>"; };
 		E6283F992C41739400158C13 /* ApplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationView.swift; sourceTree = "<group>"; };
@@ -151,8 +150,9 @@
 		E691D2742CA93B9000FD46BE /* DevelopmentPreviewMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentPreviewMenu.swift; sourceTree = "<group>"; };
 		E691D2762CA991EF00FD46BE /* MenuItemState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemState.swift; sourceTree = "<group>"; };
 		E691D2782CA9EC7D00FD46BE /* PlatterMenuItemTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterMenuItemTrigger.swift; sourceTree = "<group>"; };
+		E691D27A2CAAE07F00FD46BE /* RepeatButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatButtonStyle.swift; sourceTree = "<group>"; };
+		E691D27E2CAB1CAE00FD46BE /* SystemKeyRepeatInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemKeyRepeatInterval.swift; sourceTree = "<group>"; };
 		E6A81D112C4177C300DAC24B /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
-		E6A81D132C4177DF00DAC24B /* PlaybackControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackControlsView.swift; sourceTree = "<group>"; };
 		E6ADDBF12C3532AF0088D9C8 /* PlatterWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterWindow.swift; sourceTree = "<group>"; };
 		E6C15E402C970CC700C95CD9 /* KeyboardShortcutBezel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcutBezel.swift; sourceTree = "<group>"; };
 		E6C15E432C9876DB00C95CD9 /* CappellaMusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CappellaMusicPlayer.swift; sourceTree = "<group>"; };
@@ -268,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				E691D1FB2CA564FA00FD46BE /* MusicLibrary+Additions.swift */,
+				E691D27A2CAAE07F00FD46BE /* RepeatButtonStyle.swift */,
 				E64048E62C75282C007CEB55 /* Rubberband.swift */,
 				E667CD7B2C560841000718FC /* VisualEffectView.swift */,
 			);
@@ -278,7 +279,6 @@
 			isa = PBXGroup;
 			children = (
 				E65067772C6B8FF300A5B00C /* MusicSearchField.swift */,
-				E6030FE92C4D0C770085C9FA /* MenuButtonStyle.swift */,
 				E68413892C5899E20019FB15 /* MusicSearch.swift */,
 				E60946F52C4B9986009D90BA /* MusicSearchView.swift */,
 			);
@@ -289,7 +289,6 @@
 			isa = PBXGroup;
 			children = (
 				E6A81D112C4177C300DAC24B /* NowPlayingView.swift */,
-				E6A81D132C4177DF00DAC24B /* PlaybackControlsView.swift */,
 			);
 			path = "Now Playing";
 			sourceTree = "<group>";
@@ -332,6 +331,7 @@
 		E67B5CFC2C8CDD2300E47348 /* Keyboard Shortcuts */ = {
 			isa = PBXGroup;
 			children = (
+				E691D27E2CAB1CAE00FD46BE /* SystemKeyRepeatInterval.swift */,
 				E6485A522C90C4E900F4040D /* CompatibilityKeyEquivalent.swift */,
 				E6485A502C90B8B300F4040D /* GlobalKeyboardShortcut.swift */,
 				E6485A592C9427E200F4040D /* GlobalKeyboardShortcutHandler.swift */,
@@ -555,7 +555,6 @@
 				E653D1E02C89EDC0003AAE1E /* SettingsView.swift in Sources */,
 				E6283F9A2C41739400158C13 /* ApplicationView.swift in Sources */,
 				E691D2412CA5A1F900FD46BE /* ArtworkView.swift in Sources */,
-				E6030FEA2C4D0C770085C9FA /* MenuButtonStyle.swift in Sources */,
 				E6485A512C90B8B300F4040D /* GlobalKeyboardShortcut.swift in Sources */,
 				E67B5D002C8EDEDF00E47348 /* SettingsGroupBoxStyle.swift in Sources */,
 				E682036E2C80BE4A00294A52 /* PlaybackQueueView.swift in Sources */,
@@ -575,12 +574,13 @@
 				E6485A532C90C4E900F4040D /* CompatibilityKeyEquivalent.swift in Sources */,
 				E666112B2C2C1782007839E6 /* Cappella.swift in Sources */,
 				E691D24B2CA5CFDA00FD46BE /* MenuAccessoryButtonStyle.swift in Sources */,
-				E6A81D142C4177DF00DAC24B /* PlaybackControlsView.swift in Sources */,
 				E620627E2C6A7E4000460775 /* PlatterGeometry.swift in Sources */,
 				E691D2732CA8AA3400FD46BE /* PlatterMenuLabelStyle.swift in Sources */,
 				E64048E72C75282C007CEB55 /* Rubberband.swift in Sources */,
 				E691D26C2CA833BC00FD46BE /* DevelopmentPreviewCollection.swift in Sources */,
+				E691D27F2CAB1CAE00FD46BE /* SystemKeyRepeatInterval.swift in Sources */,
 				E6A81D122C4177C300DAC24B /* NowPlayingView.swift in Sources */,
+				E691D27B2CAAE07F00FD46BE /* RepeatButtonStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

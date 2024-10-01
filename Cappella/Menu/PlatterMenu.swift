@@ -28,7 +28,7 @@ struct PlatterMenu<
                     ForEach(section.header) { header in
                         header
                     }
-                    .font(.system(size: 16, weight: .regular, design: .default))
+                    .font(.system(size: 16))
                     .alignmentGuide(.leading) { guide in
                         -leadingPadding - 15.0
                     }
@@ -46,9 +46,7 @@ struct PlatterMenu<
         .labelStyle(PlatterMenuLabelStyle())
         .labeledContentStyle(PlatterMenuLabeledContentStyle(selection: $selection))
 
-        .font(.system(size: 13, weight: .regular, design: .default))
-        .fontWeight(.medium)
-        .fontDesign(.rounded)
+        .font(.system(size: 13))
 
         .onPreferenceChange(PlatterMenuSelectionKey.self) { newSelection in
             self.selection = newSelection as? SelectionValue

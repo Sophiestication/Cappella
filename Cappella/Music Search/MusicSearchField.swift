@@ -37,7 +37,7 @@ struct MusicSearchField: View {
 
             .focused($searchFieldFocused)
         }
-        .font(.system(size: 15.0, weight: .regular, design: .rounded))
+        .font(.system(size: 15.0))
         .padding(.vertical, 4.0)
         .background (
             RoundedRectangle(

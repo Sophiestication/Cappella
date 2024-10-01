@@ -64,8 +64,6 @@ class ApplicationDelegate:
     func applicationShouldHandleGlobalKeyboardShortcut(
         _ event: GlobalKeyboardShortcutHandler.Event
     ) {
-        print("\(event.keyboardShortcut) \(event.phase)")
-
         musicPlayer.perform(using: event)
 
         if let keyboardShortcutBezel {

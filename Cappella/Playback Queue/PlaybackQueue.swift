@@ -83,7 +83,13 @@ final class PlaybackQueue {
 
         MusicPlayerType.shared.queue = MusicPlayerType.Queue(entries, startingAt: currentEntry)
 
-        try await MusicPlayerType.shared.prepareToPlay()
+        do {
+            try await MusicPlayerType.shared.prepareToPlay()
+        } catch {
+            print("\(error)")
+
+            MusicPlayerType.shared.queue = []
+        }
     }
 
     private static let entriesKey = "playbackQueue.entries"
