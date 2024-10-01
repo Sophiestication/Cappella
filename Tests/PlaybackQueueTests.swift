@@ -6,7 +6,4 @@ import Testing
 @testable import Cappella
 
 struct PlaybackQueueTests {
-    @Test func testSaveState() async throws {
-        
-    }
 }
