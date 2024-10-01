@@ -95,6 +95,7 @@ struct MusicSearchView: View {
                     invokeMenuItem(for: entry, in: resultItem)
                 } label: {
                     Text(entry.title)
+                        .lineLimit(1)
                 }
                 .tag(entry.id)
             }
