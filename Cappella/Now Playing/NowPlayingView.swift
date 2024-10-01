@@ -97,7 +97,7 @@ struct NowPlayingView: View {
 
     private func imageName(for playbackState: PlaybackState) -> String {
         switch playbackState.playbackStatus {
-        case .playing:
+        case .playing, .seekingBackward, .seekingForward:
             "pauseTemplate"
         case .paused:
             "playTemplate"
