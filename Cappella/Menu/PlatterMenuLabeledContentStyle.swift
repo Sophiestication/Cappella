@@ -22,7 +22,7 @@ struct PlatterMenuLabeledContentStyle<
                 .frame(width: leadingPadding, alignment: .topTrailing)
             }
 
-            VStack(alignment: .leading, spacing: 0.0) {
+            LazyVStack(alignment: .leading, spacing: 0.0) {
                 ForEach(subviews: configuration.content) { subview in
                     PlatterMenuItem {
                         subview
