@@ -39,7 +39,7 @@ struct PlatterView<Content>: View where Content: View {
 
                         .containerRelativeFrame(.horizontal)
 
-//                        .blur(.header, using: platterGeometry)
+                        .blur(.header, using: platterGeometry)
 //                        .blur(.docked, using: platterGeometry)
                     makeHeaderView()
                     makeDockedContentView()
