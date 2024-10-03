@@ -30,7 +30,7 @@ struct MusicSearchView: View {
                                 for: resultItem,
                                 containerWidth: contentSize.width
                             )
-                            .padding(.vertical, 10.0)
+                            .padding(.bottom, 10.0)
                         }
                     }
                 } else {

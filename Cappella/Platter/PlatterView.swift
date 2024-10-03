@@ -34,9 +34,6 @@ struct PlatterView<Content>: View where Content: View {
                     content()
                         .buttonStyle(.platter)
 
-                        .safeAreaPadding(.top, headerDimension)
-                        .safeAreaPadding(.bottom, footerDimension)
-
                         .containerRelativeFrame(.horizontal)
 
                         .blur(.header, using: platterGeometry)
@@ -71,6 +68,9 @@ struct PlatterView<Content>: View where Content: View {
         .onPreferenceChange(PlatterDockedContentPreferenceKey.self) { value in
             dockedContent = value
         }
+
+        .contentMargins(.top, headerDimension)
+        .contentMargins(.bottom, footerDimension)
     }
 
     private func makeContentMask() -> some View {
@@ -81,6 +81,7 @@ struct PlatterView<Content>: View where Content: View {
         )
         .fill(.black)
         .offset(y: contentFrame.minY)
+        .offset(y: -headerDimension)
         .pin()
     }
 
@@ -110,6 +111,7 @@ struct PlatterView<Content>: View where Content: View {
             height: backgroundSize.height
         )
         .offset(y: contentFrame.minY)
+        .offset(y: -headerDimension)
         .pin()
     }
 
@@ -132,6 +134,7 @@ struct PlatterView<Content>: View where Content: View {
                 height: backgroundSize.height
             )
             .offset(y: contentFrame.minY)
+            .offset(y: -headerDimension)
             .pin()
     }
 
@@ -143,8 +146,8 @@ struct PlatterView<Content>: View where Content: View {
             }
         }
         .frame(height: headerDimension)
-//        .background(.red.opacity(0.25))
         .offset(y: contentFrame.minY)
+        .offset(y: -headerDimension)
         .pin()
     }
 
@@ -193,6 +196,7 @@ struct PlatterView<Content>: View where Content: View {
                 )
                 .padding(10.0)
                 .offset(y: contentFrame.minY)
+                .offset(y: footerDimension)
                 .pin(.bottom)
         }
     }
@@ -372,11 +376,15 @@ fileprivate extension View {
             return .zero
         }
 
-        let rect = geometry.frame(in: .local)
+        var rect = geometry.frame(in: .local)
+
+        if placement == .header {
+            rect = rect.offsetBy(dx: 0.0, dy: -platterGeometry.headerDimension)
+        }
 
         let height = placement == .header ?
-            platterGeometry.headerDimension :
-        platterGeometry.footerDimension + 20.0
+        platterGeometry.headerDimension * 0.80 :
+            platterGeometry.footerDimension
 
         var maskRect = CGRect(
             x: rect.minX + bounds.minX,

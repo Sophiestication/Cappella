@@ -24,7 +24,7 @@ struct PlatterMenu<
     var body: some View {
         Group(sections: content) { sections in
             ForEach(sections) { section in
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 0.0) {
                     ForEach(section.header) { header in
                         header
                     }
