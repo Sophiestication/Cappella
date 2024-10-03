@@ -66,7 +66,10 @@ struct MusicSearchView: View {
                 self.menuSelection = newSelection.entry?.id
 
                 withAnimation(.smooth) {
-                    scrollProxy.scrollTo(newSelection.item.id)
+                    scrollProxy.scrollTo(
+                        "group-\(newSelection.item.collection.id)",
+                        anchor: .top
+                    )
                 }
             }
 
@@ -102,6 +105,14 @@ struct MusicSearchView: View {
         return platterGeometry.contentFrame.size
     }
 
+    private var headerDimension: CGFloat {
+        guard let platterGeometry else {
+            return 0.0
+        }
+
+        return platterGeometry.headerDimension
+    }
+
     @ViewBuilder
     private func makeView(
         for resultItem: ResultItem,
@@ -115,18 +126,20 @@ struct MusicSearchView: View {
                     Text(entry.title)
                         .lineLimit(1)
                 }
-                .tag(entry.id)
             }
         } label: {
-            ArtworkView(length: 64)
-            Text(resultItem.collection.title)
-                .lineLimit(4)
+            Group {
+                ArtworkView(length: 64)
+                Text(resultItem.collection.title)
+                    .lineLimit(4)
 
-            if let subtitle = resultItem.collection.subtitle {
-                Text(subtitle)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(2)
+                if let subtitle = resultItem.collection.subtitle {
+                    Text(subtitle)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(2)
+                }
             }
+            .id("group-\(resultItem.collection.id)")
         }
         .environment(\.artworkProvider, resultItem.collection.artwork)
     }
