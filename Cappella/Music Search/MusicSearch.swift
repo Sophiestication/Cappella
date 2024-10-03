@@ -30,7 +30,12 @@ final class MusicSearch {
     }
 
     private(set) var results: [ResultItem] = []
+    var allResultEntries: any Sequence<(ResultItem, ResultItem.Entry)> {
+        self.resultEntries
+    }
+
     var selection: Selection? = nil
+
     var scheduledToPlay: Selection? = nil
 
     private struct RequestParameters {

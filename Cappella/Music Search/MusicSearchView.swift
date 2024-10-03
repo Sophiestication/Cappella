@@ -9,7 +9,7 @@ struct MusicSearchView: View {
     typealias MusicPlayerType = ApplicationMusicPlayer
     @State private var musicSearch = MusicSearch()
 
-    @State private var selection: ResultItem.Entry.ID? = nil
+    @State private var menuSelection: ResultItem.Entry.ID? = nil
 
     private typealias ResultItem = MusicSearch.ResultItem
 
@@ -24,7 +24,7 @@ struct MusicSearchView: View {
                 spacing: 0.0
             ) {
                 if hasSearchTerm {
-                    PlatterMenu(selection: $selection) {
+                    PlatterMenu(selection: $menuSelection) {
                         ForEach(musicSearch.results) { resultItem in
                             makeView(
                                 for: resultItem,
@@ -59,13 +59,31 @@ struct MusicSearchView: View {
                 }
             }
 
-            .onChange(of: musicSearch.selection) { _, newSelection in
+            .onChange(of: musicSearch.selection, initial: true) { _, newSelection in
                 guard let newSelection else { return }
                 guard newSelection.interactor == .keyboard else { return }
+
+                self.menuSelection = newSelection.entry?.id
 
                 withAnimation(.smooth) {
                     scrollProxy.scrollTo(newSelection.item.id)
                 }
+            }
+
+            .onChange(of: menuSelection, initial: false) { _, newMenuSelection in
+                guard let resultItem = musicSearch.allResultEntries.first(where: {
+                    $1.id == newMenuSelection
+                }) else {
+                    musicSearch.selection = nil
+                    return
+                }
+
+                let newSelection = MusicSearch.Selection(
+                    item: resultItem.0,
+                    entry: resultItem.1,
+                    .pointer
+                )
+                musicSearch.selection = newSelection
             }
 
             .platterKeyboardShortcut(using: .musicSearch)
