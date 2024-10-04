@@ -37,7 +37,7 @@ struct PlatterView<Content>: View where Content: View {
                         .containerRelativeFrame(.horizontal)
 
                         .blur(.header, using: platterGeometry)
-//                        .blur(.docked, using: platterGeometry)
+                        .blur(.docked, using: platterGeometry)
                     makeHeaderView()
                     makeDockedContentView()
                 }
@@ -170,55 +170,37 @@ struct PlatterView<Content>: View where Content: View {
     @ViewBuilder
     private func makeDockedContentView() -> some View {
         if let dockedContent {
-            dockedContent.content()
-                .frame(height: footerDimension)
-                .background(
-                    VisualEffectView(
-                        material: .menu,
-                        blendingMode: .behindWindow,
-                        state: .active
-                    )
-                    .clipShape(
-                        makeDockedContentShape()
-                    )
-                )
-                .overlay(
-                    makeDockedContentShape()
-                        .inset(by: -pixelLength)
-                        .stroke(lineWidth: pixelLength)
-                        .fill(.black.opacity(1.0 / 2.0))
-                )
-                .overlay(
-                    makeDockedContentShape()
-                        .inset(by: pixelLength)
-                        .stroke(lineWidth: pixelLength)
-                        .fill(.quaternary)
-                )
-                .padding(10.0)
-                .offset(y: contentFrame.minY)
-                .offset(y: footerDimension)
+            dockedContent
+                .content()
+//                .frame(height: footerDimension)
+//                .background(
+//                    VisualEffectView(
+//                        material: .menu,
+//                        blendingMode: .behindWindow,
+//                        state: .active
+//                    )
+//                    .clipShape(
+//                        makeDockedContentShape()
+//                    )
+//                )
+//                .overlay(
+//                    makeDockedContentShape()
+//                        .inset(by: -pixelLength)
+//                        .stroke(lineWidth: pixelLength)
+//                        .fill(.black.opacity(1.0 / 2.0))
+//                )
+//                .overlay(
+//                    makeDockedContentShape()
+//                        .inset(by: pixelLength)
+//                        .stroke(lineWidth: pixelLength)
+//                        .fill(.quaternary)
+//                )
+//                .padding(.horizontal, 10.0)
+//                .offset(y: contentFrame.minY)
+//                .offset(y: footerDimension)
+                .offset(y: footerDimension + 8.0)
                 .pin(.bottom)
         }
-    }
-
-    @ViewBuilder
-    private func makeDockedContentBackgroundView() -> some View {
-//        VisualEffectView(
-//            material: .menu,
-//            blendingMode: .behindWindow,
-//            state: .active
-//        )
-        Color.red
-        .frame(height: footerDimension)
-        .mask(alignment: .top) {
-            LinearGradient(
-                gradient: .init(colors: [.black, .clear]),
-                startPoint: .bottom,
-                endPoint: .top
-            )
-        }
-        .offset(y: contentFrame.minY)
-        .pin(.bottom)
     }
 
     private func makeDockedContentShape() -> RoundedRectangle {
@@ -383,7 +365,7 @@ fileprivate extension View {
         }
 
         let height = placement == .header ?
-        platterGeometry.headerDimension * 0.80 :
+            platterGeometry.headerDimension * 0.80 :
             platterGeometry.footerDimension
 
         var maskRect = CGRect(
@@ -396,7 +378,7 @@ fileprivate extension View {
         if placement == .docked {
             maskRect = maskRect.offsetBy(
                 dx: 0.0,
-                dy: platterGeometry.contentFrame.minY + bounds.height - height
+                dy: platterGeometry.contentFrame.minY + bounds.height
             )
         }
 

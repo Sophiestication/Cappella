@@ -26,7 +26,7 @@ class PlatterGeometry {
     init(
         containerFrame: CGRect = .zero,
         headerDimension: CGFloat = 80.0,
-        footerDimension: CGFloat = 60.0
+        footerDimension: CGFloat = 80.0
     ) {
         self.containerFrame = containerFrame
 
