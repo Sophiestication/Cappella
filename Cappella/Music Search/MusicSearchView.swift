@@ -128,18 +128,20 @@ struct MusicSearchView: View {
                 }
             }
         } label: {
-            Group {
-                ArtworkView(length: 64)
-                Text(resultItem.collection.title)
-                    .lineLimit(4)
+            ArtworkView(length: 64)
+                .background(content: {
+                    Color.clear
+                        .id("group-\(resultItem.collection.id)")
+                })
 
-                if let subtitle = resultItem.collection.subtitle {
-                    Text(subtitle)
-                        .foregroundStyle(.secondary)
-                        .lineLimit(2)
-                }
+            Text(resultItem.collection.title)
+                .lineLimit(4)
+
+            if let subtitle = resultItem.collection.subtitle {
+                Text(subtitle)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(2)
             }
-            .id("group-\(resultItem.collection.id)")
         }
         .environment(\.artworkProvider, resultItem.collection.artwork)
     }
