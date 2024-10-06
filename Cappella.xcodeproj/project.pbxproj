@@ -23,6 +23,7 @@
 		E653D1E22C89EDC6003AAE1E /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D1E12C89EDC6003AAE1E /* GeneralSettingsView.swift */; };
 		E653D1E42C89FCC9003AAE1E /* KeyboardShortcutSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D1E32C89FCC9003AAE1E /* KeyboardShortcutSettingsView.swift */; };
 		E653D1E62C8A19DE003AAE1E /* ShortcutRecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D1E52C8A19DE003AAE1E /* ShortcutRecorderView.swift */; };
+		E66526A82CB023DD001354A4 /* GradientMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66526A72CB023DD001354A4 /* GradientMask.swift */; };
 		E666112B2C2C1782007839E6 /* Cappella.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666112A2C2C1782007839E6 /* Cappella.swift */; };
 		E666112D2C2C1783007839E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E666112C2C2C1783007839E6 /* Assets.xcassets */; };
 		E666113B2C2C1783007839E6 /* PlaybackQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666113A2C2C1783007839E6 /* PlaybackQueueTests.swift */; };
@@ -115,6 +116,7 @@
 		E653D1E12C89EDC6003AAE1E /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
 		E653D1E32C89FCC9003AAE1E /* KeyboardShortcutSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcutSettingsView.swift; sourceTree = "<group>"; };
 		E653D1E52C8A19DE003AAE1E /* ShortcutRecorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutRecorderView.swift; sourceTree = "<group>"; };
+		E66526A72CB023DD001354A4 /* GradientMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientMask.swift; sourceTree = "<group>"; };
 		E66611272C2C1782007839E6 /* Cappella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cappella.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E666112A2C2C1782007839E6 /* Cappella.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cappella.swift; sourceTree = "<group>"; };
 		E666112C2C2C1783007839E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				E691D27A2CAAE07F00FD46BE /* RepeatButtonStyle.swift */,
 				E64048E62C75282C007CEB55 /* Rubberband.swift */,
 				E667CD7B2C560841000718FC /* VisualEffectView.swift */,
+				E66526A72CB023DD001354A4 /* GradientMask.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 				E6F11E592C56A9BA00AA45FC /* PlatterView.swift in Sources */,
 				E653D1E62C8A19DE003AAE1E /* ShortcutRecorderView.swift in Sources */,
 				E691D2442CA5A23300FD46BE /* ArtworkProviding.swift in Sources */,
+				E66526A82CB023DD001354A4 /* GradientMask.swift in Sources */,
 				E691D2752CA93B9000FD46BE /* DevelopmentPreviewMenu.swift in Sources */,
 				E691D25C2CA6F9DA00FD46BE /* PlatterMenuLabeledContentStyle.swift in Sources */,
 				E653D1E22C89EDC6003AAE1E /* GeneralSettingsView.swift in Sources */,

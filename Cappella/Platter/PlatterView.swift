@@ -152,53 +152,30 @@ struct PlatterView<Content>: View where Content: View {
     }
 
     @ViewBuilder
-    private func makeHeaderBackgroundView() -> some View {
-        VisualEffectView(
-            material: .menu,
-            blendingMode: .behindWindow,
-            state: .active
-        )
-        .mask(alignment: .top) {
-            LinearGradient(
-                gradient: .init(colors: [.black, .clear]),
-                startPoint: .top,
-                endPoint: .bottom
-            )
-        }
-    }
-
-    @ViewBuilder
     private func makeDockedContentView() -> some View {
         if let dockedContent {
             dockedContent
                 .content()
-//                .frame(height: footerDimension)
-//                .background(
-//                    VisualEffectView(
-//                        material: .menu,
-//                        blendingMode: .behindWindow,
-//                        state: .active
-//                    )
-//                    .clipShape(
-//                        makeDockedContentShape()
-//                    )
-//                )
-//                .overlay(
-//                    makeDockedContentShape()
-//                        .inset(by: -pixelLength)
-//                        .stroke(lineWidth: pixelLength)
-//                        .fill(.black.opacity(1.0 / 2.0))
-//                )
-//                .overlay(
-//                    makeDockedContentShape()
-//                        .inset(by: pixelLength)
-//                        .stroke(lineWidth: pixelLength)
-//                        .fill(.quaternary)
-//                )
-//                .padding(.horizontal, 10.0)
-//                .offset(y: contentFrame.minY)
-//                .offset(y: footerDimension)
-                .offset(y: footerDimension + 8.0)
+                .background(
+                    VisualEffectView(material: .menu, blendingMode: .behindWindow)
+                )
+                .overlay(alignment: .top) {
+                    ContainerRelativeShape()
+                        .fill(.white.opacity(1.0 / 6.0))
+                        .frame(height: pixelLength)
+                        .padding(.horizontal, 1.0)
+                }
+                .overlay(alignment: .top) {
+                    ContainerRelativeShape()
+                        .fill(.black.opacity(1.0 / 3.0))
+                        .frame(height: pixelLength)
+                        .padding(.horizontal, 1.0)
+                        .offset(y: -pixelLength)
+                }
+
+                .offset(y: contentFrame.minY)
+                .offset(y: footerDimension)
+
                 .pin(.bottom)
         }
     }

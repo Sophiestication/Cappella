@@ -30,22 +30,21 @@ struct GradientMask: View {
     }
 
     private var gradient: Gradient {
-        let colors = stride(from: 0.0, to: 1.0, by: 1.0 / 50.0).map { value -> Color in
+        let colors = stride(from: 0.0, to: 1.0, by: 1.0 / 25.0).map { value -> Color in
             let opacity = curve.value(at: value)
-            return Color.black.opacity(opacity)
+            return Color.red.opacity(opacity)
         }
 
         return Gradient(colors: colors)
     }
 }
 
-struct ContentView: View {
-    var body: some View {
-        Color.red
-            .mask(GradientMaskView())
-    }
-}
-
 #Preview {
-    ContentView()
+    VStack(spacing: 44.0) {
+        ArtworkView(length: 240)
+            .overlay(GradientMask(start: .init(x: 0.0, y: 0.0), end: .init(x: 0.0, y: 0.5)))
+    }
+    .padding(60.0)
+
+    .environment(\.artworkProvider, PreviewArtworkProvider())
 }
