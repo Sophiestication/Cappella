@@ -1,0 +1,11 @@
+{
+  "identifier" : "9A76D2E6-A926-42A4-8B6F-5A97DE871306",
+  "ignoredFilePatterns" : [
+    ".nova"
+  ],
+  "localPath" : ".",
+  "remotePath" : "\/home\/sopteu\/sophiestication.com\/NightOfTheLivingApp\/",
+  "remoteURL" : "https:\/\/sophiestication.com\/NightOfTheLivingApp\/",
+  "server" : "Sophiestication Software",
+  "usesPublishing" : true
+}

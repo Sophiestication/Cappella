@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=1200, initial-scale=1.0">
-	<title>Night of the Living App</title>
-	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>It is the Night of the Living App</title>
+	<meta name="description" content="Long buried, but never forgotten. A lost love from the past is about to rise again. In the shadows of the digital graveyard, her heart begins to beat. After years of silence, she stirs—ready to rise from the dead, louder than ever. Don't miss the resurrection.">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Amarante&display=swap" rel="stylesheet">
@@ -26,34 +26,31 @@
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
+			
 		}
 		header {
 			position: relative;
 			height: 530pt;
-			background: url("images/top-background@3x.png") repeat-x top -44px center,
-			            url("images/title@2x.png") no-repeat center 55px,
-						url("images/title-background@2x.png") no-repeat top center,
-						url("images/hero@2x.png") no-repeat center 250pt,
-						linear-gradient(to bottom, #010016, transparent),
+			background: linear-gradient(to bottom, #010016, transparent),
 						#001b60;
-			background-size: 48pt auto, 326.5pt auto, 568.5pt auto, 600pt auto;
 		}
 		header * {
 			display: none;
 		}
 		main {
-			height: 600pt;
+			height: auto;
 			position: relative;
 			margin-top: -54px;
 			color: #fff;
 			background-color: #1d002a;
 			background: url("images/background@2x.png") repeat-x;
 			background-position: center top;
-			background-size: 600pt 546.5pt;
+			background-clip: border-box;
 			z-index: 1;
 		}
 		main section {
 			margin: 0 auto;
+			padding: 0 4em;
 			width: 340pt;
 			text-align: center;
 			text-shadow: rgba(0, 0, 0, 33%) 0 1px 1px;
@@ -73,6 +70,9 @@
 		}
 		#intro p:nth-of-type(2) strong {
 			text-transform: uppercase;
+		}
+		#join {
+			margin-bottom: 5em;
 		}
 		#join h2 {
 			text-transform: uppercase;
@@ -118,10 +118,27 @@
 		form button[type="submit"]:hover {
 			background-color: #ff5a95;
 		}
+		form label[for="mce-EMAIL"] {
+			display: none;
+		}
 		footer {
+			font-size: smaller;
 			text-align: center;
 			padding: 1rem;
-			color: #fff;
+			color: #a0a7fb;
+		}
+		footer p {
+			margin: 0.5em 0;
+		}
+		a {
+			color: #b38dc4;
+			text-decoration: none;
+		}
+		a:hover {
+			color: #1d002a;
+			background: #b38dc4;
+			padding: 0 0.25em;
+			border-radius: 2px;
 		}
 	</style>
 	<!-- Include tracking code for Google Analytics here -->
@@ -139,15 +156,27 @@
 			<section id="join">
 				<h2>Join the Living App</h2>
 				<p>Sign up below to be the first to know<br /> when Çåßœ£å returns.</p>
-				<form action="https://your-mailchimp-signup-url.com" method="POST">
-					<input type="email" name="email" placeholder="Enter your email... if you dare!" required>
-					<button type="submit">Be the First to Know</button>
-				</form>
+				<div id="mc_embed_shell">
+					<div id="mc_embed_signup">
+						<form action="https://sophiestication.us8.list-manage.com/subscribe/post?u=082b1729a5865581c6b779082&amp;id=20f292df55&amp;f_id=00ad5fe0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self" novalidate="">
+							<div id="mc_embed_signup_scroll">
+								<div class="mc-field-group"><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value="" placeholder="Enter your email... if you dare!"></div>
+								<div id="mce-responses" class="clear">
+									<div class="response" id="mce-error-response" style="display: none;"></div>
+									<div class="response" id="mce-success-response" style="display: none;"></div>
+								</div>
+								<div aria-hidden="true" style="position: absolute; left: -5000px;"><input type="text" name="b_082b1729a5865581c6b779082_20f292df55" tabindex="-1" value=""></div>
+								<div class="clear"><button type="submit" name="subscribe" id="mc-embedded-subscribe" class="button">Be the First to Know</button></div>
+							</div>
+						</form>
+					</div>
+				</div>
 			</section>
+			<footer>
+				<p class="sosume">Sophiestication Software, Inc. | 1160 Battery Street East, Suites 100 | San Francisco CA 94111 | United States</p>
+				<p class="contact"><a href="mailto:hello@sophiestication.com" title="Contact Sophiestication Software">hello@sophiestication.com</a></p>
+			</footer>
 		</main>
-		<footer>
-			<p>&copy; 2024 Sophiestication Software, Inc.</p>
-		</footer>
 	</div>
 </body>
 </html>
