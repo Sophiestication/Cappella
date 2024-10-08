@@ -69,6 +69,11 @@ final class KeyboardShortcutBezel {
 
     @MainActor
     func update(for event: KeyboardShortcutEvent) {
+        guard event.id != .musicSearch &&
+              event.id != .nowPlaying else {
+            return
+        }
+
         keyboardShortcutEventSubject.send(event)
 
         if event.phase.isStrictSubset(of: [.down, .repeat]) {
