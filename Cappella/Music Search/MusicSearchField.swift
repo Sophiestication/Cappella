@@ -11,7 +11,7 @@ struct MusicSearchField: View {
     @Environment(\.platterGeometry) var platterGeometry
 
     @Environment(\.pixelLength) var pixelLength
-    private let cornerRadius: CGFloat = 6.0
+    private let cornerRadius: CGFloat = 10.0
 
     @FocusState private var searchFieldFocused: Bool
 
@@ -26,10 +26,10 @@ struct MusicSearchField: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 14.0, height: 14.0)
                 .padding(.leading, 10.0)
-            TextField(
-                "",
+                .foregroundStyle(.secondary)
+            MusicSearchTextField(
                 text: $musicSearch.term,
-                prompt: Text(makePrompt(for: musicSearch.scope))
+                placeholder: makePrompt(for: musicSearch.scope)
             )
             .disableAutocorrection(true)
 
@@ -37,8 +37,7 @@ struct MusicSearchField: View {
 
             .focused($searchFieldFocused)
         }
-        .font(.system(size: 15.0))
-        .padding(.vertical, 4.0)
+        .padding(.vertical, 8.0)
         .background (
             RoundedRectangle(
                 cornerRadius: cornerRadius,
@@ -51,10 +50,9 @@ struct MusicSearchField: View {
                     cornerRadius: cornerRadius,
                     style: .continuous
                 )
-                .fill(.thinMaterial)
+                .fill(.ultraThinMaterial)
             )
         )
-//        .padding(.vertical)
         .padding(.trailing, 20.0)
 
         .padding(.leading, leadingPadding)
@@ -180,4 +178,65 @@ fileprivate extension MusicSearch.Scope {
 
         return allCases[previousIndex]
     }
+}
+
+fileprivate class MusicSearchNSTextField: NSTextField {
+    override var acceptsFirstResponder: Bool { true }
+}
+
+fileprivate struct MusicSearchTextField: NSViewRepresentable {
+    @Binding var text: String
+    var placeholder: String
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    func makeNSView(context: Context) -> NSTextField {
+        let textField = NSTextField()
+
+        textField.placeholderString = placeholder
+        textField.delegate = context.coordinator
+        textField.isBezeled = false
+        textField.drawsBackground = false
+        textField.focusRingType = .none
+
+        if let fontDescriptor = textField.font?.fontDescriptor.withDesign(.rounded) {
+            textField.font = NSFont(descriptor: fontDescriptor, size: 14.0)
+        }
+
+        textField.target = context.coordinator
+
+        return textField
+    }
+
+    func updateNSView(_ nsView: NSTextField, context: Context) {
+        if nsView.stringValue != text {
+            nsView.stringValue = text
+
+            if let editor = nsView.currentEditor() {
+                editor.selectedRange = NSRange(location: text.count, length: 0)
+            }
+        }
+    
+        nsView.placeholderString = placeholder
+    }
+
+    class Coordinator: NSObject, NSTextFieldDelegate {
+        var representable: MusicSearchTextField
+
+        init(_ representable: MusicSearchTextField) {
+            self.representable = representable
+        }
+
+        @MainActor func controlTextDidChange(_ notification: Notification) {
+            guard let textField = notification.object as? NSTextField else { return }
+            representable.text = textField.stringValue
+        }
+    }
+}
+
+#Preview {
+    MusicSearchField(with: MusicSearch())
+        .scenePadding()
 }
