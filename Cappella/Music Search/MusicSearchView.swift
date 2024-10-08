@@ -40,7 +40,7 @@ struct MusicSearchView: View {
             .padding(.horizontal)
 
             .onAppear {
-                musicSearch.term = "Zombie"
+                musicSearch.term = "Dua Lipa"
             }
 
             .platterContent(id: "search-field", placement: .header) {

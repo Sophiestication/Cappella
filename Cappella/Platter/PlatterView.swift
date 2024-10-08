@@ -156,22 +156,7 @@ struct PlatterView<Content>: View where Content: View {
         if let dockedContent {
             dockedContent
                 .content()
-                .background(
-                    VisualEffectView(material: .menu, blendingMode: .behindWindow)
-                )
-                .overlay(alignment: .top) {
-                    ContainerRelativeShape()
-                        .fill(.white.opacity(1.0 / 6.0))
-                        .frame(height: pixelLength)
-                        .padding(.horizontal, 1.0)
-                }
-                .overlay(alignment: .top) {
-                    ContainerRelativeShape()
-                        .fill(.black.opacity(1.0 / 3.0))
-                        .frame(height: pixelLength)
-                        .padding(.horizontal, 1.0)
-                        .offset(y: -pixelLength)
-                }
+                .background(Material.ultraThin)
 
                 .offset(y: contentFrame.minY)
                 .offset(y: footerDimension)

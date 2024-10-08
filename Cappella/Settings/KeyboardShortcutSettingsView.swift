@@ -12,7 +12,6 @@ struct KeyboardShortcutSettingsView: View {
         Form {
             Section {
                 makeShortcutSetting("Show/Hide Music Search:", binding(for: .musicSearch))
-                makeShortcutSetting("Show/Hide Now Playing:", binding(for: .nowPlaying))
             }
 
             separator
