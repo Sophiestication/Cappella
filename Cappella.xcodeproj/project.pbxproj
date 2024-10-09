@@ -10,6 +10,7 @@
 		E60946F62C4B9986009D90BA /* MusicSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60946F52C4B9986009D90BA /* MusicSearchView.swift */; };
 		E620627E2C6A7E4000460775 /* PlatterGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E620627D2C6A7E4000460775 /* PlatterGeometry.swift */; };
 		E6283F9A2C41739400158C13 /* ApplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6283F992C41739400158C13 /* ApplicationView.swift */; };
+		E638D4852CB7075800C6FBDA /* SmoothShadowModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E638D4842CB7075800C6FBDA /* SmoothShadowModifier.swift */; };
 		E64048E72C75282C007CEB55 /* Rubberband.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64048E62C75282C007CEB55 /* Rubberband.swift */; };
 		E6485A3D2C904FEC00F4040D /* GlobalKeyboardShortcutSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6485A3C2C904FEC00F4040D /* GlobalKeyboardShortcutSettings.swift */; };
 		E6485A512C90B8B300F4040D /* GlobalKeyboardShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6485A502C90B8B300F4040D /* GlobalKeyboardShortcut.swift */; };
@@ -23,6 +24,7 @@
 		E653D1E22C89EDC6003AAE1E /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D1E12C89EDC6003AAE1E /* GeneralSettingsView.swift */; };
 		E653D1E42C89FCC9003AAE1E /* KeyboardShortcutSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D1E32C89FCC9003AAE1E /* KeyboardShortcutSettingsView.swift */; };
 		E653D1E62C8A19DE003AAE1E /* ShortcutRecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D1E52C8A19DE003AAE1E /* ShortcutRecorderView.swift */; };
+		E660ED272CB6C5A0005BD967 /* ApplicationMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E660ED262CB6C5A0005BD967 /* ApplicationMenuButton.swift */; };
 		E66526A82CB023DD001354A4 /* GradientMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66526A72CB023DD001354A4 /* GradientMask.swift */; };
 		E66526AA2CB42E86001354A4 /* KeylineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66526A92CB42E86001354A4 /* KeylineView.swift */; };
 		E66526AC2CB44121001354A4 /* AboutBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66526AB2CB44121001354A4 /* AboutBoxView.swift */; };
@@ -99,6 +101,7 @@
 		E60946F52C4B9986009D90BA /* MusicSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchView.swift; sourceTree = "<group>"; };
 		E620627D2C6A7E4000460775 /* PlatterGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterGeometry.swift; sourceTree = "<group>"; };
 		E6283F992C41739400158C13 /* ApplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationView.swift; sourceTree = "<group>"; };
+		E638D4842CB7075800C6FBDA /* SmoothShadowModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmoothShadowModifier.swift; sourceTree = "<group>"; };
 		E64048E62C75282C007CEB55 /* Rubberband.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rubberband.swift; sourceTree = "<group>"; };
 		E6485A3C2C904FEC00F4040D /* GlobalKeyboardShortcutSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalKeyboardShortcutSettings.swift; sourceTree = "<group>"; };
 		E6485A502C90B8B300F4040D /* GlobalKeyboardShortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalKeyboardShortcut.swift; sourceTree = "<group>"; };
@@ -118,6 +121,7 @@
 		E653D1E12C89EDC6003AAE1E /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
 		E653D1E32C89FCC9003AAE1E /* KeyboardShortcutSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcutSettingsView.swift; sourceTree = "<group>"; };
 		E653D1E52C8A19DE003AAE1E /* ShortcutRecorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutRecorderView.swift; sourceTree = "<group>"; };
+		E660ED262CB6C5A0005BD967 /* ApplicationMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMenuButton.swift; sourceTree = "<group>"; };
 		E66526A72CB023DD001354A4 /* GradientMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientMask.swift; sourceTree = "<group>"; };
 		E66526A92CB42E86001354A4 /* KeylineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeylineView.swift; sourceTree = "<group>"; };
 		E66526AB2CB44121001354A4 /* AboutBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutBoxView.swift; sourceTree = "<group>"; };
@@ -273,6 +277,7 @@
 		E667CD7D2C563D42000718FC /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E638D4842CB7075800C6FBDA /* SmoothShadowModifier.swift */,
 				E66526AB2CB44121001354A4 /* AboutBoxView.swift */,
 				E66526A72CB023DD001354A4 /* GradientMask.swift */,
 				E66526A92CB42E86001354A4 /* KeylineView.swift */,
@@ -319,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				E653D1DD2C89EC15003AAE1E /* ApplicationDelegate.swift */,
+				E660ED262CB6C5A0005BD967 /* ApplicationMenuButton.swift */,
 				E6283F992C41739400158C13 /* ApplicationView.swift */,
 				E666112A2C2C1782007839E6 /* Cappella.swift */,
 			);
@@ -547,6 +553,7 @@
 				E66526A82CB023DD001354A4 /* GradientMask.swift in Sources */,
 				E691D2752CA93B9000FD46BE /* DevelopmentPreviewMenu.swift in Sources */,
 				E691D25C2CA6F9DA00FD46BE /* PlatterMenuLabeledContentStyle.swift in Sources */,
+				E638D4852CB7075800C6FBDA /* SmoothShadowModifier.swift in Sources */,
 				E653D1E22C89EDC6003AAE1E /* GeneralSettingsView.swift in Sources */,
 				E691D2502CA5DEC600FD46BE /* PlatterMenuItem.swift in Sources */,
 				E653D1E42C89FCC9003AAE1E /* KeyboardShortcutSettingsView.swift in Sources */,
@@ -557,6 +564,7 @@
 				E691D2712CA8A90100FD46BE /* PlatterMenuButtonStyle.swift in Sources */,
 				E6485A5A2C9427E200F4040D /* GlobalKeyboardShortcutHandler.swift in Sources */,
 				E653D1DE2C89EC15003AAE1E /* ApplicationDelegate.swift in Sources */,
+				E660ED272CB6C5A0005BD967 /* ApplicationMenuButton.swift in Sources */,
 				E6485A3D2C904FEC00F4040D /* GlobalKeyboardShortcutSettings.swift in Sources */,
 				E6ADDBF22C3532AF0088D9C8 /* PlatterWindow.swift in Sources */,
 				E6485A5C2C94B2C500F4040D /* Platter+KeyboardShortcut.swift in Sources */,

@@ -58,7 +58,14 @@ struct ApplicationView: View {
     @ViewBuilder
     private func makeDeniedView() -> some View {
         VStack {
-            Text("Music Library Access Denied")
+            VStack {
+                Image("PlaceholderAppIcon")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 128.0)
+                Text("To continue, please enable CoverSutra’s access to  Music in Settings.")
+            }
+            .padding(.bottom, 60.0)
 
             Button(action: {
                 if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Media") {
@@ -67,7 +74,27 @@ struct ApplicationView: View {
             }, label: {
                 Text("Open Settings…")
             })
-            .padding(.vertical, 10.0)
+        }
+
+        .font(.system(size: 17.0, weight: .medium, design: .rounded))
+        .lineSpacing(6.0)
+        .multilineTextAlignment(.center)
+
+        .padding(.horizontal, 64.0)
+
+        .containerRelativeFrame(.vertical, alignment: .center)
+
+        .platterContent(id: "settings", placement: .header) {
+            HStack {
+                Spacer()
+                ApplicationMenuButton()
+            }
         }
     }
+}
+
+#Preview(traits: .sizeThatFitsLayout) {
+    ApplicationView()
+        .buttonStyle(.platter)
+        .frame(width: 440.0, height: 720.0)
 }

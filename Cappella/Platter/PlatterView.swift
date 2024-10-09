@@ -33,11 +33,8 @@ struct PlatterView<Content>: View where Content: View {
                 Group {
                     content()
                         .buttonStyle(.platter)
-
                         .containerRelativeFrame(.horizontal)
-
-                        .blur(.header, using: platterGeometry)
-                        .blur(.docked, using: platterGeometry)
+                        .padding(.top, 10.0)
                     makeHeaderView()
                     makeDockedContentView()
                 }
@@ -45,6 +42,7 @@ struct PlatterView<Content>: View where Content: View {
 
                 makeOverlayView()
             }
+            .coordinateSpace(name: "content")
         }
         .scrollIndicators(.never)
         .scrollClipDisabled()
@@ -54,9 +52,18 @@ struct PlatterView<Content>: View where Content: View {
 
         .shadow(
             color: Color.black.opacity(1.0 / 4.0),
-            radius: 6.0,
+            radius: 12.0,
             x: 0.0,
             y: 5.0
+        )
+
+        .smoothShadow(
+            color: .black.opacity(0.08),
+            layers: 5,
+            curve: .easeInOut,
+            radius: 24.0,
+            x: 0.0,
+            y: 32.0
         )
 
         .gesture(drag, name: "move-gesture")
@@ -143,11 +150,29 @@ struct PlatterView<Content>: View where Content: View {
         VStack {
             ForEach(headerContent) { header in
                 header.content()
+                    .offset(y: contentFrame.minY * 0.50)
             }
         }
-        .frame(height: headerDimension)
+        .frame(height: headerDimension - contentFrame.minY)
+
+        .background {
+            ContainerRelativeShape()
+                .fill(Material.ultraThin)
+                .visualEffect { effect, geometry in
+                    guard let contentBounds = geometry.bounds(of: .named("content")) else {
+                        return effect.opacity(0.0)
+                    }
+
+                    let t = 1.0 - max(contentBounds.minY, 0.0) / geometry.size.height
+
+                    let opacity = lerp(start: 0.0, end: 1.0, t: t)
+                    return effect.opacity(opacity)
+                }
+        }
+
         .offset(y: contentFrame.minY)
         .offset(y: -headerDimension)
+
         .pin()
     }
 

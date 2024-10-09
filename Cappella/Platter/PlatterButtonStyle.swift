@@ -4,46 +4,40 @@
 
 import SwiftUI
 
-struct PlatterButtonStyle: PrimitiveButtonStyle {
+struct PlatterButtonStyle: ButtonStyle {
     @State private var isHighlighted = false
-    @State private var isLongPressed = false
 
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .font(.system(size: 16.0, weight: .semibold))
-            .foregroundStyle(.black)
-            .padding(.horizontal, 8.0)
+            .font(.system(size: 16.0, weight: .semibold, design: .rounded))
+            .foregroundStyle(.primary)
+
+            .padding(.horizontal, 30.0)
+            .padding(.vertical, 10.0)
+
             .background(makeBackground(for: configuration))
+
             .scaleEffect(
                 x: isHighlighted ? 0.92 : 1.0,
                 y: isHighlighted ? 0.92 : 1.0,
                 anchor: .center
             )
-            .onTapGesture {
-                configuration.trigger()
-            }
-            .onLongPressGesture {
-                isLongPressed = true
-                configuration.trigger()
-            } onPressingChanged: { isPressed in
-                isLongPressed = false
-
-                withAnimation(.smooth(duration: isPressed ? 0.20 : 0.50)) {
-                    isHighlighted = isPressed
+            .onChange(of: configuration.isPressed, { oldValue, newValue in
+                withAnimation(.smooth(duration: newValue ? 0.20 : 0.50)) {
+                    isHighlighted = newValue
                 }
-            }
+            })
     }
 
     @ViewBuilder
     private func makeBackground(for configuration: Self.Configuration) -> some View {
         Capsule(style: .continuous)
-            .padding(.horizontal, -5.0)
-            .padding(.vertical, -8.0)
-            .background(.regularMaterial)
+            .fill(.thinMaterial)
+            .fill(Color.primary.opacity(1.0 / 7.0))
     }
 }
 
-extension PrimitiveButtonStyle where Self == PlatterButtonStyle {
+extension ButtonStyle where Self == PlatterButtonStyle {
     static var platter: Self { Self() }
 }
 

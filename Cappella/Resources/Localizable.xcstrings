@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "" : {
-
-    },
     "%@" : {
 
     },
@@ -17,7 +14,16 @@
         }
       }
     },
+    "About %@" : {
+
+    },
     "Album Artwork in Dock" : {
+
+    },
+    "Albums" : {
+
+    },
+    "All" : {
 
     },
     "Authorize  Music" : {
@@ -41,16 +47,19 @@
     "End of An Era" : {
 
     },
+    "Groupings" : {
+
+    },
     "Keyboard Shortcuts" : {
 
     },
     "Menu Bar" : {
 
     },
-    "Music Library Access Denied" : {
+    "Never" : {
 
     },
-    "Never" : {
+    "Next Track" : {
 
     },
     "Now Playing" : {
@@ -70,16 +79,40 @@
         }
       }
     },
+    "Off" : {
+
+    },
+    "On" : {
+
+    },
     "On album change" : {
 
     },
     "On song change" : {
 
     },
+    "One" : {
+
+    },
     "Open Settings…" : {
 
     },
+    "Play" : {
+
+    },
+    "Previous Track" : {
+
+    },
+    "Quit %@" : {
+
+    },
     "Recently Played" : {
+
+    },
+    "Repeat" : {
+
+    },
+    "Settings…" : {
 
     },
     "Show Application Icon in:" : {
@@ -89,6 +122,15 @@
 
     },
     "Show:" : {
+
+    },
+    "Shuffle" : {
+
+    },
+    "Songs" : {
+
+    },
+    "To continue, please enable CoverSutra’s access to  Music in Settings." : {
 
     },
     "Type shortcut" : {
