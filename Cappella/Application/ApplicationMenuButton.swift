@@ -3,6 +3,7 @@
 //
 
 import SwiftUI
+import MusicKit
 
 struct ApplicationMenuButton: View {
     @Environment(\.openSettings) private var openSettings
@@ -19,30 +20,33 @@ struct ApplicationMenuButton: View {
 
     var body: some View {
         Menu {
-            Button(playPauseTitle, action: {
-                musicPlayer.playPause()
-            })
-            Button("Next Track", action: {
-                
-            })
-            Button("Previous Track", action: {})
+            Group {
+                Button(playPauseTitle, action: {
+                    musicPlayer.playPause()
+                })
+                Button("Next Track", action: {
+                    musicPlayer.fastForward()
+                })
+                Button("Previous Track", action: {
+                    musicPlayer.rewind()
+                })
+            }
+            .disabled(playbackEnabled == false)
 
             Divider()
 
-            Menu("Repeat") {
-                Button("Off", action: {})
-                Button("All", action: {})
-                Button("One", action: {})
+            Picker("Repeat", selection: $playbackState.repeatMode) {
+                Text("Off").tag(MusicPlayer.RepeatMode.none)
+                Text("All").tag(MusicPlayer.RepeatMode.all)
+                Text("One").tag(MusicPlayer.RepeatMode.one)
             }
+            .pickerStyle(.menu)
 
-            Menu("Shuffle") {
-                Button("On", action: {})
-                Button("Off", action: {})
-                Divider()
-                Button("Songs", action: {})
-                Button("Albums", action: {})
-                Button("Groupings", action: {})
+            Picker("Shuffle", selection: $playbackState.shuffleMode) {
+                Text("Off").tag(MusicPlayer.ShuffleMode.off)
+                Text("Songs").tag(MusicPlayer.ShuffleMode.songs)
             }
+            .pickerStyle(.menu)
 
             Divider()
 
@@ -81,6 +85,10 @@ struct ApplicationMenuButton: View {
         }
 
         return "Play"
+    }
+
+    private var playbackEnabled: Bool {
+        musicPlayer.queue.currentEntry != nil
     }
 
     private func openAppSettings() {
