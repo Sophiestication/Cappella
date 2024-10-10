@@ -45,14 +45,39 @@ struct ApplicationView: View {
 
     @ViewBuilder
     private func makeAuthorizationView() -> some View {
-        Button(action: {
-            Task {
-                self.authorizationStatus = await MusicAuthorization.request()
+        VStack {
+            VStack {
+                Image("PlaceholderAppIcon")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 128.0)
+                Text("To continue, please grant \(applicationName) access to  Music and your media library on this computer.")
             }
-        }, label: {
-            Text("Authorize  Music")
-        })
-        .padding(.vertical, 80.0)
+            .padding(.bottom, 60.0)
+
+            Button(action: {
+                Task {
+                    self.authorizationStatus = await MusicAuthorization.request()
+                }
+            }, label: {
+                Text("Authorize  Music")
+            })
+        }
+
+        .font(.system(size: 17.0, weight: .medium, design: .rounded))
+        .lineSpacing(6.0)
+        .multilineTextAlignment(.center)
+
+        .padding(.horizontal, 64.0)
+
+        .containerRelativeFrame(.vertical, alignment: .center)
+
+        .platterContent(id: "settings", placement: .header) {
+            HStack {
+                Spacer()
+                ApplicationMenuButton(using: CappellaMusicPlayer())
+            }
+        }
     }
 
     @ViewBuilder
@@ -63,7 +88,7 @@ struct ApplicationView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 128.0)
-                Text("To continue, please enable CoverSutra’s access to  Music in Settings.")
+                Text("To continue, please enable \(applicationName)’s access to  Music in Settings.")
             }
             .padding(.bottom, 60.0)
 
@@ -87,9 +112,15 @@ struct ApplicationView: View {
         .platterContent(id: "settings", placement: .header) {
             HStack {
                 Spacer()
-                ApplicationMenuButton()
+                ApplicationMenuButton(using: CappellaMusicPlayer())
             }
         }
+    }
+
+    private var applicationName: String {
+        Bundle.main.object(
+            forInfoDictionaryKey: "CFBundleDisplayName"
+        ) as! String
     }
 }
 

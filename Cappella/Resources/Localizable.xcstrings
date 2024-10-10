@@ -97,9 +97,6 @@
     "Open Settings…" : {
 
     },
-    "Play" : {
-
-    },
     "Previous Track" : {
 
     },
@@ -130,7 +127,10 @@
     "Songs" : {
 
     },
-    "To continue, please enable CoverSutra’s access to  Music in Settings." : {
+    "To continue, please enable %@’s access to  Music in Settings." : {
+
+    },
+    "To continue, please grant %@ access to  Music and your media library on this computer." : {
 
     },
     "Type shortcut" : {

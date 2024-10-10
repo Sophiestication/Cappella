@@ -6,7 +6,7 @@ import Foundation
 import SwiftUI
 import MusicKit
 
-@Observable @MainActor
+@Observable
 final class CappellaMusicPlayer {
     typealias MusicPlayerType = ApplicationMusicPlayer
 
@@ -53,6 +53,10 @@ final class CappellaMusicPlayer {
         schedulePlay()
     }
 
+    func playPause() {
+        playPause(using: .down)
+    }
+
     func playPause(using phases: PressPhases) {
         guard phases == .down else {
             return
@@ -81,7 +85,11 @@ final class CappellaMusicPlayer {
         }
     }
 
-    func fastForward(using phases: PressPhases){
+    func fastForward() {
+        fastForward(using: .up)
+    }
+
+    func fastForward(using phases: PressPhases) {
         let playbackStatus = playbackState.playbackStatus
 
         if phases == .up {
@@ -102,6 +110,10 @@ final class CappellaMusicPlayer {
                 player.beginSeekingForward()
             }
         }
+    }
+
+    func rewind() {
+        rewind(using: .up)
     }
 
     func rewind(using phases: PressPhases) {
@@ -127,6 +139,10 @@ final class CappellaMusicPlayer {
         }
     }
 
+    func toggleShuffle() {
+        toggleShuffle(using: .down)
+    }
+
     func toggleShuffle(using phases: PressPhases) {
         guard phases == .down else {
             return
@@ -144,6 +160,10 @@ final class CappellaMusicPlayer {
         }
 
         playbackState.shuffleMode = newShuffleMode
+    }
+
+    func toggleRepeatMode() {
+        toggleRepeatMode(using: .down)
     }
 
     func toggleRepeatMode(using phases: PressPhases) {
@@ -169,5 +189,5 @@ final class CappellaMusicPlayer {
 }
 
 extension EnvironmentValues {
-    @Entry var musicPlayer: CappellaMusicPlayer? = nil
+    @Entry var musicPlayer: CappellaMusicPlayer = .init()
 }

@@ -12,7 +12,7 @@ struct KeyboardShortcutBezelView : View {
 
     typealias MusicPlayerType = CappellaMusicPlayer
 
-    @Environment(\.musicPlayer) var musicPlayer: MusicPlayerType?
+    @Environment(\.musicPlayer) var musicPlayer: MusicPlayerType
     @ObservedObject private var queue = ApplicationMusicPlayer.shared.queue
 
     var body: some View {
@@ -54,18 +54,16 @@ struct KeyboardShortcutBezelView : View {
 
     @ViewBuilder
     private func makePlayPauseView(_ phase: KeyPress.Phases) -> some View {
-        if let playbackStatus = musicPlayer?.scheduledPlaybackStatus {
-            VStack {
-                switch playbackStatus {
-                case .paused:
-                    makePlaybackView(for: Image("pauseTemplate"), phase)
-                case .playing, .seekingForward, .seekingBackward:
-                    makePlaybackView(for: Image("playTemplate"), phase)
-                case .interrupted, .stopped:
-                    makePlaybackView(for: Image("stopTemplate"), phase)
-                default:
-                    EmptyView()
-                }
+        VStack {
+            switch musicPlayer.scheduledPlaybackStatus {
+            case .paused:
+                makePlaybackView(for: Image("pauseTemplate"), phase)
+            case .playing, .seekingForward, .seekingBackward:
+                makePlaybackView(for: Image("playTemplate"), phase)
+            case .interrupted, .stopped:
+                makePlaybackView(for: Image("stopTemplate"), phase)
+            default:
+                EmptyView()
             }
         }
     }
@@ -95,7 +93,7 @@ struct KeyboardShortcutBezelView : View {
 
     @ViewBuilder
     private func makeRepeatModeContentView() -> some View {
-        if let repeatMode = musicPlayer?.playbackState.repeatMode {
+        if let repeatMode = musicPlayer.playbackState.repeatMode {
             switch repeatMode {
             case .none:
                 makeImageView(for: Image("repeatModeOffTemplate"))
@@ -111,7 +109,7 @@ struct KeyboardShortcutBezelView : View {
 
     @ViewBuilder
     private func makeShuffleModeContentView() -> some View {
-        if let shuffleMode = musicPlayer?.playbackState.shuffleMode {
+        if let shuffleMode = musicPlayer.playbackState.shuffleMode {
             switch shuffleMode {
             case .off:
                 makeImageView(for: Image("shuffleOffTemplate"))

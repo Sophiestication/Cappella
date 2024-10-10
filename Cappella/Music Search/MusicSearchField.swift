@@ -32,9 +32,7 @@ struct MusicSearchField: View {
                 placeholder: makePrompt(for: musicSearch.scope)
             )
             .disableAutocorrection(true)
-
             .textFieldStyle(.plain)
-
             .focused($searchFieldFocused)
         }
         .padding(.vertical, 8.0)

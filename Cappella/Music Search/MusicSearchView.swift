@@ -44,13 +44,14 @@ struct MusicSearchView: View {
             }
 
             .platterContent(id: "search-field", placement: .header) {
-                MusicSearchField(with: musicSearch)
+                HStack(spacing: 0.0) {
+                    MusicSearchField(with: musicSearch)
+                    ApplicationMenuButton(using: musicPlayer)
+                }
             }
 
             .platterContent(id: "now-playing", placement: .docked) {
-                if let musicPlayer {
-                    NowPlayingView(using: musicPlayer)
-                }
+                NowPlayingView(using: musicPlayer)
             }
 
             .onChange(of: musicSearch.scheduledToPlay, initial: false) { _, newSelection in

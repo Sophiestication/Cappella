@@ -5,10 +5,26 @@
 import SwiftUI
 
 struct ApplicationMenuButton: View {
+    @Environment(\.openSettings) private var openSettings
+
+    typealias MusicPlayerType = CappellaMusicPlayer
+    private let musicPlayer: MusicPlayerType
+
+    @ObservedObject private var playbackState: MusicPlayerType.State
+
+    init(using musicPlayer: MusicPlayerType) {
+        self.musicPlayer = musicPlayer
+        self.playbackState = musicPlayer.playbackState
+    }
+
     var body: some View {
         Menu {
-            Button("Play", action: {})
-            Button("Next Track", action: {})
+            Button(playPauseTitle, action: {
+                musicPlayer.playPause()
+            })
+            Button("Next Track", action: {
+                
+            })
             Button("Previous Track", action: {})
 
             Divider()
@@ -30,7 +46,9 @@ struct ApplicationMenuButton: View {
 
             Divider()
 
-            Button("Settings…", action: {})
+            Button("Settings…", action: {
+                openSettings()
+            })
 
             Divider()
 
@@ -38,7 +56,9 @@ struct ApplicationMenuButton: View {
 
             Divider()
 
-            Button("Quit \(applicationName)", action: {})
+            Button("Quit \(applicationName)", action: {
+                NSApplication.shared.terminate(self)
+            })
         } label: {
             Image("settingsTemplate")
                 .resizable()
@@ -54,9 +74,23 @@ struct ApplicationMenuButton: View {
             forInfoDictionaryKey: "CFBundleDisplayName"
         ) as! String
     }
+
+    private var playPauseTitle: String {
+        if musicPlayer.playbackState.playbackStatus == .playing {
+            return "Pause"
+        }
+
+        return "Play"
+    }
+
+    private func openAppSettings() {
+        if let url = URL(string: "x-apple.systempreferences:com.apple.preference") {
+            NSWorkspace.shared.open(url)
+        }
+    }
 }
 
 #Preview {
-    ApplicationMenuButton()
+    ApplicationMenuButton(using: CappellaMusicPlayer())
         .scenePadding()
 }

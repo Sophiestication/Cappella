@@ -61,7 +61,7 @@ struct PlatterView<Content>: View where Content: View {
             color: .black.opacity(0.08),
             layers: 5,
             curve: .easeInOut,
-            radius: 24.0,
+            radius: 28.0,
             x: 0.0,
             y: 32.0
         )
