@@ -32,7 +32,7 @@ struct PlatterButtonStyle: ButtonStyle {
     @ViewBuilder
     private func makeBackground(for configuration: Self.Configuration) -> some View {
         Capsule(style: .continuous)
-            .fill(.thinMaterial)
+            .fill(.regularMaterial)
             .fill(Color.primary.opacity(1.0 / 7.0))
     }
 }
