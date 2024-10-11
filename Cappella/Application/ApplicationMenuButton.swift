@@ -20,35 +20,37 @@ struct ApplicationMenuButton: View {
 
     var body: some View {
         Menu {
-            Group {
-                Button(playPauseTitle, action: {
-                    musicPlayer.playPause()
-                })
-                Button("Next Track", action: {
-                    musicPlayer.fastForward()
-                })
-                Button("Previous Track", action: {
-                    musicPlayer.rewind()
-                })
+            if musicLibraryAccessEnabled {
+                Group {
+                    Button(playPauseTitle, action: {
+                        musicPlayer.playPause()
+                    })
+                    Button("Next Track", action: {
+                        musicPlayer.fastForward()
+                    })
+                    Button("Previous Track", action: {
+                        musicPlayer.rewind()
+                    })
+                }
+                .disabled(playbackEnabled == false)
+                
+                Divider()
+                
+                Group {
+                    Picker("Repeat", selection: $playbackState.repeatMode) {
+                        Text("Off").tag(MusicPlayer.RepeatMode.none)
+                        Text("All").tag(MusicPlayer.RepeatMode.all)
+                        Text("One").tag(MusicPlayer.RepeatMode.one)
+                    }
+                    
+                    Picker("Shuffle", selection: $playbackState.shuffleMode) {
+                        Text("Off").tag(MusicPlayer.ShuffleMode.off)
+                        Text("Songs").tag(MusicPlayer.ShuffleMode.songs)
+                    }
+                }
+                
+                Divider()
             }
-            .disabled(playbackEnabled == false)
-
-            Divider()
-
-            Picker("Repeat", selection: $playbackState.repeatMode) {
-                Text("Off").tag(MusicPlayer.RepeatMode.none)
-                Text("All").tag(MusicPlayer.RepeatMode.all)
-                Text("One").tag(MusicPlayer.RepeatMode.one)
-            }
-            .pickerStyle(.menu)
-
-            Picker("Shuffle", selection: $playbackState.shuffleMode) {
-                Text("Off").tag(MusicPlayer.ShuffleMode.off)
-                Text("Songs").tag(MusicPlayer.ShuffleMode.songs)
-            }
-            .pickerStyle(.menu)
-
-            Divider()
 
             Button("Settings…", action: {
                 openSettings()
@@ -56,7 +58,9 @@ struct ApplicationMenuButton: View {
 
             Divider()
 
-            Button("About \(applicationName)", action: {})
+            Button("About \(applicationName)", action: {
+                
+            })
 
             Divider()
 
@@ -79,6 +83,10 @@ struct ApplicationMenuButton: View {
         ) as! String
     }
 
+    private var musicLibraryAccessEnabled: Bool {
+        MusicAuthorization.currentStatus == .authorized
+    }
+
     private var playPauseTitle: String {
         if musicPlayer.playbackState.playbackStatus == .playing {
             return "Pause"
@@ -89,12 +97,6 @@ struct ApplicationMenuButton: View {
 
     private var playbackEnabled: Bool {
         musicPlayer.queue.currentEntry != nil
-    }
-
-    private func openAppSettings() {
-        if let url = URL(string: "x-apple.systempreferences:com.apple.preference") {
-            NSWorkspace.shared.open(url)
-        }
     }
 }
 

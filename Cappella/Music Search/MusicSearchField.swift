@@ -51,7 +51,7 @@ struct MusicSearchField: View {
                 .fill(.ultraThinMaterial)
             )
         )
-        .padding(.trailing, 20.0)
+        .padding(.trailing, 10.0)
 
         .padding(.leading, leadingPadding)
 

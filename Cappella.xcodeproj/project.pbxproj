@@ -11,6 +11,7 @@
 		E620627E2C6A7E4000460775 /* PlatterGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E620627D2C6A7E4000460775 /* PlatterGeometry.swift */; };
 		E6283F9A2C41739400158C13 /* ApplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6283F992C41739400158C13 /* ApplicationView.swift */; };
 		E638D4852CB7075800C6FBDA /* SmoothShadowModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E638D4842CB7075800C6FBDA /* SmoothShadowModifier.swift */; };
+		E638D4912CB841C800C6FBDA /* StatusItemMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E638D4902CB841C800C6FBDA /* StatusItemMenu.swift */; };
 		E64048E72C75282C007CEB55 /* Rubberband.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64048E62C75282C007CEB55 /* Rubberband.swift */; };
 		E6485A3D2C904FEC00F4040D /* GlobalKeyboardShortcutSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6485A3C2C904FEC00F4040D /* GlobalKeyboardShortcutSettings.swift */; };
 		E6485A512C90B8B300F4040D /* GlobalKeyboardShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6485A502C90B8B300F4040D /* GlobalKeyboardShortcut.swift */; };
@@ -102,6 +103,7 @@
 		E620627D2C6A7E4000460775 /* PlatterGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterGeometry.swift; sourceTree = "<group>"; };
 		E6283F992C41739400158C13 /* ApplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationView.swift; sourceTree = "<group>"; };
 		E638D4842CB7075800C6FBDA /* SmoothShadowModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmoothShadowModifier.swift; sourceTree = "<group>"; };
+		E638D4902CB841C800C6FBDA /* StatusItemMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemMenu.swift; sourceTree = "<group>"; };
 		E64048E62C75282C007CEB55 /* Rubberband.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rubberband.swift; sourceTree = "<group>"; };
 		E6485A3C2C904FEC00F4040D /* GlobalKeyboardShortcutSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalKeyboardShortcutSettings.swift; sourceTree = "<group>"; };
 		E6485A502C90B8B300F4040D /* GlobalKeyboardShortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalKeyboardShortcut.swift; sourceTree = "<group>"; };
@@ -194,6 +196,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E638D4922CB841D100C6FBDA /* Status Item */ = {
+			isa = PBXGroup;
+			children = (
+				E638D4902CB841C800C6FBDA /* StatusItemMenu.swift */,
+			);
+			path = "Status Item";
+			sourceTree = "<group>";
+		};
 		E6485A382C90419300F4040D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +258,7 @@
 				E64A87392C9B283A008CCCC5 /* Configuration */,
 				E667CD812C563DB2000718FC /* Application */,
 				E691D2422CA5A1FD00FD46BE /* Artwork */,
+				E638D4922CB841D100C6FBDA /* Status Item */,
 				E690917E2C9C6922007F4188 /* Dock Tile */,
 				E67B5CFC2C8CDD2300E47348 /* Keyboard Shortcuts */,
 				E6485A632C9578A600F4040D /* Keyboard Shortcut Bezel */,
@@ -579,6 +590,7 @@
 				E65067782C6B8FF900A5B00C /* MusicSearchField.swift in Sources */,
 				E66526AA2CB42E86001354A4 /* KeylineView.swift in Sources */,
 				E69091832C9D7825007F4188 /* DockTileView.swift in Sources */,
+				E638D4912CB841C800C6FBDA /* StatusItemMenu.swift in Sources */,
 				E690919E2CA54D5D007F4188 /* PlaybackQueueMenuItem.swift in Sources */,
 				E691D25A2CA6E61000FD46BE /* MenuShadowModifier.swift in Sources */,
 				E6C15E412C970CC700C95CD9 /* KeyboardShortcutBezel.swift in Sources */,
