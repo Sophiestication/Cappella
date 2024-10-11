@@ -53,13 +53,15 @@ struct ApplicationMenuButton: View {
             }
 
             Button("Settings…", action: {
+                NSApplication.shared.activate(ignoringOtherApps: true)
                 openSettings()
             })
 
             Divider()
 
             Button("About \(applicationName)", action: {
-                
+                NSApplication.shared.activate(ignoringOtherApps: true)
+                NSApplication.shared.orderFrontStandardAboutPanel()
             })
 
             Divider()
