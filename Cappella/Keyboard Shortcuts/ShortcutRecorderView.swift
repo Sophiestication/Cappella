@@ -12,6 +12,8 @@ struct ShortcutRecorderView: View {
     @Binding var keyboardShortcut: GlobalKeyboardShortcut?
     @State private var currentModifiers: NSEvent.ModifierFlags? = nil
 
+    @Environment(\.pixelLength) var pixelLength
+
     var body: some View {
         HStack {
             if isRecording {
@@ -19,25 +21,23 @@ struct ShortcutRecorderView: View {
                     Text("\(currentModifiers.description)")
                 } else {
                     Text("Type shortcut")
+                        .foregroundStyle(.secondary)
                 }
             } else if let keyboardShortcut {
                 Text("\(keyboardShortcut)")
             } else {
                 Text("Click to record shortcut")
+                    .foregroundStyle(.secondary)
             }
         }
         .padding(.horizontal)
         .frame(minWidth: 180.0)
 
-        .overlay(
-            makeClearButton(), alignment: .trailing
-        )
+        .overlay(clearButton, alignment: .trailing)
 
         .padding(.vertical, 6.0)
 
-        .background(
-            makeBackgroundView()
-        )
+        .background(background)
 
         .focusable()
         .focused($isFocused)
@@ -57,7 +57,7 @@ struct ShortcutRecorderView: View {
             return .handled
         })
 
-        .contentShape(.interaction, backgroundShape)
+        .contentShape(backgroundShape)
         .onTapGesture {
             record()
         }
@@ -93,12 +93,14 @@ struct ShortcutRecorderView: View {
     }
 
     @ViewBuilder
-    private func makeClearButton() -> some View {
+    private var clearButton: some View {
         Button(action: {
             clear()
         }, label: {
             Image(systemName: "xmark.circle.fill")
-                .padding(6.0)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding(.trailing, 7.0)
         })
 
         .buttonStyle(.borderless)
@@ -132,8 +134,60 @@ struct ShortcutRecorderView: View {
         .animation(.smooth, value: isFocused)
     }
 
-    private var backgroundShape: some Shape {
+    @ViewBuilder
+    private var background: some View {
+        ZStack {
+            backgroundShape
+                .fill(.tint.opacity(isFocused ? 1.0 : 0.0))
+                .blur(radius: 1.0)
+            backgroundShape
+                .fill(.tint.opacity(isRecording ? 1.0 : 0.0))
+                .blur(radius: 3.0)
+            backgroundShape
+                .fill(.foreground.opacity(1.0 / 7.0))
+                .offset(y: pixelLength)
+                .blur(radius: pixelLength)
+                .blendMode(.plusLighter)
+            backgroundShape
+                .fill(.background)
+            backgroundShape
+                .fill(.tint.opacity(isRecording ? 1.0 : 0.0))
+                .blendMode(.overlay)
+            backgroundShape
+                .fill(LinearGradient(
+                    gradient: backgroundGradient,
+                    startPoint: .top,
+                    endPoint: .bottom)
+                )
+            backgroundShape
+                .innerShadow(
+                    color: .black.opacity(1.0 / 3.0),
+                    radius: 1.0,
+                    x: 0,
+                    y: 1.0
+                )
+                .blendMode(.multiply)
+            backgroundShape
+                .inset(by: pixelLength)
+                .stroke(.black.opacity(1.0 / 6.0), lineWidth: pixelLength)
+        }
+        .animation(
+            .spring.repeatForever(autoreverses: true),
+            value: isRecording
+        )
+    }
+
+    private var backgroundShape: Capsule {
         Capsule(style: .continuous)
+    }
+
+    private var backgroundGradient: Gradient {
+        let colors = stride(from: 0.0, to: 0.2, by: 0.05).map { value -> Color in
+            let opacity = UnitCurve.easeInOut.value(at: value)
+            return Color.white.opacity(opacity)
+        }
+
+        return Gradient(colors: colors)
     }
 
     private func record() {
@@ -148,7 +202,7 @@ struct ShortcutRecorderView: View {
     }
 }
 
-#Preview(traits: .fixedLayout(width: 600.0, height: 480.0)) {
+#Preview(traits: .sizeThatFitsLayout) {
     @Previewable @State var shortcut: GlobalKeyboardShortcut? = nil
 
     Form {
@@ -157,6 +211,12 @@ struct ShortcutRecorderView: View {
         } label: {
             Text("Play/Pause Current Song:")
         }
-        .padding()
+
+        LabeledContent {
+            ShortcutRecorderView(keyboardShortcut: $shortcut)
+        } label: {
+            Text("Next Song:")
+        }
     }
+    .scenePadding()
 }

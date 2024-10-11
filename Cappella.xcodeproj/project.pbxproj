@@ -12,6 +12,8 @@
 		E6283F9A2C41739400158C13 /* ApplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6283F992C41739400158C13 /* ApplicationView.swift */; };
 		E638D4852CB7075800C6FBDA /* SmoothShadowModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E638D4842CB7075800C6FBDA /* SmoothShadowModifier.swift */; };
 		E638D4912CB841C800C6FBDA /* StatusItemMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E638D4902CB841C800C6FBDA /* StatusItemMenu.swift */; };
+		E638D4A02CB91F6B00C6FBDA /* AboutBoxWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E638D49F2CB91F6B00C6FBDA /* AboutBoxWindow.swift */; };
+		E638D4A32CB9B4CB00C6FBDA /* InnerShadowModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E638D4A22CB9B4CB00C6FBDA /* InnerShadowModifier.swift */; };
 		E64048E72C75282C007CEB55 /* Rubberband.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64048E62C75282C007CEB55 /* Rubberband.swift */; };
 		E6485A3D2C904FEC00F4040D /* GlobalKeyboardShortcutSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6485A3C2C904FEC00F4040D /* GlobalKeyboardShortcutSettings.swift */; };
 		E6485A512C90B8B300F4040D /* GlobalKeyboardShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6485A502C90B8B300F4040D /* GlobalKeyboardShortcut.swift */; };
@@ -104,6 +106,8 @@
 		E6283F992C41739400158C13 /* ApplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationView.swift; sourceTree = "<group>"; };
 		E638D4842CB7075800C6FBDA /* SmoothShadowModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmoothShadowModifier.swift; sourceTree = "<group>"; };
 		E638D4902CB841C800C6FBDA /* StatusItemMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemMenu.swift; sourceTree = "<group>"; };
+		E638D49F2CB91F6B00C6FBDA /* AboutBoxWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutBoxWindow.swift; sourceTree = "<group>"; };
+		E638D4A22CB9B4CB00C6FBDA /* InnerShadowModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerShadowModifier.swift; sourceTree = "<group>"; };
 		E64048E62C75282C007CEB55 /* Rubberband.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rubberband.swift; sourceTree = "<group>"; };
 		E6485A3C2C904FEC00F4040D /* GlobalKeyboardShortcutSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalKeyboardShortcutSettings.swift; sourceTree = "<group>"; };
 		E6485A502C90B8B300F4040D /* GlobalKeyboardShortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalKeyboardShortcut.swift; sourceTree = "<group>"; };
@@ -204,6 +208,15 @@
 			path = "Status Item";
 			sourceTree = "<group>";
 		};
+		E638D49E2CB914FF00C6FBDA /* About Box */ = {
+			isa = PBXGroup;
+			children = (
+				E66526AB2CB44121001354A4 /* AboutBoxView.swift */,
+				E638D49F2CB91F6B00C6FBDA /* AboutBoxWindow.swift */,
+			);
+			path = "About Box";
+			sourceTree = "<group>";
+		};
 		E6485A382C90419300F4040D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,6 +270,7 @@
 			children = (
 				E64A87392C9B283A008CCCC5 /* Configuration */,
 				E667CD812C563DB2000718FC /* Application */,
+				E638D49E2CB914FF00C6FBDA /* About Box */,
 				E691D2422CA5A1FD00FD46BE /* Artwork */,
 				E638D4922CB841D100C6FBDA /* Status Item */,
 				E690917E2C9C6922007F4188 /* Dock Tile */,
@@ -288,8 +302,8 @@
 		E667CD7D2C563D42000718FC /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E638D4A22CB9B4CB00C6FBDA /* InnerShadowModifier.swift */,
 				E638D4842CB7075800C6FBDA /* SmoothShadowModifier.swift */,
-				E66526AB2CB44121001354A4 /* AboutBoxView.swift */,
 				E66526A72CB023DD001354A4 /* GradientMask.swift */,
 				E66526A92CB42E86001354A4 /* KeylineView.swift */,
 				E691D1FB2CA564FA00FD46BE /* MusicLibrary+Additions.swift */,
@@ -593,6 +607,7 @@
 				E638D4912CB841C800C6FBDA /* StatusItemMenu.swift in Sources */,
 				E690919E2CA54D5D007F4188 /* PlaybackQueueMenuItem.swift in Sources */,
 				E691D25A2CA6E61000FD46BE /* MenuShadowModifier.swift in Sources */,
+				E638D4A02CB91F6B00C6FBDA /* AboutBoxWindow.swift in Sources */,
 				E6C15E412C970CC700C95CD9 /* KeyboardShortcutBezel.swift in Sources */,
 				E690917F2C9C6922007F4188 /* DockTile.swift in Sources */,
 				E691D2562CA69EBC00FD46BE /* PlatterMenu.swift in Sources */,
@@ -612,6 +627,7 @@
 				E691D27F2CAB1CAE00FD46BE /* SystemKeyRepeatInterval.swift in Sources */,
 				E66526AC2CB44121001354A4 /* AboutBoxView.swift in Sources */,
 				E6A81D122C4177C300DAC24B /* NowPlayingView.swift in Sources */,
+				E638D4A32CB9B4CB00C6FBDA /* InnerShadowModifier.swift in Sources */,
 				E691D27B2CAAE07F00FD46BE /* RepeatButtonStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
