@@ -52,6 +52,8 @@ class PlatterWindow: NSPanel {
 
         self.becomesKeyOnlyIfNeeded = false
 
+        self.appearance = NSAppearance(named: .vibrantDark)
+
         platterProxy = PlatterProxy(for: self)
 
         let rootView = PlatterView {
