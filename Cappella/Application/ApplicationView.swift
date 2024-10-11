@@ -47,7 +47,7 @@ struct ApplicationView: View {
     private func makeAuthorizationView() -> some View {
         VStack {
             VStack {
-                Image("PlaceholderAppIcon")
+                Image(nsImage: NSApplication.shared.applicationIconImage)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 128.0)
@@ -60,7 +60,7 @@ struct ApplicationView: View {
                     self.authorizationStatus = await MusicAuthorization.request()
                 }
             }, label: {
-                Text("Authorize  Music")
+                Text("Authorize…")
             })
         }
 
@@ -84,11 +84,11 @@ struct ApplicationView: View {
     private func makeDeniedView() -> some View {
         VStack {
             VStack {
-                Image("PlaceholderAppIcon")
+                Image(nsImage: NSApplication.shared.applicationIconImage)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 128.0)
-                Text("To continue, please enable \(applicationName)’s access to  Music in Settings.")
+                Text("To continue, please grant \(applicationName) access to  Music and your media library in Settings.")
             }
             .padding(.bottom, 60.0)
 
