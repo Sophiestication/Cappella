@@ -23,13 +23,10 @@
     "All" : {
 
     },
-    "Authorize  Music" : {
+    "Authorize…" : {
 
     },
     "Clear" : {
-
-    },
-    "Click to record shortcut" : {
 
     },
     "CoverSutra **Version:** 4.0 (Cappella) **Copyright** © 2024 Sophia Teutschler. All rights reserved. This app and its contents are protected under copyright law. Unauthorized reproduction or distribution is prohibited. **Credits** App Icon: Michael Flarup Teaser Artwork: Anthony Piraino (The Iconfactory) Special Thanks to: The Iconfactory Team, Apple Developer Relations **Acknowledgements** SwiftUI is a registered trademark of Apple Inc. All third-party trademarks are the property of their respective owners. **Disclaimer** This software is provided 'as-is', without any express or implied warranty. In no event shall the author be held liable for any damages arising from the use of this software." : {
@@ -118,13 +115,10 @@
     "Songs" : {
 
     },
-    "To continue, please enable %@’s access to  Music in Settings." : {
+    "To continue, please grant %@ access to  Music and your media library in Settings." : {
 
     },
     "To continue, please grant %@ access to  Music and your media library on this computer." : {
-
-    },
-    "Type shortcut" : {
 
     }
   },
