@@ -88,6 +88,12 @@ final class GlobalKeyboardShortcutHandler {
         }
     }
 
+    func removeAll() {
+        for id in entries.keys {
+            unregister(id)
+        }
+    }
+
     private func register(_ keyboardShortcut: KeyboardShortcut, for id: KeyboardShortcutID) {
         let eventHotKey = EventHotKeyID(
             signature: Self.hotKeyEventSignature,
@@ -117,7 +123,10 @@ final class GlobalKeyboardShortcutHandler {
 
     private func unregister(_ id: KeyboardShortcutID) {
         if let entry = entries[id] {
-            UnregisterEventHotKey(entry.eventHotKey)
+            if UnregisterEventHotKey(entry.eventHotKey) != noErr {
+                print("Could not unregister hot key for: \(id)")
+            }
+
             entries.removeValue(forKey: id)
         }
     }

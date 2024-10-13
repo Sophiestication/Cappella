@@ -8,7 +8,6 @@ import MusicKit
 @main
 struct Cappella: App {
     @NSApplicationDelegateAdaptor private var applicationDelegate: ApplicationDelegate
-    @Environment(\.openWindow) var openWindow
     @State private var repeatMode: MusicPlayer.RepeatMode? = nil
 
     private var keyboardShortcutSettings = GlobalKeyboardShortcutSettings(

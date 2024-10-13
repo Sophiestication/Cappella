@@ -14,7 +14,10 @@ class GlobalKeyboardShortcutSettings {
     private typealias Storage = [KeyboardShortcutID: KeyboardShortcut]
     private var all: Storage {
         didSet {
-            keyboardShortcutHandler.update(from: all)
+            if isRecording == false {
+                keyboardShortcutHandler.update(from: all)
+            }
+
             Self.store(all, to: userDefaults)
         }
     }
@@ -46,6 +49,19 @@ class GlobalKeyboardShortcutSettings {
         }
 
         Self.store(all, to: userDefaults)
+    }
+
+    private(set) var isRecording: Bool = false
+
+    func beginRecording() {
+        guard isRecording == false else { return }
+
+        keyboardShortcutHandler.removeAll()
+    }
+
+    func endRecording() {
+        isRecording = false
+        keyboardShortcutHandler.update(from: all)
     }
 
     private static let userDefaultsKey = "GlobalKeyboardShortcuts"

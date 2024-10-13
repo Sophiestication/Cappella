@@ -8,7 +8,6 @@ import AppKit
 struct ShortcutRecorderView: View {
     @FocusState private var isFocused: Bool
 
-    @State private var isSelected: Bool = false
     @State private var isRecording: Bool = false
 
     @Binding var keyboardShortcut: GlobalKeyboardShortcut?
@@ -33,11 +32,9 @@ struct ShortcutRecorderView: View {
 
         .focusable()
         .focused($isFocused)
-        .onChange(of: isFocused, initial: true) { _, newValue  in
-            isSelected = newValue
-
+        .onChange(of: isFocused, initial: false) { _, newValue  in
             if isFocused == false {
-                cancel()
+                isRecording = false
             }
         }
         .focusEffectDisabled()
@@ -60,7 +57,7 @@ struct ShortcutRecorderView: View {
 
             if keyPress.key == .escape &&
                keyPress.modifiers.isEmpty {
-                // will cancel…
+                cancel()
             } else if keyPress.key == .tab &&
                       keyPress.modifiers.isEmpty {
                 cancel()
@@ -72,9 +69,10 @@ struct ShortcutRecorderView: View {
                 } else {
                     keyboardShortcut = nil
                 }
-            }
 
-            cancel()
+                isRecording = false
+                currentModifiers = nil
+            }
 
             return .handled
         }
@@ -87,17 +85,26 @@ struct ShortcutRecorderView: View {
                 currentModifiers = NSEvent.ModifierFlags(new)
             }
         }
+
+        .preference(
+            key: KeyboardShortcutRecordingKey.self,
+            value: isRecording
+        )
     }
 
     @ViewBuilder
     private var content: some View {
+        Text(contentString)
+            .opacity(currentModifiers != nil || keyboardShortcut != nil ? 1.0 : 0.0)
+    }
+
+    private var contentString: String {
         if isRecording, let currentModifiers {
-            Text("\(currentModifiers.description)")
+            currentModifiers.description
         } else if let keyboardShortcut {
-            Text("\(keyboardShortcut)")
+            "\(keyboardShortcut)"
         } else {
-            Text("\(CompatibilityKeyEquivalent.command)")
-                .opacity(0.0)
+            "\(CompatibilityKeyEquivalent.command)"
         }
     }
 
@@ -139,7 +146,6 @@ struct ShortcutRecorderView: View {
     @ViewBuilder
     private var background: some View {
         ShortcutRecorderBackgroundView(
-            isFocused: $isSelected,
             isRecording: $isRecording
         )
     }
@@ -174,11 +180,12 @@ struct ShortcutRecorderView: View {
 }
 
 fileprivate struct ShortcutRecorderBackgroundView: View {
-    @Binding var isFocused: Bool
     @Binding var isRecording: Bool
 
     @Environment(\.pixelLength) var pixelLength
     @Environment(\.colorScheme) var colorScheme
+
+    @Environment(\.isFocused) var isFocused
 
     @State private var isPulsing: Bool = false
 
@@ -197,6 +204,8 @@ fileprivate struct ShortcutRecorderBackgroundView: View {
                 .blendMode(.plusLighter)
             backgroundShape
                 .fill(.background)
+//            VisualEffectView(material: .sidebar, blendingMode: .behindWindow)
+//                .mask(backgroundShape)
             backgroundShape
                 .fill(.tint.opacity(isPulsing ? 1.0 : 0.0))
                 .blendMode(.overlay)
@@ -245,12 +254,22 @@ fileprivate struct ShortcutRecorderBackgroundView: View {
     }
 
     private var backgroundGradient: Gradient {
-        let colors = stride(from: 0.0, to: 0.2, by: 0.05).map { value -> Color in
+        let colors = stride(from: 0.0, to: 0.2, by: 0.025).map { value -> Color in
             let opacity = UnitCurve.easeInOut.value(at: value)
-            return Color.white.opacity(opacity)
+            return Color.primary.opacity(opacity)
         }
 
         return Gradient(colors: colors)
+    }
+}
+
+struct KeyboardShortcutRecordingKey: PreferenceKey {
+    typealias Value = Bool
+
+    static let defaultValue = false
+
+    static func reduce(value: inout Value, nextValue: () -> Value) {
+        value = value || nextValue()
     }
 }
 

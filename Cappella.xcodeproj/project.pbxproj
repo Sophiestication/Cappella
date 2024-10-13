@@ -371,13 +371,13 @@
 		E67B5CFC2C8CDD2300E47348 /* Keyboard Shortcuts */ = {
 			isa = PBXGroup;
 			children = (
-				E691D27E2CAB1CAE00FD46BE /* SystemKeyRepeatInterval.swift */,
 				E6485A522C90C4E900F4040D /* CompatibilityKeyEquivalent.swift */,
 				E6485A502C90B8B300F4040D /* GlobalKeyboardShortcut.swift */,
 				E6485A592C9427E200F4040D /* GlobalKeyboardShortcutHandler.swift */,
 				E6485A3C2C904FEC00F4040D /* GlobalKeyboardShortcutSettings.swift */,
 				E67B5CFD2C8D8CC000E47348 /* NSEvent+Additions.swift */,
 				E653D1E52C8A19DE003AAE1E /* ShortcutRecorderView.swift */,
+				E691D27E2CAB1CAE00FD46BE /* SystemKeyRepeatInterval.swift */,
 			);
 			path = "Keyboard Shortcuts";
 			sourceTree = "<group>";

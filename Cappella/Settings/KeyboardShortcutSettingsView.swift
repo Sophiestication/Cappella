@@ -30,6 +30,16 @@ struct KeyboardShortcutSettingsView: View {
             }
         }
         .navigationTitle(Text("Keyboard Shortcuts"))
+
+        .onPreferenceChange(KeyboardShortcutRecordingKey.self) { isRecording in
+            guard let keyboardShortcutSettings else { return }
+
+            if isRecording {
+                keyboardShortcutSettings.beginRecording()
+            } else {
+                keyboardShortcutSettings.endRecording()
+            }
+        }
     }
 
     private var separator: some View {
