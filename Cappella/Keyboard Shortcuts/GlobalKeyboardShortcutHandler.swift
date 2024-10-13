@@ -37,6 +37,17 @@ final class GlobalKeyboardShortcutHandler {
         keyPressEventSubject.eraseToAnyPublisher()
     }
 
+    struct UpdateError: Error {
+        let keyboardShortcutID: KeyboardShortcutID
+        let keyboardShortcut: KeyboardShortcut
+    }
+
+    private let keyboardShortcutUpdateErrorSubject = PassthroughSubject<UpdateError, Never>()
+
+    var didReceiveUpdateError: AnyPublisher<UpdateError, Never> {
+        keyboardShortcutUpdateErrorSubject.eraseToAnyPublisher()
+    }
+
     init() {
         self.keyPressRepeatInterval = SystemKeyRepeatInterval.interval
         self.initialKeyPressDelay = SystemKeyRepeatInterval.initialInterval
@@ -113,6 +124,11 @@ final class GlobalKeyboardShortcutHandler {
 
         guard error == noErr else {
             print("Could not register hot key for: \(keyboardShortcut)")
+
+            keyboardShortcutUpdateErrorSubject.send(
+                UpdateError(keyboardShortcutID: id, keyboardShortcut: keyboardShortcut)
+            )
+
             return
         }
 

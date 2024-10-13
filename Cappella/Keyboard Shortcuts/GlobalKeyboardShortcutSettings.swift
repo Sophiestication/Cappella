@@ -25,6 +25,11 @@ class GlobalKeyboardShortcutSettings {
     private let userDefaults: UserDefaults
     private let keyboardShortcutHandler: GlobalKeyboardShortcutHandler
 
+    typealias UpdateError = GlobalKeyboardShortcutHandler.UpdateError
+    var didReceiveUpdateError: AnyPublisher<UpdateError, Never> {
+        keyboardShortcutHandler.didReceiveUpdateError
+    }
+
     init(
         userDefaults: UserDefaults,
         keyboardShortcutHandler: GlobalKeyboardShortcutHandler

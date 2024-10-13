@@ -40,6 +40,10 @@ struct KeyboardShortcutSettingsView: View {
                 keyboardShortcutSettings.endRecording()
             }
         }
+
+        .onReceive(keyboardShortcutSettings!.didReceiveUpdateError) { error in
+            
+        }
     }
 
     private var separator: some View {
