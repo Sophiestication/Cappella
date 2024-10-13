@@ -23,6 +23,8 @@ class ApplicationDelegate:
 
     private var dockTile: DockTile?
 
+    private var cancellable: AnyCancellable?
+
     func applicationDidFinishLaunching(_ notification: Notification) {
         let contentWidth = 440.0 + (PlatterGeometry.horizontalInset * 2.0)
         let contentHeight = 720.0 + 240.0
@@ -45,6 +47,18 @@ class ApplicationDelegate:
 
         keyboardShortcutBezel = KeyboardShortcutBezel(using: self.musicPlayer)
         dockTile = DockTile(using: self.musicPlayer)
+
+        orderFrontApplicationWindowIfNeeded()
+    }
+
+    func orderFrontApplicationWindowIfNeeded() {
+        cancellable = Timer
+            .publish(every: 1.0, on: .main, in: .default)
+            .autoconnect()
+            .first()
+            .sink { _ in
+                self.applicationWindow.platterProxy!.present()
+            }
     }
 
     func applicationWillTerminate(_ notification: Notification) {

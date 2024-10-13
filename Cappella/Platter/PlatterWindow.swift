@@ -6,7 +6,7 @@ import Cocoa
 import SwiftUI
 
 class PlatterWindow: NSPanel {
-    private var platterProxy: PlatterProxy? = nil
+    var platterProxy: PlatterProxy? = nil
     private var platterGeometry: PlatterGeometry
 
     fileprivate let statusItem: NSStatusItem
