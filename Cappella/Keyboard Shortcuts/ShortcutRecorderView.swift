@@ -219,12 +219,24 @@ fileprivate struct ShortcutRecorderBackgroundView: View {
                 .innerShadow(
                     color: isFocused ?
                         .accentColor.opacity(1.0 / 3.0) :
-                            .black.opacity(1.0 / 3.0),
+                        .black.opacity(1.0 / 3.0),
                     radius: 1.0,
                     x: 0,
                     y: 1.0
                 )
                 .blendMode(.multiply)
+
+            backgroundShape
+                .innerShadow(
+                    color: isFocused ?
+                        .accentColor.opacity(1.0 / 3.0) :
+                        .black.opacity(1.0 / 4.0),
+                    radius: 3.0,
+                    x: 0,
+                    y: -1.0
+                )
+                .blendMode(.multiply)
+
             backgroundShape
                 .inset(by: pixelLength)
                 .stroke(.black.opacity(1.0 / 6.0), lineWidth: pixelLength)
