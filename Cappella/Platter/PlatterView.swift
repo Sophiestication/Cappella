@@ -3,7 +3,6 @@
 //
 
 import SwiftUI
-import Inferno
 
 struct PlatterView<Content>: View where Content: View {
     private let content: () -> Content
@@ -287,89 +286,6 @@ fileprivate extension View {
                 )
             }
         }
-    }
-}
-
-fileprivate extension View {
-    func blur(
-        _ placement: PlatterContentPlacement = .header,
-        using platterGeometry: PlatterGeometry?
-    ) -> some View {
-        self.variableBlur(
-            radius: 64.0,
-            maxSampleCount: 30,
-            verticalPassFirst: true
-        ) { geometry, context in
-            guard let platterGeometry else { return }
-
-            let maskRect = makeMaskRect(
-                for: placement,
-                geometry,
-                platterGeometry
-            )
-
-            if placement == .header {
-                let h = platterGeometry.headerDimension
-                let radius = lerp(start: 0.0, end: 10.0, t: min(maskRect.minY, h) / h)
-                context.addFilter(.blur(radius: radius))
-            } else {
-                let h = platterGeometry.footerDimension
-                let radius = lerp(start: 12.0, end: 0.0, t: min(maskRect.minY, h) / h)
-                context.addFilter(.blur(radius: radius))
-            }
-
-            let startPoint = placement == .header ?
-                maskRect.origin : CGPoint(x: 0.0, y: maskRect.maxY)
-            let endPoint = placement == .header ?
-                CGPoint(x: 0.0, y: maskRect.maxY) : maskRect.origin
-
-            let shading = GraphicsContext.Shading.linearGradient(
-                Gradient(colors: [.white, .clear]),
-                startPoint: startPoint,
-                endPoint: endPoint
-            )
-
-            context.fill(
-                Path(maskRect),
-                with: shading
-            )
-        }
-    }
-
-    private func makeMaskRect(
-        for placement: PlatterContentPlacement,
-        _ geometry: GeometryProxy,
-        _ platterGeometry: PlatterGeometry
-    ) -> CGRect {
-        guard let bounds = geometry.bounds(of: .scrollView(axis: .vertical)) else {
-            return .zero
-        }
-
-        var rect = geometry.frame(in: .local)
-
-        if placement == .header {
-            rect = rect.offsetBy(dx: 0.0, dy: -platterGeometry.headerDimension)
-        }
-
-        let height = placement == .header ?
-            platterGeometry.headerDimension * 0.80 :
-            platterGeometry.footerDimension
-
-        var maskRect = CGRect(
-            x: rect.minX + bounds.minX,
-            y: rect.minY + max(bounds.minY, 0.0),
-            width: rect.width,
-            height: height
-        )
-
-        if placement == .docked {
-            maskRect = maskRect.offsetBy(
-                dx: 0.0,
-                dy: platterGeometry.contentFrame.minY + bounds.height
-            )
-        }
-
-        return maskRect
     }
 }
 
