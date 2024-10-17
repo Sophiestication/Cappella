@@ -27,9 +27,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Amarante&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cabin:wght@700&display=swap">
 	
-	<!-- Fathom - beautiful, simple website analytics -->
 	<script src="https://cdn.usefathom.com/script.js" data-site="QBTYMLPJ" defer></script>
-	<!-- / Fathom -->
 
 	<style>
 		body {
@@ -52,7 +50,7 @@
 			height: 640px;
 			background: url("images/top-background.png") repeat-x top 98px center,
 						url("images/hero.png") no-repeat center,
-			            linear-gradient(to bottom, #010016, transparent 80%),
+						linear-gradient(to bottom, #010016, transparent 80%),
 						#001b60;
 			background-size: 48px auto, auto 640px;
 		}
@@ -75,7 +73,6 @@
 			padding: 0 10px;
 			max-width: 340pt;
 			text-align: center;
-			text-shadow: rgba(0, 0, 0, 50%) 0 1px 1px;
 		}
 		#intro p:first-of-type {
 			margin-top: 90px;
@@ -94,7 +91,7 @@
 			text-transform: uppercase;
 		}
 		#join {
-			margin-bottom: 5em;
+			margin-bottom: 4em;
 		}
 		#join h2 {
 			text-transform: uppercase;
@@ -135,7 +132,6 @@
 		form input[type="submit"] {
 			color: #fff;
 			background: linear-gradient(to bottom, #bc4cf6, #8018c4);
-			
 		}
 		footer {
 			font-size: smaller;
@@ -146,11 +142,11 @@
 		footer p {
 			margin: 0.5em 0;
 		}
-		a {
+		footer a {
 			color: #b38dc4;
 			text-decoration: none;
 		}
-		a:hover {
+		footer a:hover {
 			color: #1d002a;
 			background: #b38dc4;
 			padding: 0 0.25em;
@@ -164,7 +160,26 @@
 			display: none !important;
 		}
 	</style>
-	<!-- Include tracking code for Google Analytics here -->
+	
+	<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		function hasParameter(name) {
+			let url = window.location.href;
+			name = name.replace(/[\[\]]/g, '\\$&');
+			let regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+			return regex.test(url);
+		}
+	
+		if (hasParameter('wallpaper')) {
+			const link = document.createElement('a');
+			link.href = 'Night-of-the-Living-App.jpeg';
+			link.download = 'Night-of-the-Living-App.jpeg';
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
+		}
+	});
+	</script>
 </head>
 <body>
 	<div class="container">
