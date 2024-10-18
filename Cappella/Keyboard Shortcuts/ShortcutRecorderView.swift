@@ -230,7 +230,7 @@ fileprivate struct ShortcutRecorderBackgroundView: View {
                 .innerShadow(
                     color: isFocused ?
                         .accentColor.opacity(1.0 / 3.0) :
-                        .black.opacity(1.0 / 4.0),
+                        .black.opacity(colorScheme == .dark ? 1.0 / 4.0 : 1.0 / 8.0),
                     radius: 3.0,
                     x: 0,
                     y: -1.0

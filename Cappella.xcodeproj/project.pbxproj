@@ -14,6 +14,7 @@
 		E638D4912CB841C800C6FBDA /* StatusItemMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E638D4902CB841C800C6FBDA /* StatusItemMenu.swift */; };
 		E638D4A02CB91F6B00C6FBDA /* AboutBoxWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E638D49F2CB91F6B00C6FBDA /* AboutBoxWindow.swift */; };
 		E638D4A32CB9B4CB00C6FBDA /* InnerShadowModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E638D4A22CB9B4CB00C6FBDA /* InnerShadowModifier.swift */; };
+		E638D4B22CBE476000C6FBDA /* PlayerPositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E638D4B12CBE476000C6FBDA /* PlayerPositionView.swift */; };
 		E64048E72C75282C007CEB55 /* Rubberband.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64048E62C75282C007CEB55 /* Rubberband.swift */; };
 		E6485A3D2C904FEC00F4040D /* GlobalKeyboardShortcutSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6485A3C2C904FEC00F4040D /* GlobalKeyboardShortcutSettings.swift */; };
 		E6485A512C90B8B300F4040D /* GlobalKeyboardShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6485A502C90B8B300F4040D /* GlobalKeyboardShortcut.swift */; };
@@ -70,7 +71,6 @@
 		E6ADDBF22C3532AF0088D9C8 /* PlatterWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADDBF12C3532AF0088D9C8 /* PlatterWindow.swift */; };
 		E6C15E412C970CC700C95CD9 /* KeyboardShortcutBezel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C15E402C970CC700C95CD9 /* KeyboardShortcutBezel.swift */; };
 		E6C15E442C9876DB00C95CD9 /* CappellaMusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C15E432C9876DB00C95CD9 /* CappellaMusicPlayer.swift */; };
-		E6D789332C87598100C495DE /* Inferno in Frameworks */ = {isa = PBXBuildFile; productRef = E6D789322C87598100C495DE /* Inferno */; };
 		E6D789352C877E2600C495DE /* PlatterButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D789342C877E2600C495DE /* PlatterButtonStyle.swift */; };
 		E6F11E592C56A9BA00AA45FC /* PlatterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F11E582C56A9BA00AA45FC /* PlatterView.swift */; };
 /* End PBXBuildFile section */
@@ -108,6 +108,7 @@
 		E638D4902CB841C800C6FBDA /* StatusItemMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemMenu.swift; sourceTree = "<group>"; };
 		E638D49F2CB91F6B00C6FBDA /* AboutBoxWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutBoxWindow.swift; sourceTree = "<group>"; };
 		E638D4A22CB9B4CB00C6FBDA /* InnerShadowModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerShadowModifier.swift; sourceTree = "<group>"; };
+		E638D4B12CBE476000C6FBDA /* PlayerPositionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPositionView.swift; sourceTree = "<group>"; };
 		E64048E62C75282C007CEB55 /* Rubberband.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rubberband.swift; sourceTree = "<group>"; };
 		E6485A3C2C904FEC00F4040D /* GlobalKeyboardShortcutSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalKeyboardShortcutSettings.swift; sourceTree = "<group>"; };
 		E6485A502C90B8B300F4040D /* GlobalKeyboardShortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalKeyboardShortcut.swift; sourceTree = "<group>"; };
@@ -186,7 +187,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E69091882CA1F3E5007F4188 /* Algorithms in Frameworks */,
-				E6D789332C87598100C495DE /* Inferno in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				E6A81D112C4177C300DAC24B /* NowPlayingView.swift */,
+				E638D4B12CBE476000C6FBDA /* PlayerPositionView.swift */,
 			);
 			path = "Now Playing";
 			sourceTree = "<group>";
@@ -533,8 +534,6 @@
 			);
 			mainGroup = E666111E2C2C1782007839E6;
 			packageReferences = (
-				E6D789302C8757D400C495DE /* XCRemoteSwiftPackageReference "Inferno" */,
-				E69091842C9EA76B007F4188 /* XCRemoteSwiftPackageReference "Wave" */,
 				E69091862CA1F3E5007F4188 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 			);
 			productRefGroup = E66611282C2C1782007839E6 /* Products */;
@@ -586,6 +585,7 @@
 				E67B5CFE2C8D8CC000E47348 /* NSEvent+Additions.swift in Sources */,
 				E684138A2C5899E20019FB15 /* MusicSearch.swift in Sources */,
 				E691D1FC2CA564FA00FD46BE /* MusicLibrary+Additions.swift in Sources */,
+				E638D4B22CBE476000C6FBDA /* PlayerPositionView.swift in Sources */,
 				E691D2712CA8A90100FD46BE /* PlatterMenuButtonStyle.swift in Sources */,
 				E6485A5A2C9427E200F4040D /* GlobalKeyboardShortcutHandler.swift in Sources */,
 				E653D1DE2C89EC15003AAE1E /* ApplicationDelegate.swift in Sources */,
@@ -937,28 +937,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E69091842C9EA76B007F4188 /* XCRemoteSwiftPackageReference "Wave" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jtrivedi/Wave.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.3.2;
-			};
-		};
 		E69091862CA1F3E5007F4188 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-algorithms.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.2.0;
-			};
-		};
-		E6D789302C8757D400C495DE /* XCRemoteSwiftPackageReference "Inferno" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/twostraws/Inferno.git";
-			requirement = {
-				branch = main;
-				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -968,11 +952,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E69091862CA1F3E5007F4188 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
 			productName = Algorithms;
-		};
-		E6D789322C87598100C495DE /* Inferno */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E6D789302C8757D400C495DE /* XCRemoteSwiftPackageReference "Inferno" */;
-			productName = Inferno;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

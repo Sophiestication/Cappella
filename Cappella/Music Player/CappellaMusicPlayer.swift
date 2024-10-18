@@ -5,6 +5,7 @@
 import Foundation
 import SwiftUI
 import MusicKit
+import Combine
 
 @Observable
 final class CappellaMusicPlayer {
@@ -15,6 +16,23 @@ final class CappellaMusicPlayer {
     typealias State = MusicPlayerType.State
     var playbackState: State { player.state }
 
+    var playbackTime: TimeInterval = .nan
+    var playbackDuration: TimeInterval {
+        guard let item = currentEntry?.item else { return .nan }
+
+        var duration: TimeInterval? = nil
+
+        switch item {
+        case .song(let song):
+            duration = song.duration
+            break
+        default:
+            break
+        }
+
+        return duration ?? .nan
+    }
+
     typealias Queue = MusicPlayerType.Queue
     var queue: Queue { player.queue }
 
@@ -24,6 +42,12 @@ final class CappellaMusicPlayer {
     typealias PressPhases = KeyPress.Phases
 
     private(set) var scheduledPlaybackStatus: MusicPlayerType.PlaybackStatus = .stopped
+
+    private var timerCancellable: AnyCancellable?
+
+    init() {
+        startPlaybackTimeObservation()
+    }
 
     typealias KeyboardShortcutEvent = GlobalKeyboardShortcutHandler.Event
     func perform(using event: KeyboardShortcutEvent) {
@@ -139,6 +163,10 @@ final class CappellaMusicPlayer {
         }
     }
 
+    func seek(to timeInterval: TimeInterval) {
+        player.playbackTime = timeInterval
+    }
+
     func toggleShuffle() {
         toggleShuffle(using: .down)
     }
@@ -185,6 +213,19 @@ final class CappellaMusicPlayer {
         }
 
         playbackState.repeatMode = newRepeatMode
+    }
+
+    private func startPlaybackTimeObservation() {
+        timerCancellable = Timer.publish(every: 0.5, on: .main, in: .default)
+            .autoconnect()
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.playbackTime = self.player.playbackTime
+            }
+    }
+
+    func stopPlaybackTimeObservation() {
+        timerCancellable?.cancel()
     }
 }
 

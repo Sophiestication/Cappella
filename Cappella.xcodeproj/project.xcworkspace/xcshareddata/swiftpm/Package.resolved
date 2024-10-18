@@ -1,15 +1,6 @@
 {
-  "originHash" : "ed9b5982e40a1e1487772830cc4f6f4d66a9fdb5aad53b1df0966cd4c7887afd",
+  "originHash" : "86635982bfc3fdf16c7186cd33e77b4dc10a24ff9127aaee5f4f0a3676ae2966",
   "pins" : [
-    {
-      "identity" : "inferno",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/twostraws/Inferno.git",
-      "state" : {
-        "branch" : "main",
-        "revision" : "9c0941c91b9dc0e22e471bda0ac89f6e676d59b1"
-      }
-    },
     {
       "identity" : "swift-algorithms",
       "kind" : "remoteSourceControl",
@@ -26,15 +17,6 @@
       "state" : {
         "revision" : "0a5bc04095a675662cf24757cc0640aa2204253b",
         "version" : "1.0.2"
-      }
-    },
-    {
-      "identity" : "wave",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/jtrivedi/Wave.git",
-      "state" : {
-        "revision" : "d95ce41fa52c42d9790388e9086c892930e9e48b",
-        "version" : "0.3.2"
       }
     }
   ],

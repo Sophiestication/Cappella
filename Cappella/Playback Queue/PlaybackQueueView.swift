@@ -33,7 +33,16 @@ struct PlaybackQueueView: View {
                             }
 //                            Text("\(collection.subtitle) – \(collection.title)")
                         } icon: {
-                            ArtworkView(length: 40)
+                            HStack {
+                                HStack {
+                                    reorderControl
+                                    deleteControl
+                                }
+                                .frame(width: leadingPadding - 10.0, height: 28.0)
+
+                                ArtworkView(length: 40)
+                            }
+                            .padding(.trailing, 5.0)
                         }
                     }
                     .tag(entry.id)
@@ -43,5 +52,35 @@ struct PlaybackQueueView: View {
                 .labelsVisibility(.hidden)
             }
         }
+    }
+
+    @ViewBuilder
+    private var reorderControl: some View {
+        Button(action: {
+
+        }, label: {
+            Image("reorderTemplate")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+        })
+    }
+
+    @ViewBuilder
+    private var deleteControl: some View {
+        Button(action: {
+
+        }, label: {
+            Image("deleteTemplate")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+        })
+    }
+
+    private var leadingPadding: CGFloat {
+        guard let platterGeometry else {
+            return 0.0
+        }
+
+        return platterGeometry.contentFrame.width * 0.20
     }
 }

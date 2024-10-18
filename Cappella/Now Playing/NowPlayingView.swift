@@ -17,6 +17,8 @@ struct NowPlayingView: View {
     @ObservedObject private var playbackState: MusicPlayerType.State
     @ObservedObject private var queue: MusicPlayerType.Queue
 
+    @State private var playerPosition: Double = .zero
+
     init(using musicPlayer: MusicPlayerType) {
         self.musicPlayer = musicPlayer
         self.playbackState = musicPlayer.playbackState
@@ -34,39 +36,87 @@ struct NowPlayingView: View {
         }
     }
 
+    private func format(_ playbackTime: TimeInterval) -> String {
+        let formatter = DateComponentsFormatter()
+
+        formatter.allowedUnits = playbackTime >= 3600 ?
+            [.hour, .minute, .second] :
+            [.minute, .second]
+        formatter.unitsStyle = .positional
+        formatter.zeroFormattingBehavior = .pad
+
+        return formatter.string(from: playbackTime) ?? "0:00"
+    }
+
     @ViewBuilder
     private var content: some View {
-        HStack {
-            if let entry = queue.currentEntry {
-                Label {
-                    Text("\(entry.title)")
+        VStack(spacing: 20.0) {
+            HStack {
+                if let entry = queue.currentEntry {
+                    Label {
+                        Text("\(entry.title)")
 
-                    if let subtitle = entry.subtitle {
-                        Text("\(subtitle)")
+                        if let subtitle = entry.subtitle {
+                            Text("\(subtitle)")
+                        }
+                    } icon: {
+                        ArtworkView(length: 40)
                     }
-                } icon: {
-                    ArtworkView(length: 40)
+                    .environment(\.artworkProvider, entry.artwork)
+
+                    .lineLimit(1)
+
+                    .font(.system(size: 13))
+                    .labelStyle(PlatterMenuLabelStyle())
+
+                    .padding(.trailing, 5.0)
                 }
-                .environment(\.artworkProvider, entry.artwork)
 
-                .lineLimit(1)
+                Spacer()
 
-                .font(.system(size: 13))
-                .labelStyle(PlatterMenuLabelStyle())
-
-                .padding(.trailing, 5.0)
+                playbackControls
+                    .disabled(queue.currentEntry == nil)
             }
 
-            Spacer()
+            PlayerPositionView(
+                $playerPosition, 
+                action: { position, shouldCommit in
+                    updatePlaybackTime(from: position, shouldCommit: shouldCommit)
+                },
+                leadingLabel: {
+                    Text("\(format(musicPlayer.playbackTime))")
+                },
+                trailingLabel: {
+                    Text("\(format(musicPlayer.playbackDuration))")
+                }
+            )
+        }
 
-            playbackControls
-                .disabled(queue.currentEntry == nil)
+        .onChange(of: musicPlayer.playbackTime, initial: true) { _, newValue in
+            guard let _ = queue.currentEntry else {
+                playerPosition = .zero
+                return
+            }
+
+            let duration = musicPlayer.playbackDuration
+            playerPosition = duration * newValue
         }
 
         .padding(.horizontal, 20.0)
         .padding(.vertical, 15.0)
 
         .contentShape(.interaction, ContainerRelativeShape())
+    }
+
+    private func updatePlaybackTime(from newPosition: Double, shouldCommit: Bool) {
+        guard let _ = queue.currentEntry else { return }
+
+        let duration = musicPlayer.playbackDuration
+        let playbackTime = duration * newPosition
+
+        if shouldCommit {
+            musicPlayer.seek(to: playbackTime)
+        }
     }
 
     @ViewBuilder
