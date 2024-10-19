@@ -46,7 +46,7 @@ final class CappellaMusicPlayer {
     private var timerCancellable: AnyCancellable?
 
     init() {
-        startPlaybackTimeObservation()
+        updatePlaybackTime(every: 1.0)
     }
 
     typealias KeyboardShortcutEvent = GlobalKeyboardShortcutHandler.Event
@@ -117,17 +117,21 @@ final class CappellaMusicPlayer {
         let playbackStatus = playbackState.playbackStatus
 
         if phases == .up {
+            updatePlaybackTime(every: 1.0)
+
             if playbackStatus == .seekingForward {
                 player.endSeeking()
                 player.pause()
                 schedulePlay()
             } else {
+                playbackTime = .zero
+
                 Task {
                     try await MusicPlayerType.shared.skipToNextEntry()
                 }
             }
         } else if phases == .down {
-
+            updatePlaybackTime(every: 0.1)
         } else if phases.contains(.repeat) {
             if playbackStatus != .seekingForward {
                 scheduledPlaybackStatus = .seekingForward
@@ -144,17 +148,21 @@ final class CappellaMusicPlayer {
         let playbackStatus = playbackState.playbackStatus
 
         if phases == .up {
+            updatePlaybackTime(every: 1.0)
+
             if playbackStatus == .seekingBackward {
                 player.endSeeking()
                 player.pause()
                 schedulePlay()
             } else {
+                playbackTime = .zero
+
                 Task {
                     try await MusicPlayerType.shared.skipToPreviousEntry()
                 }
             }
         } else if phases == .down {
-
+            updatePlaybackTime(every: 0.1)
         } else if phases.contains(.repeat) {
             if playbackStatus != .seekingBackward {
                 scheduledPlaybackStatus = .seekingBackward
@@ -165,6 +173,7 @@ final class CappellaMusicPlayer {
 
     func seek(to timeInterval: TimeInterval) {
         player.playbackTime = timeInterval
+        playbackTime = timeInterval
     }
 
     func toggleShuffle() {
@@ -215,12 +224,18 @@ final class CappellaMusicPlayer {
         playbackState.repeatMode = newRepeatMode
     }
 
-    private func startPlaybackTimeObservation() {
-        timerCancellable = Timer.publish(every: 0.5, on: .main, in: .default)
+    private func updatePlaybackTime(every: TimeInterval) {
+        if let timerCancellable {
+            timerCancellable.cancel()
+        }
+
+        timerCancellable = Timer.publish(every: every, on: .main, in: .default)
             .autoconnect()
             .sink { [weak self] _ in
                 guard let self = self else { return }
                 self.playbackTime = self.player.playbackTime
+
+                print("\(self.player.playbackTime)")
             }
     }
 

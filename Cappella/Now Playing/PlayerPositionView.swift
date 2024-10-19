@@ -1,32 +1,27 @@
+//
 // Copyright © 2006-2024 Sophiestication Software. All rights reserved.
 //
 
 import SwiftUI
 
-struct PlayerPositionView<
-    LeadingLabel: View,
-    TrailingLabel: View
->: View {
-    private let updateAction: (Double, Bool) -> Void
+struct PlayerPositionView: View {
+    typealias MusicPlayerType = CappellaMusicPlayer
+    private let musicPlayer: MusicPlayerType
 
-    @Binding var currentPosition: Double
+    @ObservedObject private var playbackState: MusicPlayerType.State
+    @ObservedObject private var queue: MusicPlayerType.Queue
+
+    @State private var currentPosition: Double = .zero
+
     @State private var draggingPosition: Double = .zero
+    @State private var isDragging: Bool = false
 
-    @State private var pointerLocation: CGPoint? = nil
+    @AppStorage("remainingDurationShown") private var remainingDurationShown: Bool = true
 
-    @ViewBuilder private var leadingLabel: LeadingLabel
-    @ViewBuilder private var trailingLabel: TrailingLabel
-
-    init(
-        _ currentPosition: Binding<Double>,
-        action updateAction: @escaping (Double, Bool) -> Void,
-        @ViewBuilder leadingLabel: () -> LeadingLabel,
-        @ViewBuilder trailingLabel: () -> TrailingLabel
-    ) {
-        self._currentPosition = currentPosition
-        self.updateAction = updateAction
-        self.leadingLabel = leadingLabel()
-        self.trailingLabel = trailingLabel()
+    init(using musicPlayer: MusicPlayerType) {
+        self.musicPlayer = musicPlayer
+        self.playbackState = musicPlayer.playbackState
+        self.queue = musicPlayer.queue
     }
 
     var body: some View {
@@ -34,38 +29,33 @@ struct PlayerPositionView<
             GeometryReader { geometry in
                 background
                     .overlay(
-                        progress(for: geometry.size.width * draggingPosition),
+                        progress(for: geometry.size.width * visiblePosition),
                         alignment: .leading
                     )
                     .mask {
                         Capsule()
                     }
-
-                    .onContinuousHover { phase in
-                        switch phase {
-                        case .active(let location):
-                            pointerLocation = location
-                        case .ended:
-                            pointerLocation = nil
-                        }
-                    }
-                    .onLongPressGesture(minimumDuration: 0.0) {
-                        guard let pointerLocation else { return }
-                        updatePosition(from: pointerLocation, geometry)
-                    }
-                    .onTapGesture { pointerLocation in
-                        updatePosition(from: pointerLocation, geometry, shouldCommit: true)
-                    }
-                    .simultaneousGesture(makeScrubGesture(for: geometry))
+                    .gesture(makeScrubGesture(for: geometry))
             }
             .frame(height: 8.0)
 
             HStack {
-                leadingLabel
+                Text("\(format(musicPlayer.playbackTime))")
                 Spacer()
                 trailingLabel
             }
             .font(.system(size: 12.0, weight: .medium, design: .rounded))
+            .monospacedDigit()
+        }
+
+        .onChange(of: musicPlayer.playbackTime, initial: true) { _, newValue in
+            guard let _ = queue.currentEntry else {
+                currentPosition = .zero
+                return
+            }
+
+            let duration = musicPlayer.playbackDuration
+            currentPosition = newValue / duration
         }
     }
 
@@ -88,11 +78,13 @@ struct PlayerPositionView<
     }
 
     private func makeScrubGesture(for geometry: GeometryProxy) -> some Gesture {
-        DragGesture()
+        DragGesture(minimumDistance: 0)
             .onChanged {
+                isDragging = true
                 updatePosition(from:$0.location, geometry)
             }
             .onEnded {
+                isDragging = false
                 updatePosition(from:$0.location, geometry, shouldCommit: true)
             }
     }
@@ -105,24 +97,56 @@ struct PlayerPositionView<
         let newPosition = location.x / geometry.size.width
         self.draggingPosition = max(0.0, min(newPosition, 1.0))
 
-        updateAction(self.draggingPosition, shouldCommit)
+        if shouldCommit {
+            let newPlaybackTime = musicPlayer.playbackDuration * newPosition
+            musicPlayer.seek(to: newPlaybackTime)
+        }
+    }
+
+    private var visiblePosition: Double {
+        isDragging ?
+            draggingPosition :
+            currentPosition
+    }
+
+    private var visiblePlaybackTime: TimeInterval {
+        isDragging ?
+            draggingPosition * musicPlayer.playbackDuration :
+            musicPlayer.playbackTime
+    }
+
+    @ViewBuilder
+    private var trailingLabel: some View {
+        Text(trailingLabelString)
+            .onTapGesture {
+                remainingDurationShown.toggle()
+            }
+    }
+
+    private var trailingLabelString: String {
+        if remainingDurationShown {
+            format(musicPlayer.playbackTime - musicPlayer.playbackDuration)
+        } else {
+            format(musicPlayer.playbackDuration)
+        }
+    }
+
+    private func format(_ playbackTime: TimeInterval) -> String {
+        let formatter = DateComponentsFormatter()
+
+        formatter.allowedUnits = playbackTime >= 3600 ?
+            [.hour, .minute, .second] :
+            [.minute, .second]
+        formatter.unitsStyle = .positional
+        formatter.zeroFormattingBehavior = .pad
+
+        return formatter.string(from: playbackTime) ?? "0:00"
     }
 }
 
 #Preview(traits: .fixedLayout(width: 400.0, height: 200.0)) {
     @Previewable @State var currentPosition: Double = 0.33
 
-    PlayerPositionView(
-        $currentPosition,
-        action: { _, _ in
-
-        },
-        leadingLabel: {
-            Text("1:34")
-        },
-        trailingLabel: {
-            Text("-2:58")
-        }
-    )
-    .scenePadding()
+    PlayerPositionView(using: CappellaMusicPlayer())
+        .scenePadding()
 }
