@@ -19,39 +19,41 @@ struct PlaybackQueueView: View {
     @Environment(\.playbackQueue) var playbackQueue
 
     var body: some View {
-        PlatterMenu(selection: $selection) {
-            ForEach(queue.entries) { entry in
-                LabeledContent {
-                    Button {
+        EmptyView()
 
-                    } label: {
-                        Label {
-                            Text("\(entry.title)")
-
-                            if let subtitle = entry.subtitle {
-                                Text("\(subtitle)")
-                            }
-//                            Text("\(collection.subtitle) – \(collection.title)")
-                        } icon: {
-                            HStack {
-                                HStack {
-                                    reorderControl
-                                    deleteControl
-                                }
-                                .frame(width: leadingPadding - 10.0, height: 28.0)
-
-                                ArtworkView(length: 40)
-                            }
-                            .padding(.trailing, 5.0)
-                        }
-                    }
-                    .tag(entry.id)
-                } label: {
-                }
-                .environment(\.artworkProvider, entry.artwork)
-                .labelsVisibility(.hidden)
-            }
-        }
+//        PlatterMenu(selection: $selection) {
+//            ForEach(queue.entries) { entry in
+//                LabeledContent {
+//                    Button {
+//
+//                    } label: {
+//                        Label {
+//                            Text("\(entry.title)")
+//
+//                            if let subtitle = entry.subtitle {
+//                                Text("\(subtitle)")
+//                            }
+////                            Text("\(collection.subtitle) – \(collection.title)")
+//                        } icon: {
+//                            HStack {
+//                                HStack {
+//                                    reorderControl
+//                                    deleteControl
+//                                }
+//                                .frame(width: leadingPadding - 10.0, height: 28.0)
+//
+//                                ArtworkView(length: 40)
+//                            }
+//                            .padding(.trailing, 5.0)
+//                        }
+//                    }
+//                    .tag(entry.id)
+//                } label: {
+//                }
+//                .environment(\.artworkProvider, entry.artwork)
+//                .labelsVisibility(.hidden)
+//            }
+//        }
     }
 
     @ViewBuilder
