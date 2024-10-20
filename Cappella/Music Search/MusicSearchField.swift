@@ -34,6 +34,9 @@ struct MusicSearchField: View {
             .disableAutocorrection(true)
             .textFieldStyle(.plain)
             .focused($searchFieldFocused)
+            .onAppear {
+                searchFieldFocused = true
+            }
         }
         .padding(.vertical, 8.0)
         .background (
