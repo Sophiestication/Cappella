@@ -8,6 +8,8 @@ struct PlayerPositionView: View {
     typealias MusicPlayerType = CappellaMusicPlayer
     private let musicPlayer: MusicPlayerType
 
+    @StateObject private var playerPosition = PlayerPosition()
+
     @ObservedObject private var playbackState: MusicPlayerType.State
     @ObservedObject private var queue: MusicPlayerType.Queue
 
@@ -29,7 +31,7 @@ struct PlayerPositionView: View {
             GeometryReader { geometry in
                 background
                     .overlay(
-                        progress(for: geometry.size.width * visiblePosition),
+                        progress(for: geometry),
                         alignment: .leading
                     )
                     .mask {
@@ -40,7 +42,7 @@ struct PlayerPositionView: View {
             .frame(height: 8.0)
 
             HStack {
-                Text("\(format(musicPlayer.playbackTime))")
+                Text("\(format(playerPosition.playbackTime))")
                 Spacer()
                 trailingLabel
             }
@@ -48,7 +50,7 @@ struct PlayerPositionView: View {
             .monospacedDigit()
         }
 
-        .onChange(of: musicPlayer.playbackTime, initial: true) { _, newValue in
+        .onChange(of: playerPosition.playbackTime, initial: true) { oldValue, newValue in
             guard let _ = queue.currentEntry else {
                 currentPosition = .zero
                 return
@@ -67,10 +69,14 @@ struct PlayerPositionView: View {
     }
 
     @ViewBuilder
-    private func progress(for width: CGFloat) -> some View {
+    private func progress(for geometry: GeometryProxy) -> some View {
         Rectangle()
             .fill(.tint)
-            .frame(width: width)
+            .frame(width: width(for: geometry))
+    }
+
+    private func width(for geometry: GeometryProxy) -> CGFloat {
+        visiblePosition.isNaN ? 0.0 : geometry.size.width * visiblePosition
     }
 
     private var contentShape: some Shape {
@@ -99,7 +105,7 @@ struct PlayerPositionView: View {
 
         if shouldCommit {
             let newPlaybackTime = musicPlayer.playbackDuration * newPosition
-            musicPlayer.seek(to: newPlaybackTime)
+            playerPosition.seek(to: newPlaybackTime)
         }
     }
 
@@ -112,7 +118,7 @@ struct PlayerPositionView: View {
     private var visiblePlaybackTime: TimeInterval {
         isDragging ?
             draggingPosition * musicPlayer.playbackDuration :
-            musicPlayer.playbackTime
+            playerPosition.playbackTime
     }
 
     @ViewBuilder
@@ -125,13 +131,15 @@ struct PlayerPositionView: View {
 
     private var trailingLabelString: String {
         if remainingDurationShown {
-            format(musicPlayer.playbackTime - musicPlayer.playbackDuration)
+            "-\(format(playerPosition.playbackDuration - playerPosition.playbackTime))"
         } else {
-            format(musicPlayer.playbackDuration)
+            format(playerPosition.playbackDuration)
         }
     }
 
     private func format(_ playbackTime: TimeInterval) -> String {
+        guard !playbackTime.isNaN else { return "--:--" }
+
         let formatter = DateComponentsFormatter()
 
         formatter.allowedUnits = playbackTime >= 3600 ?

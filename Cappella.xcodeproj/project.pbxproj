@@ -36,6 +36,7 @@
 		E666112D2C2C1783007839E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E666112C2C2C1783007839E6 /* Assets.xcassets */; };
 		E666113B2C2C1783007839E6 /* PlaybackQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666113A2C2C1783007839E6 /* PlaybackQueueTests.swift */; };
 		E667CD7C2C560841000718FC /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E667CD7B2C560841000718FC /* VisualEffectView.swift */; };
+		E67240392CC4E1EB008FC2B3 /* PlayerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67240382CC4E1EB008FC2B3 /* PlayerPosition.swift */; };
 		E67B5CFE2C8D8CC000E47348 /* NSEvent+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B5CFD2C8D8CC000E47348 /* NSEvent+Additions.swift */; };
 		E67B5D002C8EDEDF00E47348 /* SettingsGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B5CFF2C8EDEDF00E47348 /* SettingsGroupBoxStyle.swift */; };
 		E67B5D022C8EE3B200E47348 /* SettingsFormStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B5D012C8EE3B200E47348 /* SettingsFormStyle.swift */; };
@@ -46,7 +47,6 @@
 		E69091812C9C7311007F4188 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E69091802C9C7311007F4188 /* Localizable.xcstrings */; };
 		E69091832C9D7825007F4188 /* DockTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69091822C9D7825007F4188 /* DockTileView.swift */; };
 		E69091882CA1F3E5007F4188 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = E69091872CA1F3E5007F4188 /* Algorithms */; };
-		E690919E2CA54D5D007F4188 /* PlaybackQueueMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E690919D2CA54D5D007F4188 /* PlaybackQueueMenuItem.swift */; };
 		E691D1FC2CA564FA00FD46BE /* MusicLibrary+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691D1FB2CA564FA00FD46BE /* MusicLibrary+Additions.swift */; };
 		E691D1FE2CA57A9E00FD46BE /* MusicLibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691D1FD2CA57A9E00FD46BE /* MusicLibraryTests.swift */; };
 		E691D2412CA5A1F900FD46BE /* ArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691D2402CA5A1F900FD46BE /* ArtworkView.swift */; };
@@ -139,6 +139,7 @@
 		E66611362C2C1783007839E6 /* CappellaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CappellaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E666113A2C2C1783007839E6 /* PlaybackQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackQueueTests.swift; sourceTree = "<group>"; };
 		E667CD7B2C560841000718FC /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
+		E67240382CC4E1EB008FC2B3 /* PlayerPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPosition.swift; sourceTree = "<group>"; };
 		E67B5CFD2C8D8CC000E47348 /* NSEvent+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSEvent+Additions.swift"; sourceTree = "<group>"; };
 		E67B5CFF2C8EDEDF00E47348 /* SettingsGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGroupBoxStyle.swift; sourceTree = "<group>"; };
 		E67B5D012C8EE3B200E47348 /* SettingsFormStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFormStyle.swift; sourceTree = "<group>"; };
@@ -148,7 +149,6 @@
 		E690917D2C9C6922007F4188 /* DockTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockTile.swift; sourceTree = "<group>"; };
 		E69091802C9C7311007F4188 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		E69091822C9D7825007F4188 /* DockTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockTileView.swift; sourceTree = "<group>"; };
-		E690919D2CA54D5D007F4188 /* PlaybackQueueMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackQueueMenuItem.swift; sourceTree = "<group>"; };
 		E691D1F92CA5612A00FD46BE /* Development.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Development.xcassets; sourceTree = "<group>"; };
 		E691D1FB2CA564FA00FD46BE /* MusicLibrary+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MusicLibrary+Additions.swift"; sourceTree = "<group>"; };
 		E691D1FD2CA57A9E00FD46BE /* MusicLibraryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicLibraryTests.swift; sourceTree = "<group>"; };
@@ -329,6 +329,7 @@
 			children = (
 				E6A81D112C4177C300DAC24B /* NowPlayingView.swift */,
 				E638D4B12CBE476000C6FBDA /* PlayerPositionView.swift */,
+				E67240382CC4E1EB008FC2B3 /* PlayerPosition.swift */,
 			);
 			path = "Now Playing";
 			sourceTree = "<group>";
@@ -388,7 +389,6 @@
 			children = (
 				E682036F2C80CC6F00294A52 /* PlaybackQueue.swift */,
 				E682036C2C80BE4A00294A52 /* PlaybackQueueView.swift */,
-				E690919D2CA54D5D007F4188 /* PlaybackQueueMenuItem.swift */,
 			);
 			path = "Playback Queue";
 			sourceTree = "<group>";
@@ -598,6 +598,7 @@
 				E653D1E02C89EDC0003AAE1E /* SettingsView.swift in Sources */,
 				E6283F9A2C41739400158C13 /* ApplicationView.swift in Sources */,
 				E691D2412CA5A1F900FD46BE /* ArtworkView.swift in Sources */,
+				E67240392CC4E1EB008FC2B3 /* PlayerPosition.swift in Sources */,
 				E6485A512C90B8B300F4040D /* GlobalKeyboardShortcut.swift in Sources */,
 				E67B5D002C8EDEDF00E47348 /* SettingsGroupBoxStyle.swift in Sources */,
 				E682036E2C80BE4A00294A52 /* PlaybackQueueView.swift in Sources */,
@@ -605,7 +606,6 @@
 				E66526AA2CB42E86001354A4 /* KeylineView.swift in Sources */,
 				E69091832C9D7825007F4188 /* DockTileView.swift in Sources */,
 				E638D4912CB841C800C6FBDA /* StatusItemMenu.swift in Sources */,
-				E690919E2CA54D5D007F4188 /* PlaybackQueueMenuItem.swift in Sources */,
 				E691D25A2CA6E61000FD46BE /* MenuShadowModifier.swift in Sources */,
 				E638D4A02CB91F6B00C6FBDA /* AboutBoxWindow.swift in Sources */,
 				E6C15E412C970CC700C95CD9 /* KeyboardShortcutBezel.swift in Sources */,
@@ -722,6 +722,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Cappella;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "CoverSutra helps you to find and play albums in your Apple Music Library.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2006-2024 Sophiestication Software. All rights reserved.";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -803,6 +808,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Cappella;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "CoverSutra helps you to find and play albums in your Apple Music Library.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2006-2024 Sophiestication Software. All rights reserved.";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -883,6 +893,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Cappella;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "CoverSutra helps you to find and play albums in your Apple Music Library.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2006-2024 Sophiestication Software. All rights reserved.";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
