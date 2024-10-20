@@ -16,23 +16,6 @@ final class CappellaMusicPlayer {
     typealias State = MusicPlayerType.State
     var playbackState: State { player.state }
 
-    var playbackTime: TimeInterval = .nan
-    var playbackDuration: TimeInterval {
-        guard let item = currentEntry?.item else { return .nan }
-
-        var duration: TimeInterval? = nil
-
-        switch item {
-        case .song(let song):
-            duration = song.duration
-            break
-        default:
-            break
-        }
-
-        return duration ?? .nan
-    }
-
     typealias Queue = MusicPlayerType.Queue
     var queue: Queue { player.queue }
 
@@ -157,11 +140,6 @@ final class CappellaMusicPlayer {
         }
     }
 
-    func seek(to timeInterval: TimeInterval) {
-        player.playbackTime = timeInterval
-        playbackTime = timeInterval
-    }
-
     func toggleShuffle() {
         toggleShuffle(using: .down)
     }
@@ -208,20 +186,6 @@ final class CappellaMusicPlayer {
         }
 
         playbackState.repeatMode = newRepeatMode
-    }
-
-    typealias PlaybackTimePublisher = AnyPublisher<TimeInterval, Never>
-
-    func playbackTime(every: TimeInterval) -> PlaybackTimePublisher {
-        let publisher = Timer.publish(every: every, on: .main, in: .eventTracking)
-            .autoconnect()
-            .map { _ in
-                MusicPlayerType.shared.playbackTime
-            }
-            .share()
-            .eraseToAnyPublisher()
-
-        return publisher
     }
 }
 

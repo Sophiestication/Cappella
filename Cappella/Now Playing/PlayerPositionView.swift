@@ -5,13 +5,7 @@
 import SwiftUI
 
 struct PlayerPositionView: View {
-    typealias MusicPlayerType = CappellaMusicPlayer
-    private let musicPlayer: MusicPlayerType
-
     @StateObject private var playerPosition = PlayerPosition()
-
-    @ObservedObject private var playbackState: MusicPlayerType.State
-    @ObservedObject private var queue: MusicPlayerType.Queue
 
     @State private var currentPosition: Double = .zero
 
@@ -19,12 +13,6 @@ struct PlayerPositionView: View {
     @State private var isDragging: Bool = false
 
     @AppStorage("remainingDurationShown") private var remainingDurationShown: Bool = true
-
-    init(using musicPlayer: MusicPlayerType) {
-        self.musicPlayer = musicPlayer
-        self.playbackState = musicPlayer.playbackState
-        self.queue = musicPlayer.queue
-    }
 
     var body: some View {
         VStack {
@@ -51,12 +39,12 @@ struct PlayerPositionView: View {
         }
 
         .onChange(of: playerPosition.playbackTime, initial: true) { oldValue, newValue in
-            guard let _ = queue.currentEntry else {
+            guard newValue.isNaN == false else {
                 currentPosition = .zero
                 return
             }
 
-            let duration = musicPlayer.playbackDuration
+            let duration = playerPosition.playbackDuration
             currentPosition = newValue / duration
         }
     }
@@ -104,7 +92,7 @@ struct PlayerPositionView: View {
         self.draggingPosition = max(0.0, min(newPosition, 1.0))
 
         if shouldCommit {
-            let newPlaybackTime = musicPlayer.playbackDuration * newPosition
+            let newPlaybackTime = playerPosition.playbackDuration * newPosition
             playerPosition.seek(to: newPlaybackTime)
         }
     }
@@ -117,7 +105,7 @@ struct PlayerPositionView: View {
 
     private var visiblePlaybackTime: TimeInterval {
         isDragging ?
-            draggingPosition * musicPlayer.playbackDuration :
+            draggingPosition * playerPosition.playbackDuration :
             playerPosition.playbackTime
     }
 
@@ -155,6 +143,6 @@ struct PlayerPositionView: View {
 #Preview(traits: .fixedLayout(width: 400.0, height: 200.0)) {
     @Previewable @State var currentPosition: Double = 0.33
 
-    PlayerPositionView(using: CappellaMusicPlayer())
+    PlayerPositionView()
         .scenePadding()
 }

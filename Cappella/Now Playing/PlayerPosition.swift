@@ -43,9 +43,9 @@ final class PlayerPosition: ObservableObject {
             }
             .switchToLatest()
             .merge(with: nowPlayingPublisher())
-//            .map { playbackTime in
-//                playbackTime.rounded()
-//            }
+            .map { playbackTime in
+                playbackTime.rounded(.toNearestOrAwayFromZero)
+            }
             .removeDuplicates()
             .combineLatest(playbackDurationPublisher())
             .sink { [weak self] update in
