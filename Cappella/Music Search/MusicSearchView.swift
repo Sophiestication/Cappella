@@ -23,18 +23,14 @@ struct MusicSearchView: View {
             VStack(
                 spacing: 0.0
             ) {
-                if hasSearchTerm {
-                    PlatterMenu(selection: $menuSelection) {
-                        ForEach(musicSearch.results) { resultItem in
-                            makeView(
-                                for: resultItem,
-                                containerWidth: contentSize.width
-                            )
-                            .padding(.bottom, 10.0)
-                        }
+                PlatterMenu(selection: $menuSelection) {
+                    ForEach(musicSearch.results) { resultItem in
+                        makeView(
+                            for: resultItem,
+                            containerWidth: contentSize.width
+                        )
+                        .padding(.bottom, 10.0)
                     }
-                } else {
-                    PlaybackQueueView()
                 }
             }
             .padding(.horizontal)
@@ -89,8 +85,6 @@ struct MusicSearchView: View {
                 )
                 musicSearch.selection = newSelection
             }
-
-            .platterKeyboardShortcut(using: .musicSearch)
         }
     }
 
