@@ -24,6 +24,7 @@ struct ApplicationView: View {
                 makeDeniedView() // TODO
             }
         }
+        .platterKeyboardShortcut(using: .musicSearch)
     }
 
     @ViewBuilder
