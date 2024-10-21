@@ -33,7 +33,6 @@ struct PlatterView<Content>: View where Content: View {
                     content()
                         .buttonStyle(.platter)
                         .containerRelativeFrame(.horizontal)
-                        .padding(.top, 10.0)
                     makeHeaderView()
                     makeDockedContentView()
                 }
@@ -43,6 +42,7 @@ struct PlatterView<Content>: View where Content: View {
             }
             .coordinateSpace(name: "content")
         }
+
         .scrollIndicators(.never)
         .scrollClipDisabled()
 
@@ -78,7 +78,6 @@ struct PlatterView<Content>: View where Content: View {
         .contentMargins(.top, headerDimension)
         .contentMargins(.bottom, footerDimension)
 
-        .windowResizeBehavior(.disabled)
         .allowsWindowActivationEvents()
     }
 
@@ -184,6 +183,14 @@ struct PlatterView<Content>: View where Content: View {
             dockedContent
                 .content()
                 .background(Material.ultraThin)
+                .overlay(
+                    ContainerRelativeShape()
+                        .fill(.white.opacity(1.0 / 9.0))
+                        .blendMode(.screen)
+                        .frame(height: pixelLength)
+                        .padding(.horizontal, 1.0),
+                    alignment: .top
+                )
 
                 .offset(y: contentFrame.minY)
                 .offset(y: footerDimension)

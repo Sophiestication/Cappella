@@ -26,6 +26,7 @@ struct PlatterMenuLabeledContentStyle<
                 ForEach(subviews: configuration.content) { subview in
                     PlatterMenuItem {
                         subview
+                            .menuItemTextShadow()
                     }
                     .environment(\.menuItemState, menuItemState(for: subview))
                 }

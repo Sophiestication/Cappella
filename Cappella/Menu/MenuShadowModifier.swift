@@ -11,7 +11,7 @@ fileprivate struct MenuItemTextShadowModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .shadow(
-                color: Color.black.opacity(shouldHighlight ? 0.80 : 0.0),
+                color: Color.black.opacity(shouldHighlight ? 0.60 : 0.0),
                 radius: pixelLength,
                 y: pixelLength
             )

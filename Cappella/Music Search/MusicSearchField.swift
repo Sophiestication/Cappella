@@ -63,7 +63,7 @@ struct MusicSearchField: View {
                 return .handled
             }
 
-            return .ignored
+            return .handled // prevent moving the textfield cursor
         }
         .onKeyPress(.downArrow, phases: [.down, .repeat]) { keyPress in
             if musicSearch.selectNext(makeSelectionGroup(for: keyPress)) {
