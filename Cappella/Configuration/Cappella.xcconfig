@@ -21,10 +21,10 @@ CODE_SIGN_STYLE = Automatic
 MACOSX_DEPLOYMENT_TARGET = 15.0
 
 GENERATE_INFOPLIST_FILE = YES
+INFOPLIST_FILE = Cappella/Resources/Cappella-Info.plist
 INFOPLIST_KEY_NSPrincipalClass = NSApplication
 INFOPLIST_KEY_CFBundleName = $(PRODUCT_NAME)
 INFOPLIST_KEY_CFBundleDisplayName = $(PRODUCT_NAME)
-INFOPLIST_FILE = Cappella/Resources/Cappella-Info.plist
 INFOPLIST_KEY_LSApplicationCategoryType = public.app-category.music
 INFOPLIST_KEY_NSAppleMusicUsageDescription = CoverSutra helps you to find and play albums in your Apple Music Library.
 INFOPLIST_KEY_NSHumanReadableCopyright = Copyright © 2006-2024 Sophiestication Software. All rights
