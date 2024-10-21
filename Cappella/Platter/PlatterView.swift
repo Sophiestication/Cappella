@@ -18,6 +18,8 @@ struct PlatterView<Content>: View where Content: View {
     @State var dragOffset: CGSize = .zero
     @State var isDragging: Bool = false
 
+    @State var headerBackgroundShown: Bool = false
+
     init(
         @ViewBuilder _ content: @escaping () -> Content
     ) {
@@ -41,6 +43,14 @@ struct PlatterView<Content>: View where Content: View {
                 makeOverlayView()
             }
             .coordinateSpace(name: "content")
+        }
+
+        .onScrollGeometryChange(for: Bool.self) { geometry in
+            geometry.contentOffset.y > -headerDimension
+        } action: { wasBeyondZero, isBeyondZero in
+            withAnimation(.snappy) {
+                self.headerBackgroundShown = isBeyondZero
+            }
         }
 
         .scrollIndicators(.never)
@@ -159,17 +169,17 @@ struct PlatterView<Content>: View where Content: View {
         .background {
             ContainerRelativeShape()
                 .fill(Material.ultraThin)
-                .visualEffect { effect, geometry in
-                    guard let contentBounds = geometry.bounds(of: .named("content")) else {
-                        return effect.opacity(0.0)
-                    }
-
-                    let t = 1.0 - max(contentBounds.minY, 0.0) / geometry.size.height
-
-                    let opacity = lerp(start: 0.0, end: 1.0, t: t)
-                    return effect.opacity(opacity)
-                }
+                .opacity(headerBackgroundShown ? 1.0 : 0.0)
         }
+        .overlay(
+            ContainerRelativeShape()
+                .fill(.white.opacity(1.0 / 9.0))
+                .blendMode(.screen)
+                .frame(height: pixelLength)
+                .padding(.horizontal, 1.0)
+                .opacity(headerBackgroundShown ? 1.0 : 0.0),
+            alignment: .bottom
+        )
 
         .offset(y: contentFrame.minY)
         .offset(y: -headerDimension)

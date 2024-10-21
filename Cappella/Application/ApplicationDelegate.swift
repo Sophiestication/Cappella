@@ -52,6 +52,8 @@ class ApplicationDelegate:
     }
 
     func orderFrontApplicationWindowIfNeeded() {
+        guard MusicAuthorization.currentStatus != .authorized else { return }
+
         cancellable = Timer
             .publish(every: 1.0, on: .main, in: .default)
             .autoconnect()
