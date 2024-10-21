@@ -37,6 +37,7 @@
 		E666113B2C2C1783007839E6 /* PlaybackQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666113A2C2C1783007839E6 /* PlaybackQueueTests.swift */; };
 		E667CD7C2C560841000718FC /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E667CD7B2C560841000718FC /* VisualEffectView.swift */; };
 		E67240392CC4E1EB008FC2B3 /* PlayerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67240382CC4E1EB008FC2B3 /* PlayerPosition.swift */; };
+		E67240452CC68D40008FC2B3 /* PointerBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67240442CC68D40008FC2B3 /* PointerBehavior.swift */; };
 		E67B5CFE2C8D8CC000E47348 /* NSEvent+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B5CFD2C8D8CC000E47348 /* NSEvent+Additions.swift */; };
 		E67B5D002C8EDEDF00E47348 /* SettingsGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B5CFF2C8EDEDF00E47348 /* SettingsGroupBoxStyle.swift */; };
 		E67B5D022C8EE3B200E47348 /* SettingsFormStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67B5D012C8EE3B200E47348 /* SettingsFormStyle.swift */; };
@@ -140,6 +141,7 @@
 		E666113A2C2C1783007839E6 /* PlaybackQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackQueueTests.swift; sourceTree = "<group>"; };
 		E667CD7B2C560841000718FC /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		E67240382CC4E1EB008FC2B3 /* PlayerPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPosition.swift; sourceTree = "<group>"; };
+		E67240442CC68D40008FC2B3 /* PointerBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointerBehavior.swift; sourceTree = "<group>"; };
 		E67B5CFD2C8D8CC000E47348 /* NSEvent+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSEvent+Additions.swift"; sourceTree = "<group>"; };
 		E67B5CFF2C8EDEDF00E47348 /* SettingsGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGroupBoxStyle.swift; sourceTree = "<group>"; };
 		E67B5D012C8EE3B200E47348 /* SettingsFormStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFormStyle.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				E6C15E452C9876E200C95CD9 /* Music Player */,
 				E667CD7E2C563D52000718FC /* Music Search */,
 				E667CD7F2C563D6D000718FC /* Now Playing */,
+				E67240462CC68D49008FC2B3 /* Pointer */,
 				E6F11E572C56A99A00AA45FC /* Platter */,
 				E682036D2C80BE4A00294A52 /* Playback Queue */,
 				E6682D122C85CEF200F53B45 /* Settings */,
@@ -368,6 +371,14 @@
 				E653D1DF2C89EDC0003AAE1E /* SettingsView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		E67240462CC68D49008FC2B3 /* Pointer */ = {
+			isa = PBXGroup;
+			children = (
+				E67240442CC68D40008FC2B3 /* PointerBehavior.swift */,
+			);
+			path = Pointer;
 			sourceTree = "<group>";
 		};
 		E67B5CFC2C8CDD2300E47348 /* Keyboard Shortcuts */ = {
@@ -622,6 +633,7 @@
 				E691D24B2CA5CFDA00FD46BE /* MenuAccessoryButtonStyle.swift in Sources */,
 				E620627E2C6A7E4000460775 /* PlatterGeometry.swift in Sources */,
 				E691D2732CA8AA3400FD46BE /* PlatterMenuLabelStyle.swift in Sources */,
+				E67240452CC68D40008FC2B3 /* PointerBehavior.swift in Sources */,
 				E64048E72C75282C007CEB55 /* Rubberband.swift in Sources */,
 				E691D26C2CA833BC00FD46BE /* DevelopmentPreviewCollection.swift in Sources */,
 				E691D27F2CAB1CAE00FD46BE /* SystemKeyRepeatInterval.swift in Sources */,

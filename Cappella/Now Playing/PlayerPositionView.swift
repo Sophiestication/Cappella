@@ -12,6 +12,8 @@ struct PlayerPositionView: View {
     @State private var draggingPosition: Double = .zero
     @State private var isDragging: Bool = false
 
+    @Environment(\.isEnabled) private var isEnabled
+
     @AppStorage("remainingDurationShown") private var remainingDurationShown: Bool = true
 
     var body: some View {
@@ -36,6 +38,7 @@ struct PlayerPositionView: View {
             }
             .font(.system(size: 12.0, weight: .medium, design: .rounded))
             .monospacedDigit()
+            .opacity(isEnabled ? 1.0 : 0.50)
         }
 
         .onChange(of: playerPosition.playbackTime, initial: true) { oldValue, newValue in
@@ -74,10 +77,14 @@ struct PlayerPositionView: View {
     private func makeScrubGesture(for geometry: GeometryProxy) -> some Gesture {
         DragGesture(minimumDistance: 0)
             .onChanged {
+                guard isEnabled else { return }
+
                 isDragging = true
                 updatePosition(from:$0.location, geometry)
             }
             .onEnded {
+                guard isEnabled else { return }
+
                 isDragging = false
                 updatePosition(from:$0.location, geometry, shouldCommit: true)
             }
@@ -118,7 +125,9 @@ struct PlayerPositionView: View {
     }
 
     private var trailingLabelString: String {
-        if remainingDurationShown {
+        if isEnabled == false {
+            "--:--"
+        } else if remainingDurationShown {
             "-\(format(playerPosition.playbackDuration - playerPosition.playbackTime))"
         } else {
             format(playerPosition.playbackDuration)

@@ -11,6 +11,7 @@ struct PlatterMenuLabeledContentStyle<
     @Environment(\.platterGeometry) var platterGeometry
 
     @Binding var selection: SelectionValue?
+    @Binding var triggered: SelectionValue?
 
     func makeBody(configuration: Self.Configuration) -> some View {
         HStack(alignment: .top, spacing: 5.0) {
@@ -24,7 +25,9 @@ struct PlatterMenuLabeledContentStyle<
 
             LazyVStack(alignment: .leading, spacing: 0.0) {
                 ForEach(subviews: configuration.content) { subview in
-                    PlatterMenuItem {
+                    PlatterMenuItem(action: {
+                        triggered = nil
+                    }) {
                         subview
                             .menuItemTextShadow()
                     }
@@ -43,7 +46,7 @@ struct PlatterMenuLabeledContentStyle<
         return MenuItemState(
             id,
             isSelected: selection == id,
-            isTriggered: false
+            isTriggered: triggered == id
         )
     }
 

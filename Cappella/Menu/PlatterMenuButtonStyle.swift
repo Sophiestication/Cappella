@@ -15,7 +15,7 @@ struct PlatterMenuButtonStyle: PrimitiveButtonStyle {
         if contentOnly {
             label(for: configuration)
         } else {
-            PlatterMenuItem {
+            PlatterMenuItem(action: {}) {
                 label(for: configuration)
             }
         }

@@ -20,5 +20,79 @@
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C7960EF6-5A93-4E7A-9CD9-8AA9DDCAA143"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cappella/Playback Queue/PlaybackQueue.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "init()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C7960EF6-5A93-4E7A-9CD9-8AA9DDCAA143 - 91a53be12f3a2973"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Cappella.PlaybackQueue.init() async throws -&gt; Cappella.PlaybackQueue"
+                  moduleName = "Cappella.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sophiestication/Developer/Sophiestication/Cappella/Cappella/Playback%20Queue/PlaybackQueue.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18">
+               </Location>
+               <Location
+                  uuid = "C7960EF6-5A93-4E7A-9CD9-8AA9DDCAA143 - 67d9f7b1fb900e59"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for Cappella.PlaybackQueue.init() async throws -&gt; Cappella.PlaybackQueue"
+                  moduleName = "Cappella.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sophiestication/Developer/Sophiestication/Cappella/Cappella/Playback%20Queue/PlaybackQueue.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18">
+               </Location>
+               <Location
+                  uuid = "C7960EF6-5A93-4E7A-9CD9-8AA9DDCAA143 - e9a875df65534571"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for Cappella.PlaybackQueue.init() async throws -&gt; Cappella.PlaybackQueue"
+                  moduleName = "Cappella.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sophiestication/Developer/Sophiestication/Cappella/Cappella/Playback%20Queue/PlaybackQueue.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18">
+               </Location>
+               <Location
+                  uuid = "C7960EF6-5A93-4E7A-9CD9-8AA9DDCAA143 - 8595ec38585cf30e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for Cappella.PlaybackQueue.init() async throws -&gt; Cappella.PlaybackQueue"
+                  moduleName = "Cappella.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sophiestication/Developer/Sophiestication/Cappella/Cappella/Playback%20Queue/PlaybackQueue.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -12,13 +12,16 @@ struct PlatterMenu<
 
     @ViewBuilder private var content: Content
     @Binding private var selection: SelectionValue?
+    @Binding private var triggered: SelectionValue?
 
     init(
         selection: Binding<SelectionValue?>,
+        triggered: Binding<SelectionValue?>,
         @ViewBuilder content: () -> Content
     ) {
         self.content = content()
         self._selection = selection
+        self._triggered = triggered
     }
 
     var body: some View {
@@ -44,25 +47,16 @@ struct PlatterMenu<
 
         .buttonStyle(PlatterMenuButtonStyle(contentOnly: false))
         .labelStyle(PlatterMenuLabelStyle())
-        .labeledContentStyle(PlatterMenuLabeledContentStyle(selection: $selection))
+        .labeledContentStyle(PlatterMenuLabeledContentStyle(
+            selection: $selection,
+            triggered: $triggered
+        ))
 
         .font(.system(size: 13))
 
         .onPreferenceChange(PlatterMenuSelectionKey.self) { newSelection in
             self.selection = newSelection as? SelectionValue
         }
-    }
-
-    private func menuItemState(for subview: Subview) -> MenuItemState? {
-        guard let id = subview.containerValues.tag(for: SelectionValue.self) else {
-            return nil
-        }
-
-        return MenuItemState(
-            id,
-            isSelected: selection == id,
-            isTriggered: false
-        )
     }
 
     private var leadingPadding: CGFloat {

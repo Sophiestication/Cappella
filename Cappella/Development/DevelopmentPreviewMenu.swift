@@ -6,13 +6,14 @@ import SwiftUI
 
 struct DevelopmentPreviewMenu: View {
     @State var selection: DevelopmentPreviewItem.ID? = nil
+    @State var triggered: DevelopmentPreviewItem.ID? = nil
     @State var collections = DevelopmentPreviewCollection.previews
 
     @State var nowPlaying: DevelopmentPreviewItem? = nil
 
     var body: some View {
         VStack(spacing: 0.0) {
-            PlatterMenu(selection: $selection) {
+            PlatterMenu(selection: $selection, triggered: $triggered) {
                 Section {
                     ForEach(collections) { collection in
                         LabeledContent {

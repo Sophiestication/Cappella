@@ -29,19 +29,19 @@ struct ApplicationView: View {
 
     @ViewBuilder
     private func makeContentView() -> some View {
-        if playbackQueue != nil {
+//        if playbackQueue != nil {
             MusicSearchView()
-                .environment(playbackQueue)
-        } else {
-            Color.clear
-                .task {
-                    do {
-                        playbackQueue = try await PlaybackQueue()
-                    } catch {
-                        print("Error initializing PlaybackQueue: \(error)")
-                    }
-                }
-        }
+//                .environment(playbackQueue)
+//        } else {
+//            Color.clear
+//                .task {
+//                    do {
+//                        playbackQueue = try await PlaybackQueue()
+//                    } catch {
+//                        print("Error initializing PlaybackQueue: \(error)")
+//                    }
+//                }
+//        }
     }
 
     @ViewBuilder

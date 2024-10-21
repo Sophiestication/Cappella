@@ -15,9 +15,12 @@ struct RepeatButtonStyle: ButtonStyle {
     @State private var repeatPhases: ButtonRepeatPhases = .up
     @State private var lastRepeatTime: Date = .distantPast
 
+    @Environment(\.isEnabled) private var isEnabled
+
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(width: length, height: length)
+            .opacity(isEnabled ? 1.0 : 0.50)
             .contentShape(contentShape)
             .background(background)
 

@@ -61,7 +61,6 @@ struct NowPlayingView: View {
                 Spacer()
 
                 playbackControls
-                    .disabled(queue.currentEntry == nil)
             }
 
             PlayerPositionView()
@@ -70,6 +69,7 @@ struct NowPlayingView: View {
         .padding(.vertical, 15.0)
 
         .contentShape(.interaction, ContainerRelativeShape())
+        .disabled(queue.currentEntry == nil)
     }
 
     @ViewBuilder

@@ -10,11 +10,14 @@ struct MusicSearchView: View {
     @State private var musicSearch = MusicSearch()
 
     @State private var menuSelection: ResultItem.Entry.ID? = nil
+    @State private var triggeredMenuItem: ResultItem.Entry.ID? = nil
 
     private typealias ResultItem = MusicSearch.ResultItem
 
     @Environment(\.platterProxy) var platterProxy
     @Environment(\.platterGeometry) var platterGeometry
+
+    @Environment(\.pointerBehavior) var pointerBehavior
 
     @Environment(\.musicPlayer) private var musicPlayer
 
@@ -23,7 +26,10 @@ struct MusicSearchView: View {
             VStack(
                 spacing: 0.0
             ) {
-                PlatterMenu(selection: $menuSelection) {
+                PlatterMenu(
+                    selection: $menuSelection,
+                    triggered: $triggeredMenuItem
+                ) {
                     ForEach(musicSearch.results) { resultItem in
                         makeView(
                             for: resultItem,
@@ -52,6 +58,7 @@ struct MusicSearchView: View {
 
             .onChange(of: musicSearch.scheduledToPlay, initial: false) { _, newSelection in
                 if let newSelection {
+                    triggeredMenuItem = newSelection.entry?.id
                     play(newSelection)
                 }
             }

@@ -20,6 +20,8 @@ struct PlatterView<Content>: View where Content: View {
 
     @State var headerBackgroundShown: Bool = false
 
+    private let pointerBehavior = PointerBehavior()
+
     init(
         @ViewBuilder _ content: @escaping () -> Content
     ) {
@@ -43,6 +45,18 @@ struct PlatterView<Content>: View where Content: View {
                 makeOverlayView()
             }
             .coordinateSpace(name: "content")
+        }
+
+        .environment(\.pointerBehavior, pointerBehavior)
+        .onContinuousHover(coordinateSpace: .global) { phase in
+            switch phase {
+            case .active(let location):
+                pointerBehavior.location = location
+                break
+            case .ended:
+                pointerBehavior.location = nil
+                break
+            }
         }
 
         .onScrollGeometryChange(for: Bool.self) { geometry in
