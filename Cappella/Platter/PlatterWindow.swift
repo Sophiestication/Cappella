@@ -37,6 +37,8 @@ class PlatterWindow: NSPanel {
             defer: false
         )
 
+        self.setFrameAutosaveName("")
+
         self.level = .tornOffMenu
 
         self.hidesOnDeactivate = false
@@ -147,7 +149,6 @@ class PlatterWindow: NSPanel {
         to screen: NSScreen?
     ) -> NSRect {
         return preferredWindowRect(propossedWindowRect: frameRect, screen)
-//        super.constrainFrameRect(frameRect, to: screen)
     }
 
     @objc private func windowDidMove(_ notification: Notification) {
@@ -243,29 +244,34 @@ class PlatterWindow: NSPanel {
         let targetRect = statusItemWindow.frame
 
         let windowRect = self.frame
-        let newWindowRect = NSMakeRect(
+        var newWindowRect = NSMakeRect(
             targetRect.midX - (windowRect.width * 0.50),
             targetRect.minY - windowRect.height,
             windowRect.width,
             windowRect.height
         )
 
+        if let screenRect = screen?.frame {
+            if (newWindowRect.maxX - PlatterGeometry.horizontalInset) > screenRect.maxX {
+                newWindowRect.origin = CGPoint(
+                    x: screenRect.maxX - (newWindowRect.width - PlatterGeometry.horizontalInset + 10.0), // TODO
+                    y: newWindowRect.minY
+                )
+            }
+        }
+
         return newWindowRect
     }
 
+    override func setFrame(_ frameRect: NSRect, display: Bool) {
+        let newFrameRect = self.preferredWindowRect(propossedWindowRect: frameRect, screen)
+        super.setFrame(newFrameRect, display: display)
+    }
+
     fileprivate func layoutWindow(_ window: PlatterWindow) {
-        guard let statusItemWindow = statusItem.button?.window else {
-            return
-        }
-
-        let targetRect = statusItemWindow.frame
-
-        let windowRect = window.frame
-        let newWindowRect = NSMakeRect(
-            targetRect.midX - (windowRect.width * 0.50),
-            targetRect.minY - windowRect.height,
-            windowRect.width,
-            windowRect.height
+        let newWindowRect = self.preferredWindowRect(
+            propossedWindowRect: platterGeometry.containerFrame,
+            screen
         )
 
         window.setFrame(newWindowRect, display: true)

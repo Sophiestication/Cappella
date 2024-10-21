@@ -68,11 +68,17 @@ class ApplicationDelegate:
         _ sender: NSApplication,
         hasVisibleWindows flag: Bool
     ) -> Bool {
-        return false
+        return true
     }
 
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
         return false
+    }
+
+    func application(_ application: NSApplication, willEncodeRestorableState coder: NSCoder) {
+    }
+
+    func application(_ application: NSApplication, didDecodeRestorableState coder: NSCoder) {
     }
 
     func applicationShouldHandleGlobalKeyboardShortcut(

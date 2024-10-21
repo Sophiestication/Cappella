@@ -77,6 +77,9 @@ struct PlatterView<Content>: View where Content: View {
 
         .contentMargins(.top, headerDimension)
         .contentMargins(.bottom, footerDimension)
+
+        .windowResizeBehavior(.disabled)
+        .allowsWindowActivationEvents()
     }
 
     private func makeContentMask() -> some View {
