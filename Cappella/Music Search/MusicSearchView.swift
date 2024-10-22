@@ -130,7 +130,7 @@ struct MusicSearchView: View {
                 }
             }
         } label: {
-            ArtworkView(length: 64)
+            ArtworkView(length: 72)
                 .background(content: {
                     Color.clear
                         .id("group-\(resultItem.collection.id)")
