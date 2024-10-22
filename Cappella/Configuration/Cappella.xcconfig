@@ -7,6 +7,8 @@
 
 #include "../../Build/Configuration/Vendor.xcconfig"
 
+SOSO_MARKETING_NAME = $(PRODUCT_NAME)
+
 PRODUCT_NAME = $(TARGET_NAME)
 MODULE_NAME = $(TARGET_NAME)
 PRODUCT_MODULE_NAME = $(TARGET_NAME)
@@ -24,7 +26,7 @@ GENERATE_INFOPLIST_FILE = YES
 INFOPLIST_FILE = Cappella/Resources/Cappella-Info.plist
 INFOPLIST_KEY_NSPrincipalClass = NSApplication
 INFOPLIST_KEY_CFBundleName = $(PRODUCT_NAME)
-INFOPLIST_KEY_CFBundleDisplayName = $(PRODUCT_NAME)
+INFOPLIST_KEY_CFBundleDisplayName = $(SOSO_MARKETING_NAME)
 INFOPLIST_KEY_LSApplicationCategoryType = public.app-category.music
 INFOPLIST_KEY_NSAppleMusicUsageDescription = CoverSutra helps you to find and play albums in your Apple Music Library.
 INFOPLIST_KEY_NSHumanReadableCopyright = Copyright © 2006-2024 Sophiestication Software. All rights

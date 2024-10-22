@@ -7,10 +7,10 @@
 
 #include "Cappella.xcconfig"
 
+SOSO_MARKETING_NAME = $(PRODUCT_NAME) β
+
 PRODUCT_NAME = CoverSutra
 PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.mac.CoverSutra
-
-INFOPLIST_KEY_CFBundleDisplayName = $(PRODUCT_NAME) β
 
 ENABLE_TESTABILITY = NO
 
