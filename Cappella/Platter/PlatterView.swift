@@ -62,7 +62,7 @@ struct PlatterView<Content>: View where Content: View {
         .onScrollGeometryChange(for: Bool.self) { geometry in
             geometry.contentOffset.y > -headerDimension
         } action: { wasBeyondZero, isBeyondZero in
-            withAnimation(.snappy) {
+            withAnimation(.snappy(duration: 0.25)) {
                 self.headerBackgroundShown = isBeyondZero
             }
         }
