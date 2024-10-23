@@ -24,10 +24,11 @@ class ApplicationDelegate:
     private var dockTile: DockTile?
 
     private var cancellable: AnyCancellable?
+    private var receivedInitialApplicationDidBecomeActive = false
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         let contentWidth = 440.0 + (PlatterGeometry.horizontalInset * 2.0)
-        let contentHeight = 720.0 + 240.0 + 30.0 // TODO
+        let contentHeight = 720.0 + 240.0 + 35.0 // TODO
 
         let applicationWindowRect = NSRect(
             x: 0.0, y: 0.0,
@@ -59,18 +60,31 @@ class ApplicationDelegate:
             .autoconnect()
             .first()
             .sink { _ in
-                self.applicationWindow.platterProxy!.present()
+                if let platterProxy = self.applicationWindow.platterProxy {
+                    platterProxy.present()
+                }
             }
     }
 
     func applicationWillTerminate(_ notification: Notification) {
     }
 
+    func applicationDidBecomeActive(_ notification: Notification) {
+        receivedInitialApplicationDidBecomeActive = true
+    }
+
     func applicationShouldHandleReopen(
         _ sender: NSApplication,
         hasVisibleWindows flag: Bool
     ) -> Bool {
-        return true
+        if flag == false &&
+           receivedInitialApplicationDidBecomeActive == true {
+            if let platterProxy = self.applicationWindow.platterProxy {
+                platterProxy.togglePresentation()
+            }
+        }
+
+        return false
     }
 
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {

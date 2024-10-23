@@ -53,15 +53,19 @@ struct ApplicationMenuButton: View {
             }
 
             Button("Settings…", action: {
-                NSApplication.shared.activate(ignoringOtherApps: true)
-                openSettings()
+                DispatchQueue.main.async {
+                    openSettings()
+                    NSApplication.shared.activate()
+                }
             })
 
             Divider()
 
             Button("About \(applicationName)", action: {
-                NSApplication.shared.activate(ignoringOtherApps: true)
-                NSApplication.shared.orderFrontStandardAboutPanel()
+                DispatchQueue.main.async {
+                    NSApplication.shared.orderFrontStandardAboutPanel()
+                    NSApplication.shared.activate()
+                }
             })
 
             Divider()

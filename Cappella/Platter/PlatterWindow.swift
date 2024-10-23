@@ -161,8 +161,15 @@ class PlatterWindow: NSPanel {
     }
 
     @objc private func statusWindowDidMove(_ notification: Notification) {
-        guard let window = notification.object as? PlatterWindow else { return }
-        layoutWindow(window)
+        guard let window = notification.object as? NSWindow else { return }
+
+        if let statusItemWindow = statusItem.button?.window {
+            if window == statusItemWindow {
+                layoutWindow()
+            }
+        } else if window == self {
+            layoutWindow()
+        }
     }
 
     @objc private func handleStatusItemPressGesture(_ sender: NSPressGestureRecognizer) {
@@ -268,13 +275,13 @@ class PlatterWindow: NSPanel {
         super.setFrame(newFrameRect, display: display)
     }
 
-    fileprivate func layoutWindow(_ window: PlatterWindow) {
+    fileprivate func layoutWindow() {
         let newWindowRect = self.preferredWindowRect(
             propossedWindowRect: platterGeometry.containerFrame,
             screen
         )
 
-        window.setFrame(newWindowRect, display: true)
+        self.setFrame(newWindowRect, display: true)
     }
 }
 
@@ -313,7 +320,8 @@ class PlatterProxy {
             return
         }
 
-        platterWindow.layoutWindow(platterWindow)
+        platterWindow.statusItem.button?.highlight(false)
+        platterWindow.layoutWindow()
 
         NSAnimationContext.runAnimationGroup { context in
             context.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
