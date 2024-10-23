@@ -125,8 +125,7 @@ struct MusicSearchView: View {
                 Button {
                     invokeMenuItem(for: entry, in: resultItem)
                 } label: {
-                    Text(entry.title)
-                        .lineLimit(1)
+                    MusicSearchMenuItem(for: entry)
                 }
             }
         } label: {

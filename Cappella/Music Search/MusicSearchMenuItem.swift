@@ -16,15 +16,15 @@ struct MusicSearchMenuItem: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(title)
-                .lineLimit(1)
-
+        Group {
             if let variant {
-                Text(variant)
+                Text(title) + Text(" ") + Text(variant)
                     .foregroundStyle(.secondary)
+            } else {
+                Text(title)
             }
         }
+        .lineLimit(1)
     }
 
     private static func parseSongTitle(_ title: String) -> (String, String?) {
