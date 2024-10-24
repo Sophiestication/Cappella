@@ -17,6 +17,10 @@ struct MusicSearchMenuItem: View {
     }
 
     var body: some View {
+        textContent
+    }
+
+    private var textContent: some View {
         HStack(spacing: 0.0) {
             ForEach(contentParts.indices, id: \.self) { index in
                 switch contentParts[index] {
