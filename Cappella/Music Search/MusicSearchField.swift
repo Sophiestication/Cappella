@@ -21,12 +21,8 @@ struct MusicSearchField: View {
 
     var body: some View {
         HStack(alignment: .center) {
-            makeSearchScopeImage(for: musicSearch.scope)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 14.0, height: 14.0)
-                .padding(.leading, 10.0)
-                .foregroundStyle(.secondary)
+            searchScopePicker
+
             MusicSearchTextField(
                 text: $musicSearch.term,
                 placeholder: makePrompt(for: musicSearch.scope)
@@ -37,6 +33,7 @@ struct MusicSearchField: View {
             .onAppear {
                 searchFieldFocused = true
             }
+            .padding(.leading, -5.0)
         }
         .padding(.vertical, 8.0)
         .background (
@@ -104,6 +101,38 @@ struct MusicSearchField: View {
         }
 
         return .entry
+    }
+
+    private var searchScopePicker: some View {
+        Picker("Search Scope", selection: $musicSearch.scope) {
+            ForEach(MusicSearch.Scope.allCases, id: \.self) { scope in
+                makeSearchScopeButton(for: scope)
+            }
+        }
+
+        .buttonStyle(.accessoryBar)
+        .pickerStyle(.menu)
+        .menuStyle(.borderlessButton)
+
+        .labelStyle(.iconOnly)
+
+        .padding(.leading, 5.0)
+
+        .foregroundStyle(.secondary)
+    }
+
+    @ViewBuilder
+    private func makeSearchScopeButton(for scope: MusicSearch.Scope) -> some View {
+        switch scope {
+        case .all:
+            Label("All", systemImage: "magnifyingglass")
+        case .album:
+            Label("Album", systemImage: "music.note.list")
+        case .artist:
+            Label("Artist", systemImage: "music.microphone")
+        case .song:
+            Label("Song", systemImage: "music.note")
+        }
     }
 
     private func makeSearchScopeImage(for scope: MusicSearch.Scope) -> Image {

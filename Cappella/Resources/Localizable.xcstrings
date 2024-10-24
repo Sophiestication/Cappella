@@ -17,10 +17,16 @@
     "About %@" : {
 
     },
+    "Album" : {
+
+    },
     "Album Artwork in Dock" : {
 
     },
     "All" : {
+
+    },
+    "Artist" : {
 
     },
     "Authorize…" : {
@@ -91,6 +97,9 @@
     "Repeat" : {
 
     },
+    "Search Scope" : {
+
+    },
     "Settings…" : {
 
     },
@@ -104,6 +113,9 @@
 
     },
     "Shuffle" : {
+
+    },
+    "Song" : {
 
     },
     "Songs" : {
