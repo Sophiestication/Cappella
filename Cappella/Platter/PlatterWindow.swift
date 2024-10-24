@@ -116,6 +116,13 @@ class PlatterWindow: NSPanel {
                     name: NSWindow.didMoveNotification,
                     object: window
                 )
+
+                NotificationCenter.default.addObserver(
+                    self,
+                    selector: #selector(statusWindowDidChangeScreen(_:)),
+                    name: NSWindow.didChangeScreenNotification,
+                    object: window
+                )
             }
         }
     }
@@ -170,6 +177,10 @@ class PlatterWindow: NSPanel {
         } else if window == self {
             layoutWindow()
         }
+    }
+
+    @objc private func statusWindowDidChangeScreen(_ notification: Notification) {
+        layoutWindow()
     }
 
     @objc private func handleStatusItemPressGesture(_ sender: NSPressGestureRecognizer) {
@@ -271,7 +282,13 @@ class PlatterWindow: NSPanel {
     }
 
     override func setFrame(_ frameRect: NSRect, display: Bool) {
-        let newFrameRect = self.preferredWindowRect(propossedWindowRect: frameRect, screen)
+        let statusItemScreen = statusItem.button?.window?.screen
+
+        let newFrameRect = self.preferredWindowRect(
+            propossedWindowRect: frameRect,
+            statusItemScreen ?? screen
+        )
+
         super.setFrame(newFrameRect, display: display)
     }
 
