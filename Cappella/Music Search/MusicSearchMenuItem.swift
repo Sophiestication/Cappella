@@ -6,46 +6,63 @@ import SwiftUI
 import MusicKit
 
 struct MusicSearchMenuItem: View {
-    private var title: String
-    private var variant: String?
+    private enum TextContent {
+        case primary(String)
+        case secondary(String)
+    }
+    private var contentParts: [TextContent]
 
     init(for entry: MusicSearch.Entry) {
-        let (title, variant) = Self.parseSongTitle(entry.title)
-        self.title = title
-        self.variant = variant
+        self.contentParts = Self.parseSongTitle(entry.title)
     }
 
     var body: some View {
-        Group {
-            if let variant {
-                Text(title) + Text(" ") + Text(variant)
-                    .foregroundStyle(.secondary)
-            } else {
-                Text(title)
+        HStack(spacing: 0.0) {
+            ForEach(contentParts.indices, id: \.self) { index in
+                switch contentParts[index] {
+                case .primary(let text):
+                    Text(text)
+                case .secondary(let text):
+                    Text(text)
+                        .foregroundStyle(.secondary)
+                }
             }
         }
         .lineLimit(1)
     }
 
-    private static func parseSongTitle(_ title: String) -> (String, String?) {
-        let regexPattern = #"\(([^)]+)\)"#
+    private static func parseSongTitle(_ title: String) -> [TextContent] {
+        let regexPattern = #"(?<=\S)\s*(\(([^)]+)\)|\[(.*?)\])"#
+        var contentParts: [TextContent] = []
 
         if let regex = try? NSRegularExpression(pattern: regexPattern) {
             let nsRange = NSRange(title.startIndex..<title.endIndex, in: title)
+            var lastRangeEnd = title.startIndex
 
-            if let match = regex.firstMatch(in: title, options: [], range: nsRange) {
-                let rangeBeforeMatch = title.startIndex..<Range(match.range, in: title)!.lowerBound
+            let matches = regex.matches(in: title, options: [], range: nsRange)
 
-                let mainTitle = String(title[rangeBeforeMatch])
-                    .trimmingCharacters(in: .whitespacesAndNewlines)
+            for match in matches {
+                guard let matchRange = Range(match.range, in: title) else { continue }
 
-                if let styledPartRange = Range(match.range, in: title) {
-                    let styledPart = String(title[styledPartRange])
-                    return (mainTitle, styledPart)
+                if lastRangeEnd < matchRange.lowerBound {
+                    let primaryPart = String(title[lastRangeEnd..<matchRange.lowerBound])
+                    contentParts.append(.primary(primaryPart))
                 }
+
+                let secondaryPart = String(title[matchRange])
+                contentParts.append(.secondary(secondaryPart))
+
+                lastRangeEnd = matchRange.upperBound
             }
+
+            if lastRangeEnd < title.endIndex {
+                let primaryPart = String(title[lastRangeEnd..<title.endIndex])
+                contentParts.append(.primary(primaryPart))
+            }
+        } else {
+            contentParts.append(.primary(title))
         }
 
-        return (title, nil)
+        return contentParts
     }
 }
