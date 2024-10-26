@@ -284,10 +284,27 @@ class PlatterWindow: NSPanel {
     override func setFrame(_ frameRect: NSRect, display: Bool) {
         let statusItemScreen = statusItem.button?.window?.screen
 
-        let newFrameRect = self.preferredWindowRect(
+        var newFrameRect = self.preferredWindowRect(
             propossedWindowRect: frameRect,
             statusItemScreen ?? screen
         )
+
+        if let screenRect = screen?.visibleFrame {
+            if newFrameRect.minX < screenRect.minX {
+                newFrameRect.origin.x = screenRect.minX
+            } else if newFrameRect.maxX > screenRect.maxX {
+                newFrameRect.origin.x = screenRect.maxX - newFrameRect.width
+                newFrameRect.origin.x =
+                    newFrameRect.origin.x +
+                    (PlatterGeometry.horizontalInset - 10.0)
+            }
+
+            if newFrameRect.minY < screenRect.minY {
+                newFrameRect.origin.y = screenRect.minY
+            } else if newFrameRect.maxY > screenRect.maxY {
+                newFrameRect.origin.y = screenRect.maxY - newFrameRect.height
+            }
+        }
 
         super.setFrame(newFrameRect, display: display)
     }
