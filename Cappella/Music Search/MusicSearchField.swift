@@ -15,6 +15,8 @@ struct MusicSearchField: View {
 
     @FocusState private var searchFieldFocused: Bool
 
+    @State private var helpMarkerShown: Bool = true
+
     init(with musicSearch: MusicSearch) {
         self.musicSearch = musicSearch
     }
@@ -84,6 +86,11 @@ struct MusicSearchField: View {
             }
 
             return .handled
+        }
+
+        .overlay(helpMarker)
+        .onChange(of: musicSearch.term) { _, newTerm in
+            helpMarkerShown = false
         }
     }
 
@@ -187,6 +194,20 @@ struct MusicSearchField: View {
         
         musicSearch.term = ""
         return true
+    }
+
+    @ViewBuilder
+    private var helpMarker: some View {
+        if helpMarkerShown {
+            Image("HelpMarker")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .foregroundStyle(.white)
+                .frame(height: 70.0)
+                .offset(x: 135.0, y: 44.0)
+        } else {
+            EmptyView()
+        }
     }
 }
 
