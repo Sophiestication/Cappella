@@ -89,6 +89,11 @@ final class MusicSearch {
     }
 
     private func performSearch(for requestParameters: RequestParameters) async throws {
+        guard requestParameters.term.count > 1 else {
+            self.updateSearchResults(with: [], token: requestParameters.token)
+            return
+        }
+
         let termComponents = requestParameters
             .term
             .components(separatedBy: .whitespacesAndNewlines)
