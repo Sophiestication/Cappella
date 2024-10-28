@@ -20,7 +20,7 @@ EXCLUDED_SOURCE_FILE_NAMES = Development\ Assets/*
 CODE_SIGN_ENTITLEMENTS = Cappella/Resources/Cappella.entitlements
 CODE_SIGN_STYLE = Automatic
 
-MACOSX_DEPLOYMENT_TARGET = 15.0
+MACOSX_DEPLOYMENT_TARGET = 15.1
 
 GENERATE_INFOPLIST_FILE = YES
 INFOPLIST_FILE = Cappella/Resources/Cappella-Info.plist

@@ -134,7 +134,7 @@ fileprivate struct ButtonRepeatActionModifier: ViewModifier {
 }
 
 extension Button {
-    func buttonRepeatAction(action: @escaping (ButtonRepeatPhases) -> Void) -> some View {
+    @MainActor func buttonRepeatAction(action: @escaping (ButtonRepeatPhases) -> Void) -> some View {
         self.modifier(ButtonRepeatActionModifier(action: action))
     }
 }

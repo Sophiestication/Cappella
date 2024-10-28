@@ -526,7 +526,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1600;
-				LastUpgradeCheck = 1600;
+				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					E66611262C2C1782007839E6 = {
 						CreatedOnToolsVersion = 16.0;
@@ -702,6 +702,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -737,6 +738,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "$(SOSO_MARKETING_NAME)";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
@@ -757,6 +759,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E64A87382C9B283A008CCCC5 /* Tests.xcconfig */;
 			buildSettings = {
+				DEAD_CODE_STRIPPING = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 6.0;
 			};
@@ -796,6 +799,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -823,6 +827,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "$(SOSO_MARKETING_NAME)";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
@@ -842,6 +847,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E64A87382C9B283A008CCCC5 /* Tests.xcconfig */;
 			buildSettings = {
+				DEAD_CODE_STRIPPING = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 6.0;
 			};
@@ -881,6 +887,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -908,6 +915,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "$(SOSO_MARKETING_NAME)";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
@@ -927,6 +935,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E64A87382C9B283A008CCCC5 /* Tests.xcconfig */;
 			buildSettings = {
+				DEAD_CODE_STRIPPING = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 6.0;
 			};

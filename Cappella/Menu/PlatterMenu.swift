@@ -25,6 +25,8 @@ struct PlatterMenu<
     }
 
     var body: some View {
+        let currentLeadingPadding = leadingPadding
+
         Group(sections: content) { sections in
             ForEach(sections) { section in
                 VStack(alignment: .leading, spacing: 0.0) {
@@ -33,7 +35,7 @@ struct PlatterMenu<
                     }
                     .font(.system(size: 16))
                     .alignmentGuide(.leading) { guide in
-                        -leadingPadding - 15.0
+                        -currentLeadingPadding - 15.0
                     }
 
                     VStack(spacing: 0.0) {
