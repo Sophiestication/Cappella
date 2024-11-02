@@ -73,20 +73,13 @@ struct PlatterView<Content>: View where Content: View {
         .fontWeight(.medium)
         .fontDesign(.rounded)
 
-        .shadow(
-            color: Color.black.opacity(1.0 / 4.0),
-            radius: 12.0,
-            x: 0.0,
-            y: 5.0
-        )
-
         .smoothShadow(
-            color: .black.opacity(0.08),
-            layers: 5,
-            curve: .easeInOut,
-            radius: 28.0,
+            color: .black.opacity(1.0 / 7.0),
+            layers: 7,
+            curve: .circularEaseOut,
+            radius: 24.0,
             x: 0.0,
-            y: 32.0
+            y: 20.0
         )
 
         .gesture(drag, name: "move-gesture")
@@ -134,7 +127,6 @@ struct PlatterView<Content>: View where Content: View {
         .clipShape(makePlatterShape())
         .overlay(
             makePlatterShape()
-                .inset(by: -pixelLength)
                 .stroke(lineWidth: pixelLength)
                 .fill(.black.opacity(1.0 / 2.0))
         )
