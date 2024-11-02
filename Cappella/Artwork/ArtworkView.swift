@@ -42,7 +42,8 @@ struct ArtworkView: View {
                     )
                     .clipShape(contentShape)
                     .smoothShadow(
-                        color: Color.black.opacity(1.0 / 4.0),
+                        color: Color.black.opacity(1.0 / 5.0),
+                        layers: 3,
                         radius: 3.0,
                         y: 4.0
                     )

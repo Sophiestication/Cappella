@@ -7,8 +7,6 @@
 
 #include "../../Build/Configuration/Vendor.xcconfig"
 
-ENABLE_TESTABILITY = YES
-
 PRODUCT_NAME = $(TARGET_NAME)
 MODULE_NAME = $(TARGET_NAME)
 PRODUCT_MODULE_NAME = $(TARGET_NAME)

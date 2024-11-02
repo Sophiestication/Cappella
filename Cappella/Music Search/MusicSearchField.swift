@@ -36,6 +36,11 @@ struct MusicSearchField: View {
                 searchFieldFocused = true
             }
             .padding(.leading, -5.0)
+
+            progressIndicator
+                .padding(.trailing, 10.0)
+                .opacity(musicSearch.isSearching ? 1.0 : 0.0)
+                .animation(.smooth, value: musicSearch.isSearching)
         }
         .padding(.vertical, 8.0)
         .background (
@@ -126,6 +131,12 @@ struct MusicSearchField: View {
         .padding(.leading, 5.0)
 
         .foregroundStyle(.secondary)
+    }
+
+    private var progressIndicator: some View {
+        ProgressView()
+            .progressViewStyle(.circular)
+            .controlSize(.small)
     }
 
     @ViewBuilder

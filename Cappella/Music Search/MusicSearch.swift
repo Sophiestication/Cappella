@@ -29,6 +29,10 @@ final class MusicSearch {
         }
     }
 
+    var isSearching: Bool = false
+    private var searchCancellable: AnyCancellable?
+    private var isSearchingPublisher = PassthroughSubject<Bool, Never>()
+
     private(set) var results: [ResultItem] = []
     var allResultEntries: any Sequence<(ResultItem, ResultItem.Entry)> {
         self.resultEntries
@@ -71,7 +75,7 @@ final class MusicSearch {
     init() {
         self.cancellable = termSubject
             .throttle(
-                for: .milliseconds(300),
+                for: .milliseconds(500),
                 scheduler: RunLoop.main,
                 latest: true
             )
@@ -86,12 +90,26 @@ final class MusicSearch {
                     }
                 }
             }
+
+        self.searchCancellable = isSearchingPublisher
+            .debounce(
+                for: .milliseconds(250),
+                scheduler: RunLoop.main
+            )
+            .sink { [weak self] isSearching in
+                self?.isSearching = isSearching
+            }
     }
 
     private func performSearch(for requestParameters: RequestParameters) async throws {
         guard requestParameters.term.count > 1 else {
             self.updateSearchResults(with: [], token: requestParameters.token)
             return
+        }
+
+        isSearchingPublisher.send(true)
+        defer {
+            isSearchingPublisher.send(false)
         }
 
         let termComponents = requestParameters
@@ -111,26 +129,10 @@ final class MusicSearch {
         if preparedTerm.isEmpty == false {
             switch scope {
             case .all:
-                let albumResults = try await resultItems(
-                    matching: termComponents,
-                    scope: .album,
+                results = try await resultItems(
+                    matching: requestParameters.term,
                     limit: limit
                 )
-                let artistResults = try await resultItems(
-                    for: preparedTerm,
-                    scope: .artist,
-                    limit: limit
-                )
-
-                results = [albumResults, artistResults]
-                    .flatMap { $0 }
-                    .reduce(into: [ResultItem]()) { newValue, item in
-                        if newValue.contains(where: {
-                            $0.id == item.id
-                        }) == false {
-                            newValue.append(item)
-                        }
-                    }
                 break
             case .album:
                 results = try await resultItems(
@@ -166,6 +168,37 @@ final class MusicSearch {
         })
 
         self.updateSearchResults(with: results, token: requestParameters.token)
+    }
+
+    private func resultItems(
+        matching term: String,
+        limit: Int
+    ) async throws -> [ResultItem] {
+        var request = MusicLibrarySearchRequest(
+            term: term,
+            types: [Album.self, Song.self]
+        )
+        request.limit = limit
+        request.includeTopResults = false
+
+        let response = try await request.response()
+
+        var results: [ResultItem] = []
+
+        for album in response.albums.prefix(limit) {
+            if let resultItem = try await makeResultItem(for: album) {
+                results.append(resultItem)
+            }
+        }
+
+        for song in response.songs.prefix(limit) {
+            if let resultItem = try await makeResultItem(for: song) {
+                results.append(resultItem)
+            }
+        }
+
+        results = results.uniqued(on: \.id)
+        return results
     }
 
     private func resultItems(
@@ -264,7 +297,10 @@ final class MusicSearch {
 
             if let albums = detailedSong.albums {
                 for album in albums {
-                    if let resultItem = try await makeResultItem(for: album) {
+                    if let resultItem = try await makeResultItem(
+                        for: album,
+                        artwork: detailedSong.artwork
+                    ) {
                         results.append(resultItem)
                     }
                 }
@@ -275,7 +311,32 @@ final class MusicSearch {
         return results
     }
 
-    private func makeResultItem(for album: Album) async throws -> ResultItem? {
+    private func makeResultItem(for song: Song) async throws -> ResultItem? {
+        let detailedSong = try await song.with(
+            [ .albums ],
+            preferredSource: .library
+        )
+
+        if let album = detailedSong.albums?.first {
+            if let resultItem = try await makeResultItem(for: album, artwork: song.artwork) {
+                return resultItem
+            }
+        }
+
+        return nil
+
+//        return ResultItem(
+//            id: song.id,
+//            collection: ResultItem.Entry(song),
+//            entries: [ResultItem.Entry(song)],
+//            artwork: song.artwork
+//        )
+    }
+
+    private func makeResultItem(
+        for album: Album,
+        artwork: Artwork? = nil
+    ) async throws -> ResultItem? {
         let detailedAlbum = try await album.with([ .tracks ], preferredSource: .library)
 
         guard let tracks = detailedAlbum.tracks else {
@@ -294,7 +355,8 @@ final class MusicSearch {
         return ResultItem(
             id: detailedAlbum.id,
             collection: ResultItem.Entry(detailedAlbum),
-            entries: entries
+            entries: entries,
+            artwork: artwork ?? album.artwork
         )
     }
 
@@ -341,11 +403,20 @@ extension MusicSearch {
         var collection: Entry
         var entries: [Entry]
 
-        init(id: MusicItemID, collection: Entry, entries: [Entry]) {
+        var artwork: Artwork?
+
+        init(
+            id: MusicItemID,
+            collection: Entry,
+            entries: [Entry],
+            artwork: Artwork?
+        ) {
             self.id = id
 
             self.collection = collection
             self.entries = entries
+
+            self.artwork = artwork
         }
     }
 }
