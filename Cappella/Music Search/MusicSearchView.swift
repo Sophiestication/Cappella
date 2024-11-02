@@ -130,7 +130,8 @@ struct MusicSearchView: View {
             }
         } label: {
             VStack(alignment: .trailing) {
-                ArtworkView(length: 72)
+                ArtworkView(length: 96)
+                    .environment(\.cornerRadius, 12.0)
                     .background(content: {
                         Color.clear
                             .id("group-\(resultItem.collection.id)")
@@ -147,7 +148,7 @@ struct MusicSearchView: View {
             }
             .padding(.bottom, 20.0)
         }
-        .environment(\.artworkProvider, resultItem.collection.artwork)
+        .environment(\.artworkProvider, resultItem.artwork)
     }
 
     private func invokeMenuItem(

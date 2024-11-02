@@ -48,6 +48,7 @@ struct NowPlayingView: View {
                     } icon: {
                         ArtworkView(length: 40)
                     }
+                    .environment(\.cornerRadius, 7.0)
                     .environment(\.artworkProvider, entry.artwork)
 
                     .lineLimit(1)

@@ -7,6 +7,7 @@ import SwiftUI
 struct ArtworkView: View {
     @Environment(\.artworkProvider) var artwork: ArtworkProviding?
     @Environment(\.pixelLength) var pixelLength
+    @Environment(\.cornerRadius) var cornerRadius
 
     @State var length: Int = 64
 
@@ -18,7 +19,7 @@ struct ArtworkView: View {
     @ViewBuilder
     private var contentShape: RoundedRectangle {
         RoundedRectangle(
-            cornerRadius: ceil(CGFloat(length) * 0.11),
+            cornerRadius: cornerRadius,
             style: .continuous
         )
     }
@@ -36,14 +37,14 @@ struct ArtworkView: View {
                         contentShape
                             .inset(by: pixelLength)
                             .stroke(lineWidth: pixelLength)
-                            .fill(.white.opacity(1.0 / 4.0))
-                            .blendMode(.overlay)
+                            .fill(.white.opacity(1.0 / 10.0))
+                            .blendMode(.screen)
                     )
                     .clipShape(contentShape)
-                    .shadow(
-                        color: Color.black.opacity(0.25),
-                        radius: 1.5,
-                        y: 2.0
+                    .smoothShadow(
+                        color: Color.black.opacity(1.0 / 4.0),
+                        radius: 3.0,
+                        y: 4.0
                     )
             } placeholder: {
                 placeholder
@@ -72,6 +73,10 @@ struct ArtworkView: View {
     }
 }
 
+extension EnvironmentValues {
+    @Entry var cornerRadius: CGFloat = .zero
+}
+
 #Preview(traits: .sizeThatFitsLayout) {
     VStack(spacing: 44.0) {
         ArtworkView(length: 40)
@@ -82,4 +87,5 @@ struct ArtworkView: View {
     .padding(60.0)
 
     .environment(\.artworkProvider, PreviewArtworkProvider())
+    .environment(\.cornerRadius, 8.0)
 }
