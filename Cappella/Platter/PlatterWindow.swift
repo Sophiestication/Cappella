@@ -266,7 +266,7 @@ class PlatterWindow: NSPanel {
             if (newWindowRect.maxX - PlatterGeometry.horizontalInset) > screenRect.maxX {
                 newWindowRect.origin = CGPoint(
                     x: screenRect.maxX - (newWindowRect.width - PlatterGeometry.horizontalInset + 10.0), // TODO
-                    y: newWindowRect.minY
+                    y: newWindowRect.maxY
                 )
             }
         }
