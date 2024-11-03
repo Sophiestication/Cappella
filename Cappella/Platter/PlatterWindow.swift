@@ -30,6 +30,11 @@ class PlatterWindow: NSPanel {
             withLength: NSStatusItem.variableLength
         )
 
+        let applicationRunningForPreviews = ProcessInfo
+            .processInfo
+            .environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
+        statusItem.isVisible = applicationRunningForPreviews == false
+
         super.init(
             contentRect: contentRect,
             styleMask: style,
