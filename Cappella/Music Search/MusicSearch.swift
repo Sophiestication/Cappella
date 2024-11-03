@@ -161,10 +161,10 @@ final class MusicSearch {
         results = results.sorted(by: { first, second in
             guard let firstSubtitle = first.collection.subtitle,
                   let secondSubtitle = second.collection.subtitle else {
-                return first.collection.title < second.collection.title
+                return first.collection.title >= second.collection.title
             }
 
-            return firstSubtitle < secondSubtitle
+            return firstSubtitle >= secondSubtitle
         })
 
         self.updateSearchResults(with: results, token: requestParameters.token)

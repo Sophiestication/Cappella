@@ -17,6 +17,8 @@ struct MusicSearchField: View {
 
     @State private var helpMarkerShown: Bool = true
 
+    @State private var showMenu: Bool = false
+
     init(with musicSearch: MusicSearch) {
         self.musicSearch = musicSearch
     }
@@ -116,21 +118,36 @@ struct MusicSearchField: View {
     }
 
     private var searchScopePicker: some View {
-        Picker("Search Scope", selection: $musicSearch.scope) {
-            ForEach(MusicSearch.Scope.allCases, id: \.self) { scope in
-                makeSearchScopeButton(for: scope)
-            }
-        }
+        Menu {
+            Group {
+                makeScopeMenuItem(for: .all)
 
-        .buttonStyle(.accessoryBar)
-        .pickerStyle(.menu)
+                Divider()
+
+                makeScopeMenuItem(for: .album)
+                makeScopeMenuItem(for: .artist)
+                makeScopeMenuItem(for: .song)
+            }
+            .labelStyle(.titleAndIcon)
+        } label: {
+            makeSearchScopeButton(for: musicSearch.scope)
+                .labelStyle(.iconOnly)
+        }
         .menuStyle(.borderlessButton)
 
-        .labelStyle(.iconOnly)
+        .foregroundStyle(.secondary)
 
         .padding(.leading, 5.0)
+        .frame(width: 40.0)
+    }
 
-        .foregroundStyle(.secondary)
+    @ViewBuilder
+    private func makeScopeMenuItem(for scope: MusicSearch.Scope) -> some View {
+        Button {
+            musicSearch.scope = scope
+        } label: {
+            makeSearchScopeButton(for: scope)
+        }
     }
 
     private var progressIndicator: some View {
