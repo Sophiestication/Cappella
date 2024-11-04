@@ -1,0 +1,4 @@
+As you explore the app, please focus on these key areas:
+
+- Music Search Accuracy: Test how well the app finds tracks, albums, and artists. Pay attention to the relevance of search results and the speed of suggestions.
+- User Interface Consistency: Evaluate the app’s visual elements and interactions. Look for any inconsistencies, unexpected behaviors, or areas where the design feels unintuitive or confusing.
