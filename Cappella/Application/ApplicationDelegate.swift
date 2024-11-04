@@ -28,7 +28,7 @@ class ApplicationDelegate:
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         let contentWidth = 440.0 + (PlatterGeometry.horizontalInset * 2.0)
-        let contentHeight = 720.0 + 240.0 + 35.0 // TODO
+        let contentHeight = 720.0 + 240.0 + 45.0 // TODO
 
         let applicationWindowRect = NSRect(
             x: 0.0, y: 0.0,
