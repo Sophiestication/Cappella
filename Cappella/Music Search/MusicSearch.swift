@@ -124,7 +124,7 @@ final class MusicSearch {
 
         let scope = requestParameters.scope
 
-        let limit = 15
+        let limit = 10
         var results = [ResultItem]()
 
         if preparedTerm.isEmpty == false {
@@ -159,14 +159,11 @@ final class MusicSearch {
             }
         }
 
-        results = results.sorted(by: { first, second in
-            guard let firstSubtitle = first.collection.subtitle,
-                  let secondSubtitle = second.collection.subtitle else {
-                return first.collection.title >= second.collection.title
-            }
-
-            return firstSubtitle >= secondSubtitle
-        })
+        results = results.sorted(using: [
+            KeyPathComparator(\.collection.artistName, order: .forward),
+            KeyPathComparator(\.collection.releaseDate, order: .forward),
+            KeyPathComparator(\.collection.title, order: .forward)
+        ])
 
         self.updateSearchResults(with: results, token: requestParameters.token)
     }
@@ -355,7 +352,7 @@ final class MusicSearch {
 
         return ResultItem(
             id: detailedAlbum.id,
-            collection: ResultItem.Entry(detailedAlbum),
+            collection: detailedAlbum,
             entries: entries,
             artwork: artwork ?? album.artwork
         )
@@ -401,14 +398,14 @@ extension MusicSearch {
 
         var id: MusicItemID
 
-        var collection: Entry
+        var collection: Album
         var entries: [Entry]
 
         var artwork: Artwork?
 
         init(
             id: MusicItemID,
-            collection: Entry,
+            collection: Album,
             entries: [Entry],
             artwork: Artwork?
         ) {

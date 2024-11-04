@@ -140,11 +140,9 @@ struct MusicSearchView: View {
                 Text(resultItem.collection.title)
                     .lineLimit(4)
 
-                if let subtitle = resultItem.collection.subtitle {
-                    Text(subtitle)
-                        .foregroundStyle(.secondary)
-                        .lineLimit(2)
-                }
+                Text(resultItem.collection.artistName)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(2)
             }
             .padding(.bottom, 20.0)
         }
