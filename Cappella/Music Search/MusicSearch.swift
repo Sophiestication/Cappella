@@ -74,6 +74,7 @@ final class MusicSearch {
 
     init() {
         self.cancellable = termSubject
+            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
             .throttle(
                 for: .milliseconds(500),
                 scheduler: RunLoop.main,
