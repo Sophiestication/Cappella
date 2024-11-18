@@ -10,6 +10,7 @@
 		E60946F62C4B9986009D90BA /* MusicSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60946F52C4B9986009D90BA /* MusicSearchView.swift */; };
 		E620627E2C6A7E4000460775 /* PlatterGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E620627D2C6A7E4000460775 /* PlatterGeometry.swift */; };
 		E6283F9A2C41739400158C13 /* ApplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6283F992C41739400158C13 /* ApplicationView.swift */; };
+		E62ACF9F2CDE1C6100764A02 /* NowPlayingPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62ACF9E2CDE1C6100764A02 /* NowPlayingPublisher.swift */; };
 		E638D4852CB7075800C6FBDA /* SmoothShadowModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E638D4842CB7075800C6FBDA /* SmoothShadowModifier.swift */; };
 		E638D4912CB841C800C6FBDA /* StatusItemMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E638D4902CB841C800C6FBDA /* StatusItemMenu.swift */; };
 		E638D4A02CB91F6B00C6FBDA /* AboutBoxWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E638D49F2CB91F6B00C6FBDA /* AboutBoxWindow.swift */; };
@@ -34,6 +35,7 @@
 		E66526A82CB023DD001354A4 /* GradientMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66526A72CB023DD001354A4 /* GradientMask.swift */; };
 		E66526AA2CB42E86001354A4 /* KeylineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66526A92CB42E86001354A4 /* KeylineView.swift */; };
 		E66526AC2CB44121001354A4 /* AboutBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66526AB2CB44121001354A4 /* AboutBoxView.swift */; };
+		E665D3952CDFA47500444B32 /* NowPlayingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E665D3942CDFA47500444B32 /* NowPlayingTests.swift */; };
 		E666112B2C2C1782007839E6 /* Cappella.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666112A2C2C1782007839E6 /* Cappella.swift */; };
 		E666112D2C2C1783007839E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E666112C2C2C1783007839E6 /* Assets.xcassets */; };
 		E666113B2C2C1783007839E6 /* PlaybackQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E666113A2C2C1783007839E6 /* PlaybackQueueTests.swift */; };
@@ -107,6 +109,7 @@
 		E60946F52C4B9986009D90BA /* MusicSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchView.swift; sourceTree = "<group>"; };
 		E620627D2C6A7E4000460775 /* PlatterGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterGeometry.swift; sourceTree = "<group>"; };
 		E6283F992C41739400158C13 /* ApplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationView.swift; sourceTree = "<group>"; };
+		E62ACF9E2CDE1C6100764A02 /* NowPlayingPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingPublisher.swift; sourceTree = "<group>"; };
 		E638D4842CB7075800C6FBDA /* SmoothShadowModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmoothShadowModifier.swift; sourceTree = "<group>"; };
 		E638D4902CB841C800C6FBDA /* StatusItemMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemMenu.swift; sourceTree = "<group>"; };
 		E638D49F2CB91F6B00C6FBDA /* AboutBoxWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutBoxWindow.swift; sourceTree = "<group>"; };
@@ -137,6 +140,7 @@
 		E66526A72CB023DD001354A4 /* GradientMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientMask.swift; sourceTree = "<group>"; };
 		E66526A92CB42E86001354A4 /* KeylineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeylineView.swift; sourceTree = "<group>"; };
 		E66526AB2CB44121001354A4 /* AboutBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutBoxView.swift; sourceTree = "<group>"; };
+		E665D3942CDFA47500444B32 /* NowPlayingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingTests.swift; sourceTree = "<group>"; };
 		E66611272C2C1782007839E6 /* Cappella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cappella.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E666112A2C2C1782007839E6 /* Cappella.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cappella.swift; sourceTree = "<group>"; };
 		E666112C2C2C1783007839E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -300,8 +304,9 @@
 		E66611392C2C1783007839E6 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				E6527F8F2CD4CF2A00D91010 /* MusicSearchPerformanceTests.swift */,
 				E691D1FD2CA57A9E00FD46BE /* MusicLibraryTests.swift */,
+				E6527F8F2CD4CF2A00D91010 /* MusicSearchPerformanceTests.swift */,
+				E665D3942CDFA47500444B32 /* NowPlayingTests.swift */,
 				E666113A2C2C1783007839E6 /* PlaybackQueueTests.swift */,
 			);
 			path = Tests;
@@ -336,9 +341,10 @@
 		E667CD7F2C563D6D000718FC /* Now Playing */ = {
 			isa = PBXGroup;
 			children = (
+				E62ACF9E2CDE1C6100764A02 /* NowPlayingPublisher.swift */,
 				E6A81D112C4177C300DAC24B /* NowPlayingView.swift */,
-				E638D4B12CBE476000C6FBDA /* PlayerPositionView.swift */,
 				E67240382CC4E1EB008FC2B3 /* PlayerPosition.swift */,
+				E638D4B12CBE476000C6FBDA /* PlayerPositionView.swift */,
 			);
 			path = "Now Playing";
 			sourceTree = "<group>";
@@ -537,7 +543,6 @@
 					};
 					E66611352C2C1783007839E6 = {
 						CreatedOnToolsVersion = 16.0;
-						TestTargetID = E66611262C2C1782007839E6;
 					};
 				};
 			};
@@ -644,6 +649,7 @@
 				E64048E72C75282C007CEB55 /* Rubberband.swift in Sources */,
 				E691D26C2CA833BC00FD46BE /* DevelopmentPreviewCollection.swift in Sources */,
 				E691D27F2CAB1CAE00FD46BE /* SystemKeyRepeatInterval.swift in Sources */,
+				E62ACF9F2CDE1C6100764A02 /* NowPlayingPublisher.swift in Sources */,
 				E66526AC2CB44121001354A4 /* AboutBoxView.swift in Sources */,
 				E6A81D122C4177C300DAC24B /* NowPlayingView.swift in Sources */,
 				E638D4A32CB9B4CB00C6FBDA /* InnerShadowModifier.swift in Sources */,
@@ -658,6 +664,7 @@
 				E6527F902CD4CF2A00D91010 /* MusicSearchPerformanceTests.swift in Sources */,
 				E691D1FE2CA57A9E00FD46BE /* MusicLibraryTests.swift in Sources */,
 				E666113B2C2C1783007839E6 /* PlaybackQueueTests.swift in Sources */,
+				E665D3952CDFA47500444B32 /* NowPlayingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -767,7 +774,6 @@
 				DEAD_CODE_STRIPPING = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 6.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cappella.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cappella";
 			};
 			name = Development;
 		};
@@ -858,7 +864,6 @@
 				DEAD_CODE_STRIPPING = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 6.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cappella.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cappella";
 			};
 			name = TestFlight;
 		};
@@ -949,7 +954,6 @@
 				DEAD_CODE_STRIPPING = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 6.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cappella.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cappella";
 			};
 			name = Production;
 		};
@@ -964,7 +968,7 @@
 				E67E43972C9A0B2F00C4CA35 /* TestFlight */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Production;
+			defaultConfigurationName = Development;
 		};
 		E666114A2C2C1783007839E6 /* Build configuration list for PBXNativeTarget "Cappella" */ = {
 			isa = XCConfigurationList;
@@ -974,7 +978,7 @@
 				E67E43982C9A0B2F00C4CA35 /* TestFlight */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Production;
+			defaultConfigurationName = Development;
 		};
 		E666114D2C2C1783007839E6 /* Build configuration list for PBXNativeTarget "CappellaTests" */ = {
 			isa = XCConfigurationList;
@@ -984,7 +988,7 @@
 				E67E43992C9A0B2F00C4CA35 /* TestFlight */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Production;
+			defaultConfigurationName = Development;
 		};
 /* End XCConfigurationList section */
 

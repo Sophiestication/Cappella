@@ -16,7 +16,6 @@ class ApplicationDelegate:
     private(set) var musicPlayer = CappellaMusicPlayer()
 
     private var applicationWindow: PlatterWindow!
-    private var nowPlayingWindow: PlatterWindow!
 
     private var globalKeyboardShortcutSubscription: AnyCancellable?
     private var keyboardShortcutBezel: KeyboardShortcutBezel?
@@ -25,6 +24,8 @@ class ApplicationDelegate:
 
     private var cancellable: AnyCancellable?
     private var receivedInitialApplicationDidBecomeActive = false
+
+    private var nowPlayingNotification: AnyCancellable?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         let contentWidth = 440.0 + (PlatterGeometry.horizontalInset * 2.0)
@@ -50,6 +51,15 @@ class ApplicationDelegate:
         dockTile = DockTile(using: self.musicPlayer)
 
         orderFrontApplicationWindowIfNeeded()
+
+        nowPlayingNotification = ApplicationMusicPlayer
+            .shared
+            .nowPlayingPublisher()
+            .sink(receiveCompletion: { _ in
+
+            }, receiveValue: { item in
+                print("\(item)")
+            })
     }
 
     func orderFrontApplicationWindowIfNeeded() {

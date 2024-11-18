@@ -33,7 +33,6 @@ final class PlayerPosition: ObservableObject {
             .map { _ in
                 state.playbackStatus
             }
-            .removeDuplicates()
             .map { [weak self] status -> PlaybackTimePublisher in
                 guard let self = self else {
                     return Just(.nan).eraseToAnyPublisher()
@@ -92,12 +91,12 @@ final class PlayerPosition: ObservableObject {
         let queue = MusicPlayerType.shared.queue
 
         return queue
-               .objectWillChange
-               .receive(on: RunLoop.main)
-               .map {
-                   queue.currentEntry?.startTime ?? .zero
-               }
-               .eraseToAnyPublisher()
+           .objectWillChange
+           .receive(on: RunLoop.main)
+           .map {
+               queue.currentEntry?.startTime ?? .zero
+           }
+           .eraseToAnyPublisher()
     }
 
     private func playbackDurationPublisher() -> PlaybackTimePublisher {

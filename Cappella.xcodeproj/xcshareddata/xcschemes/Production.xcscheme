@@ -16,7 +16,7 @@
                   <BuildableReference
                      BuildableIdentifier = "primary"
                      BlueprintIdentifier = "E66611262C2C1782007839E6"
-                     BuildableName = "CoverSutra.app"
+                     BuildableName = "Cappella.app"
                      BlueprintName = "Cappella"
                      ReferencedContainer = "container:Cappella.xcodeproj">
                   </BuildableReference>
@@ -34,7 +34,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E66611262C2C1782007839E6"
-               BuildableName = "CoverSutra.app"
+               BuildableName = "Cappella.app"
                BlueprintName = "Cappella"
                ReferencedContainer = "container:Cappella.xcodeproj">
             </BuildableReference>
@@ -87,7 +87,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E66611262C2C1782007839E6"
-            BuildableName = "CoverSutra.app"
+            BuildableName = "Cappella.app"
             BlueprintName = "Cappella"
             ReferencedContainer = "container:Cappella.xcodeproj">
          </BuildableReference>
@@ -104,7 +104,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E66611262C2C1782007839E6"
-            BuildableName = "CoverSutra.app"
+            BuildableName = "Cappella.app"
             BlueprintName = "Cappella"
             ReferencedContainer = "container:Cappella.xcodeproj">
          </BuildableReference>
