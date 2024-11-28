@@ -73,6 +73,7 @@
 		E691D27B2CAAE07F00FD46BE /* RepeatButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691D27A2CAAE07F00FD46BE /* RepeatButtonStyle.swift */; };
 		E691D27F2CAB1CAE00FD46BE /* SystemKeyRepeatInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691D27E2CAB1CAE00FD46BE /* SystemKeyRepeatInterval.swift */; };
 		E6A81D122C4177C300DAC24B /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A81D112C4177C300DAC24B /* NowPlayingView.swift */; };
+		E6ACEC742CEEADEC0046759E /* NowPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ACEC732CEEADEC0046759E /* NowPlaying.swift */; };
 		E6ADDBF22C3532AF0088D9C8 /* PlatterWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADDBF12C3532AF0088D9C8 /* PlatterWindow.swift */; };
 		E6C15E412C970CC700C95CD9 /* KeyboardShortcutBezel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C15E402C970CC700C95CD9 /* KeyboardShortcutBezel.swift */; };
 		E6C15E442C9876DB00C95CD9 /* CappellaMusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C15E432C9876DB00C95CD9 /* CappellaMusicPlayer.swift */; };
@@ -180,6 +181,7 @@
 		E691D27A2CAAE07F00FD46BE /* RepeatButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatButtonStyle.swift; sourceTree = "<group>"; };
 		E691D27E2CAB1CAE00FD46BE /* SystemKeyRepeatInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemKeyRepeatInterval.swift; sourceTree = "<group>"; };
 		E6A81D112C4177C300DAC24B /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
+		E6ACEC732CEEADEC0046759E /* NowPlaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlaying.swift; sourceTree = "<group>"; };
 		E6ADDBF12C3532AF0088D9C8 /* PlatterWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterWindow.swift; sourceTree = "<group>"; };
 		E6C15E402C970CC700C95CD9 /* KeyboardShortcutBezel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcutBezel.swift; sourceTree = "<group>"; };
 		E6C15E432C9876DB00C95CD9 /* CappellaMusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CappellaMusicPlayer.swift; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 		E667CD7F2C563D6D000718FC /* Now Playing */ = {
 			isa = PBXGroup;
 			children = (
+				E6ACEC732CEEADEC0046759E /* NowPlaying.swift */,
 				E62ACF9E2CDE1C6100764A02 /* NowPlayingPublisher.swift */,
 				E6A81D112C4177C300DAC24B /* NowPlayingView.swift */,
 				E67240382CC4E1EB008FC2B3 /* PlayerPosition.swift */,
@@ -617,6 +620,7 @@
 				E6ADDBF22C3532AF0088D9C8 /* PlatterWindow.swift in Sources */,
 				E6485A5C2C94B2C500F4040D /* Platter+KeyboardShortcut.swift in Sources */,
 				E60946F62C4B9986009D90BA /* MusicSearchView.swift in Sources */,
+				E6ACEC742CEEADEC0046759E /* NowPlaying.swift in Sources */,
 				E68203702C80CC6F00294A52 /* PlaybackQueue.swift in Sources */,
 				E653D1E02C89EDC0003AAE1E /* SettingsView.swift in Sources */,
 				E6283F9A2C41739400158C13 /* ApplicationView.swift in Sources */,
