@@ -1,0 +1,25 @@
+//
+// Copyright © 2006-2024 Sophiestication Software. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "../../Build/Configuration/Vendor.xcconfig"
+
+PRODUCT_NAME = $(TARGET_NAME)
+MODULE_NAME = $(TARGET_NAME)
+PRODUCT_MODULE_NAME = $(TARGET_NAME)
+
+PRODUCT_BUNDLE_IDENTIFIER = $(SOSO_VENDOR_IDENTIFIER).Cappella.widget
+
+MACOSX_DEPLOYMENT_TARGET = 15.1
+
+CODE_SIGN_ENTITLEMENTS = Widget/Resources/CappellaWidget.entitlements
+CODE_SIGN_STYLE = Automatic
+
+GENERATE_INFOPLIST_FILE = YES
+INFOPLIST_FILE = Widget/Resources/CappellaWidget-Info.plist
+INFOPLIST_KEY_CFBundleName = $(PRODUCT_NAME)
+INFOPLIST_KEY_CFBundleDisplayName = $(SOSO_MARKETING_NAME)
+INFOPLIST_KEY_NSHumanReadableCopyright = Copyright © 2006-2024 Sophiestication Software. All rights

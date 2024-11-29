@@ -75,6 +75,17 @@
 		E6A81D122C4177C300DAC24B /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A81D112C4177C300DAC24B /* NowPlayingView.swift */; };
 		E6ACEC742CEEADEC0046759E /* NowPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ACEC732CEEADEC0046759E /* NowPlaying.swift */; };
 		E6ADDBF22C3532AF0088D9C8 /* PlatterWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADDBF12C3532AF0088D9C8 /* PlatterWindow.swift */; };
+		E6B181072CF9DEB00019E4C1 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B181062CF9DEB00019E4C1 /* WidgetKit.framework */; };
+		E6B181092CF9DEB00019E4C1 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B181082CF9DEB00019E4C1 /* SwiftUI.framework */; };
+		E6B181172CF9DEB10019E4C1 /* CappellaWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E6B181052CF9DEB00019E4C1 /* CappellaWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E6B181272CF9DF6F0019E4C1 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B1811E2CF9DF6F0019E4C1 /* AppIntent.swift */; };
+		E6B181282CF9DF6F0019E4C1 /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B181222CF9DF6F0019E4C1 /* Widget.swift */; };
+		E6B181292CF9DF6F0019E4C1 /* CappellaWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B181232CF9DF6F0019E4C1 /* CappellaWidgetBundle.swift */; };
+		E6B181302CF9E40F0019E4C1 /* Production.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E6B1812D2CF9E40F0019E4C1 /* Production.xcconfig */; };
+		E6B181312CF9E40F0019E4C1 /* Development.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E6B1812B2CF9E40F0019E4C1 /* Development.xcconfig */; };
+		E6B181322CF9E40F0019E4C1 /* TestFlight.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E6B1812C2CF9E40F0019E4C1 /* TestFlight.xcconfig */; };
+		E6B181342CF9E40F0019E4C1 /* CappellaWidget.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E6B1812A2CF9E40F0019E4C1 /* CappellaWidget.xcconfig */; };
+		E6B1813B2CFA39440019E4C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6B181372CFA39440019E4C1 /* Assets.xcassets */; };
 		E6C15E412C970CC700C95CD9 /* KeyboardShortcutBezel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C15E402C970CC700C95CD9 /* KeyboardShortcutBezel.swift */; };
 		E6C15E442C9876DB00C95CD9 /* CappellaMusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C15E432C9876DB00C95CD9 /* CappellaMusicPlayer.swift */; };
 		E6D789352C877E2600C495DE /* PlatterButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D789342C877E2600C495DE /* PlatterButtonStyle.swift */; };
@@ -89,6 +100,13 @@
 			remoteGlobalIDString = E66611262C2C1782007839E6;
 			remoteInfo = Cappella;
 		};
+		E6B181152CF9DEB10019E4C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E666111F2C2C1782007839E6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E6B181042CF9DEB00019E4C1;
+			remoteInfo = WidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -102,6 +120,17 @@
 				E691D26A2CA832FC00FD46BE /* PreviewArtwork2.png in Copy Development Assets */,
 			);
 			name = "Copy Development Assets";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6B181182CF9DEB10019E4C1 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E6B181172CF9DEB10019E4C1 /* CappellaWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -183,6 +212,19 @@
 		E6A81D112C4177C300DAC24B /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
 		E6ACEC732CEEADEC0046759E /* NowPlaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlaying.swift; sourceTree = "<group>"; };
 		E6ADDBF12C3532AF0088D9C8 /* PlatterWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterWindow.swift; sourceTree = "<group>"; };
+		E6B181052CF9DEB00019E4C1 /* CappellaWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CappellaWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6B181062CF9DEB00019E4C1 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		E6B181082CF9DEB00019E4C1 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		E6B1811E2CF9DF6F0019E4C1 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
+		E6B181222CF9DF6F0019E4C1 /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
+		E6B181232CF9DF6F0019E4C1 /* CappellaWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CappellaWidgetBundle.swift; sourceTree = "<group>"; };
+		E6B1812A2CF9E40F0019E4C1 /* CappellaWidget.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CappellaWidget.xcconfig; sourceTree = "<group>"; };
+		E6B1812B2CF9E40F0019E4C1 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
+		E6B1812C2CF9E40F0019E4C1 /* TestFlight.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TestFlight.xcconfig; sourceTree = "<group>"; };
+		E6B1812D2CF9E40F0019E4C1 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
+		E6B181372CFA39440019E4C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E6B181382CFA39440019E4C1 /* CappellaWidget-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CappellaWidget-Info.plist"; sourceTree = "<group>"; };
+		E6B181392CFA39440019E4C1 /* CappellaWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CappellaWidget.entitlements; sourceTree = "<group>"; };
 		E6C15E402C970CC700C95CD9 /* KeyboardShortcutBezel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcutBezel.swift; sourceTree = "<group>"; };
 		E6C15E432C9876DB00C95CD9 /* CappellaMusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CappellaMusicPlayer.swift; sourceTree = "<group>"; };
 		E6D789342C877E2600C495DE /* PlatterButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterButtonStyle.swift; sourceTree = "<group>"; };
@@ -209,6 +251,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E6B181022CF9DEB00019E4C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6B181092CF9DEB00019E4C1 /* SwiftUI.framework in Frameworks */,
+				E6B181072CF9DEB00019E4C1 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -232,6 +283,8 @@
 		E6485A382C90419300F4040D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E6B181062CF9DEB00019E4C1 /* WidgetKit.framework */,
+				E6B181082CF9DEB00019E4C1 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -262,6 +315,7 @@
 			children = (
 				E64A87282C9B236E008CCCC5 /* Build */,
 				E66611292C2C1782007839E6 /* Cappella */,
+				E6B181242CF9DF6F0019E4C1 /* Widget */,
 				E66611392C2C1783007839E6 /* Tests */,
 				E6485A382C90419300F4040D /* Frameworks */,
 				E66611282C2C1782007839E6 /* Products */,
@@ -273,6 +327,7 @@
 			children = (
 				E66611272C2C1782007839E6 /* Cappella.app */,
 				E66611362C2C1783007839E6 /* CappellaTests.xctest */,
+				E6B181052CF9DEB00019E4C1 /* CappellaWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -471,6 +526,39 @@
 			path = Development;
 			sourceTree = "<group>";
 		};
+		E6B181242CF9DF6F0019E4C1 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				E6B1812F2CF9E40F0019E4C1 /* Configuration */,
+				E6B1813A2CFA39440019E4C1 /* Resources */,
+				E6B1811E2CF9DF6F0019E4C1 /* AppIntent.swift */,
+				E6B181222CF9DF6F0019E4C1 /* Widget.swift */,
+				E6B181232CF9DF6F0019E4C1 /* CappellaWidgetBundle.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		E6B1812F2CF9E40F0019E4C1 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				E6B1812A2CF9E40F0019E4C1 /* CappellaWidget.xcconfig */,
+				E6B1812B2CF9E40F0019E4C1 /* Development.xcconfig */,
+				E6B1812C2CF9E40F0019E4C1 /* TestFlight.xcconfig */,
+				E6B1812D2CF9E40F0019E4C1 /* Production.xcconfig */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		E6B1813A2CFA39440019E4C1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E6B181372CFA39440019E4C1 /* Assets.xcassets */,
+				E6B181382CFA39440019E4C1 /* CappellaWidget-Info.plist */,
+				E6B181392CFA39440019E4C1 /* CappellaWidget.entitlements */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		E6C15E452C9876E200C95CD9 /* Music Player */ = {
 			isa = PBXGroup;
 			children = (
@@ -502,10 +590,12 @@
 				E66611242C2C1782007839E6 /* Frameworks */,
 				E691D2532CA6849C00FD46BE /* Copy Development Assets */,
 				E66611252C2C1782007839E6 /* Resources */,
+				E6B181182CF9DEB10019E4C1 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E6B181162CF9DEB10019E4C1 /* PBXTargetDependency */,
 			);
 			name = Cappella;
 			productName = Cappella;
@@ -530,6 +620,25 @@
 			productReference = E66611362C2C1783007839E6 /* CappellaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		E6B181042CF9DEB00019E4C1 /* CappellaWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E6B1811D2CF9DEB10019E4C1 /* Build configuration list for PBXNativeTarget "CappellaWidget" */;
+			buildPhases = (
+				E6B181012CF9DEB00019E4C1 /* Sources */,
+				E6B181022CF9DEB00019E4C1 /* Frameworks */,
+				E6B181032CF9DEB00019E4C1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CappellaWidget;
+			packageProductDependencies = (
+			);
+			productName = WidgetExtension;
+			productReference = E6B181052CF9DEB00019E4C1 /* CappellaWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -537,7 +646,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1600;
+				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					E66611262C2C1782007839E6 = {
@@ -546,6 +655,9 @@
 					};
 					E66611352C2C1783007839E6 = {
 						CreatedOnToolsVersion = 16.0;
+					};
+					E6B181042CF9DEB00019E4C1 = {
+						CreatedOnToolsVersion = 16.1;
 					};
 				};
 			};
@@ -567,6 +679,7 @@
 			targets = (
 				E66611262C2C1782007839E6 /* Cappella */,
 				E66611352C2C1783007839E6 /* CappellaTests */,
+				E6B181042CF9DEB00019E4C1 /* CappellaWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -586,6 +699,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6B181032CF9DEB00019E4C1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6B181302CF9E40F0019E4C1 /* Production.xcconfig in Resources */,
+				E6B181312CF9E40F0019E4C1 /* Development.xcconfig in Resources */,
+				E6B181322CF9E40F0019E4C1 /* TestFlight.xcconfig in Resources */,
+				E6B1813B2CFA39440019E4C1 /* Assets.xcassets in Resources */,
+				E6B181342CF9E40F0019E4C1 /* CappellaWidget.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -672,6 +797,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E6B181012CF9DEB00019E4C1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6B181272CF9DF6F0019E4C1 /* AppIntent.swift in Sources */,
+				E6B181282CF9DF6F0019E4C1 /* Widget.swift in Sources */,
+				E6B181292CF9DF6F0019E4C1 /* CappellaWidgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -679,6 +814,11 @@
 			isa = PBXTargetDependency;
 			target = E66611262C2C1782007839E6 /* Cappella */;
 			targetProxy = E6527F912CD4CFFF00D91010 /* PBXContainerItemProxy */;
+		};
+		E6B181162CF9DEB10019E4C1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E6B181042CF9DEB00019E4C1 /* CappellaWidget */;
+			targetProxy = E6B181152CF9DEB10019E4C1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -961,6 +1101,212 @@
 			};
 			name = Production;
 		};
+		E6B181192CF9DEB10019E4C1 /* Development */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6B1812B2CF9E40F0019E4C1 /* Development.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Development;
+		};
+		E6B1811A2CF9DEB10019E4C1 /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6B1812D2CF9E40F0019E4C1 /* Production.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Production;
+		};
+		E6B1811B2CF9DEB10019E4C1 /* TestFlight */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6B1812C2CF9E40F0019E4C1 /* TestFlight.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+			};
+			name = TestFlight;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -990,6 +1336,16 @@
 				E666114E2C2C1783007839E6 /* Development */,
 				E67E439D2C9A0B3900C4CA35 /* Production */,
 				E67E43992C9A0B2F00C4CA35 /* TestFlight */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Development;
+		};
+		E6B1811D2CF9DEB10019E4C1 /* Build configuration list for PBXNativeTarget "CappellaWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6B181192CF9DEB10019E4C1 /* Development */,
+				E6B1811A2CF9DEB10019E4C1 /* Production */,
+				E6B1811B2CF9DEB10019E4C1 /* TestFlight */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Development;

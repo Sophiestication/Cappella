@@ -1,0 +1,17 @@
+//
+// Copyright © 2006-2024 Sophiestication Software. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "CappellaWidget.xcconfig"
+
+PRODUCT_NAME = CoverSutra
+PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.mac.CoverSutra.widget
+
+ENABLE_TESTABILITY = NO
+
+ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon
+ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor
+DEVELOPMENT_ASSET_PATHS =

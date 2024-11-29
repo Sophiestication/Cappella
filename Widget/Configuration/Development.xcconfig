@@ -1,0 +1,22 @@
+//
+// Copyright © 2006-2024 Sophiestication Software. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "CappellaWidget.xcconfig"
+
+ENABLE_TESTABILITY = YES
+ENABLE_TESTING_SEARCH_PATHS = YES
+
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG
+SWIFT_OPTIMIZATION_LEVEL = -Onone
+OTHER_SWIFT_FLAGS = -DDEBUG
+
+GCC_PREPROCESSOR_DEFINITIONS = DEBUG=1
+
+ONLY_ACTIVE_ARCH = YES
+DEBUG_INFORMATION_FORMAT = dwarf
+
+EXCLUDED_SOURCE_FILE_NAMES =
