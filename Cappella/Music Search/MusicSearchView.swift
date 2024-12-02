@@ -72,7 +72,7 @@ struct MusicSearchView: View {
                 withAnimation(.smooth) {
                     scrollProxy.scrollTo(
                         "group-\(newSelection.item.collection.id)",
-                        anchor: .zero
+                        anchor: .center
                     )
                 }
             }
