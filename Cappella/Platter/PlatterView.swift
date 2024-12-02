@@ -36,7 +36,11 @@ struct PlatterView<Content>: View where Content: View {
                 Group {
                     content()
                         .buttonStyle(.platter)
+
+                        .padding(.top, headerDimension)
+                        .padding(.bottom, footerDimension)
                         .containerRelativeFrame(.horizontal)
+
                     makeHeaderView()
                     makeDockedContentView()
                 }
@@ -60,7 +64,7 @@ struct PlatterView<Content>: View where Content: View {
         }
 
         .onScrollGeometryChange(for: Bool.self) { geometry in
-            geometry.contentOffset.y > -headerDimension
+            geometry.contentOffset.y > .zero
         } action: { wasBeyondZero, isBeyondZero in
             withAnimation(.snappy(duration: 0.25)) {
                 self.headerBackgroundShown = isBeyondZero
@@ -92,8 +96,8 @@ struct PlatterView<Content>: View where Content: View {
             dockedContent = value
         }
 
-        .contentMargins(.top, headerDimension)
-        .contentMargins(.bottom, footerDimension)
+//        .contentMargins(.top, headerDimension)
+//        .contentMargins(.bottom, footerDimension)
 
         .allowsWindowActivationEvents()
     }
@@ -106,7 +110,7 @@ struct PlatterView<Content>: View where Content: View {
         )
         .fill(.black)
         .offset(y: contentFrame.minY)
-        .offset(y: -headerDimension)
+//        .offset(y: -headerDimension)
         .pin()
     }
 
@@ -135,7 +139,7 @@ struct PlatterView<Content>: View where Content: View {
             height: backgroundSize.height
         )
         .offset(y: contentFrame.minY)
-        .offset(y: -headerDimension)
+//        .offset(y: -headerDimension)
         .pin()
     }
 
@@ -158,7 +162,7 @@ struct PlatterView<Content>: View where Content: View {
                 height: backgroundSize.height
             )
             .offset(y: contentFrame.minY)
-            .offset(y: -headerDimension)
+//            .offset(y: -headerDimension)
             .pin()
     }
 
@@ -188,7 +192,7 @@ struct PlatterView<Content>: View where Content: View {
         )
 
         .offset(y: contentFrame.minY)
-        .offset(y: -headerDimension)
+//        .offset(y: -headerDimension)
 
         .pin()
     }
@@ -209,7 +213,7 @@ struct PlatterView<Content>: View where Content: View {
                 )
 
                 .offset(y: contentFrame.minY)
-                .offset(y: footerDimension)
+//                .offset(y: footerDimension)
 
                 .pin(.bottom)
         }
