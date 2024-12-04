@@ -9,6 +9,8 @@
 
 SOSO_MARKETING_NAME = $(PRODUCT_NAME) β
 
+SOSO_APPLICATION_GROUP_IDENTIFIER = $(TeamIdentifierPrefix)$(SOSO_VENDOR_IDENTIFIER).CoverSutra
+
 PRODUCT_NAME = CoverSutra
 PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.mac.CoverSutra.widget
 

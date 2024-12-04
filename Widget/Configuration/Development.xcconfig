@@ -7,6 +7,8 @@
 
 #include "CappellaWidget.xcconfig"
 
+SOSO_APPLICATION_GROUP_IDENTIFIER = $(TeamIdentifierPrefix)$(SOSO_VENDOR_IDENTIFIER).Cappella
+
 ENABLE_TESTABILITY = YES
 ENABLE_TESTING_SEARCH_PATHS = YES
 
