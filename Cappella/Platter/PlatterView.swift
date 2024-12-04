@@ -36,9 +36,6 @@ struct PlatterView<Content>: View where Content: View {
                 Group {
                     content()
                         .buttonStyle(.platter)
-
-                        .padding(.top, headerDimension)
-                        .padding(.bottom, footerDimension)
                         .containerRelativeFrame(.horizontal)
 
                     makeHeaderView()

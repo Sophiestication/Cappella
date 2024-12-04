@@ -54,7 +54,7 @@ struct ApplicationView: View {
                     .frame(width: 128.0)
                 Text("To continue, please grant \(applicationName) access to  Music and your media library on this computer.")
             }
-            .padding(.bottom, 60.0)
+            .padding(.bottom, 44.0)
 
             Button(action: {
                 Task {
@@ -91,7 +91,7 @@ struct ApplicationView: View {
                     .frame(width: 128.0)
                 Text("To continue, please grant \(applicationName) access to  Music and your media library in Settings.")
             }
-            .padding(.bottom, 60.0)
+            .padding(.bottom, 44.0)
 
             Button(action: {
                 if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Media") {

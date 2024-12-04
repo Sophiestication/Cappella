@@ -41,6 +41,9 @@ struct MusicSearchView: View {
             }
             .padding(.horizontal)
 
+            .padding(.top, headerDimension)
+            .padding(.bottom, footerDimension)
+
             .onAppear {
                 musicSearch.term = ""
             }
@@ -113,6 +116,14 @@ struct MusicSearchView: View {
         }
 
         return platterGeometry.headerDimension
+    }
+
+    private var footerDimension: CGFloat {
+        guard let platterGeometry else {
+            return 0.0
+        }
+
+        return platterGeometry.footerDimension
     }
 
     @ViewBuilder
