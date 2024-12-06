@@ -6,6 +6,7 @@ import Foundation
 import SwiftUI
 import MusicKit
 import Combine
+import WidgetKit
 
 @Observable
 final class CappellaMusicPlayer {

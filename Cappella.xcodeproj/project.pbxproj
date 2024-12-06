@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E607579A2D02250A001BFE57 /* WidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60757992D02250A001BFE57 /* WidgetEntryView.swift */; };
+		E607579E2D031E3E001BFE57 /* WidgetContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E607579B2D031D4D001BFE57 /* WidgetContentView.swift */; };
+		E607579F2D032BFF001BFE57 /* WidgetContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E607579B2D031D4D001BFE57 /* WidgetContentView.swift */; };
+		E60757A02D032C0D001BFE57 /* ArtworkProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691D2432CA5A23300FD46BE /* ArtworkProviding.swift */; };
 		E60946F62C4B9986009D90BA /* MusicSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60946F52C4B9986009D90BA /* MusicSearchView.swift */; };
 		E620627E2C6A7E4000460775 /* PlatterGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E620627D2C6A7E4000460775 /* PlatterGeometry.swift */; };
 		E6283F9A2C41739400158C13 /* ApplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6283F992C41739400158C13 /* ApplicationView.swift */; };
@@ -78,7 +82,6 @@
 		E6B181072CF9DEB00019E4C1 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B181062CF9DEB00019E4C1 /* WidgetKit.framework */; };
 		E6B181092CF9DEB00019E4C1 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B181082CF9DEB00019E4C1 /* SwiftUI.framework */; };
 		E6B181172CF9DEB10019E4C1 /* CappellaWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E6B181052CF9DEB00019E4C1 /* CappellaWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E6B181272CF9DF6F0019E4C1 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B1811E2CF9DF6F0019E4C1 /* AppIntent.swift */; };
 		E6B181282CF9DF6F0019E4C1 /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B181222CF9DF6F0019E4C1 /* Widget.swift */; };
 		E6B181292CF9DF6F0019E4C1 /* CappellaWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B181232CF9DF6F0019E4C1 /* CappellaWidgetBundle.swift */; };
 		E6B181302CF9E40F0019E4C1 /* Production.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E6B1812D2CF9E40F0019E4C1 /* Production.xcconfig */; };
@@ -86,6 +89,7 @@
 		E6B181322CF9E40F0019E4C1 /* TestFlight.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E6B1812C2CF9E40F0019E4C1 /* TestFlight.xcconfig */; };
 		E6B181342CF9E40F0019E4C1 /* CappellaWidget.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E6B1812A2CF9E40F0019E4C1 /* CappellaWidget.xcconfig */; };
 		E6B1813B2CFA39440019E4C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6B181372CFA39440019E4C1 /* Assets.xcassets */; };
+		E6B1822C2D00B02C0019E4C1 /* NowPlayingEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B1822B2D00B02C0019E4C1 /* NowPlayingEntry.swift */; };
 		E6C15E412C970CC700C95CD9 /* KeyboardShortcutBezel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C15E402C970CC700C95CD9 /* KeyboardShortcutBezel.swift */; };
 		E6C15E442C9876DB00C95CD9 /* CappellaMusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C15E432C9876DB00C95CD9 /* CappellaMusicPlayer.swift */; };
 		E6D789352C877E2600C495DE /* PlatterButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D789342C877E2600C495DE /* PlatterButtonStyle.swift */; };
@@ -136,6 +140,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E60757992D02250A001BFE57 /* WidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetEntryView.swift; sourceTree = "<group>"; };
+		E607579B2D031D4D001BFE57 /* WidgetContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetContentView.swift; sourceTree = "<group>"; };
 		E60946F52C4B9986009D90BA /* MusicSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchView.swift; sourceTree = "<group>"; };
 		E620627D2C6A7E4000460775 /* PlatterGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterGeometry.swift; sourceTree = "<group>"; };
 		E6283F992C41739400158C13 /* ApplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationView.swift; sourceTree = "<group>"; };
@@ -215,7 +221,6 @@
 		E6B181052CF9DEB00019E4C1 /* CappellaWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CappellaWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B181062CF9DEB00019E4C1 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		E6B181082CF9DEB00019E4C1 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		E6B1811E2CF9DF6F0019E4C1 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		E6B181222CF9DF6F0019E4C1 /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
 		E6B181232CF9DF6F0019E4C1 /* CappellaWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CappellaWidgetBundle.swift; sourceTree = "<group>"; };
 		E6B1812A2CF9E40F0019E4C1 /* CappellaWidget.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CappellaWidget.xcconfig; sourceTree = "<group>"; };
@@ -225,6 +230,7 @@
 		E6B181372CFA39440019E4C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E6B181382CFA39440019E4C1 /* CappellaWidget-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CappellaWidget-Info.plist"; sourceTree = "<group>"; };
 		E6B181392CFA39440019E4C1 /* CappellaWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CappellaWidget.entitlements; sourceTree = "<group>"; };
+		E6B1822B2D00B02C0019E4C1 /* NowPlayingEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingEntry.swift; sourceTree = "<group>"; };
 		E6C15E402C970CC700C95CD9 /* KeyboardShortcutBezel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcutBezel.swift; sourceTree = "<group>"; };
 		E6C15E432C9876DB00C95CD9 /* CappellaMusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CappellaMusicPlayer.swift; sourceTree = "<group>"; };
 		E6D789342C877E2600C495DE /* PlatterButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterButtonStyle.swift; sourceTree = "<group>"; };
@@ -263,6 +269,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E607579D2D031DBE001BFE57 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				E607579B2D031D4D001BFE57 /* WidgetContentView.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
 		E638D4922CB841D100C6FBDA /* Status Item */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,6 +364,7 @@
 				E67240462CC68D49008FC2B3 /* Pointer */,
 				E6F11E572C56A99A00AA45FC /* Platter */,
 				E682036D2C80BE4A00294A52 /* Playback Queue */,
+				E607579D2D031DBE001BFE57 /* Widget */,
 				E6682D122C85CEF200F53B45 /* Settings */,
 				E667CD7D2C563D42000718FC /* Shared */,
 				E691D26D2CA833C100FD46BE /* Development */,
@@ -531,9 +546,10 @@
 			children = (
 				E6B1812F2CF9E40F0019E4C1 /* Configuration */,
 				E6B1813A2CFA39440019E4C1 /* Resources */,
-				E6B1811E2CF9DF6F0019E4C1 /* AppIntent.swift */,
-				E6B181222CF9DF6F0019E4C1 /* Widget.swift */,
 				E6B181232CF9DF6F0019E4C1 /* CappellaWidgetBundle.swift */,
+				E6B1822B2D00B02C0019E4C1 /* NowPlayingEntry.swift */,
+				E6B181222CF9DF6F0019E4C1 /* Widget.swift */,
+				E60757992D02250A001BFE57 /* WidgetEntryView.swift */,
 			);
 			path = Widget;
 			sourceTree = "<group>";
@@ -740,6 +756,7 @@
 				E691D2712CA8A90100FD46BE /* PlatterMenuButtonStyle.swift in Sources */,
 				E6485A5A2C9427E200F4040D /* GlobalKeyboardShortcutHandler.swift in Sources */,
 				E653D1DE2C89EC15003AAE1E /* ApplicationDelegate.swift in Sources */,
+				E607579E2D031E3E001BFE57 /* WidgetContentView.swift in Sources */,
 				E660ED272CB6C5A0005BD967 /* ApplicationMenuButton.swift in Sources */,
 				E6485A3D2C904FEC00F4040D /* GlobalKeyboardShortcutSettings.swift in Sources */,
 				E6ADDBF22C3532AF0088D9C8 /* PlatterWindow.swift in Sources */,
@@ -801,9 +818,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6B181272CF9DF6F0019E4C1 /* AppIntent.swift in Sources */,
+				E607579F2D032BFF001BFE57 /* WidgetContentView.swift in Sources */,
 				E6B181282CF9DF6F0019E4C1 /* Widget.swift in Sources */,
+				E607579A2D02250A001BFE57 /* WidgetEntryView.swift in Sources */,
+				E6B1822C2D00B02C0019E4C1 /* NowPlayingEntry.swift in Sources */,
 				E6B181292CF9DF6F0019E4C1 /* CappellaWidgetBundle.swift in Sources */,
+				E60757A02D032C0D001BFE57 /* ArtworkProviding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1093,70 +1113,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E6B1812B2CF9E40F0019E4C1 /* Development.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@executable_path/../../../../Frameworks",
-				);
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 6.0;
 			};
 			name = Development;
@@ -1165,64 +1127,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E6B1812D2CF9E40F0019E4C1 /* Production.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@executable_path/../../../../Frameworks",
-				);
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 			};
 			name = Production;
@@ -1231,64 +1141,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E6B1812C2CF9E40F0019E4C1 /* TestFlight.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@executable_path/../../../../Frameworks",
-				);
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 			};
 			name = TestFlight;

@@ -5,6 +5,7 @@
 import SwiftUI
 import Combine
 import MusicKit
+import WidgetKit
 
 struct NowPlayingView: View {
     @State private var authorizationStatus = MusicAuthorization.currentStatus
@@ -71,6 +72,10 @@ struct NowPlayingView: View {
 
         .contentShape(.interaction, ContainerRelativeShape())
         .disabled(queue.currentEntry == nil)
+
+        .onChange(of: queue.currentEntry) { oldValue, newValue in
+            WidgetCenter.shared.reloadAllTimelines()
+        }
     }
 
     @ViewBuilder

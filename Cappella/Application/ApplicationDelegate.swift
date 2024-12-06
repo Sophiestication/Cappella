@@ -6,6 +6,7 @@ import AppKit
 import Combine
 import SwiftUI
 import MusicKit
+import WidgetKit
 
 @MainActor
 class ApplicationDelegate:
@@ -60,6 +61,8 @@ class ApplicationDelegate:
             }, receiveValue: { item in
                 print("\(item)")
             })
+
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     func orderFrontApplicationWindowIfNeeded() {

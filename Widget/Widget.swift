@@ -4,52 +4,33 @@
 
 import WidgetKit
 import SwiftUI
+import MusicKit
 
-struct Provider: AppIntentTimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent())
+struct Provider: TimelineProvider {
+    func placeholder(in context: Context) -> NowPlayingEntry {
+        NowPlayingEntry()
     }
 
-    func snapshot(
-        for configuration: ConfigurationAppIntent,
-        in context: Context
-    ) async -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: configuration)
+    func getSnapshot(
+        in context: Context,
+        completion: @escaping @Sendable (NowPlayingEntry) -> Void
+    ) {
+        completion(NowPlayingEntry())
     }
-    
-    func timeline(
-        for configuration: ConfigurationAppIntent,
-        in context: Context
-    ) async -> Timeline<SimpleEntry> {
-        var entries: [SimpleEntry] = []
 
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-            entries.append(entry)
-        }
+    func getTimeline(
+        in context: Context,
+        completion: @escaping @Sendable (Timeline<NowPlayingEntry>) -> Void
+    ) {
+        Task {
+            do {
+                let entry = try await NowPlayingEntry(album: "Future Nostalgia", date: Date())
+                let timeline = Timeline(entries: [entry], policy: .never)
 
-        return Timeline(entries: entries, policy: .atEnd)
-    }
-}
-
-struct SimpleEntry: TimelineEntry {
-    let date: Date
-    let configuration: ConfigurationAppIntent
-}
-
-struct WidgetEntryView : View {
-    var entry: Provider.Entry
-
-    var body: some View {
-        VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
-
-            Text("Favorite Emoji:")
-            Text(entry.configuration.favoriteEmoji)
+                completion(timeline)
+            } catch {
+                print("Error fetching timeline entry: \(error)")
+            }
         }
     }
 }
@@ -58,9 +39,20 @@ struct CappellaWidget: Widget {
     let kind: String = "Widget"
 
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
+        StaticConfiguration(
+            kind: "StaticWidget",
+            provider: Provider()
+        ) { entry in
             WidgetEntryView(entry: entry)
-                .containerBackground(.fill.tertiary, for: .widget)
         }
+        .configurationDisplayName("Now Playing")
+        .description("Displays the current track and album artwork.")
+        .supportedFamilies([.systemSmall])
     }
+}
+
+#Preview(as: .systemSmall) {
+    CappellaWidget()
+} timeline: {
+    NowPlayingEntry()
 }
