@@ -1,6 +1,15 @@
 {
-  "originHash" : "86635982bfc3fdf16c7186cd33e77b4dc10a24ff9127aaee5f4f0a3676ae2966",
+  "originHash" : "10ee47a4580db5a996fa49db1d2973e599f3b28dd6b12c28cd711797c2270780",
   "pins" : [
+    {
+      "identity" : "inferno",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/twostraws/Inferno.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "9c0941c91b9dc0e22e471bda0ac89f6e676d59b1"
+      }
+    },
     {
       "identity" : "swift-algorithms",
       "kind" : "remoteSourceControl",

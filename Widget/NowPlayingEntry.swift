@@ -4,50 +4,31 @@
 
 import WidgetKit
 import MusicKit
+import CoreGraphics
 
 struct NowPlayingEntry: TimelineEntry {
     var date: Date = Date()
 
-    var collection: Album? = nil
-    var item: MusicItem? = nil
+    var title: String? { item.title }
+    var albumTitle: String? { item.albumTitle }
+    var artistName: String? { item.artistName }
+
+    var artwork: URL? { item.artwork }
+
+    private let item: NowPlayingStore.Item
+
+    init() {
+        let store = NowPlayingStore()
+        self.item = store.item
+    }
 }
 
-extension NowPlayingEntry {
-    init(album: String, date: Date) async throws {
-        let albums = try await Self.fetchAlbums(
-            matchting: album
-        )
-
-        var album = albums.first!
-
-        album = try await album.with([ .tracks ])
-
-        self.collection = album
-        self.item = album.tracks!.first!
-
-        self.date = date
+extension NowPlayingEntry: ArtworkProviding {
+    var backgroundColor: CGColor? {
+        nil
     }
-
-    private static func fetchAlbums(
-        matchting title: String,
-        preferredSource: MusicPropertySource = .library
-    ) async throws -> [Album] {
-        var request = MusicLibraryRequest<Album>()
-
-        request.filter(matching: \.title, equalTo: title)
-        request.sort(by: \.releaseDate, ascending: false)
-
-        var albums: [Album] = []
-
-        for item in try await request.response().items {
-            let detailedAlbum = try await item.with(
-                [ .tracks ],
-                preferredSource: preferredSource
-            )
-
-            albums.append(detailedAlbum)
-        }
-
-        return albums
+    
+    func url(width: Int, height: Int) -> URL? {
+        artwork
     }
 }

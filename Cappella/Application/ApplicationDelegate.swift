@@ -26,8 +26,6 @@ class ApplicationDelegate:
     private var cancellable: AnyCancellable?
     private var receivedInitialApplicationDidBecomeActive = false
 
-    private var nowPlayingNotification: AnyCancellable?
-
     func applicationDidFinishLaunching(_ notification: Notification) {
         let contentWidth = 440.0 + (PlatterGeometry.horizontalInset * 2.0)
         let contentHeight = 720.0 + 240.0 + 45.0 // TODO
@@ -52,17 +50,6 @@ class ApplicationDelegate:
         dockTile = DockTile(using: self.musicPlayer)
 
         orderFrontApplicationWindowIfNeeded()
-
-        nowPlayingNotification = ApplicationMusicPlayer
-            .shared
-            .nowPlayingPublisher()
-            .sink(receiveCompletion: { _ in
-
-            }, receiveValue: { item in
-                print("\(item)")
-            })
-
-        WidgetCenter.shared.reloadAllTimelines()
     }
 
     func orderFrontApplicationWindowIfNeeded() {
@@ -80,6 +67,10 @@ class ApplicationDelegate:
     }
 
     func applicationWillTerminate(_ notification: Notification) {
+        let store = NowPlayingStore()
+        store.update(entry: nil)
+
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     func applicationDidBecomeActive(_ notification: Notification) {

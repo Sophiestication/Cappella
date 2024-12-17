@@ -42,7 +42,7 @@ struct GradientMask: View {
 #Preview {
     VStack(spacing: 44.0) {
         ArtworkView(length: 240)
-            .overlay(GradientMask(start: .init(x: 0.0, y: 0.0), end: .init(x: 0.0, y: 0.5)))
+            .overlay(GradientMask(start: .init(x: 0.0, y: 0.0), end: .init(x: 0.0, y: 0.75)))
     }
     .padding(60.0)
 

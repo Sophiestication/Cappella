@@ -22,16 +22,10 @@ struct Provider: TimelineProvider {
         in context: Context,
         completion: @escaping @Sendable (Timeline<NowPlayingEntry>) -> Void
     ) {
-        Task {
-            do {
-                let entry = try await NowPlayingEntry(album: "Future Nostalgia", date: Date())
-                let timeline = Timeline(entries: [entry], policy: .never)
+        let entry = NowPlayingEntry()
+        let timeline = Timeline(entries: [entry], policy: .never)
 
-                completion(timeline)
-            } catch {
-                print("Error fetching timeline entry: \(error)")
-            }
-        }
+        completion(timeline)
     }
 }
 
@@ -47,7 +41,7 @@ struct CappellaWidget: Widget {
         }
         .configurationDisplayName("Now Playing")
         .description("Displays the current track and album artwork.")
-        .supportedFamilies([.systemSmall])
+        .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
 

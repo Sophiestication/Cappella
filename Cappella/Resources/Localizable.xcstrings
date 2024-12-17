@@ -88,6 +88,9 @@
     "Open Settings…" : {
 
     },
+    "Play or Pause" : {
+
+    },
     "Previous Track" : {
 
     },
@@ -128,6 +131,9 @@
 
     },
     "To continue, please grant %@ access to  Music and your media library on this computer." : {
+
+    },
+    "Toggles playback of the current song." : {
 
     },
     "Watcha Doing" : {

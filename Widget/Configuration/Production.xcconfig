@@ -9,7 +9,7 @@
 
 SOSO_APPLICATION_GROUP_IDENTIFIER = $(TeamIdentifierPrefix)$(SOSO_VENDOR_IDENTIFIER).CoverSutra
 
-PRODUCT_NAME = CoverSutra
+//PRODUCT_NAME = CoverSutra
 PRODUCT_BUNDLE_IDENTIFIER = com.sophiestication.mac.CoverSutra.widget
 
 ENABLE_TESTABILITY = NO

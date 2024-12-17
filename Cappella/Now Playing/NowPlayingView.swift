@@ -18,10 +18,14 @@ struct NowPlayingView: View {
     @ObservedObject private var playbackState: MusicPlayerType.State
     @ObservedObject private var queue: MusicPlayerType.Queue
 
+    private let nowPlayingStore: NowPlayingStore
+
     init(using musicPlayer: MusicPlayerType) {
         self.musicPlayer = musicPlayer
         self.playbackState = musicPlayer.playbackState
         self.queue = musicPlayer.queue
+
+        self.nowPlayingStore = NowPlayingStore()
     }
 
     var body: some View {
@@ -74,8 +78,13 @@ struct NowPlayingView: View {
         .disabled(queue.currentEntry == nil)
 
         .onChange(of: queue.currentEntry) { oldValue, newValue in
-            WidgetCenter.shared.reloadAllTimelines()
+            updateWidget()
         }
+    }
+
+    private func updateWidget() {
+        nowPlayingStore.update(entry: queue.currentEntry)
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     @ViewBuilder

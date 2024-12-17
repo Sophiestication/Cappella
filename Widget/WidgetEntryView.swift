@@ -5,23 +5,17 @@
 import SwiftUI
 
 struct WidgetEntryView : View {
+    @Environment(\.widgetFamily) var widgetFamily
     var entry: Provider.Entry
 
     var body: some View {
         WidgetContentView(
-            title: nil,
-            artist: artist,
-            album: album
+            widgetFamily: widgetFamily,
+            title: entry.title,
+            artist: entry.artistName,
+            album: entry.albumTitle
         )
-        .environment(\.artworkProvider, entry.collection?.artwork)
-    }
-
-    private var artist: String {
-        entry.collection?.artistName ?? ""
-    }
-
-    private var album: String {
-        entry.collection?.title ?? ""
+        .environment(\.artworkProvider, entry)
     }
 }
 

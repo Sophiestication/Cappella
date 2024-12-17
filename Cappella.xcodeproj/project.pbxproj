@@ -7,11 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E6050CC02D04A0550044FB73 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = E6050CBF2D04A0550044FB73 /* Algorithms */; };
+		E6050CC32D04A0740044FB73 /* Inferno in Frameworks */ = {isa = PBXBuildFile; productRef = E6050CC22D04A0740044FB73 /* Inferno */; };
+		E6050CC52D06028C0044FB73 /* PlayPauseIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6050CC42D06028C0044FB73 /* PlayPauseIntent.swift */; };
+		E6050CC62D06028C0044FB73 /* PlayPauseIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6050CC42D06028C0044FB73 /* PlayPauseIntent.swift */; };
 		E607579A2D02250A001BFE57 /* WidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60757992D02250A001BFE57 /* WidgetEntryView.swift */; };
 		E607579E2D031E3E001BFE57 /* WidgetContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E607579B2D031D4D001BFE57 /* WidgetContentView.swift */; };
 		E607579F2D032BFF001BFE57 /* WidgetContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E607579B2D031D4D001BFE57 /* WidgetContentView.swift */; };
 		E60757A02D032C0D001BFE57 /* ArtworkProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691D2432CA5A23300FD46BE /* ArtworkProviding.swift */; };
 		E60946F62C4B9986009D90BA /* MusicSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60946F52C4B9986009D90BA /* MusicSearchView.swift */; };
+		E60E93722D0427C000A859DA /* NowPlayingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60E93712D0427BC00A859DA /* NowPlayingStore.swift */; };
+		E60E93732D04322C00A859DA /* NowPlayingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60E93712D0427BC00A859DA /* NowPlayingStore.swift */; };
+		E60E93752D04378800A859DA /* CodableColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60E93742D04378800A859DA /* CodableColor.swift */; };
+		E60E93772D0440E600A859DA /* CodableColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60E93742D04378800A859DA /* CodableColor.swift */; };
 		E620627E2C6A7E4000460775 /* PlatterGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E620627D2C6A7E4000460775 /* PlatterGeometry.swift */; };
 		E6283F9A2C41739400158C13 /* ApplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6283F992C41739400158C13 /* ApplicationView.swift */; };
 		E62ACF9F2CDE1C6100764A02 /* NowPlayingPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62ACF9E2CDE1C6100764A02 /* NowPlayingPublisher.swift */; };
@@ -76,6 +84,8 @@
 		E691D2792CA9EC7D00FD46BE /* PlatterMenuItemTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691D2782CA9EC7D00FD46BE /* PlatterMenuItemTrigger.swift */; };
 		E691D27B2CAAE07F00FD46BE /* RepeatButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691D27A2CAAE07F00FD46BE /* RepeatButtonStyle.swift */; };
 		E691D27F2CAB1CAE00FD46BE /* SystemKeyRepeatInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = E691D27E2CAB1CAE00FD46BE /* SystemKeyRepeatInterval.swift */; };
+		E6A6BCC72D0B251E00CFFD4C /* WidgetButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A6BCC62D0B251E00CFFD4C /* WidgetButtonStyle.swift */; };
+		E6A6BCC82D0B251E00CFFD4C /* WidgetButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A6BCC62D0B251E00CFFD4C /* WidgetButtonStyle.swift */; };
 		E6A81D122C4177C300DAC24B /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A81D112C4177C300DAC24B /* NowPlayingView.swift */; };
 		E6ACEC742CEEADEC0046759E /* NowPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ACEC732CEEADEC0046759E /* NowPlaying.swift */; };
 		E6ADDBF22C3532AF0088D9C8 /* PlatterWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADDBF12C3532AF0088D9C8 /* PlatterWindow.swift */; };
@@ -84,10 +94,6 @@
 		E6B181172CF9DEB10019E4C1 /* CappellaWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E6B181052CF9DEB00019E4C1 /* CappellaWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E6B181282CF9DF6F0019E4C1 /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B181222CF9DF6F0019E4C1 /* Widget.swift */; };
 		E6B181292CF9DF6F0019E4C1 /* CappellaWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B181232CF9DF6F0019E4C1 /* CappellaWidgetBundle.swift */; };
-		E6B181302CF9E40F0019E4C1 /* Production.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E6B1812D2CF9E40F0019E4C1 /* Production.xcconfig */; };
-		E6B181312CF9E40F0019E4C1 /* Development.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E6B1812B2CF9E40F0019E4C1 /* Development.xcconfig */; };
-		E6B181322CF9E40F0019E4C1 /* TestFlight.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E6B1812C2CF9E40F0019E4C1 /* TestFlight.xcconfig */; };
-		E6B181342CF9E40F0019E4C1 /* CappellaWidget.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E6B1812A2CF9E40F0019E4C1 /* CappellaWidget.xcconfig */; };
 		E6B1813B2CFA39440019E4C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6B181372CFA39440019E4C1 /* Assets.xcassets */; };
 		E6B1822C2D00B02C0019E4C1 /* NowPlayingEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B1822B2D00B02C0019E4C1 /* NowPlayingEntry.swift */; };
 		E6C15E412C970CC700C95CD9 /* KeyboardShortcutBezel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C15E402C970CC700C95CD9 /* KeyboardShortcutBezel.swift */; };
@@ -140,9 +146,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E6050CC42D06028C0044FB73 /* PlayPauseIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayPauseIntent.swift; sourceTree = "<group>"; };
 		E60757992D02250A001BFE57 /* WidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetEntryView.swift; sourceTree = "<group>"; };
 		E607579B2D031D4D001BFE57 /* WidgetContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetContentView.swift; sourceTree = "<group>"; };
 		E60946F52C4B9986009D90BA /* MusicSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchView.swift; sourceTree = "<group>"; };
+		E60E93712D0427BC00A859DA /* NowPlayingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingStore.swift; sourceTree = "<group>"; };
+		E60E93742D04378800A859DA /* CodableColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableColor.swift; sourceTree = "<group>"; };
 		E620627D2C6A7E4000460775 /* PlatterGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterGeometry.swift; sourceTree = "<group>"; };
 		E6283F992C41739400158C13 /* ApplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationView.swift; sourceTree = "<group>"; };
 		E62ACF9E2CDE1C6100764A02 /* NowPlayingPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingPublisher.swift; sourceTree = "<group>"; };
@@ -215,6 +224,7 @@
 		E691D2782CA9EC7D00FD46BE /* PlatterMenuItemTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterMenuItemTrigger.swift; sourceTree = "<group>"; };
 		E691D27A2CAAE07F00FD46BE /* RepeatButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatButtonStyle.swift; sourceTree = "<group>"; };
 		E691D27E2CAB1CAE00FD46BE /* SystemKeyRepeatInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemKeyRepeatInterval.swift; sourceTree = "<group>"; };
+		E6A6BCC62D0B251E00CFFD4C /* WidgetButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetButtonStyle.swift; sourceTree = "<group>"; };
 		E6A81D112C4177C300DAC24B /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
 		E6ACEC732CEEADEC0046759E /* NowPlaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlaying.swift; sourceTree = "<group>"; };
 		E6ADDBF12C3532AF0088D9C8 /* PlatterWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatterWindow.swift; sourceTree = "<group>"; };
@@ -246,6 +256,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6050CC32D04A0740044FB73 /* Inferno in Frameworks */,
+				E6050CC02D04A0550044FB73 /* Algorithms in Frameworks */,
 				E69091882CA1F3E5007F4188 /* Algorithms in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,6 +284,8 @@
 		E607579D2D031DBE001BFE57 /* Widget */ = {
 			isa = PBXGroup;
 			children = (
+				E6050CC42D06028C0044FB73 /* PlayPauseIntent.swift */,
+				E6A6BCC62D0B251E00CFFD4C /* WidgetButtonStyle.swift */,
 				E607579B2D031D4D001BFE57 /* WidgetContentView.swift */,
 			);
 			path = Widget;
@@ -387,13 +401,14 @@
 		E667CD7D2C563D42000718FC /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				E638D4A22CB9B4CB00C6FBDA /* InnerShadowModifier.swift */,
-				E638D4842CB7075800C6FBDA /* SmoothShadowModifier.swift */,
+				E60E93742D04378800A859DA /* CodableColor.swift */,
 				E66526A72CB023DD001354A4 /* GradientMask.swift */,
+				E638D4A22CB9B4CB00C6FBDA /* InnerShadowModifier.swift */,
 				E66526A92CB42E86001354A4 /* KeylineView.swift */,
 				E691D1FB2CA564FA00FD46BE /* MusicLibrary+Additions.swift */,
 				E691D27A2CAAE07F00FD46BE /* RepeatButtonStyle.swift */,
 				E64048E62C75282C007CEB55 /* Rubberband.swift */,
+				E638D4842CB7075800C6FBDA /* SmoothShadowModifier.swift */,
 				E667CD7B2C560841000718FC /* VisualEffectView.swift */,
 			);
 			path = Shared;
@@ -415,6 +430,7 @@
 			children = (
 				E6ACEC732CEEADEC0046759E /* NowPlaying.swift */,
 				E62ACF9E2CDE1C6100764A02 /* NowPlayingPublisher.swift */,
+				E60E93712D0427BC00A859DA /* NowPlayingStore.swift */,
 				E6A81D112C4177C300DAC24B /* NowPlayingView.swift */,
 				E67240382CC4E1EB008FC2B3 /* PlayerPosition.swift */,
 				E638D4B12CBE476000C6FBDA /* PlayerPositionView.swift */,
@@ -687,7 +703,8 @@
 			);
 			mainGroup = E666111E2C2C1782007839E6;
 			packageReferences = (
-				E69091862CA1F3E5007F4188 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+				E6050CBE2D04A0550044FB73 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+				E6050CC12D04A0740044FB73 /* XCRemoteSwiftPackageReference "Inferno" */,
 			);
 			productRefGroup = E66611282C2C1782007839E6 /* Products */;
 			projectDirPath = "";
@@ -722,11 +739,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6B181302CF9E40F0019E4C1 /* Production.xcconfig in Resources */,
-				E6B181312CF9E40F0019E4C1 /* Development.xcconfig in Resources */,
-				E6B181322CF9E40F0019E4C1 /* TestFlight.xcconfig in Resources */,
 				E6B1813B2CFA39440019E4C1 /* Assets.xcassets in Resources */,
-				E6B181342CF9E40F0019E4C1 /* CappellaWidget.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,6 +762,7 @@
 				E691D2502CA5DEC600FD46BE /* PlatterMenuItem.swift in Sources */,
 				E653D1E42C89FCC9003AAE1E /* KeyboardShortcutSettingsView.swift in Sources */,
 				E67B5D022C8EE3B200E47348 /* SettingsFormStyle.swift in Sources */,
+				E6050CC62D06028C0044FB73 /* PlayPauseIntent.swift in Sources */,
 				E67B5CFE2C8D8CC000E47348 /* NSEvent+Additions.swift in Sources */,
 				E684138A2C5899E20019FB15 /* MusicSearch.swift in Sources */,
 				E691D1FC2CA564FA00FD46BE /* MusicLibrary+Additions.swift in Sources */,
@@ -777,6 +791,7 @@
 				E638D4912CB841C800C6FBDA /* StatusItemMenu.swift in Sources */,
 				E691D25A2CA6E61000FD46BE /* MenuShadowModifier.swift in Sources */,
 				E638D4A02CB91F6B00C6FBDA /* AboutBoxWindow.swift in Sources */,
+				E60E93752D04378800A859DA /* CodableColor.swift in Sources */,
 				E6C15E412C970CC700C95CD9 /* KeyboardShortcutBezel.swift in Sources */,
 				E690917F2C9C6922007F4188 /* DockTile.swift in Sources */,
 				E691D2562CA69EBC00FD46BE /* PlatterMenu.swift in Sources */,
@@ -794,7 +809,9 @@
 				E67240452CC68D40008FC2B3 /* PointerBehavior.swift in Sources */,
 				E64048E72C75282C007CEB55 /* Rubberband.swift in Sources */,
 				E691D26C2CA833BC00FD46BE /* DevelopmentPreviewCollection.swift in Sources */,
+				E60E93722D0427C000A859DA /* NowPlayingStore.swift in Sources */,
 				E691D27F2CAB1CAE00FD46BE /* SystemKeyRepeatInterval.swift in Sources */,
+				E6A6BCC82D0B251E00CFFD4C /* WidgetButtonStyle.swift in Sources */,
 				E62ACF9F2CDE1C6100764A02 /* NowPlayingPublisher.swift in Sources */,
 				E66526AC2CB44121001354A4 /* AboutBoxView.swift in Sources */,
 				E6A81D122C4177C300DAC24B /* NowPlayingView.swift in Sources */,
@@ -818,11 +835,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6A6BCC72D0B251E00CFFD4C /* WidgetButtonStyle.swift in Sources */,
 				E607579F2D032BFF001BFE57 /* WidgetContentView.swift in Sources */,
 				E6B181282CF9DF6F0019E4C1 /* Widget.swift in Sources */,
 				E607579A2D02250A001BFE57 /* WidgetEntryView.swift in Sources */,
+				E6050CC52D06028C0044FB73 /* PlayPauseIntent.swift in Sources */,
+				E60E93732D04322C00A859DA /* NowPlayingStore.swift in Sources */,
 				E6B1822C2D00B02C0019E4C1 /* NowPlayingEntry.swift in Sources */,
 				E6B181292CF9DF6F0019E4C1 /* CappellaWidgetBundle.swift in Sources */,
+				E60E93772D0440E600A859DA /* CodableColor.swift in Sources */,
 				E60757A02D032C0D001BFE57 /* ArtworkProviding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -878,7 +899,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -972,7 +992,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1058,7 +1077,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1197,6 +1215,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E6050CBE2D04A0550044FB73 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+		E6050CC12D04A0740044FB73 /* XCRemoteSwiftPackageReference "Inferno" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/Inferno.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		E69091862CA1F3E5007F4188 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-algorithms.git";
@@ -1208,6 +1242,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E6050CBF2D04A0550044FB73 /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E6050CBE2D04A0550044FB73 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
+		};
+		E6050CC22D04A0740044FB73 /* Inferno */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E6050CC12D04A0740044FB73 /* XCRemoteSwiftPackageReference "Inferno" */;
+			productName = Inferno;
+		};
 		E69091872CA1F3E5007F4188 /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E69091862CA1F3E5007F4188 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
