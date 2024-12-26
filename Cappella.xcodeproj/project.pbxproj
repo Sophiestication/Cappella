@@ -160,7 +160,7 @@
 		E638D4A22CB9B4CB00C6FBDA /* InnerShadowModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerShadowModifier.swift; sourceTree = "<group>"; };
 		E638D4B12CBE476000C6FBDA /* PlayerPositionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPositionView.swift; sourceTree = "<group>"; };
 		E64048E62C75282C007CEB55 /* Rubberband.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rubberband.swift; sourceTree = "<group>"; };
-		E642CEDB2D1D1A6400211463 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		E642CEDB2D1D1A6400211463 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E642CEDC2D1D239D00211463 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		E6485A3C2C904FEC00F4040D /* GlobalKeyboardShortcutSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalKeyboardShortcutSettings.swift; sourceTree = "<group>"; };
 		E6485A502C90B8B300F4040D /* GlobalKeyboardShortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalKeyboardShortcut.swift; sourceTree = "<group>"; };
@@ -342,7 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				E642CEDC2D1D239D00211463 /* LICENSE */,
-				E642CEDB2D1D1A6400211463 /* README */,
+				E642CEDB2D1D1A6400211463 /* README.md */,
 				E64A87282C9B236E008CCCC5 /* Build */,
 				E66611292C2C1782007839E6 /* Cappella */,
 				E6B181242CF9DF6F0019E4C1 /* Widget */,
