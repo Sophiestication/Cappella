@@ -1,24 +1,43 @@
 //
-// Copyright © 2006-2024 Sophiestication Software. All rights reserved.
+// MIT License
+//
+// Copyright (c) 2006-2024 Sophiestication Software, Inc.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 //
 
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-#include "BuildNumber.xcconfig"
+#include  "BuildNumber.xcconfig"
 
-SOSO_VENDOR_IDENTIFIER = com.sophiestication
+SOSO_VENDOR_IDENTIFIER = E_MISSING_VENDOR_IDENTIFIER
+SOSO_DEVELOPMENT_TEAM = E_MISSING_DEVELOPMENT_TEAM
+#include? "Team.xcconfig"
 
 SOSO_APPLICATION_BUILD = $(CI_BUILD_NUMBER)
 SOSO_APPLICATION_VERSION = 4.0.3
 
 SOSO_APPLICATION_GROUP_IDENTIFIER = $(TeamIdentifierPrefix)$(SOSO_VENDOR_IDENTIFIER)
 
-SOSO_VENDOR_URL = sophiestication.com
-SOSO_VENDOR_EMAIL = hello@sophiestication.com
-
 ORGANIZATION_IDENTIFIER = $(SOSO_VENDOR_IDENTIFIER)
-DEVELOPMENT_TEAM = 3NSYV8YA8F
+DEVELOPMENT_TEAM = $(SOSO_DEVELOPMENT_TEAM)
 
 CURRENT_PROJECT_VERSION = $(SOSO_APPLICATION_BUILD)
 MARKETING_VERSION = $(SOSO_APPLICATION_VERSION)
